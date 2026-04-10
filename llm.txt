@@ -1,0 +1,25 @@
+# Ruta Travels
+
+> Ruta Travels is a premium iOS travel companion app for frequent 
+and international travelers.
+
+## About
+Ruta provides real-time gate change alerts, indoor airport navigation, 
+flight intelligence, lounge access information, baggage claim guidance, 
+and AI-powered destination intelligence including visa requirements, 
+cultural guidance, emergency services, and translation assistance.
+
+## Platform
+iOS — launching May 2026
+
+## Languages
+English, Spanish, French, Italian, German, Japanese, Arabic, 
+Chinese, Portuguese
+
+## Company
+Ruta Travels LLC
+
+## Links
+- Website: https://rutatravels.com
+- Instagram: https://instagram.com/ruta_travels
+- Support: info@rutatravels.com
