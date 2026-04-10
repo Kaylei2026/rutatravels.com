@@ -1,152 +1,148 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ruta Travels — Coming Soon</title>
-  <link rel="icon" type="image/png" href="favicon.png">
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      min-height: 100vh;
-      background: linear-gradient(160deg, #344E67 0%, #1B2E3F 100%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      color: #fff;
-      overflow: hidden;
-    }
-    .hero {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      flex: 1;
-      padding: 40px 20px;
-      text-align: center;
-    }
-    .logo-container {
-      position: relative;
-      margin-bottom: 48px;
-    }
-    .route-line {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0;
-      margin-bottom: 8px;
-    }
-    .dot {
-      width: 16px;
-      height: 16px;
-      background: #F2A65A;
-      border-radius: 50%;
-      position: relative;
-      flex-shrink: 0;
-    }
-    .dot::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 28px;
-      height: 28px;
-      border: 1.5px solid rgba(242,166,90,0.3);
-      border-radius: 50%;
-    }
-    .dashes {
-      flex: 1;
-      max-width: 500px;
-      height: 2px;
-      background: repeating-linear-gradient(
-        to right,
-        rgba(242,166,90,0.4) 0px,
-        rgba(242,166,90,0.4) 12px,
-        transparent 12px,
-        transparent 24px
-      );
-      margin: 0 8px;
-    }
-    .wordmark {
-      position: relative;
-    }
-    .ruta {
-      font-size: clamp(72px, 12vw, 140px);
-      font-weight: 600;
-      letter-spacing: 0.15em;
-      color: #fff;
-      line-height: 1;
-      background: linear-gradient(180deg, #ffffff 0%, #D0DCE8 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .divider {
-      width: 60%;
-      height: 1px;
-      background: rgba(242,166,90,0.5);
-      margin: 12px auto;
-    }
-    .travels {
-      font-size: clamp(13px, 2vw, 18px);
-      font-weight: 300;
-      letter-spacing: 0.5em;
-      color: #F2A65A;
-      text-transform: uppercase;
-    }
-    .tagline {
-      font-size: clamp(14px, 2vw, 18px);
-      font-weight: 300;
-      color: rgba(255,255,255,0.6);
-      letter-spacing: 0.05em;
-      margin-top: 48px;
-      margin-bottom: 16px;
-    }
-    .coming-soon {
-      font-size: clamp(11px, 1.5vw, 13px);
-      font-weight: 400;
-      letter-spacing: 0.4em;
-      color: rgba(242,166,90,0.7);
-      text-transform: uppercase;
-      border: 1px solid rgba(242,166,90,0.3);
-      padding: 10px 28px;
-      border-radius: 2px;
-    }
-    .footer {
-      padding: 24px;
-      font-size: 12px;
-      color: rgba(255,255,255,0.3);
-      letter-spacing: 0.05em;
-    }
-    .footer a {
-      color: rgba(242,166,90,0.5);
-      text-decoration: none;
-    }
-    .footer a:hover { color: #F2A65A; }
-  </style>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ruta Travels — Find Your Way. Every Flight.</title>
+<meta name="description" content="The airport companion app. Launching soon on iOS."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+:root{--navy:#162032;--gold:#F2A65A;--white:#FFFFFF;--muted:rgba(255,255,255,0.5);--border:rgba(242,166,90,0.18)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--navy);color:var(--white);font-family:'DM Sans',sans-serif;font-weight:300;line-height:1.7;overflow-x:hidden;min-height:100vh;display:flex;flex-direction:column}
+
+/* HERO */
+.hero{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 24px 80px;position:relative}
+
+/* LOGO */
+.logo-block{margin-bottom:52px;opacity:0;animation:fadeUp 0.9s ease 0.2s forwards}
+.fp-row{display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.fp-dot{width:12px;height:12px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 4px rgba(242,166,90,0.18);flex-shrink:0}
+.fp-dash{width:90px;height:1px;background:repeating-linear-gradient(90deg,rgba(242,166,90,0.7) 0,rgba(242,166,90,0.7) 6px,transparent 6px,transparent 12px)}
+.fp-plane{color:var(--gold);font-size:18px;margin:0 10px;transform:translateY(-2px)}
+.logo-ruta{font-family:'Montserrat',sans-serif;font-weight:300;font-size:clamp(72px,13vw,130px);letter-spacing:0.18em;color:var(--white);line-height:1;margin-bottom:8px}
+.logo-rule{width:55%;height:1px;background:rgba(242,166,90,0.4);margin:0 auto 10px}
+.logo-travels{font-family:'Montserrat',sans-serif;font-weight:600;font-size:clamp(12px,2vw,17px);letter-spacing:0.45em;color:var(--gold)}
+
+/* TAGLINE */
+.tagline{font-size:15px;font-weight:300;color:var(--muted);letter-spacing:0.06em;margin-bottom:14px;opacity:0;animation:fadeUp 0.9s ease 0.5s forwards}
+.sub-tagline{font-size:13px;color:rgba(255,255,255,0.3);letter-spacing:0.08em;margin-bottom:44px;opacity:0;animation:fadeUp 0.9s ease 0.6s forwards}
+
+/* SOCIAL */
+.social-row{display:flex;gap:14px;justify-content:center;margin-bottom:40px;opacity:0;animation:fadeUp 0.9s ease 0.7s forwards}
+.social-link{font-size:11px;color:rgba(255,255,255,0.32);text-decoration:none;letter-spacing:0.1em;border:1px solid rgba(255,255,255,0.1);border-radius:50px;padding:7px 20px;transition:color 0.2s,border-color 0.2s}
+.social-link:hover{color:var(--gold);border-color:var(--border)}
+
+/* FORM */
+.form-wrap{width:100%;max-width:440px;opacity:0;animation:fadeUp 0.9s ease 0.85s forwards}
+.form-inner{display:flex;background:rgba(255,255,255,0.06);border:1px solid var(--border);border-radius:50px;padding:5px 5px 5px 22px;backdrop-filter:blur(8px)}
+.form-inner input{flex:1;background:transparent;border:none;outline:none;color:var(--white);font-family:'DM Sans',sans-serif;font-size:14px;font-weight:300;min-width:0}
+.form-inner input::placeholder{color:rgba(255,255,255,0.28)}
+.form-btn{background:var(--gold);color:var(--navy);border:none;border-radius:50px;padding:11px 24px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;letter-spacing:0.05em;cursor:pointer;transition:background 0.2s,transform 0.15s;white-space:nowrap;flex-shrink:0}
+.form-btn:hover{background:#e89540;transform:scale(1.02)}
+.form-note{font-size:11px;color:rgba(255,255,255,0.18);margin-top:12px;letter-spacing:0.04em;text-align:center}
+.form-success{display:none;color:var(--gold);font-size:14px;padding:14px;text-align:center;letter-spacing:0.04em}
+
+/* SCROLL HINT */
+.scroll-hint{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0;animation:fadeUp 1s ease 1.2s forwards}
+.scroll-hint span{font-size:9px;letter-spacing:0.35em;color:rgba(255,255,255,0.15);text-transform:uppercase}
+.scroll-line{width:1px;height:32px;background:linear-gradient(to bottom,rgba(242,166,90,0.4),transparent);animation:pulse 2s ease infinite}
+
+/* BOTTOM CTA */
+.bottom-cta{padding:90px 24px;text-align:center;border-top:1px solid var(--border)}
+.bottom-headline{font-family:'Montserrat',sans-serif;font-weight:200;font-size:clamp(28px,5vw,50px);color:var(--white);letter-spacing:0.06em;margin-bottom:12px;line-height:1.3}
+.bottom-sub{font-size:14px;color:var(--muted);margin-bottom:36px}
+
+/* FOOTER */
+footer{padding:24px 40px;border-top:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px}
+.footer-left{font-size:11px;color:rgba(255,255,255,0.18);letter-spacing:0.04em}
+.footer-links{display:flex;gap:22px}
+.footer-links a{font-size:11px;color:rgba(255,255,255,0.22);text-decoration:none;letter-spacing:0.06em;transition:color 0.2s}
+.footer-links a:hover{color:var(--gold)}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pulse{0%,100%{opacity:0.3}50%{opacity:0.9}}
+
+/* MOBILE */
+@media(max-width:640px){
+  .hero{padding:60px 20px 70px}
+  .fp-dash{width:52px}
+  footer{padding:20px;flex-direction:column;align-items:center;text-align:center}
+  .form-inner{flex-direction:column;border-radius:12px;padding:14px;gap:10px}
+  .form-btn{width:100%;padding:13px}
+  .bottom-cta{padding:70px 20px}
+}
+</style>
 </head>
 <body>
-  <div class="hero">
-    <div class="logo-container">
-      <div class="route-line">
-        <div class="dot"></div>
-        <div class="dashes"></div>
-        <div class="dot"></div>
-      </div>
-      <div class="wordmark">
-        <div class="ruta">RUTA</div>
-        <div class="divider"></div>
-        <div class="travels">Travels</div>
-      </div>
+
+<section class="hero">
+
+  <div class="logo-block">
+    <div class="fp-row">
+      <div class="fp-dot"></div>
+      <div class="fp-dash"></div>
+      <div class="fp-plane">✈</div>
+      <div class="fp-dash"></div>
+      <div class="fp-dot"></div>
     </div>
-    <p class="tagline">Your all-in-one airport companion</p>
-    <div class="coming-soon">Coming Soon to the App Store</div>
+    <div class="logo-ruta">RUTA</div>
+    <div class="logo-rule"></div>
+    <div class="logo-travels">Travels</div>
   </div>
-  <div class="footer">
-    &copy; 2026 Ruta Travels Inc. &nbsp;|&nbsp; <a href="/privacy">Privacy Policy</a>
+
+  <p class="tagline">Find Your Way. Every Flight.</p>
+  <p class="sub-tagline">Your all-in-one airport companion &nbsp;·&nbsp; Launching soon on iOS</p>
+
+  <div class="social-row">
+    <a href="https://instagram.com/rutatravels" class="social-link" target="_blank">Instagram</a>
   </div>
+
+  <div class="form-wrap">
+    <form class="form-inner" id="form1" onsubmit="sub1(event)">
+      <input type="email" placeholder="Your email — be first to know" required autocomplete="email"/>
+      <button type="submit" class="form-btn">Join Waitlist</button>
+    </form>
+    <div class="form-success" id="s1">You're on the list. We'll be in touch before we launch.</div>
+    <p class="form-note">No spam. One email when we launch. That's it.</p>
+  </div>
+
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+
+</section>
+
+<section class="bottom-cta">
+  <h2 class="bottom-headline">Your next trip.<br>Without the stress.</h2>
+  <p class="bottom-sub">Join the waitlist. Be first to know when we launch.</p>
+  <div class="form-wrap" style="margin:0 auto">
+    <form class="form-inner" id="form2" onsubmit="sub2(event)">
+      <input type="email" placeholder="Your email address" required autocomplete="email"/>
+      <button type="submit" class="form-btn">Join Waitlist</button>
+    </form>
+    <div class="form-success" id="s2">You're on the list. We'll be in touch before we launch.</div>
+    <p class="form-note">No spam. One email when we launch. That's it.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-left">© 2026 Ruta Travels LLC</div>
+  <div class="footer-links">
+    <a href="mailto:support@rutatravels.com">Contact</a>
+    <a href="#">Privacy Policy</a>
+    <a href="#">Terms</a>
+  </div>
+</footer>
+
+<script>
+function sub1(e){e.preventDefault();document.getElementById('form1').style.display='none';document.getElementById('s1').style.display='block'}
+function sub2(e){e.preventDefault();document.getElementById('form2').style.display='none';document.getElementById('s2').style.display='block'}
+</script>
 </body>
 </html>
