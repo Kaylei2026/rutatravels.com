@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Help &amp; User Guide — Ruta Travels</title>
+<style>
+  :root{
+    --bg:#EDE6D8;        /* cream */
+    --panel:#FFFFFF;     /* card */
+    --ink:#1B263B;       /* navy text */
+    --ink-soft:#566472;  /* muted */
+    --gold:#C77A33;      /* readable gold/orange on cream */
+    --navy:#1B263B;
+    --line:#E0D8C8;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;}
+  .serif{font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;}
+  a{color:var(--gold);}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 22px;display:grid;grid-template-columns:240px 1fr;gap:36px;}
+  @media (max-width:820px){ .wrap{grid-template-columns:1fr;} .toc{position:static !important;height:auto !important;} }
+
+  header.mast{grid-column:1 / -1;border-bottom:2px solid var(--gold);padding:40px 0 22px;}
+  .brand{font-size:13px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);font-weight:700;margin:0 0 12px;}
+  .mast h1{font-size:clamp(32px,5vw,46px);margin:0;font-weight:600;color:var(--navy);}
+  .mast p{font-size:18px;color:var(--ink-soft);margin:12px 0 0;max-width:62ch;}
+
+  /* TOC */
+  nav.toc{position:sticky;top:18px;align-self:start;height:calc(100vh - 36px);overflow:auto;padding:18px 0 40px;font-size:14px;}
+  nav.toc .grp{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:700;margin:18px 0 6px;}
+  nav.toc a{display:block;color:var(--navy);text-decoration:none;padding:3px 0;}
+  nav.toc a:hover{color:var(--gold);}
+
+  main{padding:24px 0 80px;min-width:0;}
+  section{scroll-margin-top:18px;margin-bottom:34px;}
+  .grp-h{font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:700;margin:34px 0 10px;}
+  .feat{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:20px 22px;margin-bottom:14px;scroll-margin-top:18px;}
+  .feat h3{font-size:21px;margin:0 0 6px;color:var(--navy);font-weight:600;}
+  .feat .what{font-size:16px;margin:0 0 10px;}
+  .feat h4{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin:12px 0 4px;font-weight:700;}
+  .feat ul{margin:4px 0 0;padding-left:20px;}
+  .feat li{margin:3px 0;}
+  .tip{margin-top:12px;font-size:14px;color:var(--ink-soft);border-left:3px solid var(--gold);padding:6px 0 6px 12px;}
+  .note{grid-column:1 / -1;background:#FFF8EE;border:1px solid #E8D4B0;border-radius:10px;padding:14px 18px;font-size:14px;color:var(--ink);margin-top:18px;}
+  footer{grid-column:1 / -1;border-top:2px solid var(--gold);margin-top:30px;padding:22px 0 50px;font-size:13px;color:var(--ink-soft);}
+  code{background:#0f19230d;border-radius:4px;padding:1px 5px;font-size:13px;}
+</style>
+</head>
+<body>
+  <div class="wrap">
+
+    <header class="mast">
+      <p class="brand">Ruta Travels</p>
+      <h1 class="serif">Help &amp; User Guide</h1>
+      <p>Everything Ruta does, from planning a trip to landing at your destination. Tap the <strong>?</strong> in the top corner of any screen in the app to jump straight to that feature's section here.</p>
+    </header>
+
+    <nav class="toc" aria-label="Contents">
+      <div class="grp">Getting started</div>
+      <a href="#getting-started">Welcome to Ruta</a>
+      <a href="#add-flight">Add a flight</a>
+
+      <div class="grp">Plan</div>
+      <a href="#itinerary-timeline">Your trip timeline</a>
+      <a href="#multi-leg">Multi-leg &amp; connections</a>
+      <a href="#packing-checklist">Packing checklist</a>
+      <a href="#pre-trip-checklist">Pre-trip checklist &amp; reminders</a>
+      <a href="#travel-documents">Travel documents</a>
+      <a href="#destination-briefing">Destination briefing</a>
+      <a href="#visa-entry">Visa &amp; entry requirements</a>
+      <a href="#city-guides">City guides</a>
+
+      <div class="grp">Travel day &amp; airport</div>
+      <a href="#flight-tracking">Live flight tracking</a>
+      <a href="#alerts">Gate, delay &amp; departure alerts</a>
+      <a href="#risk-check">Trip risk check</a>
+      <a href="#when-to-leave">When to leave</a>
+      <a href="#airport">Airport: maps, TSA, lounges</a>
+
+      <div class="grp">In-flight &amp; arrival</div>
+      <a href="#in-flight">In-flight &amp; connections</a>
+      <a href="#arrival-hub">Arrival hub</a>
+      <a href="#destination-tools">Weather, currency &amp; translation</a>
+
+      <div class="grp">After the trip</div>
+      <a href="#expenses">Expenses</a>
+      <a href="#post-trip">Trip recap &amp; archive</a>
+
+      <div class="grp">Setup &amp; account</div>
+      <a href="#voice">Voice assistant</a>
+      <a href="#languages">Languages</a>
+      <a href="#notifications">Notifications</a>
+      <a href="#offline">Offline mode</a>
+      <a href="#privacy">Privacy &amp; your data</a>
+    </nav>
+
+    <main>
+      <div class="grp-h">Getting started</div>
+
+      <section id="getting-started" class="feat">
+        <h3>Welcome to Ruta</h3>
+        <p class="what">Ruta keeps your whole trip in one place and stays with you from planning through landing, tracking your flights, predicting disruptions before they hit, and turning into a local guide when you arrive.</p>
+        <h4>The basics</h4>
+        <ul>
+          <li>Your trip moves through phases: Plan, Upcoming, Today, En Route, and Post-trip. Ruta shows what matters for the phase you're in.</li>
+          <li>Add a flight to get started, everything else builds around it.</li>
+          <li>Tap the <strong>?</strong> on any screen for help with that exact feature.</li>
+        </ul>
+      </section>
+
+      <section id="add-flight" class="feat">
+        <h3>Add a flight</h3>
+        <p class="what">Get your flight into Ruta in whatever way is easiest.</p>
+        <h4>Ways to add</h4>
+        <ul>
+          <li><strong>Search</strong> by flight number or route.</li>
+          <li><strong>Scan</strong> a boarding pass or a screenshot/PDF of your itinerary.</li>
+          <li><strong>Paste</strong> the text of a confirmation email.</li>
+          <li><strong>Share to Ruta</strong> directly from your airline app, Mail, or Photos.</li>
+          <li><strong>Enter by hand</strong>, type your flight legs.</li>
+        </ul>
+        <div class="tip">Sharing the confirmation text or a clear screenshot works best. A plain link usually can't be read because it sits behind a login.</div>
+      </section>
+
+      <div class="grp-h">Plan</div>
+
+      <section id="itinerary-timeline" class="feat">
+        <h3>Your trip timeline</h3>
+        <p class="what">Flights, hotels, rental cars, trains, and activities live together on one journey timeline, in order.</p>
+        <h4>How to use</h4>
+        <ul>
+          <li>Add hotels, cars, trains, and activities from your trip view; each shows up at the right point in the journey.</li>
+          <li>Saved details (confirmation numbers, times, addresses) surface when they're relevant, including on arrival day.</li>
+        </ul>
+      </section>
+
+      <section id="multi-leg" class="feat">
+        <h3>Multi-leg trips &amp; connections</h3>
+        <p class="what">Ruta understands connections and watches the tight ones.</p>
+        <h4>How to use</h4>
+        <ul>
+          <li>Add each leg, Ruta tracks them as one journey and flags connection risk if an inbound delay threatens your next flight.</li>
+          <li>When you land, the next leg activates automatically.</li>
+        </ul>
+      </section>
+
+      <section id="packing-checklist" class="feat">
+        <h3>Packing checklist</h3>
+        <p class="what">A customizable checklist, organized by category, so nothing gets left behind.</p>
+        <h4>How to use</h4>
+        <ul>
+          <li>Find it in Journey under Prepare. Tap items to check them off.</li>
+          <li>Add your own items with the Add button; they stay with this trip.</li>
+          <li>Remove a custom item with the X next to it.</li>
+        </ul>
+      </section>
+
+      <section id="pre-trip-checklist" class="feat">
+        <h3>Pre-trip checklist &amp; reminders</h3>
+        <p class="what">Critical to-dos (passport, visa, medications, and more) with an optional night-before nudge.</p>
+        <h4>How to use</h4>
+        <ul>
+          <li>Check off critical items as you handle them.</li>
+          <li>Turn on Pre-trip Reminders in Notifications to get a single night-before reminder for anything still unchecked.</li>
+        </ul>
+      </section>
+
+      <section id="travel-documents" class="feat">
+        <h3>Travel documents</h3>
+        <p class="what">Store your passport, visa, and trusted-traveler details, and get reminded before anything expires.</p>
+        <h4>How to use</h4>
+        <ul>
+          <li>Add document numbers and pick expiry dates with the date picker.</li>
+          <li>Turn on expiry reminders to be nudged a year, six months, and a month ahead.</li>
+        </ul>
+        <div class="tip">Document numbers are stored encrypted on your device (in the iOS Keychain) and are never sent to our servers. Keep a photo of your passport saved separately, too.</div>
+      </section>
+
+      <section id="destination-briefing" class="feat">
+        <h3>Destination briefing</h3>
+        <p class="what">An AI-generated rundown for where you're headed: what to pack, customs limits, health notes, culture, and know-before-you-go basics like plugs, water, and tipping.</p>
+        <div class="tip">AI-generated, so double-check anything critical against an official source.</div>
+      </section>
+
+      <section id="visa-entry" class="feat">
+        <h3>Visa &amp; entry requirements</h3>
+        <p class="what">A starting point on what you may need to enter your destination, with embassy contacts by citizenship.</p>
+        <div class="tip">Travel requirements change. Always confirm with the destination's embassy or consulate before booking, this is a starting point, not authoritative legal guidance.</div>
+      </section>
+
+      <section id="city-guides" class="feat">
+        <h3>City guides</h3>
+        <p class="what">Curated things to do and see, organized so you can plan a day without the overwhelm.</p>
+        <h4>How to use</h4>
+        <ul>
+          <li>Browse by city; tap a place for details and tap Navigate to open it in Maps.</li>
+        </ul>
+      </section>
+
+      <div class="grp-h">Travel day &amp; airport</div>
+
+      <section id="flight-tracking" class="feat">
+        <h3>Live flight tracking</h3>
+        <p class="what">Real-time status, gate, terminal, and progress for your flight.</p>
+        <h4>How to use</h4>
+        <ul>
+          <li>Open your flight to see live status; Ruta refreshes more often as departure nears.</li>
+        </ul>
+        <div class="tip">Gate and time are confirmed by your airline at the gate, always glance at the airport boards too.</div>
+      </section>
+
+      <section id="alerts" class="feat">
+        <h3>Gate, delay &amp; departure alerts</h3>
+        <p class="what">Push notifications when your gate changes, your flight is delayed, or it's leaving earlier than planned.</p>
+        <h4>How to use</h4>
+        <ul>
+          <li>Turn the alerts you want on in Notifications. They fire automatically while a trip is active.</li>
+        </ul>
+      </section>
+
+      <section id="risk-check" class="feat">
+        <h3>Trip risk check</h3>
+        <p class="what">A one-tap scan across your flights for delays and connection risk, with a clear all-clear when you're good.</p>
+        <h4>How to use</h4>
+        <ul>
+          <li>Tap the risk card on Today to run the scan; tap a flagged item to see what to do.</li>
+        </ul>
+      </section>
+
+      <section id="when-to-leave" class="feat">
+        <h3>When to leave</h3>
+        <p class="what">A suggested departure time for the airport based on live traffic.</p>
+        <div class="tip">Live traffic can shift, double-check before you head out.</div>
+      </section>
+
+      <section id="airport" class="feat">
+        <h3>Airport: maps, TSA, lounges</h3>
+        <p class="what">Terminal maps and gate navigation, TSA wait times, amenities, and lounge access detection.</p>
+        <h4>How to use</h4>
+        <ul>
+          <li>Open the Airport view for your terminal's map, security wait estimates, food and shops, and lounges you can access.</li>
+        </ul>
+        <div class="tip">Wait times are estimates based on typical patterns; check the airport screens on arrival.</div>
+      </section>
+
+      <div class="grp-h">In-flight &amp; arrival</div>
+
+      <section id="in-flight" class="feat">
+        <h3>In-flight &amp; connections</h3>
+        <p class="what">Connection awareness while you're in the air, with alerts if a tight connection is at risk, and your next leg ready the moment you land.</p>
+      </section>
+
+      <section id="arrival-hub" class="feat">
+        <h3>Arrival hub</h3>
+        <p class="what">When you land, Ruta surfaces what you need on the ground: your saved hotel, rental car, or train for the day, baggage claim, and a one-tap ride.</p>
+        <h4>How to use</h4>
+        <ul>
+          <li>On Today after landing, tap your saved car/train/hotel to see details, or tap Uber/Lyft to get a ride toward your destination.</li>
+          <li>Tap Baggage claim for where to find your bags.</li>
+        </ul>
+      </section>
+
+      <section id="destination-tools" class="feat">
+        <h3>Weather, currency &amp; translation</h3>
+        <p class="what">Local weather, a currency converter set to your home currency, key phrases with pronunciation, and free-form translation, plus cultural tips and emergency numbers.</p>
+        <h4>How to use</h4>
+        <ul>
+          <li>Open the Destination tab once you've arrived; tools adapt to where you are.</li>
+          <li>Use Show to Locals to display a translated phrase to someone.</li>
+        </ul>
+      </section>
+
+      <div class="grp-h">After the trip</div>
+
+      <section id="expenses" class="feat">
+        <h3>Expenses</h3>
+        <p class="what">Log trip spending as you go and review it later.</p>
+        <h4>How to use</h4>
+        <ul>
+          <li>Add an expense with amount and category; review the totals in your recap.</li>
+        </ul>
+      </section>
+
+      <section id="post-trip" class="feat">
+        <h3>Trip recap &amp; archive</h3>
+        <p class="what">When your trip wraps, Ruta shifts to a recap and tucks the trip into your archive so you can start the next one fresh.</p>
+      </section>
+
+      <div class="grp-h">Setup &amp; account</div>
+
+      <section id="voice" class="feat">
+        <h3>Voice assistant</h3>
+        <p class="what">Ask about your trip, gate, status, or weather, hands-free.</p>
+        <div class="tip">You're talking to Ruta's AI assistant, not a person. Double-check anything critical.</div>
+      </section>
+
+      <section id="languages" class="feat">
+        <h3>Languages</h3>
+        <p class="what">Ruta is available in nine languages. Set yours in Settings, and the app, including voice, follows.</p>
+      </section>
+
+      <section id="notifications" class="feat">
+        <h3>Notifications</h3>
+        <p class="what">Choose exactly which alerts you get: gate changes, delays, earlier departures, connection risk, boarding, when-to-leave, document expiry, and the night-before pre-trip reminder.</p>
+        <h4>How to use</h4>
+        <ul>
+          <li>Toggle each notification type in Settings under Notifications.</li>
+        </ul>
+      </section>
+
+      <section id="offline" class="feat">
+        <h3>Offline mode</h3>
+        <p class="what">Your saved trip works without a signal. Ruta shows your trip and last-synced info, and updates the live pieces when you reconnect.</p>
+        <div class="tip">Download offline maps for your destination in Apple or Google Maps so navigation works on the ground too.</div>
+      </section>
+
+      <section id="privacy" class="feat">
+        <h3>Privacy &amp; your data</h3>
+        <p class="what">Your trip and sensitive documents stay on your device. Document numbers are encrypted in the device Keychain and are never sent to our servers.</p>
+        <h4>Good to know</h4>
+        <ul>
+          <li>Some features use AI and live data; those are labeled, and we point you to official sources for anything critical.</li>
+          <li>Read the full <a href="https://rutatravels.com/privacy.html">Privacy Policy</a>.</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer>
+      Ruta Travels Help &amp; User Guide. Features and availability may change as the app improves. For anything time-critical, flights, gates, entry rules, always confirm with your airline or the official authority.
+    </footer>
+
+  </div>
+</body>
+</html>
