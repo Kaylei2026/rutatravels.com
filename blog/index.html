@@ -38,14 +38,20 @@ body{margin:0;font-family:'DM Sans',-apple-system,BlinkMacSystemFont,sans-serif;
 .topnav-cta{background:var(--white);color:var(--gold)!important;border:1px solid var(--white);border-radius:50px;padding:7px 18px;font-weight:600!important;letter-spacing:0.08em!important;transition:background 0.2s,color 0.2s,transform 0.15s}
 .topnav-cta:hover{background:transparent;color:var(--white)!important;transform:scale(1.03)}
 
-.hero-section{max-width:880px;margin:0 auto;padding:80px 24px 48px;text-align:center}
+.hero-section{max-width:880px;margin:0 auto;padding:80px 24px 40px;text-align:center}
 .hero-kicker{font-size:11px;text-transform:uppercase;letter-spacing:0.3em;color:var(--gold-dim);font-weight:600;margin-bottom:24px}
 .hero-title{font-family:'DM Serif Display',serif;font-size:clamp(40px,6vw,64px);line-height:1.1;color:var(--navy);margin-bottom:20px;font-weight:400}
 .hero-sub{font-size:19px;line-height:1.6;color:var(--ink-soft);max-width:560px;margin:0 auto}
 
-.divider{max-width:80px;height:1px;background:var(--gold);margin:48px auto 0;opacity:0.5}
+.divider{max-width:80px;height:1px;background:var(--gold);margin:40px auto 0;opacity:0.5}
 
-.posts{max-width:880px;margin:0 auto;padding:64px 24px 96px}
+.filters{max-width:880px;margin:0 auto;padding:36px 24px 0;display:flex;gap:6px 22px;flex-wrap:wrap;justify-content:center}
+.filter-btn{font-family:'DM Sans',sans-serif;font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:var(--ink-soft);background:none;border:none;cursor:pointer;padding:8px 2px;position:relative;transition:color 0.2s}
+.filter-btn:hover{color:var(--gold-dim)}
+.filter-btn.active{color:var(--navy);font-weight:600}
+.filter-btn.active::after{content:"";position:absolute;left:2px;right:2px;bottom:0;height:2px;background:var(--gold)}
+
+.posts{max-width:880px;margin:0 auto;padding:40px 24px 96px}
 .post{padding:40px 0;border-bottom:1px solid var(--rule);display:block;text-decoration:none;color:inherit;transition:transform 0.2s}
 .post:hover{transform:translateX(4px)}
 .post:hover h2{color:var(--gold)}
@@ -82,7 +88,9 @@ footer.site{background:var(--navy);padding:24px 40px;border-top:1px solid rgba(2
   .topnav-links a.topnav-cta{padding:7px 14px}
   body{font-size:17px}
   .hero-section{padding:48px 20px 24px}
-  .posts{padding:40px 20px 64px}
+  .filters{padding:28px 20px 0;gap:4px 16px}
+  .filter-btn{font-size:11px;letter-spacing:0.12em}
+  .posts{padding:32px 20px 64px}
   .post h2{font-size:24px}
   .bottom-cta{padding:56px 20px}
   .form-inner{flex-direction:column;border-radius:12px;padding:14px;gap:10px}
@@ -109,63 +117,135 @@ footer.site{background:var(--navy);padding:24px 40px;border-top:1px solid rgba(2
   <div class="divider"></div>
 </section>
 
+<nav class="filters" aria-label="Filter posts by category">
+  <button class="filter-btn active" data-filter="all" onclick="filterPosts('all',this)">All</button>
+  <button class="filter-btn" data-filter="destinations" onclick="filterPosts('destinations',this)">Destinations</button>
+  <button class="filter-btn" data-filter="trip-planning" onclick="filterPosts('trip-planning',this)">Trip Planning</button>
+  <button class="filter-btn" data-filter="travel-writing" onclick="filterPosts('travel-writing',this)">Travel Writing</button>
+</nav>
+
 <main class="posts">
 
-  <a href="/blog/one-list-every-trip/" class="post">
+  <a href="/blog/perfect-day-essaouira/" class="post" data-category="destinations">
+    <div class="post-kicker">Destinations</div>
+    <h2>A perfect day in Essaouira</h2>
+    <p class="post-excerpt">An hour-by-hour walk through Morocco's windswept Atlantic port. The medina, the ramparts, the fishing harbour, and the long ocean light.</p>
+    <div class="post-meta">7 minute read</div>
+  </a>
+
+  <a href="/blog/merzouga-erg-chebbi/" class="post" data-category="destinations">
+    <div class="post-kicker">Destinations</div>
+    <h2>Merzouga: a night in the Sahara at Erg Chebbi</h2>
+    <p class="post-excerpt">How to reach Erg Chebbi, what a night in the dunes is actually like, and how to do the desert without the worst of the circus.</p>
+    <div class="post-meta">6 minute read</div>
+  </a>
+
+  <a href="/blog/perfect-day-copenhagen-norrebro/" class="post" data-category="destinations">
+    <div class="post-kicker">Destinations</div>
+    <h2>A perfect day in Copenhagen's Nørrebro</h2>
+    <p class="post-excerpt">The neighborhood Copenhagen actually lives in. Coffee, the cemetery locals treat as a park, Jægersborggade, and where to eat all day.</p>
+    <div class="post-meta">7 minute read</div>
+  </a>
+
+  <a href="/blog/dubrovnik-shoulder-season/" class="post" data-category="destinations">
+    <div class="post-kicker">Destinations</div>
+    <h2>Dubrovnik in the shoulder season</h2>
+    <p class="post-excerpt">In summer it is a cruise-ship crush. Go in May or October and it becomes the city it was. When to go, and how to see the walls and the sea in peace.</p>
+    <div class="post-meta">6 minute read</div>
+  </a>
+
+  <a href="/blog/perfect-day-san-miguel-de-allende/" class="post" data-category="destinations">
+    <div class="post-kicker">Destinations</div>
+    <h2>A perfect day in San Miguel de Allende</h2>
+    <p class="post-excerpt">Mexico's most photographed colonial town, underneath the postcard. The Parroquia, the rooftops, the art, and where to eat all day.</p>
+    <div class="post-meta">7 minute read</div>
+  </a>
+
+  <a href="/blog/morocco-first-trip/" class="post" data-category="destinations">
+    <div class="post-kicker">Destinations</div>
+    <h2>Morocco for the first time: how to think about the route</h2>
+    <p class="post-excerpt">A first trip lives or dies on the route, not the list. How to sequence the cities, the desert and the coast, and what to skip.</p>
+    <div class="post-meta">7 minute read</div>
+  </a>
+
+  <a href="/blog/montana-glacier-country/" class="post" data-category="destinations">
+    <div class="post-kicker">Destinations</div>
+    <h2>Montana's Glacier country, taken slowly</h2>
+    <p class="post-excerpt">How to do Glacier National Park without rushing. The road, the lakes, Many Glacier, and why the slow version is the only good one.</p>
+    <div class="post-meta">6 minute read</div>
+  </a>
+
+  <a href="/blog/arizona-red-rock-country/" class="post" data-category="destinations">
+    <div class="post-kicker">Destinations</div>
+    <h2>Arizona's red rock country: Sedona, and what is past it</h2>
+    <p class="post-excerpt">How to see Sedona's red rocks well, and use the town as a base for the quieter canyons and high desert beyond.</p>
+    <div class="post-meta">6 minute read</div>
+  </a>
+
+  <a href="/blog/southern-italy-by-the-sea/" class="post" data-category="destinations">
+    <div class="post-kicker">Destinations</div>
+    <h2>Southern Italy by the sea, past the Amalfi Coast</h2>
+    <p class="post-excerpt">South of the crush lies the same sea without the crowd: the Cilento, Maratea, Puglia. Where to go, and how to think about the choice.</p>
+    <div class="post-meta">7 minute read</div>
+  </a>
+
+  <a href="/blog/one-list-every-trip/" class="post" data-category="trip-planning">
     <div class="post-kicker">Trip Planning</div>
     <h2>One list, every trip</h2>
     <p class="post-excerpt">A universal packing list that stays the same wherever you go. Build it once, and packing becomes the part you have already finished.</p>
     <div class="post-meta">3 minute read</div>
   </a>
 
-  <a href="/blog/travel-diary/" class="post">
+  <a href="/blog/travel-diary/" class="post" data-category="travel-writing">
     <div class="post-kicker">Travel Writing</div>
     <h2>How to keep a travel diary you'll actually read again</h2>
     <p class="post-excerpt">Three lines a day, a date, and a single photo. A small method for holding on to the parts of a trip that usually slip away.</p>
     <div class="post-meta">3 minute read</div>
   </a>
 
-  <a href="/blog/planned-and-had/" class="post">
+  <a href="/blog/planned-and-had/" class="post" data-category="travel-writing">
     <div class="post-kicker">Travel Writing</div>
     <h2>The trip you planned and the trip you had</h2>
     <p class="post-excerpt">There are always two trips, the planned one and the lived one. A short piece on the gap between them, and where the stress hides.</p>
     <div class="post-meta">3 minute read</div>
   </a>
 
-  <a href="/blog/five-people-one-trip/" class="post">
+  <a href="/blog/five-people-one-trip/" class="post" data-category="trip-planning">
     <div class="post-kicker">Trip Planning</div>
     <h2>Five people, one trip</h2>
     <p class="post-excerpt">How to plan a trip with friends without losing it to the group chat. Pick the dates, give the plan a home, and leave room to breathe.</p>
     <div class="post-meta">3 minute read</div>
   </a>
 
-  <a href="/blog/perfect-day-roma-norte-mexico-city/" class="post">
+  <a href="/blog/perfect-day-roma-norte-mexico-city/" class="post" data-category="destinations">
     <div class="post-kicker">Destinations</div>
     <h2>A perfect day in Mexico City's Roma Norte</h2>
     <p class="post-excerpt">An hour-by-hour walking guide to one of Mexico City's best neighborhoods. Where to eat, drink, and walk, from morning bakery to evening cantina.</p>
     <div class="post-meta">7 minute read</div>
   </a>
 
-  <a href="/blog/off-season-lisbon-november/" class="post">
+  <a href="/blog/off-season-lisbon-november/" class="post" data-category="destinations">
     <div class="post-kicker">Destinations</div>
     <h2>Off-season Lisbon: what locals actually do in November</h2>
     <p class="post-excerpt">Lisbon in November is the Lisbon locals love. Better light, heartier food, empty miradouros, and tram 28 used as actual transit.</p>
     <div class="post-meta">5 minute read</div>
   </a>
 
-  <a href="/blog/three-stop-european-trip-planning/" class="post">
+  <a href="/blog/three-stop-european-trip-planning/" class="post" data-category="trip-planning">
     <div class="post-kicker">Trip Planning</div>
     <h2>How to plan a three-stop European trip without losing your mind</h2>
     <p class="post-excerpt">A six-step framework. How to pick your anchor city, order your stops, book open-jaw flights, and leave room to breathe.</p>
     <div class="post-meta">6 minute read</div>
   </a>
 
-  <a href="/blog/why-we-hand-curate-travel-guides/" class="post">
+  <a href="/blog/why-we-hand-curate-travel-guides/" class="post" data-category="travel-writing">
     <div class="post-kicker">Travel Writing</div>
     <h2>Why we hand-curate our city travel guides</h2>
     <p class="post-excerpt">Most online travel guides are scraped, generated, and interchangeable. Here is why we are building the opposite.</p>
     <div class="post-meta">5 minute read</div>
   </a>
+
+  <p class="filter-empty" id="filterEmpty" style="display:none;text-align:center;color:var(--ink-soft);padding:48px 0">Nothing here yet. More soon.</p>
 
 </main>
 
@@ -206,6 +286,19 @@ function sub1(e){
     document.getElementById('form1').style.display='none';
     document.getElementById('s1').style.display='block';
   },500);
+}
+function filterPosts(cat, btn){
+  var buttons = document.querySelectorAll('.filter-btn');
+  for (var i=0;i<buttons.length;i++){ buttons[i].classList.remove('active'); }
+  btn.classList.add('active');
+  var posts = document.querySelectorAll('.post');
+  var shown = 0;
+  for (var j=0;j<posts.length;j++){
+    var match = (cat==='all' || posts[j].getAttribute('data-category')===cat);
+    posts[j].style.display = match ? 'block' : 'none';
+    if (match) shown++;
+  }
+  document.getElementById('filterEmpty').style.display = shown ? 'none' : 'block';
 }
 </script>
   <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "d516af67479748a6a1a63af70d2caa8d"}'></script>
