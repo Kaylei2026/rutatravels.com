@@ -1,372 +1,1944 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Help &amp; User Guide — Ruta Travels</title>
+<title>Help & User Guide — Ruta Travels</title>
 <style>
   :root{
-    --bg:#EDE6D8;        /* cream */
-    --panel:#FFFFFF;     /* card */
-    --ink:#1B263B;       /* navy text */
-    --ink-soft:#566472;  /* muted */
-    --gold:#C77A33;      /* readable gold/orange on cream */
-    --navy:#1B263B;
-    --line:#E0D8C8;
+    --bg:#0E1420; --panel:#161D2B; --panel2:#1D2636; --line:rgba(242,166,90,.18);
+    --gold:#F2A65A; --gold-soft:rgba(242,166,90,.12); --white:#F4F6FA; --text:#C7CFDD;
+    --muted:#8A94A6; --note:#E0A96D;
   }
-  *{box-sizing:border-box;}
-  html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);}
-  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;}
-  .serif{font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;}
-  a{color:var(--gold);}
-  .wrap{max-width:1100px;margin:0 auto;padding:0 22px;display:grid;grid-template-columns:240px 1fr;gap:36px;}
-  @media (max-width:820px){ .wrap{grid-template-columns:1fr;} .toc{position:static !important;height:auto !important;} }
-
-  header.mast{grid-column:1 / -1;border-bottom:2px solid var(--gold);padding:40px 0 22px;}
-  .brand{font-size:13px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);font-weight:700;margin:0 0 12px;}
-  .mast h1{font-size:clamp(32px,5vw,46px);margin:0;font-weight:600;color:var(--navy);}
-  .mast p{font-size:18px;color:var(--ink-soft);margin:12px 0 0;max-width:62ch;}
-
-  /* TOC */
-  nav.toc{position:sticky;top:18px;align-self:start;height:calc(100vh - 36px);overflow:auto;padding:18px 0 40px;font-size:14px;}
-  nav.toc .grp{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:700;margin:18px 0 6px;}
-  nav.toc a{display:block;color:var(--navy);text-decoration:none;padding:3px 0;}
-  nav.toc a:hover{color:var(--gold);}
-
-  main{padding:24px 0 80px;min-width:0;}
-  section{scroll-margin-top:18px;margin-bottom:34px;}
-  .grp-h{font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:700;margin:34px 0 10px;}
-  .feat{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:20px 22px;margin-bottom:14px;scroll-margin-top:18px;}
-  .feat h3{font-size:21px;margin:0 0 6px;color:var(--navy);font-weight:600;}
-  .feat .what{font-size:16px;margin:0 0 10px;}
-  .feat h4{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin:12px 0 4px;font-weight:700;}
-  .feat ul{margin:4px 0 0;padding-left:20px;}
-  .feat li{margin:3px 0;}
-  .tip{margin-top:12px;font-size:14px;color:var(--ink-soft);border-left:3px solid var(--gold);padding:6px 0 6px 12px;}
-  .note{grid-column:1 / -1;background:#FFF8EE;border:1px solid #E8D4B0;border-radius:10px;padding:14px 18px;font-size:14px;color:var(--ink);margin-top:18px;}
-  footer{grid-column:1 / -1;border-top:2px solid var(--gold);margin-top:30px;padding:22px 0 50px;font-size:13px;color:var(--ink-soft);}
-  code{background:#0f19230d;border-radius:4px;padding:1px 5px;font-size:13px;}
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"PingFang SC","Hiragino Sans","Noto Sans",sans-serif;
+    font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+  a{color:var(--gold);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:820px;margin:0 auto;padding:0 20px 80px}
+  header.top{position:sticky;top:0;z-index:20;background:rgba(14,20,32,.92);
+    backdrop-filter:saturate(140%) blur(10px);border-bottom:1px solid var(--line)}
+  .topbar{max-width:820px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .brand{font-weight:800;letter-spacing:.14em;color:var(--gold);font-size:15px;white-space:nowrap}
+  .langpick{display:flex;align-items:center;gap:8px}
+  .langpick label{font-size:12px;color:var(--muted)}
+  select#lang{appearance:none;background:var(--panel2);color:var(--white);border:1px solid var(--line);
+    border-radius:10px;padding:8px 30px 8px 12px;font-size:14px;font-weight:600;cursor:pointer;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23F2A65A' stroke-width='3'><path d='M6 9l6 6 6-6'/></svg>");
+    background-repeat:no-repeat;background-position:right 10px center}
+  h1{color:var(--white);font-size:32px;line-height:1.2;margin:28px 0 8px;font-weight:800}
+  .tagline{color:var(--muted);font-size:16px;margin:0 0 26px}
+  nav.toc{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px 20px;margin:0 0 34px}
+  nav.toc .grp{margin:14px 0 4px}
+  nav.toc .grp:first-child{margin-top:0}
+  nav.toc .grplabel{color:var(--gold);font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px}
+  nav.toc .links{display:flex;flex-wrap:wrap;gap:8px 10px}
+  nav.toc .links a{background:var(--gold-soft);border:1px solid var(--line);border-radius:999px;
+    padding:6px 12px;font-size:13.5px;color:var(--white)}
+  nav.toc .links a:hover{border-color:var(--gold);text-decoration:none}
+  section.grp-h{margin:40px 0 6px}
+  section.grp-h .gh{color:var(--gold);font-size:13px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;
+    padding-top:16px;border-top:1px solid var(--line)}
+  article{scroll-margin-top:78px;background:var(--panel);border:1px solid var(--line);border-radius:16px;
+    padding:22px 22px 6px;margin:16px 0}
+  article h2{color:var(--white);font-size:21px;margin:0 0 10px;font-weight:700}
+  article h3{color:var(--gold);font-size:13px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;margin:18px 0 8px}
+  article p{margin:0 0 16px}
+  article ul{margin:0 0 16px;padding-inline-start:20px}
+  article li{margin:0 0 9px}
+  .note{background:var(--panel2);border-inline-start:3px solid var(--note);border-radius:8px;
+    padding:11px 14px;margin:0 0 16px;color:var(--muted);font-size:15px}
+  footer.foot{color:var(--muted);font-size:14px;margin-top:46px;padding-top:18px;border-top:1px solid var(--line)}
+  html[dir="rtl"] body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans Arabic","Geeza Pro",Tahoma,sans-serif}
+  @media(max-width:520px){ h1{font-size:26px} .brand{font-size:13px} body{font-size:16px} }
 </style>
 </head>
 <body>
-  <div class="wrap">
-
-    <header class="mast">
-      <p class="brand">Ruta Travels</p>
-      <h1 class="serif">Help &amp; User Guide</h1>
-      <p>Everything Ruta does, from planning a trip to landing at your destination. Tap the <strong>?</strong> in the top corner of any screen in the app to jump straight to that feature's section here.</p>
-    </header>
-
-    <nav class="toc" aria-label="Contents">
-      <div class="grp">Getting started</div>
-      <a href="#getting-started">Welcome to Ruta</a>
-      <a href="#add-flight">Add a flight</a>
-
-      <div class="grp">Plan</div>
-      <a href="#itinerary-timeline">Your trip timeline</a>
-      <a href="#add-calendar">Add flights to your calendar</a>
-      <a href="#multi-leg">Multi-leg &amp; connections</a>
-      <a href="#packing-checklist">Packing checklist</a>
-      <a href="#pre-trip-checklist">Pre-trip checklist &amp; reminders</a>
-      <a href="#travel-documents">Travel documents</a>
-      <a href="#destination-briefing">Destination briefing</a>
-      <a href="#visa-entry">Visa &amp; entry requirements</a>
-      <a href="#city-guides">City guides</a>
-
-      <div class="grp">Travel day &amp; airport</div>
-      <a href="#flight-tracking">Live flight tracking</a>
-      <a href="#alerts">Gate, delay &amp; departure alerts</a>
-      <a href="#risk-check">Trip risk check</a>
-      <a href="#when-to-leave">When to leave</a>
-      <a href="#airport">Airport: maps, TSA, lounges</a>
-      <a href="#find-car">Find your car</a>
-
-      <div class="grp">In-flight &amp; arrival</div>
-      <a href="#in-flight">In-flight &amp; connections</a>
-      <a href="#arrival-hub">Arrival hub</a>
-      <a href="#destination-tools">Weather, currency &amp; translation</a>
-
-      <div class="grp">After the trip</div>
-      <a href="#expenses">Expenses</a>
-      <a href="#post-trip">Trip recap &amp; archive</a>
-
-      <div class="grp">Setup &amp; account</div>
-      <a href="#voice">Voice assistant</a>
-      <a href="#languages">Languages</a>
-      <a href="#notifications">Notifications</a>
-      <a href="#offline">Offline mode</a>
-      <a href="#getting-help">Getting help &amp; contact</a>
-      <a href="#privacy">Privacy &amp; your data</a>
-    </nav>
-
-    <main>
-      <div class="grp-h">Getting started</div>
-
-      <section id="getting-started" class="feat">
-        <h3>Welcome to Ruta</h3>
-        <p class="what">Ruta keeps your whole trip in one place and stays with you from planning through landing, tracking your flights, predicting disruptions before they hit, and turning into a local guide when you arrive.</p>
-        <h4>The basics</h4>
-        <ul>
-          <li>Your trip moves through phases: Plan, Upcoming, Today, and Post-trip. Today carries you through travel day and into the air. Ruta shows what matters for the phase you're in.</li>
-          <li>Add a flight to get started. Everything else builds around it.</li>
-          <li>Tap the <strong>?</strong> on any screen for help with that exact feature.</li>
-        </ul>
-      </section>
-
-      <section id="add-flight" class="feat">
-        <h3>Add a flight</h3>
-        <p class="what">Get your flight into Ruta in whatever way is easiest.</p>
-        <h4>Ways to add</h4>
-        <ul>
-          <li><strong>Search</strong> by flight number or route.</li>
-          <li><strong>Scan</strong> a boarding pass or a screenshot/PDF of your itinerary.</li>
-          <li><strong>Paste</strong> the text of a confirmation email.</li>
-          <li><strong>Share to Ruta</strong> directly from your airline app, Mail, or Photos.</li>
-          <li><strong>Enter by hand</strong>, type your flight legs.</li>
-        </ul>
-        <div class="tip">Sharing the confirmation text or a clear screenshot works best. A plain link usually can't be read because it sits behind a login.</div>
-      </section>
-
-      <div class="grp-h">Plan</div>
-
-      <section id="itinerary-timeline" class="feat">
-        <h3>Your trip timeline</h3>
-        <p class="what">Flights, hotels, rental cars, trains, and activities live together on one journey timeline, in order.</p>
-        <h4>How to use</h4>
-        <ul>
-          <li>Add hotels, cars, trains, and activities from your trip view; each shows up at the right point in the journey.</li>
-          <li>Saved details (confirmation numbers, times, addresses) surface when they're relevant, including on arrival day.</li>
-        </ul>
-      </section>
-
-      <section id="add-calendar" class="feat">
-        <h3>Add flights to your calendar</h3>
-        <p class="what">Drop your flights into your phone's calendar so they sit alongside the rest of your schedule.</p>
-        <h4>How to use</h4>
-        <ul>
-          <li>Open the menu at the top of the app and tap Add to calendar.</li>
-          <li>Allow calendar access when asked. Ruta adds each flight as an event with its times and airports.</li>
-        </ul>
-      </section>
-
-      <section id="multi-leg" class="feat">
-        <h3>Multi-leg trips &amp; connections</h3>
-        <p class="what">Ruta understands connections and watches the tight ones.</p>
-        <h4>How to use</h4>
-        <ul>
-          <li>Add each leg, and Ruta tracks them as one journey, flagging connection risk if an inbound delay threatens your next flight.</li>
-          <li>When you land, the next leg activates automatically.</li>
-        </ul>
-      </section>
-
-      <section id="packing-checklist" class="feat">
-        <h3>Packing checklist</h3>
-        <p class="what">A customizable checklist, organized by category, so nothing gets left behind.</p>
-        <h4>How to use</h4>
-        <ul>
-          <li>Find it in Journey under Prepare. Tap items to check them off.</li>
-          <li>Add your own items with the Add button; they stay with this trip.</li>
-          <li>Remove a custom item with the X next to it.</li>
-        </ul>
-      </section>
-
-      <section id="pre-trip-checklist" class="feat">
-        <h3>Pre-trip checklist &amp; reminders</h3>
-        <p class="what">Critical to-dos (passport, visa, medications, and more) with an optional night-before nudge.</p>
-        <h4>How to use</h4>
-        <ul>
-          <li>Check off critical items as you handle them.</li>
-          <li>Turn on Pre-trip Reminders in Notifications to get a single night-before reminder for anything still unchecked.</li>
-        </ul>
-      </section>
-
-      <section id="travel-documents" class="feat">
-        <h3>Travel documents</h3>
-        <p class="what">Store your passport, visa, and trusted-traveler details, and get reminded before anything expires.</p>
-        <h4>How to use</h4>
-        <ul>
-          <li>Add document numbers and pick expiry dates with the date picker.</li>
-          <li>Turn on expiry reminders to be nudged a year, six months, and a month ahead.</li>
-        </ul>
-        <div class="tip">Document numbers are stored encrypted on your device (in the iOS Keychain) and are never sent to our servers. Keep a photo of your passport saved separately, too.</div>
-      </section>
-
-      <section id="destination-briefing" class="feat">
-        <h3>Destination briefing</h3>
-        <p class="what">An AI-generated rundown for where you're headed: what to pack, customs limits, health notes, culture, and know-before-you-go basics like plugs, water, and tipping.</p>
-        <div class="tip">AI-generated, so double-check anything critical against an official source.</div>
-      </section>
-
-      <section id="visa-entry" class="feat">
-        <h3>Visa &amp; entry requirements</h3>
-        <p class="what">A starting point on what you may need to enter your destination, with embassy contacts by citizenship.</p>
-        <div class="tip">Travel requirements change. Always confirm with the destination's embassy or consulate before booking, this is a starting point, not authoritative legal guidance.</div>
-      </section>
-
-      <section id="city-guides" class="feat">
-        <h3>City guides</h3>
-        <p class="what">Curated things to do and see, organized so you can plan a day without the overwhelm.</p>
-        <h4>How to use</h4>
-        <ul>
-          <li>Browse by city; tap a place for details and tap Navigate to open it in Maps.</li>
-        </ul>
-      </section>
-
-      <div class="grp-h">Travel day &amp; airport</div>
-
-      <section id="flight-tracking" class="feat">
-        <h3>Live flight tracking</h3>
-        <p class="what">Real-time status, gate, terminal, and progress for your flight.</p>
-        <h4>How to use</h4>
-        <ul>
-          <li>Open your flight to see live status; Ruta refreshes more often as departure nears.</li>
-        </ul>
-        <div class="tip">Gate and time are confirmed by your airline at the gate, always glance at the airport boards too.</div>
-      </section>
-
-      <section id="alerts" class="feat">
-        <h3>Gate, delay &amp; departure alerts</h3>
-        <p class="what">Push notifications when your gate changes, your flight is delayed, or it's leaving earlier than planned.</p>
-        <h4>How to use</h4>
-        <ul>
-          <li>Turn the alerts you want on in Notifications. They fire automatically while a trip is active.</li>
-        </ul>
-      </section>
-
-      <section id="risk-check" class="feat">
-        <h3>Trip risk check</h3>
-        <p class="what">A one-tap scan across your flights for delays and connection risk, with a clear all-clear when you're good.</p>
-        <h4>How to use</h4>
-        <ul>
-          <li>Tap the risk card on Today to run the scan; tap a flagged item to see what to do.</li>
-        </ul>
-      </section>
-
-      <section id="when-to-leave" class="feat">
-        <h3>When to leave</h3>
-        <p class="what">A suggested departure time for the airport based on live traffic.</p>
-        <div class="tip">Live traffic can shift, double-check before you head out.</div>
-      </section>
-
-      <section id="airport" class="feat">
-        <h3>Airport: maps, TSA, lounges</h3>
-        <p class="what">Terminal maps and gate navigation, TSA wait times, amenities, and lounge access detection.</p>
-        <h4>How to use</h4>
-        <ul>
-          <li>Open the Airport view for your terminal's map, security wait estimates, food and shops, and lounges you can access.</li>
-        </ul>
-        <div class="tip">Wait times are estimates based on typical patterns; check the airport screens on arrival.</div>
-      </section>
-
-      <section id="find-car" class="feat">
-        <h3>Find your car</h3>
-        <p class="what">Save where you parked at the airport before you fly, then find it easily when you're back.</p>
-        <h4>How to use</h4>
-        <ul>
-          <li>Before you leave the car, open the menu at the top of the app and tap Save parking spot.</li>
-          <li>Note the level and row, add a short note, and snap a photo of the nearest sign. Tap Save.</li>
-          <li>When you return, your saved spot and photo are waiting on your arrival view.</li>
-        </ul>
-        <div class="tip">Parking garages block GPS, so a photo of the level sign is the most reliable way back to your car. Your parking details stay on your device.</div>
-      </section>
-
-      <div class="grp-h">In-flight &amp; arrival</div>
-
-      <section id="in-flight" class="feat">
-        <h3>In-flight &amp; connections</h3>
-        <p class="what">Connection awareness while you're in the air, with alerts if a tight connection is at risk, and your next leg ready the moment you land.</p>
-      </section>
-
-      <section id="arrival-hub" class="feat">
-        <h3>Arrival hub</h3>
-        <p class="what">When you land, Ruta surfaces what you need on the ground: your saved hotel, rental car, or train for the day, baggage claim, and a one-tap ride.</p>
-        <h4>How to use</h4>
-        <ul>
-          <li>On Today after landing, tap your saved car/train/hotel to see details, or tap Uber/Lyft to get a ride toward your destination.</li>
-          <li>Tap Baggage claim for where to find your bags.</li>
-        </ul>
-      </section>
-
-      <section id="destination-tools" class="feat">
-        <h3>Weather, currency &amp; translation</h3>
-        <p class="what">Local weather, a currency converter set to your home currency, key phrases with pronunciation, and free-form translation, plus cultural tips and emergency numbers.</p>
-        <h4>How to use</h4>
-        <ul>
-          <li>Open the Destination tab once you've arrived; tools adapt to where you are.</li>
-          <li>Use Show to Locals to display a translated phrase to someone.</li>
-        </ul>
-      </section>
-
-      <div class="grp-h">After the trip</div>
-
-      <section id="expenses" class="feat">
-        <h3>Expenses</h3>
-        <p class="what">Log trip spending as you go and review it later.</p>
-        <h4>How to use</h4>
-        <ul>
-          <li>Add an expense with amount and category; review the totals in your recap.</li>
-        </ul>
-      </section>
-
-      <section id="post-trip" class="feat">
-        <h3>Trip recap &amp; archive</h3>
-        <p class="what">When your trip wraps, Ruta shifts to a recap and tucks the trip into your archive so you can start the next one fresh.</p>
-      </section>
-
-      <div class="grp-h">Setup &amp; account</div>
-
-      <section id="voice" class="feat">
-        <h3>Voice assistant</h3>
-        <p class="what">Ask about your trip, gate, status, or weather, hands-free.</p>
-        <div class="tip">You're talking to Ruta's AI assistant, not a person. Double-check anything critical.</div>
-      </section>
-
-      <section id="languages" class="feat">
-        <h3>Languages</h3>
-        <p class="what">Ruta is available in nine languages. Set yours in Settings, and the app, including voice, follows.</p>
-      </section>
-
-      <section id="notifications" class="feat">
-        <h3>Notifications</h3>
-        <p class="what">Choose exactly which alerts you get: gate changes, delays, earlier departures, connection risk, boarding, when-to-leave, document expiry, and the night-before pre-trip reminder.</p>
-        <h4>How to use</h4>
-        <ul>
-          <li>Toggle each notification type in Settings under Notifications.</li>
-        </ul>
-      </section>
-
-      <section id="offline" class="feat">
-        <h3>Offline mode</h3>
-        <p class="what">Your saved trip works without a signal. Ruta shows your trip and last-synced info, and updates the live pieces when you reconnect.</p>
-        <div class="tip">Download offline maps for your destination in Apple or Google Maps so navigation works on the ground too.</div>
-      </section>
-
-      <section id="getting-help" class="feat">
-        <h3>Getting help &amp; contact</h3>
-        <p class="what">Help is built into the app, and we're an email away.</p>
-        <h4>How to use</h4>
-        <ul>
-          <li>Tap the <strong>?</strong> in the top corner of any screen for help with that feature.</li>
-          <li>Find this full guide any time from Settings under User Guide.</li>
-          <li>Need a person? Tap Contact support in Settings, or email <a href="mailto:support@rutatravels.com">support@rutatravels.com</a>.</li>
-        </ul>
-      </section>
-
-      <section id="privacy" class="feat">
-        <h3>Privacy &amp; your data</h3>
-        <p class="what">Your trip and sensitive documents stay on your device. Document numbers are encrypted in the device Keychain and are never sent to our servers.</p>
-        <h4>Good to know</h4>
-        <ul>
-          <li>Some features use AI and live data; those are labeled, and we point you to official sources for anything critical.</li>
-          <li>Read the full <a href="https://rutatravels.com/privacy.html">Privacy Policy</a>.</li>
-        </ul>
-      </section>
-    </main>
-
-    <footer>
-      Ruta Travels Help &amp; User Guide. Features and availability may change as the app improves. For anything time-critical, flights, gates, entry rules, always confirm with your airline or the official authority.
-    </footer>
-
+<header class="top">
+  <div class="topbar">
+    <div class="brand">RUTA TRAVELS</div>
+    <div class="langpick">
+      <label for="lang" id="langLabel">Language</label>
+      <select id="lang" aria-label="Language"></select>
+    </div>
   </div>
+</header>
+<div class="wrap">
+  <h1 id="pageTitle"></h1>
+  <p class="tagline" id="pageTagline"></p>
+  <nav class="toc" id="toc"></nav>
+  <div id="content"></div>
+  <footer class="foot" id="pageFooter"></footer>
+</div>
+
+<script>
+/* ── Structure (language-independent): group order + section ids (= anchors, matching the app). ── */
+const STRUCTURE = [
+  { id:'start',     items:['getting-started','add-flight'] },
+  { id:'plan',      items:['itinerary-timeline','add-calendar','multi-leg','packing-checklist','pre-trip-checklist','travel-documents','destination-briefing','visa-entry','city-guides'] },
+  { id:'travelday', items:['flight-tracking','alerts','risk-check','when-to-leave','airport','find-car'] },
+  { id:'arrival',   items:['in-flight','arrival-hub','destination-tools'] },
+  { id:'after',     items:['expenses','post-trip'] },
+  { id:'setup',     items:['voice','languages','notifications','offline','getting-help','privacy'] },
+];
+
+/* ── Content, per language. Falls back to English for any missing language or section. ──
+   Block types inside a section: ['p', text] paragraph · ['h3', text] subheading ·
+   ['ul', [items...]] bullet list · ['note', text] caution/aside · ['html', htmlString] raw. */
+const GUIDE = {
+  en: {
+    meta: {
+      langName: 'English',
+      title: 'Help & User Guide',
+      tagline: 'Everything Ruta does, from planning a trip to landing at your destination. Tap the ? in the top corner of any screen in the app to jump straight to that feature’s section here.',
+      footer: 'Ruta Travels Help & User Guide. Features and availability may change as the app improves. For anything time-critical — flights, gates, entry rules — always confirm with your airline or the official authority.',
+    },
+    groupLabels: {
+      start:'Getting started', plan:'Plan', travelday:'Travel day & airport',
+      arrival:'In-flight & arrival', after:'After the trip', setup:'Setup & account',
+    },
+    sections: {
+      'getting-started': { title:'Welcome to Ruta', blocks:[
+        ['p','Ruta keeps your whole trip in one place and stays with you from planning through landing — tracking your flights, predicting disruptions before they hit, and turning into a local guide when you arrive.'],
+        ['h3','The basics'],
+        ['ul',[
+          'Your trip moves through phases: Plan, Upcoming, Today, and Post-trip. Today carries you through travel day and into the air. Ruta shows what matters for the phase you’re in.',
+          'Add a flight to get started. Everything else builds around it.',
+          'Tap the ? on any screen for help with that exact feature.',
+        ]],
+      ]},
+      'add-flight': { title:'Add a flight', blocks:[
+        ['p','Get your flight into Ruta in whatever way is easiest.'],
+        ['h3','Ways to add'],
+        ['ul',[
+          'Search by flight number or route.',
+          'Scan a boarding pass or a screenshot/PDF of your itinerary.',
+          'Paste the text of a confirmation email.',
+          'Share to Ruta directly from your airline app, Mail, or Photos.',
+          'Enter by hand — type your flight legs.',
+        ]],
+        ['p','Sharing the confirmation text or a clear screenshot works best. A plain link usually can’t be read because it sits behind a login.'],
+      ]},
+      'itinerary-timeline': { title:'Your trip timeline', blocks:[
+        ['p','Flights, hotels, rental cars, trains, and activities live together on one journey timeline, in order.'],
+        ['h3','How to use'],
+        ['ul',[
+          'Add hotels, cars, trains, and activities from your trip view; each shows up at the right point in the journey.',
+          'Saved details (confirmation numbers, times, addresses) surface when they’re relevant, including on arrival day.',
+        ]],
+      ]},
+      'add-calendar': { title:'Add flights to your calendar', blocks:[
+        ['p','Drop your flights into your phone’s calendar so they sit alongside the rest of your schedule.'],
+        ['h3','How to use'],
+        ['ul',[
+          'Open the menu at the top of the app and tap Add to calendar.',
+          'Allow calendar access when asked. Ruta adds each flight as an event with its times and airports.',
+        ]],
+      ]},
+      'multi-leg': { title:'Multi-leg trips & connections', blocks:[
+        ['p','Ruta understands connections and watches the tight ones.'],
+        ['h3','How to use'],
+        ['ul',[
+          'Add each leg, and Ruta tracks them as one journey — flagging connection risk if an inbound delay threatens your next flight.',
+          'When you land, the next leg activates automatically.',
+        ]],
+      ]},
+      'packing-checklist': { title:'Packing checklist', blocks:[
+        ['p','A customizable checklist, organized by category, so nothing gets left behind.'],
+        ['h3','How to use'],
+        ['ul',[
+          'Find it in Journey under Prepare. Tap items to check them off.',
+          'Add your own items with the Add button; they stay with this trip.',
+          'Remove a custom item with the X next to it.',
+        ]],
+      ]},
+      'pre-trip-checklist': { title:'Pre-trip checklist & reminders', blocks:[
+        ['p','Critical to-dos (passport, visa, medications, and more) with an optional night-before nudge.'],
+        ['h3','How to use'],
+        ['ul',[
+          'Check off critical items as you handle them.',
+          'Turn on Pre-trip Reminders in Notifications to get a single night-before reminder for anything still unchecked.',
+        ]],
+      ]},
+      'travel-documents': { title:'Travel documents', blocks:[
+        ['p','Store your passport, visa, and trusted-traveler details, and get reminded before anything expires.'],
+        ['h3','How to use'],
+        ['ul',[
+          'Add document numbers and pick expiry dates with the date picker.',
+          'Turn on expiry reminders to be nudged a year, six months, and a month ahead.',
+        ]],
+        ['note','Document numbers are stored encrypted on your device (in the iOS Keychain) and are never sent to our servers. Keep a photo of your passport saved separately, too.'],
+      ]},
+      'destination-briefing': { title:'Destination briefing', blocks:[
+        ['p','An AI-generated rundown for where you’re headed: what to pack, customs limits, health notes, culture, and know-before-you-go basics like plugs, water, and tipping.'],
+        ['note','AI-generated, so double-check anything critical against an official source.'],
+      ]},
+      'visa-entry': { title:'Visa & entry requirements', blocks:[
+        ['p','A starting point on what you may need to enter your destination, with embassy contacts by citizenship.'],
+        ['note','Travel requirements change. Always confirm with the destination’s embassy or consulate before booking — this is a starting point, not authoritative legal guidance.'],
+      ]},
+      'city-guides': { title:'City guides', blocks:[
+        ['p','Curated things to do and see, organized so you can plan a day without the overwhelm.'],
+        ['h3','How to use'],
+        ['ul',['Browse by city; tap a place for details and tap Navigate to open it in Maps.']],
+      ]},
+      'flight-tracking': { title:'Live flight tracking', blocks:[
+        ['p','Real-time status, gate, terminal, and progress for your flight.'],
+        ['h3','How to use'],
+        ['ul',['Open your flight to see live status; Ruta refreshes more often as departure nears.']],
+        ['note','Gate and time are confirmed by your airline at the gate — always glance at the airport boards too.'],
+      ]},
+      'alerts': { title:'Gate, delay & departure alerts', blocks:[
+        ['p','Push notifications when your gate changes, your flight is delayed, or it’s leaving earlier than planned.'],
+        ['h3','How to use'],
+        ['ul',['Turn the alerts you want on in Notifications. They fire automatically while a trip is active.']],
+      ]},
+      'risk-check': { title:'Trip risk check', blocks:[
+        ['p','A one-tap scan across your flights for delays and connection risk, with a clear all-clear when you’re good.'],
+        ['h3','How to use'],
+        ['ul',['Tap the risk card on Today to run the scan; tap a flagged item to see what to do.']],
+      ]},
+      'when-to-leave': { title:'When to leave', blocks:[
+        ['p','A suggested departure time for the airport based on live traffic.'],
+        ['note','Live traffic can shift — double-check before you head out.'],
+      ]},
+      'airport': { title:'Airport: maps, security, lounges', blocks:[
+        ['p','Terminal maps and gate navigation, security wait times, amenities, and lounge access detection.'],
+        ['h3','How to use'],
+        ['ul',['Open the Airport view for your terminal’s map, security wait estimates, food and shops, and lounges you can access.']],
+        ['note','Wait times are estimates based on typical patterns; check the airport screens on arrival.'],
+      ]},
+      'find-car': { title:'Find your car', blocks:[
+        ['p','Save where you parked at the airport before you fly, then find it easily when you’re back.'],
+        ['h3','How to use'],
+        ['ul',[
+          'Before you leave the car, open the menu at the top of the app and tap Save parking spot.',
+          'Note the level and row, add a short note, and snap a photo of the nearest sign. Tap Save.',
+          'When you return, your saved spot and photo are waiting on your arrival view.',
+        ]],
+        ['note','Parking garages block GPS, so a photo of the level sign is the most reliable way back to your car. Your parking details stay on your device.'],
+      ]},
+      'in-flight': { title:'In-flight & connections', blocks:[
+        ['p','Connection awareness while you’re in the air, with alerts if a tight connection is at risk, and your next leg ready the moment you land.'],
+      ]},
+      'arrival-hub': { title:'Arrival hub', blocks:[
+        ['p','When you land, Ruta surfaces what you need on the ground: your saved hotel, rental car, or train for the day, baggage claim, and a one-tap ride.'],
+        ['h3','How to use'],
+        ['ul',[
+          'On Today after landing, tap your saved car/train/hotel to see details, or tap Uber/Lyft to get a ride toward your destination.',
+          'Tap Baggage claim for where to find your bags.',
+        ]],
+      ]},
+      'destination-tools': { title:'Weather, currency & translation', blocks:[
+        ['p','Local weather, a currency converter set to your home currency, key phrases with pronunciation, and free-form translation, plus cultural tips and emergency numbers.'],
+        ['h3','How to use'],
+        ['ul',[
+          'Open the Destination tab once you’ve arrived; tools adapt to where you are.',
+          'Use Show to Locals to display a translated phrase to someone.',
+        ]],
+      ]},
+      'expenses': { title:'Expenses', blocks:[
+        ['p','Log trip spending as you go and review it later.'],
+        ['h3','How to use'],
+        ['ul',['Add an expense with amount and category; review the totals in your recap.']],
+      ]},
+      'post-trip': { title:'Trip recap & archive', blocks:[
+        ['p','When your trip wraps, Ruta shifts to a recap and tucks the trip into your archive so you can start the next one fresh.'],
+      ]},
+      'voice': { title:'Voice assistant', blocks:[
+        ['p','Ask about your trip, gate, status, or weather — hands-free.'],
+        ['note','You’re talking to Ruta’s AI assistant, not a person. Double-check anything critical.'],
+      ]},
+      'languages': { title:'Languages', blocks:[
+        ['p','Ruta is available in nine languages. Set yours in Settings, and the app — including voice — follows.'],
+      ]},
+      'notifications': { title:'Notifications', blocks:[
+        ['p','Choose exactly which alerts you get: gate changes, delays, earlier departures, connection risk, boarding, when-to-leave, document expiry, and the night-before pre-trip reminder.'],
+        ['h3','How to use'],
+        ['ul',['Toggle each notification type in Settings under Notifications.']],
+      ]},
+      'offline': { title:'Offline mode', blocks:[
+        ['p','Your saved trip works without a signal. Ruta shows your trip and last-synced info, and updates the live pieces when you reconnect.'],
+        ['note','Download offline maps for your destination in Apple or Google Maps so navigation works on the ground too.'],
+      ]},
+      'getting-help': { title:'Getting help & contact', blocks:[
+        ['p','Help is built into the app, and we’re an email away.'],
+        ['h3','How to use'],
+        ['ul',[
+          'Tap the ? in the top corner of any screen for help with that feature.',
+          'Find this full guide any time from Settings under User Guide.',
+          'Need a person? Tap Contact support in Settings, or email support@rutatravels.com.',
+        ]],
+      ]},
+      'privacy': { title:'Privacy & your data', blocks:[
+        ['p','Your trip and sensitive documents stay on your device. Document numbers are encrypted in the device Keychain and are never sent to our servers.'],
+        ['h3','Good to know'],
+        ['ul',[
+          'Some features use AI and live data; those are labeled, and we point you to official sources for anything critical.',
+          'Read the full Privacy Policy at rutatravels.com/privacy.html.',
+        ]],
+      ]},
+    },
+  },
+  es: {
+    meta: {
+      langName: "Español",
+      title: "Ayuda y guía del usuario",
+      tagline: "Todo lo que hace Ruta, desde planear un viaje hasta aterrizar en tu destino. Toca el ? en la esquina superior de cualquier pantalla de la app para ir directamente a la sección de esa función aquí.",
+      footer: "Ayuda y guía del usuario de Ruta Travels. Las funciones y la disponibilidad pueden cambiar a medida que la app mejora. Para cualquier cosa urgente —vuelos, puertas de embarque, requisitos de entrada— confirma siempre con tu aerolínea o con la autoridad oficial.",
+    },
+    groupLabels: {
+      start:"Primeros pasos", plan:"Planificar", travelday:"Día de viaje y aeropuerto",
+      arrival:"A bordo y llegada", after:"Después del viaje", setup:"Configuración y cuenta",
+    },
+    sections: {
+      'getting-started': { title:"Bienvenido a Ruta", blocks:[
+        ['p',"Ruta mantiene todo tu viaje en un solo lugar y te acompaña desde la planificación hasta el aterrizaje: rastrea tus vuelos, predice contratiempos antes de que ocurran y se convierte en tu guía local al llegar."],
+        ['h3',"Lo esencial"],
+        ['ul',[
+          "Tu viaje avanza por fases: Planificar, Próximo, Hoy y Después del viaje. Hoy te acompaña durante el día de viaje y en el aire. Ruta muestra lo que importa según la fase en la que estás.",
+          "Añade un vuelo para empezar. Todo lo demás se construye a partir de él.",
+          "Toca el ? en cualquier pantalla para obtener ayuda con esa función exacta.",
+        ]],
+      ]},
+      'add-flight': { title:"Añadir un vuelo", blocks:[
+        ['p',"Añade tu vuelo a Ruta de la forma que te resulte más fácil."],
+        ['h3',"Formas de añadir"],
+        ['ul',[
+          "Busca por número de vuelo o ruta.",
+          "Escanea una tarjeta de embarque o una captura de pantalla/PDF de tu itinerario.",
+          "Pega el texto de un correo de confirmación.",
+          "Comparte directamente a Ruta desde la app de tu aerolínea, Mail o Fotos.",
+          "Introdúcelo a mano: escribe los tramos de tu vuelo.",
+        ]],
+        ['p',"Compartir el texto de la confirmación o una captura de pantalla clara funciona mejor. Un simple enlace normalmente no se puede leer porque está detrás de un inicio de sesión."],
+      ]},
+      'itinerary-timeline': { title:"La cronología de tu viaje", blocks:[
+        ['p',"Vuelos, hoteles, coches de alquiler, trenes y actividades conviven en una sola cronología del viaje, en orden."],
+        ['h3',"Cómo usarlo"],
+        ['ul',[
+          "Añade hoteles, coches, trenes y actividades desde la vista de tu viaje; cada uno aparece en el punto adecuado de la cronología.",
+          "Los detalles guardados (números de confirmación, horarios, direcciones) aparecen cuando son relevantes, incluido el día de llegada.",
+        ]],
+      ]},
+      'add-calendar': { title:"Añadir vuelos a tu calendario", blocks:[
+        ['p',"Coloca tus vuelos en el calendario de tu teléfono para que estén junto al resto de tu agenda."],
+        ['h3',"Cómo usarlo"],
+        ['ul',[
+          "Abre el menú en la parte superior de la app y toca Añadir al calendario.",
+          "Permite el acceso al calendario cuando se te pida. Ruta añade cada vuelo como un evento con sus horarios y aeropuertos.",
+        ]],
+      ]},
+      'multi-leg': { title:"Viajes con varios tramos y conexiones", blocks:[
+        ['p',"Ruta entiende las conexiones y vigila las más ajustadas."],
+        ['h3',"Cómo usarlo"],
+        ['ul',[
+          "Añade cada tramo y Ruta los rastrea como un solo viaje, avisándote del riesgo de conexión si un retraso de llegada amenaza tu siguiente vuelo.",
+          "Cuando aterrizas, el siguiente tramo se activa automáticamente.",
+        ]],
+      ]},
+      'packing-checklist': { title:"Lista de equipaje", blocks:[
+        ['p',"Una lista personalizable, organizada por categorías, para que no se te olvide nada."],
+        ['h3',"Cómo usarlo"],
+        ['ul',[
+          "La encuentras en Viaje, dentro de Preparar. Toca los elementos para marcarlos.",
+          "Añade tus propios elementos con el botón Añadir; se quedan con este viaje.",
+          "Elimina un elemento personalizado con la X que aparece junto a él.",
+        ]],
+      ]},
+      'pre-trip-checklist': { title:"Lista y recordatorios previos al viaje", blocks:[
+        ['p',"Tareas críticas (pasaporte, visado, medicamentos y más) con un aviso opcional la noche anterior."],
+        ['h3',"Cómo usarlo"],
+        ['ul',[
+          "Marca los elementos críticos a medida que los resuelves.",
+          "Activa los Recordatorios previos al viaje en Notificaciones para recibir un único recordatorio la noche anterior con todo lo que aún esté sin marcar.",
+        ]],
+      ]},
+      'travel-documents': { title:"Documentos de viaje", blocks:[
+        ['p',"Guarda los datos de tu pasaporte, visado y programas de viajero de confianza, y recibe avisos antes de que algo caduque."],
+        ['h3',"Cómo usarlo"],
+        ['ul',[
+          "Añade los números de documento y elige las fechas de caducidad con el selector de fechas.",
+          "Activa los recordatorios de caducidad para recibir avisos con un año, seis meses y un mes de antelación.",
+        ]],
+        ['note',"Los números de documento se guardan cifrados en tu dispositivo (en el Keychain de iOS) y nunca se envían a nuestros servidores. Guarda también una foto de tu pasaporte por separado."],
+      ]},
+      'destination-briefing': { title:"Resumen del destino", blocks:[
+        ['p',"Un resumen generado por IA sobre el lugar al que vas: qué llevar, límites de aduana, notas de salud, cultura y datos básicos que conviene saber, como los enchufes, el agua y las propinas."],
+        ['note',"Generado por IA, así que verifica todo lo importante con una fuente oficial."],
+      ]},
+      'visa-entry': { title:"Requisitos de visado y entrada", blocks:[
+        ['p',"Un punto de partida sobre lo que puedes necesitar para entrar a tu destino, con contactos de embajadas según tu nacionalidad."],
+        ['note',"Los requisitos de viaje cambian. Confirma siempre con la embajada o el consulado del destino antes de reservar: esto es un punto de partida, no una guía legal definitiva."],
+      ]},
+      'city-guides': { title:"Guías de ciudades", blocks:[
+        ['p',"Cosas que hacer y ver, seleccionadas y organizadas para que puedas planear un día sin agobios."],
+        ['h3',"Cómo usarlo"],
+        ['ul',["Explora por ciudad; toca un lugar para ver los detalles y toca Navegar para abrirlo en Maps."]],
+      ]},
+      'flight-tracking': { title:"Seguimiento de vuelos en vivo", blocks:[
+        ['p',"Estado, puerta de embarque, terminal y progreso de tu vuelo en tiempo real."],
+        ['h3',"Cómo usarlo"],
+        ['ul',["Abre tu vuelo para ver el estado en vivo; Ruta se actualiza con más frecuencia a medida que se acerca la salida."]],
+        ['note',"La puerta y la hora las confirma tu aerolínea en la puerta de embarque: revisa siempre también los paneles del aeropuerto."],
+      ]},
+      'alerts': { title:"Avisos de puerta, retraso y salida", blocks:[
+        ['p',"Notificaciones cuando cambia tu puerta de embarque, tu vuelo se retrasa o sale antes de lo previsto."],
+        ['h3',"Cómo usarlo"],
+        ['ul',["Activa los avisos que quieras en Notificaciones. Se disparan automáticamente mientras un viaje está activo."]],
+      ]},
+      'risk-check': { title:"Chequeo de riesgos del viaje", blocks:[
+        ['p',"Un análisis con un toque de todos tus vuelos en busca de retrasos y riesgo de conexión, con un aviso claro de todo en orden cuando todo va bien."],
+        ['h3',"Cómo usarlo"],
+        ['ul',["Toca la tarjeta de riesgo en Hoy para ejecutar el análisis; toca un elemento marcado para ver qué hacer."]],
+      ]},
+      'when-to-leave': { title:"Cuándo salir", blocks:[
+        ['p',"Una hora de salida sugerida hacia el aeropuerto según el tráfico en vivo."],
+        ['note',"El tráfico en vivo puede cambiar: verifícalo antes de salir."],
+      ]},
+      'airport': { title:"Aeropuerto: mapas, seguridad, salas VIP", blocks:[
+        ['p',"Mapas de terminal y navegación hacia la puerta, tiempos de espera en seguridad, servicios y detección de acceso a salas VIP."],
+        ['h3',"Cómo usarlo"],
+        ['ul',["Abre la vista de Aeropuerto para ver el mapa de tu terminal, estimaciones de espera en seguridad, comida y tiendas, y las salas VIP a las que puedes acceder."]],
+        ['note',"Los tiempos de espera son estimaciones basadas en patrones habituales; consulta las pantallas del aeropuerto al llegar."],
+      ]},
+      'find-car': { title:"Encuentra tu coche", blocks:[
+        ['p',"Guarda dónde aparcaste en el aeropuerto antes de volar y luego encuéntralo fácilmente al volver."],
+        ['h3',"Cómo usarlo"],
+        ['ul',[
+          "Antes de dejar el coche, abre el menú en la parte superior de la app y toca Guardar plaza de aparcamiento.",
+          "Anota el nivel y la fila, añade una nota breve y haz una foto del cartel más cercano. Toca Guardar.",
+          "Cuando vuelvas, tu plaza guardada y la foto te estarán esperando en tu vista de llegada.",
+        ]],
+        ['note',"Los aparcamientos cubiertos bloquean el GPS, así que una foto del cartel del nivel es la forma más fiable de volver a tu coche. Los datos de tu aparcamiento se quedan en tu dispositivo."],
+      ]},
+      'in-flight': { title:"A bordo y conexiones", blocks:[
+        ['p',"Seguimiento de conexiones mientras estás en el aire, con avisos si una conexión ajustada está en riesgo, y tu siguiente tramo listo en el momento en que aterrizas."],
+      ]},
+      'arrival-hub': { title:"Centro de llegada", blocks:[
+        ['p',"Cuando aterrizas, Ruta muestra lo que necesitas sobre el terreno: tu hotel guardado, coche de alquiler o tren del día, la recogida de equipaje y un viaje con un solo toque."],
+        ['h3',"Cómo usarlo"],
+        ['ul',[
+          "En Hoy, después de aterrizar, toca tu coche/tren/hotel guardado para ver los detalles, o toca Uber/Lyft para pedir un viaje hacia tu destino.",
+          "Toca Recogida de equipaje para saber dónde encontrar tus maletas.",
+        ]],
+      ]},
+      'destination-tools': { title:"Clima, moneda y traducción", blocks:[
+        ['p',"Clima local, un conversor de moneda configurado con la moneda de tu país, frases clave con pronunciación y traducción libre, además de consejos culturales y números de emergencia."],
+        ['h3',"Cómo usarlo"],
+        ['ul',[
+          "Abre la pestaña Destino una vez que hayas llegado; las herramientas se adaptan al lugar donde estás.",
+          "Usa Mostrar a los locales para enseñarle a alguien una frase traducida.",
+        ]],
+      ]},
+      'expenses': { title:"Gastos", blocks:[
+        ['p',"Registra lo que gastas durante el viaje y revísalo más tarde."],
+        ['h3',"Cómo usarlo"],
+        ['ul',["Añade un gasto con importe y categoría; revisa los totales en tu resumen."]],
+      ]},
+      'post-trip': { title:"Resumen y archivo del viaje", blocks:[
+        ['p',"Cuando tu viaje termina, Ruta pasa a un resumen y guarda el viaje en tu archivo para que puedas empezar el siguiente desde cero."],
+      ]},
+      'voice': { title:"Asistente de voz", blocks:[
+        ['p',"Pregunta por tu viaje, tu puerta de embarque, el estado o el clima, con las manos libres."],
+        ['note',"Estás hablando con el asistente de IA de Ruta, no con una persona. Verifica todo lo importante."],
+      ]},
+      'languages': { title:"Idiomas", blocks:[
+        ['p',"Ruta está disponible en nueve idiomas. Configura el tuyo en Ajustes y la app —incluida la voz— lo seguirá."],
+      ]},
+      'notifications': { title:"Notificaciones", blocks:[
+        ['p',"Elige exactamente qué avisos recibes: cambios de puerta, retrasos, salidas anticipadas, riesgo de conexión, embarque, cuándo salir, caducidad de documentos y el recordatorio previo al viaje la noche anterior."],
+        ['h3',"Cómo usarlo"],
+        ['ul',["Activa o desactiva cada tipo de notificación en Ajustes, dentro de Notificaciones."]],
+      ]},
+      'offline': { title:"Modo sin conexión", blocks:[
+        ['p',"Tu viaje guardado funciona sin señal. Ruta muestra tu viaje y la información sincronizada por última vez, y actualiza los datos en vivo cuando vuelves a conectarte."],
+        ['note',"Descarga mapas sin conexión de tu destino en Apple o Google Maps para que la navegación también funcione sobre el terreno."],
+      ]},
+      'getting-help': { title:"Obtener ayuda y contacto", blocks:[
+        ['p',"La ayuda está integrada en la app y estamos a un correo de distancia."],
+        ['h3',"Cómo usarlo"],
+        ['ul',[
+          "Toca el ? en la esquina superior de cualquier pantalla para obtener ayuda con esa función.",
+          "Encuentra esta guía completa en cualquier momento en Ajustes, dentro de Guía del usuario.",
+          "¿Necesitas hablar con una persona? Toca Contactar con soporte en Ajustes, o escribe a support@rutatravels.com.",
+        ]],
+      ]},
+      'privacy': { title:"Privacidad y tus datos", blocks:[
+        ['p',"Tu viaje y tus documentos sensibles se quedan en tu dispositivo. Los números de documento se cifran en el Keychain del dispositivo y nunca se envían a nuestros servidores."],
+        ['h3',"Conviene saber"],
+        ['ul',[
+          "Algunas funciones usan IA y datos en vivo; están señaladas y te remitimos a fuentes oficiales para todo lo importante.",
+          "Lee la Política de privacidad completa en rutatravels.com/privacy.html.",
+        ]],
+      ]},
+    },
+  },
+  it: {
+    meta: {
+      langName: "Italiano",
+      title: "Aiuto e Guida utente",
+      tagline: "Tutto quello che fa Ruta, dalla pianificazione del viaggio all'atterraggio a destinazione. Tocca il ? nell'angolo in alto di qualsiasi schermata dell'app per andare direttamente alla sezione di quella funzione qui.",
+      footer: "Aiuto e Guida utente di Ruta Travels. Le funzioni e la disponibilità possono cambiare man mano che l'app migliora. Per qualsiasi cosa a tempo critico — voli, gate, regole d'ingresso — conferma sempre con la tua compagnia aerea o con l'autorità ufficiale.",
+    },
+    groupLabels: {
+      start:"Per iniziare", plan:"Pianifica", travelday:"Giorno di viaggio e aeroporto",
+      arrival:"In volo e arrivo", after:"Dopo il viaggio", setup:"Impostazioni e account",
+    },
+    sections: {
+      'getting-started': { title:"Benvenuto in Ruta", blocks:[
+        ['p',"Ruta tiene tutto il tuo viaggio in un unico posto e ti accompagna dalla pianificazione fino all'atterraggio — traccia i tuoi voli, prevede i disagi prima che accadano e si trasforma in una guida locale quando arrivi."],
+        ['h3',"Le basi"],
+        ['ul',[
+          "Il tuo viaggio attraversa diverse fasi: Pianifica, In arrivo, Oggi e Post-viaggio. La fase Oggi ti accompagna durante il giorno di viaggio e fino in cielo. Ruta mostra ciò che conta per la fase in cui ti trovi.",
+          "Aggiungi un volo per iniziare. Tutto il resto si costruisce attorno a questo.",
+          "Tocca il ? in qualsiasi schermata per avere aiuto proprio su quella funzione.",
+        ]],
+      ]},
+      'add-flight': { title:"Aggiungi un volo", blocks:[
+        ['p',"Inserisci il tuo volo in Ruta nel modo più semplice per te."],
+        ['h3',"Modi per aggiungere"],
+        ['ul',[
+          "Cerca per numero di volo o per tratta.",
+          "Scansiona una carta d'imbarco o uno screenshot/PDF del tuo itinerario.",
+          "Incolla il testo di un'email di conferma.",
+          "Condividi direttamente su Ruta dall'app della tua compagnia aerea, da Mail o da Foto.",
+          "Inserisci a mano — digita le tratte del tuo volo.",
+        ]],
+        ['p',"Condividere il testo della conferma o uno screenshot chiaro funziona meglio. Un semplice link di solito non può essere letto perché si trova dietro un login."],
+      ]},
+      'itinerary-timeline': { title:"La cronologia del tuo viaggio", blocks:[
+        ['p',"Voli, hotel, auto a noleggio, treni e attività convivono in un'unica cronologia del viaggio, in ordine."],
+        ['h3',"Come si usa"],
+        ['ul',[
+          "Aggiungi hotel, auto, treni e attività dalla vista del tuo viaggio; ognuno compare al punto giusto del percorso.",
+          "I dettagli salvati (numeri di conferma, orari, indirizzi) emergono quando sono utili, anche nel giorno di arrivo.",
+        ]],
+      ]},
+      'add-calendar': { title:"Aggiungi i voli al calendario", blocks:[
+        ['p',"Inserisci i tuoi voli nel calendario del telefono così da averli insieme al resto dei tuoi impegni."],
+        ['h3',"Come si usa"],
+        ['ul',[
+          "Apri il menu in alto nell'app e tocca Aggiungi al calendario.",
+          "Consenti l'accesso al calendario quando richiesto. Ruta aggiunge ogni volo come evento con i suoi orari e aeroporti.",
+        ]],
+      ]},
+      'multi-leg': { title:"Viaggi con più tratte e coincidenze", blocks:[
+        ['p',"Ruta comprende le coincidenze e tiene d'occhio quelle più strette."],
+        ['h3',"Come si usa"],
+        ['ul',[
+          "Aggiungi ogni tratta e Ruta le traccia come un unico viaggio — segnalando il rischio per la coincidenza se un ritardo in arrivo minaccia il volo successivo.",
+          "Quando atterri, la tratta successiva si attiva automaticamente.",
+        ]],
+      ]},
+      'packing-checklist': { title:"Lista per fare i bagagli", blocks:[
+        ['p',"Una lista personalizzabile, organizzata per categoria, così non dimentichi nulla."],
+        ['h3',"Come si usa"],
+        ['ul',[
+          "La trovi in Viaggio, sotto Prepara. Tocca gli elementi per spuntarli.",
+          "Aggiungi i tuoi elementi con il pulsante Aggiungi; restano legati a questo viaggio.",
+          "Rimuovi un elemento personalizzato con la X accanto ad esso.",
+        ]],
+      ]},
+      'pre-trip-checklist': { title:"Lista pre-viaggio e promemoria", blocks:[
+        ['p',"Cose da fare fondamentali (passaporto, visto, medicine e altro) con un promemoria opzionale la sera prima."],
+        ['h3',"Come si usa"],
+        ['ul',[
+          "Spunta gli elementi fondamentali man mano che li gestisci.",
+          "Attiva i Promemoria pre-viaggio in Notifiche per ricevere un unico promemoria la sera prima per tutto ciò che è ancora da spuntare.",
+        ]],
+      ]},
+      'travel-documents': { title:"Documenti di viaggio", blocks:[
+        ['p',"Conserva i dati di passaporto, visto e programmi per viaggiatori affidabili, e ricevi un promemoria prima che qualcosa scada."],
+        ['h3',"Come si usa"],
+        ['ul',[
+          "Aggiungi i numeri dei documenti e scegli le date di scadenza con il selettore di date.",
+          "Attiva i promemoria di scadenza per ricevere un avviso un anno, sei mesi e un mese prima.",
+        ]],
+        ['note',"I numeri dei documenti sono salvati in forma cifrata sul tuo dispositivo (nel Keychain di iOS) e non vengono mai inviati ai nostri server. Tieni anche una foto del passaporto salvata separatamente."],
+      ]},
+      'destination-briefing': { title:"Briefing sulla destinazione", blocks:[
+        ['p',"Un riepilogo generato dall'IA per il luogo dove sei diretto: cosa mettere in valigia, limiti doganali, note sulla salute, cultura e informazioni utili prima di partire come prese elettriche, acqua e mance."],
+        ['note',"Generato dall'IA, quindi verifica sempre qualsiasi cosa fondamentale con una fonte ufficiale."],
+      ]},
+      'visa-entry': { title:"Visto e requisiti d'ingresso", blocks:[
+        ['p',"Un punto di partenza su ciò che potrebbe servirti per entrare a destinazione, con i contatti delle ambasciate per cittadinanza."],
+        ['note',"I requisiti di viaggio cambiano. Conferma sempre con l'ambasciata o il consolato della destinazione prima di prenotare — questo è un punto di partenza, non una consulenza legale autorevole."],
+      ]},
+      'city-guides': { title:"Guide delle città", blocks:[
+        ['p',"Cose da fare e da vedere selezionate, organizzate così puoi pianificare una giornata senza sentirti sopraffatto."],
+        ['h3',"Come si usa"],
+        ['ul',["Sfoglia per città; tocca un luogo per i dettagli e tocca Naviga per aprirlo nelle Mappe."]],
+      ]},
+      'flight-tracking': { title:"Tracciamento del volo in tempo reale", blocks:[
+        ['p',"Stato, gate, terminal e avanzamento del tuo volo in tempo reale."],
+        ['h3',"Come si usa"],
+        ['ul',["Apri il tuo volo per vedere lo stato in tempo reale; Ruta si aggiorna più spesso man mano che si avvicina la partenza."]],
+        ['note',"Gate e orario sono confermati dalla tua compagnia aerea al gate — dai sempre un'occhiata anche ai tabelloni dell'aeroporto."],
+      ]},
+      'alerts': { title:"Avvisi su gate, ritardi e partenza", blocks:[
+        ['p',"Notifiche push quando il tuo gate cambia, il volo è in ritardo o parte prima del previsto."],
+        ['h3',"Come si usa"],
+        ['ul',["Attiva in Notifiche gli avvisi che desideri. Si attivano automaticamente mentre un viaggio è in corso."]],
+      ]},
+      'risk-check': { title:"Controllo rischi del viaggio", blocks:[
+        ['p',"Una scansione con un tocco su tutti i tuoi voli per ritardi e rischi di coincidenza, con un chiaro via libera quando è tutto a posto."],
+        ['h3',"Come si usa"],
+        ['ul',["Tocca la scheda dei rischi in Oggi per avviare la scansione; tocca un elemento segnalato per vedere cosa fare."]],
+      ]},
+      'when-to-leave': { title:"Quando partire", blocks:[
+        ['p',"Un orario di partenza suggerito per l'aeroporto in base al traffico in tempo reale."],
+        ['note',"Il traffico in tempo reale può cambiare — verifica prima di uscire."],
+      ]},
+      'airport': { title:"Aeroporto: mappe, sicurezza, lounge", blocks:[
+        ['p',"Mappe del terminal e navigazione verso il gate, tempi di attesa ai controlli di sicurezza, servizi e rilevamento dell'accesso alle lounge."],
+        ['h3',"Come si usa"],
+        ['ul',["Apri la vista Aeroporto per la mappa del tuo terminal, le stime dei tempi di attesa ai controlli, ristoranti e negozi, e le lounge a cui puoi accedere."]],
+        ['note',"I tempi di attesa sono stime basate su schemi tipici; controlla gli schermi dell'aeroporto all'arrivo."],
+      ]},
+      'find-car': { title:"Trova la tua auto", blocks:[
+        ['p',"Salva dove hai parcheggiato all'aeroporto prima di partire, poi ritrovala facilmente al ritorno."],
+        ['h3',"Come si usa"],
+        ['ul',[
+          "Prima di lasciare l'auto, apri il menu in alto nell'app e tocca Salva posto auto.",
+          "Annota il piano e la fila, aggiungi una breve nota e scatta una foto del cartello più vicino. Tocca Salva.",
+          "Al ritorno, il tuo posto salvato e la foto ti aspettano nella vista di arrivo.",
+        ]],
+        ['note',"I parcheggi coperti bloccano il GPS, quindi una foto del cartello del piano è il modo più affidabile per ritrovare l'auto. I dettagli del tuo parcheggio restano sul tuo dispositivo."],
+      ]},
+      'in-flight': { title:"In volo e coincidenze", blocks:[
+        ['p',"Consapevolezza delle coincidenze mentre sei in volo, con avvisi se una coincidenza stretta è a rischio, e la tratta successiva pronta nel momento in cui atterri."],
+      ]},
+      'arrival-hub': { title:"Centro arrivi", blocks:[
+        ['p',"Quando atterri, Ruta ti mostra ciò che ti serve a terra: l'hotel, l'auto a noleggio o il treno del giorno che hai salvato, il ritiro bagagli e una corsa con un tocco."],
+        ['h3',"Come si usa"],
+        ['ul',[
+          "In Oggi, dopo l'atterraggio, tocca l'auto/il treno/l'hotel salvati per vedere i dettagli, oppure tocca Uber/Lyft per prenotare una corsa verso la tua destinazione.",
+          "Tocca Ritiro bagagli per sapere dove trovare le tue valigie.",
+        ]],
+      ]},
+      'destination-tools': { title:"Meteo, valuta e traduzione", blocks:[
+        ['p',"Meteo locale, un convertitore di valuta impostato sulla tua valuta di casa, frasi chiave con pronuncia e traduzione libera, oltre a consigli culturali e numeri di emergenza."],
+        ['h3',"Come si usa"],
+        ['ul',[
+          "Apri la scheda Destinazione una volta arrivato; gli strumenti si adattano a dove ti trovi.",
+          "Usa Mostra ai locali per mostrare a qualcuno una frase tradotta.",
+        ]],
+      ]},
+      'expenses': { title:"Spese", blocks:[
+        ['p',"Registra le spese del viaggio man mano e rivedile in seguito."],
+        ['h3',"Come si usa"],
+        ['ul',["Aggiungi una spesa con importo e categoria; rivedi i totali nel tuo riepilogo."]],
+      ]},
+      'post-trip': { title:"Riepilogo e archivio del viaggio", blocks:[
+        ['p',"Quando il tuo viaggio finisce, Ruta passa a un riepilogo e sposta il viaggio nel tuo archivio così puoi iniziarne uno nuovo da zero."],
+      ]},
+      'voice': { title:"Assistente vocale", blocks:[
+        ['p',"Chiedi informazioni sul tuo viaggio, il gate, lo stato o il meteo — a mani libere."],
+        ['note',"Stai parlando con l'assistente IA di Ruta, non con una persona. Verifica sempre qualsiasi cosa fondamentale."],
+      ]},
+      'languages': { title:"Lingue", blocks:[
+        ['p',"Ruta è disponibile in nove lingue. Imposta la tua in Impostazioni e l'app — voce inclusa — si adegua."],
+      ]},
+      'notifications': { title:"Notifiche", blocks:[
+        ['p',"Scegli esattamente quali avvisi ricevere: cambi di gate, ritardi, partenze anticipate, rischio coincidenze, imbarco, quando partire, scadenza dei documenti e il promemoria pre-viaggio della sera prima."],
+        ['h3',"Come si usa"],
+        ['ul',["Attiva o disattiva ogni tipo di notifica in Impostazioni, sotto Notifiche."]],
+      ]},
+      'offline': { title:"Modalità offline", blocks:[
+        ['p',"Il tuo viaggio salvato funziona senza segnale. Ruta mostra il tuo viaggio e le ultime informazioni sincronizzate, e aggiorna le parti in tempo reale quando ti riconnetti."],
+        ['note',"Scarica le mappe offline della tua destinazione in Apple o Google Maps così la navigazione funziona anche a terra."],
+      ]},
+      'getting-help': { title:"Assistenza e contatti", blocks:[
+        ['p',"L'aiuto è integrato nell'app, e siamo a una email di distanza."],
+        ['h3',"Come si usa"],
+        ['ul',[
+          "Tocca il ? nell'angolo in alto di qualsiasi schermata per avere aiuto su quella funzione.",
+          "Trovi questa guida completa in qualsiasi momento in Impostazioni, sotto Guida utente.",
+          "Ti serve una persona? Tocca Contatta l'assistenza in Impostazioni, oppure scrivi a support@rutatravels.com.",
+        ]],
+      ]},
+      'privacy': { title:"Privacy e i tuoi dati", blocks:[
+        ['p',"Il tuo viaggio e i documenti sensibili restano sul tuo dispositivo. I numeri dei documenti sono cifrati nel Keychain del dispositivo e non vengono mai inviati ai nostri server."],
+        ['h3',"Buono a sapersi"],
+        ['ul',[
+          "Alcune funzioni usano l'IA e dati in tempo reale; sono contrassegnate come tali, e ti indirizziamo a fonti ufficiali per qualsiasi cosa fondamentale.",
+          "Leggi l'Informativa sulla privacy completa su rutatravels.com/privacy.html.",
+        ]],
+      ]},
+    },
+  },
+  fr: {
+    meta: {
+      langName: "Français",
+      title: "Aide et guide d'utilisation",
+      tagline: "Tout ce que Ruta fait, de la préparation d'un voyage à l'atterrissage à destination. Touchez le ? dans le coin supérieur de n'importe quel écran de l'application pour accéder directement à la section correspondant à cette fonctionnalité.",
+      footer: "Aide et guide d'utilisation de Ruta Travels. Les fonctionnalités et leur disponibilité peuvent évoluer à mesure que l'application s'améliore. Pour tout ce qui est critique en termes de délais — vols, portes d'embarquement, règles d'entrée — vérifiez toujours auprès de votre compagnie aérienne ou de l'autorité officielle.",
+    },
+    groupLabels: {
+      start: "Premiers pas", plan: "Préparer", travelday: "Jour du voyage et aéroport",
+      arrival: "En vol et à l'arrivée", after: "Après le voyage", setup: "Configuration et compte",
+    },
+    sections: {
+      'getting-started': { title: "Bienvenue sur Ruta", blocks: [
+        ['p', "Ruta regroupe tout votre voyage au même endroit et vous accompagne de la préparation jusqu'à l'atterrissage — en suivant vos vols, en anticipant les perturbations avant qu'elles ne surviennent et en se transformant en guide local dès votre arrivée."],
+        ['h3', "Les bases"],
+        ['ul', [
+          "Votre voyage se déroule en phases : Préparer, À venir, Aujourd'hui et Après le voyage. « Aujourd'hui » vous accompagne tout au long du jour du départ et jusque dans les airs. Ruta affiche ce qui compte pour la phase dans laquelle vous vous trouvez.",
+          "Ajoutez un vol pour commencer. Tout le reste s'organise autour de lui.",
+          "Touchez le ? sur n'importe quel écran pour obtenir de l'aide sur cette fonctionnalité précise.",
+        ]],
+      ]},
+      'add-flight': { title: "Ajouter un vol", blocks: [
+        ['p', "Ajoutez votre vol à Ruta de la manière qui vous convient le mieux."],
+        ['h3', "Façons d'ajouter"],
+        ['ul', [
+          "Recherchez par numéro de vol ou par itinéraire.",
+          "Scannez une carte d'embarquement ou une capture d'écran / un PDF de votre itinéraire.",
+          "Collez le texte d'un e-mail de confirmation.",
+          "Partagez directement vers Ruta depuis l'application de votre compagnie aérienne, Mail ou Photos.",
+          "Saisissez à la main — entrez les segments de votre vol.",
+        ]],
+        ['p', "Le partage du texte de confirmation ou d'une capture d'écran nette fonctionne le mieux. Un simple lien ne peut généralement pas être lu car il se trouve derrière une page de connexion."],
+      ]},
+      'itinerary-timeline': { title: "La chronologie de votre voyage", blocks: [
+        ['p', "Vols, hôtels, voitures de location, trains et activités figurent ensemble sur une seule chronologie de voyage, dans l'ordre."],
+        ['h3', "Comment l'utiliser"],
+        ['ul', [
+          "Ajoutez hôtels, voitures, trains et activités depuis la vue de votre voyage ; chaque élément apparaît au bon moment du parcours.",
+          "Les détails enregistrés (numéros de confirmation, horaires, adresses) apparaissent quand ils sont pertinents, y compris le jour de l'arrivée.",
+        ]],
+      ]},
+      'add-calendar': { title: "Ajouter des vols à votre calendrier", blocks: [
+        ['p', "Ajoutez vos vols au calendrier de votre téléphone pour qu'ils figurent aux côtés du reste de votre emploi du temps."],
+        ['h3', "Comment l'utiliser"],
+        ['ul', [
+          "Ouvrez le menu en haut de l'application et touchez Ajouter au calendrier.",
+          "Autorisez l'accès au calendrier lorsqu'on vous le demande. Ruta ajoute chaque vol en tant qu'événement avec ses horaires et ses aéroports.",
+        ]],
+      ]},
+      'multi-leg': { title: "Voyages à plusieurs segments et correspondances", blocks: [
+        ['p', "Ruta comprend les correspondances et surveille les plus serrées."],
+        ['h3', "Comment l'utiliser"],
+        ['ul', [
+          "Ajoutez chaque segment, et Ruta les suit comme un seul voyage — en signalant un risque de correspondance si un retard à l'arrivée menace votre prochain vol.",
+          "Lorsque vous atterrissez, le segment suivant s'active automatiquement.",
+        ]],
+      ]},
+      'packing-checklist': { title: "Liste de bagages", blocks: [
+        ['p', "Une liste personnalisable, organisée par catégorie, pour ne rien oublier."],
+        ['h3', "Comment l'utiliser"],
+        ['ul', [
+          "Retrouvez-la dans Parcours, sous Préparer. Touchez les éléments pour les cocher.",
+          "Ajoutez vos propres éléments avec le bouton Ajouter ; ils restent associés à ce voyage.",
+          "Supprimez un élément personnalisé à l'aide du X situé à côté.",
+        ]],
+      ]},
+      'pre-trip-checklist': { title: "Liste et rappels d'avant-voyage", blocks: [
+        ['p', "Les tâches essentielles (passeport, visa, médicaments et plus encore) avec un rappel facultatif la veille."],
+        ['h3', "Comment l'utiliser"],
+        ['ul', [
+          "Cochez les éléments essentiels au fur et à mesure que vous les traitez.",
+          "Activez les Rappels d'avant-voyage dans Notifications pour recevoir un unique rappel la veille pour tout ce qui reste à cocher.",
+        ]],
+      ]},
+      'travel-documents': { title: "Documents de voyage", blocks: [
+        ['p', "Enregistrez les détails de votre passeport, de votre visa et de vos programmes de voyageur de confiance, et soyez averti avant toute expiration."],
+        ['h3', "Comment l'utiliser"],
+        ['ul', [
+          "Ajoutez les numéros de documents et choisissez les dates d'expiration à l'aide du sélecteur de dates.",
+          "Activez les rappels d'expiration pour être averti un an, six mois et un mois à l'avance.",
+        ]],
+        ['note', "Les numéros de documents sont stockés de façon chiffrée sur votre appareil (dans le Keychain iOS) et ne sont jamais envoyés à nos serveurs. Conservez également une photo de votre passeport enregistrée séparément."],
+      ]},
+      'destination-briefing': { title: "Briefing de destination", blocks: [
+        ['p', "Un récapitulatif généré par IA pour votre destination : quoi emporter, limites douanières, conseils santé, culture et informations à connaître avant de partir comme les prises électriques, l'eau et les pourboires."],
+        ['note', "Généré par IA : vérifiez donc tout élément critique auprès d'une source officielle."],
+      ]},
+      'visa-entry': { title: "Visa et conditions d'entrée", blocks: [
+        ['p', "Un point de départ sur ce dont vous pourriez avoir besoin pour entrer dans votre destination, avec les contacts des ambassades selon votre nationalité."],
+        ['note', "Les conditions de voyage changent. Vérifiez toujours auprès de l'ambassade ou du consulat de la destination avant de réserver — ceci est un point de départ, pas un avis juridique faisant autorité."],
+      ]},
+      'city-guides': { title: "Guides de villes", blocks: [
+        ['p', "Une sélection de choses à faire et à voir, organisée pour que vous puissiez planifier une journée sans vous sentir dépassé."],
+        ['h3', "Comment l'utiliser"],
+        ['ul', ["Parcourez par ville ; touchez un lieu pour les détails et touchez Naviguer pour l'ouvrir dans Plans."]],
+      ]},
+      'flight-tracking': { title: "Suivi de vol en direct", blocks: [
+        ['p', "Statut en temps réel, porte, terminal et progression de votre vol."],
+        ['h3', "Comment l'utiliser"],
+        ['ul', ["Ouvrez votre vol pour voir le statut en direct ; Ruta se met à jour plus souvent à l'approche du départ."]],
+        ['note', "La porte et l'horaire sont confirmés par votre compagnie aérienne à la porte d'embarquement — jetez toujours aussi un œil aux écrans de l'aéroport."],
+      ]},
+      'alerts': { title: "Alertes de porte, de retard et de départ", blocks: [
+        ['p', "Des notifications push lorsque votre porte change, que votre vol est retardé ou qu'il part plus tôt que prévu."],
+        ['h3', "Comment l'utiliser"],
+        ['ul', ["Activez les alertes souhaitées dans Notifications. Elles se déclenchent automatiquement lorsqu'un voyage est en cours."]],
+      ]},
+      'risk-check': { title: "Vérification des risques du voyage", blocks: [
+        ['p', "Une analyse en un geste de tous vos vols pour détecter les retards et les risques de correspondance, avec un message rassurant clair quand tout va bien."],
+        ['h3', "Comment l'utiliser"],
+        ['ul', ["Touchez la carte des risques dans Aujourd'hui pour lancer l'analyse ; touchez un élément signalé pour savoir quoi faire."]],
+      ]},
+      'when-to-leave': { title: "Quand partir", blocks: [
+        ['p', "Une heure de départ suggérée pour l'aéroport en fonction du trafic en direct."],
+        ['note', "Le trafic en direct peut évoluer — vérifiez à nouveau avant de partir."],
+      ]},
+      'airport': { title: "Aéroport : plans, sécurité, salons", blocks: [
+        ['p', "Plans des terminaux et navigation vers les portes, temps d'attente à la sécurité, commodités et détection de l'accès aux salons."],
+        ['h3', "Comment l'utiliser"],
+        ['ul', ["Ouvrez la vue Aéroport pour le plan de votre terminal, les estimations de temps d'attente à la sécurité, les restaurants et boutiques, ainsi que les salons auxquels vous avez accès."]],
+        ['note', "Les temps d'attente sont des estimations basées sur les tendances habituelles ; consultez les écrans de l'aéroport à votre arrivée."],
+      ]},
+      'find-car': { title: "Retrouver votre voiture", blocks: [
+        ['p', "Enregistrez l'endroit où vous vous êtes garé à l'aéroport avant de partir, puis retrouvez-le facilement à votre retour."],
+        ['h3', "Comment l'utiliser"],
+        ['ul', [
+          "Avant de quitter la voiture, ouvrez le menu en haut de l'application et touchez Enregistrer la place de stationnement.",
+          "Notez le niveau et la rangée, ajoutez une brève note et prenez une photo du panneau le plus proche. Touchez Enregistrer.",
+          "À votre retour, votre place enregistrée et votre photo vous attendent sur votre vue d'arrivée.",
+        ]],
+        ['note', "Les parkings couverts bloquent le GPS ; une photo du panneau de niveau est donc le moyen le plus fiable de retrouver votre voiture. Les détails de votre stationnement restent sur votre appareil."],
+      ]},
+      'in-flight': { title: "En vol et correspondances", blocks: [
+        ['p', "Un suivi des correspondances pendant que vous êtes dans les airs, avec des alertes si une correspondance serrée est menacée, et votre segment suivant prêt dès l'atterrissage."],
+      ]},
+      'arrival-hub': { title: "Centre d'arrivée", blocks: [
+        ['p', "Lorsque vous atterrissez, Ruta fait remonter ce dont vous avez besoin sur place : votre hôtel enregistré, votre voiture de location ou votre train du jour, le retrait des bagages et une course en un geste."],
+        ['h3', "Comment l'utiliser"],
+        ['ul', [
+          "Dans Aujourd'hui après l'atterrissage, touchez votre voiture / train / hôtel enregistré pour voir les détails, ou touchez Uber/Lyft pour obtenir une course vers votre destination.",
+          "Touchez Retrait des bagages pour savoir où récupérer vos bagages.",
+        ]],
+      ]},
+      'destination-tools': { title: "Météo, devises et traduction", blocks: [
+        ['p', "La météo locale, un convertisseur de devises réglé sur votre devise d'origine, des phrases clés avec leur prononciation et une traduction libre, ainsi que des conseils culturels et des numéros d'urgence."],
+        ['h3', "Comment l'utiliser"],
+        ['ul', [
+          "Ouvrez l'onglet Destination une fois arrivé ; les outils s'adaptent à l'endroit où vous vous trouvez.",
+          "Utilisez « Montrer aux locaux » pour afficher une phrase traduite à quelqu'un.",
+        ]],
+      ]},
+      'expenses': { title: "Dépenses", blocks: [
+        ['p', "Enregistrez vos dépenses de voyage au fur et à mesure et consultez-les plus tard."],
+        ['h3', "Comment l'utiliser"],
+        ['ul', ["Ajoutez une dépense avec un montant et une catégorie ; consultez les totaux dans votre récapitulatif."]],
+      ]},
+      'post-trip': { title: "Récapitulatif et archive du voyage", blocks: [
+        ['p', "Lorsque votre voyage se termine, Ruta passe à un récapitulatif et range le voyage dans vos archives pour que vous puissiez en commencer un nouveau sereinement."],
+      ]},
+      'voice': { title: "Assistant vocal", blocks: [
+        ['p', "Posez des questions sur votre voyage, votre porte, le statut ou la météo — en mains libres."],
+        ['note', "Vous parlez à l'assistant IA de Ruta, et non à une personne. Vérifiez tout élément critique."],
+      ]},
+      'languages': { title: "Langues", blocks: [
+        ['p', "Ruta est disponible en neuf langues. Définissez la vôtre dans les Réglages, et l'application — y compris la voix — s'y adapte."],
+      ]},
+      'notifications': { title: "Notifications", blocks: [
+        ['p', "Choisissez précisément les alertes que vous recevez : changements de porte, retards, départs anticipés, risque de correspondance, embarquement, quand partir, expiration de documents et rappel d'avant-voyage la veille."],
+        ['h3', "Comment l'utiliser"],
+        ['ul', ["Activez ou désactivez chaque type de notification dans les Réglages, sous Notifications."]],
+      ]},
+      'offline': { title: "Mode hors ligne", blocks: [
+        ['p', "Votre voyage enregistré fonctionne sans réseau. Ruta affiche votre voyage et les dernières informations synchronisées, et met à jour les éléments en direct lorsque vous vous reconnectez."],
+        ['note', "Téléchargez des cartes hors ligne pour votre destination dans Apple ou Google Maps afin que la navigation fonctionne aussi sur place."],
+      ]},
+      'getting-help': { title: "Obtenir de l'aide et nous contacter", blocks: [
+        ['p', "L'aide est intégrée à l'application, et nous sommes joignables par e-mail."],
+        ['h3', "Comment l'utiliser"],
+        ['ul', [
+          "Touchez le ? dans le coin supérieur de n'importe quel écran pour obtenir de l'aide sur cette fonctionnalité.",
+          "Retrouvez ce guide complet à tout moment dans les Réglages, sous Guide d'utilisation.",
+          "Besoin d'une personne ? Touchez Contacter le support dans les Réglages, ou écrivez à support@rutatravels.com.",
+        ]],
+      ]},
+      'privacy': { title: "Confidentialité et vos données", blocks: [
+        ['p', "Votre voyage et vos documents sensibles restent sur votre appareil. Les numéros de documents sont chiffrés dans le Keychain de l'appareil et ne sont jamais envoyés à nos serveurs."],
+        ['h3', "Bon à savoir"],
+        ['ul', [
+          "Certaines fonctionnalités utilisent l'IA et des données en direct ; celles-ci sont signalées, et nous vous orientons vers des sources officielles pour tout élément critique.",
+          "Lisez la Politique de confidentialité complète sur rutatravels.com/privacy.html.",
+        ]],
+      ]},
+    },
+  },
+  de: {
+    meta: {
+      langName: "Deutsch",
+      title: "Hilfe & Nutzerhandbuch",
+      tagline: "Alles, was Ruta kann, von der Reiseplanung bis zur Landung am Ziel. Tippe auf das ? in der oberen Ecke eines beliebigen Bildschirms in der App, um direkt zum passenden Abschnitt für diese Funktion zu springen.",
+      footer: "Ruta Travels Hilfe & Nutzerhandbuch. Funktionen und Verfügbarkeit können sich mit der Weiterentwicklung der App ändern. Bei allem Zeitkritischen – Flügen, Gates, Einreisebestimmungen – bestätige die Angaben immer bei deiner Airline oder der offiziellen Behörde.",
+    },
+    groupLabels: {
+      start:"Erste Schritte", plan:"Planen", travelday:"Reisetag & Flughafen",
+      arrival:"An Bord & Ankunft", after:"Nach der Reise", setup:"Einrichtung & Konto",
+    },
+    sections: {
+      "getting-started": { title:"Willkommen bei Ruta", blocks:[
+        ["p","Ruta hält deine gesamte Reise an einem Ort zusammen und begleitet dich von der Planung bis zur Landung – verfolgt deine Flüge, sagt Störungen voraus, bevor sie eintreten, und wird bei der Ankunft zu deinem lokalen Reiseführer."],
+        ["h3","Die Grundlagen"],
+        ["ul",[
+          "Deine Reise durchläuft mehrere Phasen: Planen, Bevorstehend, Heute und Nachbereitung. Heute begleitet dich durch den Reisetag und in die Luft. Ruta zeigt dir, was in der jeweiligen Phase wichtig ist.",
+          "Füge einen Flug hinzu, um loszulegen. Alles Weitere baut darauf auf.",
+          "Tippe auf jedem Bildschirm auf das ?, um Hilfe zu genau dieser Funktion zu erhalten.",
+        ]],
+      ]},
+      "add-flight": { title:"Einen Flug hinzufügen", blocks:[
+        ["p","Bring deinen Flug so in Ruta, wie es für dich am einfachsten ist."],
+        ["h3","Möglichkeiten zum Hinzufügen"],
+        ["ul",[
+          "Suche nach Flugnummer oder Route.",
+          "Scanne eine Bordkarte oder einen Screenshot/PDF deiner Reiseroute.",
+          "Füge den Text einer Bestätigungs-E-Mail ein.",
+          "Teile direkt aus deiner Airline-App, aus Mail oder aus Fotos an Ruta.",
+          "Von Hand eingeben – tippe deine Flugabschnitte ein.",
+        ]],
+        ["p","Am besten funktioniert es, wenn du den Bestätigungstext oder einen klaren Screenshot teilst. Ein einfacher Link lässt sich meist nicht auslesen, weil er hinter einer Anmeldung liegt."],
+      ]},
+      "itinerary-timeline": { title:"Deine Reise-Timeline", blocks:[
+        ["p","Flüge, Hotels, Mietwagen, Züge und Aktivitäten stehen gemeinsam und geordnet auf einer einzigen Reise-Timeline."],
+        ["h3","So funktioniert es"],
+        ["ul",[
+          "Füge Hotels, Autos, Züge und Aktivitäten in deiner Reiseansicht hinzu; jedes erscheint an der richtigen Stelle im Reiseverlauf.",
+          "Gespeicherte Details (Buchungsnummern, Zeiten, Adressen) tauchen dann auf, wenn sie relevant sind – auch am Ankunftstag.",
+        ]],
+      ]},
+      "add-calendar": { title:"Flüge zu deinem Kalender hinzufügen", blocks:[
+        ["p","Übertrage deine Flüge in den Kalender deines Telefons, damit sie neben deinen übrigen Terminen stehen."],
+        ["h3","So funktioniert es"],
+        ["ul",[
+          "Öffne das Menü oben in der App und tippe auf Zum Kalender hinzufügen.",
+          "Erlaube den Kalenderzugriff, wenn du gefragt wirst. Ruta trägt jeden Flug als Termin mit Zeiten und Flughäfen ein.",
+        ]],
+      ]},
+      "multi-leg": { title:"Reisen mit mehreren Abschnitten & Anschlüsse", blocks:[
+        ["p","Ruta versteht Anschlüsse und behält die knappen im Blick."],
+        ["h3","So funktioniert es"],
+        ["ul",[
+          "Füge jeden Abschnitt hinzu, und Ruta verfolgt sie als eine Reise – und weist auf ein Anschlussrisiko hin, wenn eine Verspätung beim Ankunftsflug deinen nächsten Flug gefährdet.",
+          "Wenn du landest, wird der nächste Abschnitt automatisch aktiviert.",
+        ]],
+      ]},
+      "packing-checklist": { title:"Packliste", blocks:[
+        ["p","Eine anpassbare, nach Kategorien geordnete Checkliste, damit nichts liegen bleibt."],
+        ["h3","So funktioniert es"],
+        ["ul",[
+          "Du findest sie unter Reise im Bereich Vorbereiten. Tippe auf Einträge, um sie abzuhaken.",
+          "Füge mit der Schaltfläche Hinzufügen eigene Einträge hinzu; sie bleiben bei dieser Reise.",
+          "Entferne einen eigenen Eintrag über das X daneben.",
+        ]],
+      ]},
+      "pre-trip-checklist": { title:"Checkliste & Erinnerungen vor der Reise", blocks:[
+        ["p","Wichtige Aufgaben (Reisepass, Visum, Medikamente und mehr) mit einer optionalen Erinnerung am Vorabend."],
+        ["h3","So funktioniert es"],
+        ["ul",[
+          "Hake wichtige Punkte ab, sobald du sie erledigt hast.",
+          "Aktiviere die Reisevorbereitungs-Erinnerungen unter Benachrichtigungen, um am Vorabend eine einzige Erinnerung für alles noch Offene zu erhalten.",
+        ]],
+      ]},
+      "travel-documents": { title:"Reisedokumente", blocks:[
+        ["p","Speichere deine Angaben zu Reisepass, Visum und Vielreisenden-Programmen und lass dich rechtzeitig erinnern, bevor etwas abläuft."],
+        ["h3","So funktioniert es"],
+        ["ul",[
+          "Füge Dokumentnummern hinzu und wähle Ablaufdaten mit der Datumsauswahl.",
+          "Aktiviere Ablauf-Erinnerungen, um ein Jahr, sechs Monate und einen Monat im Voraus erinnert zu werden.",
+        ]],
+        ["note","Dokumentnummern werden verschlüsselt auf deinem Gerät gespeichert (im iOS Keychain) und niemals an unsere Server gesendet. Bewahre außerdem ein Foto deines Reisepasses separat auf."],
+      ]},
+      "destination-briefing": { title:"Reiseziel-Briefing", blocks:[
+        ["p","Ein KI-erstellter Überblick über dein Reiseziel: was du einpacken solltest, Zollgrenzen, Gesundheitshinweise, Kultur und Grundlagen wie Steckdosen, Wasser und Trinkgeld."],
+        ["note","KI-erstellt, überprüfe daher alles Wichtige anhand einer offiziellen Quelle."],
+      ]},
+      "visa-entry": { title:"Visum & Einreisebestimmungen", blocks:[
+        ["p","Ein Ausgangspunkt dazu, was du für die Einreise an dein Ziel brauchen könntest, mit Botschaftskontakten je nach Staatsangehörigkeit."],
+        ["note","Einreisebestimmungen ändern sich. Bestätige sie vor der Buchung immer bei der Botschaft oder dem Konsulat deines Ziellandes – dies ist ein Ausgangspunkt, keine verbindliche Rechtsauskunft."],
+      ]},
+      "city-guides": { title:"Stadtführer", blocks:[
+        ["p","Ausgewählte Aktivitäten und Sehenswürdigkeiten, so aufbereitet, dass du einen Tag ohne Überforderung planen kannst."],
+        ["h3","So funktioniert es"],
+        ["ul",["Stöbere nach Stadt; tippe auf einen Ort für Details und tippe auf Navigieren, um ihn in Maps zu öffnen."]],
+      ]},
+      "flight-tracking": { title:"Live-Flugverfolgung", blocks:[
+        ["p","Echtzeit-Status, Gate, Terminal und Fortschritt deines Flugs."],
+        ["h3","So funktioniert es"],
+        ["ul",["Öffne deinen Flug, um den Live-Status zu sehen; Ruta aktualisiert häufiger, je näher der Abflug rückt."]],
+        ["note","Gate und Zeit werden von deiner Airline am Gate bestätigt – wirf immer auch einen Blick auf die Anzeigetafeln am Flughafen."],
+      ]},
+      "alerts": { title:"Gate-, Verspätungs- & Abflugmeldungen", blocks:[
+        ["p","Push-Benachrichtigungen, wenn sich dein Gate ändert, dein Flug verspätet ist oder früher als geplant abhebt."],
+        ["h3","So funktioniert es"],
+        ["ul",["Aktiviere die gewünschten Meldungen unter Benachrichtigungen. Sie werden automatisch ausgelöst, während eine Reise aktiv ist."]],
+      ]},
+      "risk-check": { title:"Reise-Risikoprüfung", blocks:[
+        ["p","Ein Scan deiner Flüge mit nur einem Tippen auf Verspätungen und Anschlussrisiken, mit klarer Entwarnung, wenn alles passt."],
+        ["h3","So funktioniert es"],
+        ["ul",["Tippe auf die Risikokarte unter Heute, um den Scan zu starten; tippe auf einen markierten Punkt, um zu sehen, was zu tun ist."]],
+      ]},
+      "when-to-leave": { title:"Wann losfahren", blocks:[
+        ["p","Eine empfohlene Abfahrtszeit zum Flughafen auf Basis der aktuellen Verkehrslage."],
+        ["note","Die Verkehrslage kann sich ändern – prüfe sie noch einmal, bevor du losfährst."],
+      ]},
+      "airport": { title:"Flughafen: Karten, Sicherheit, Lounges", blocks:[
+        ["p","Terminalkarten und Gate-Navigation, Wartezeiten an der Sicherheitskontrolle, Serviceangebote und Erkennung des Lounge-Zugangs."],
+        ["h3","So funktioniert es"],
+        ["ul",["Öffne die Flughafenansicht für die Karte deines Terminals, geschätzte Wartezeiten an der Sicherheitskontrolle, Essen und Geschäfte sowie Lounges, die dir offenstehen."]],
+        ["note","Wartezeiten sind Schätzungen auf Basis üblicher Muster; prüfe bei der Ankunft die Anzeigen am Flughafen."],
+      ]},
+      "find-car": { title:"Dein Auto finden", blocks:[
+        ["p","Speichere vor dem Abflug, wo du am Flughafen geparkt hast, und finde es nach der Rückkehr mühelos wieder."],
+        ["h3","So funktioniert es"],
+        ["ul",[
+          "Bevor du das Auto verlässt, öffne das Menü oben in der App und tippe auf Parkplatz speichern.",
+          "Notiere Ebene und Reihe, füge eine kurze Notiz hinzu und mach ein Foto des nächstgelegenen Schilds. Tippe auf Speichern.",
+          "Wenn du zurückkommst, warten dein gespeicherter Platz und das Foto in deiner Ankunftsansicht.",
+        ]],
+        ["note","Parkhäuser blockieren GPS, daher ist ein Foto des Ebenenschilds der zuverlässigste Weg zurück zu deinem Auto. Deine Parkdetails bleiben auf deinem Gerät."],
+      ]},
+      "in-flight": { title:"An Bord & Anschlüsse", blocks:[
+        ["p","Anschlussüberwachung, während du in der Luft bist, mit Meldungen, wenn ein knapper Anschluss gefährdet ist, und deinem nächsten Abschnitt bereit, sobald du landest."],
+      ]},
+      "arrival-hub": { title:"Ankunfts-Hub", blocks:[
+        ["p","Wenn du landest, zeigt dir Ruta, was du am Boden brauchst: dein gespeichertes Hotel, deinen Mietwagen oder Zug für den Tag, die Gepäckausgabe und eine Fahrt mit nur einem Tippen."],
+        ["h3","So funktioniert es"],
+        ["ul",[
+          "Tippe unter Heute nach der Landung auf dein gespeichertes Auto/deinen Zug/dein Hotel, um Details zu sehen, oder tippe auf Uber/Lyft, um eine Fahrt zu deinem Ziel zu bekommen.",
+          "Tippe auf Gepäckausgabe, um zu erfahren, wo du dein Gepäck findest.",
+        ]],
+      ]},
+      "destination-tools": { title:"Wetter, Währung & Übersetzung", blocks:[
+        ["p","Lokales Wetter, ein Währungsrechner mit deiner Heimatwährung, wichtige Redewendungen mit Aussprache und freie Übersetzung, dazu kulturelle Tipps und Notrufnummern."],
+        ["h3","So funktioniert es"],
+        ["ul",[
+          "Öffne den Tab Reiseziel, sobald du angekommen bist; die Werkzeuge passen sich an, wo du bist.",
+          "Nutze Einheimischen zeigen, um jemandem eine übersetzte Redewendung anzuzeigen.",
+        ]],
+      ]},
+      "expenses": { title:"Ausgaben", blocks:[
+        ["p","Erfasse deine Reiseausgaben unterwegs und sieh sie dir später an."],
+        ["h3","So funktioniert es"],
+        ["ul",["Füge eine Ausgabe mit Betrag und Kategorie hinzu; überprüfe die Summen in deinem Rückblick."]],
+      ]},
+      "post-trip": { title:"Reise-Rückblick & Archiv", blocks:[
+        ["p","Wenn deine Reise endet, wechselt Ruta zu einem Rückblick und legt die Reise in deinem Archiv ab, damit du frisch in die nächste starten kannst."],
+      ]},
+      "voice": { title:"Sprachassistent", blocks:[
+        ["p","Frage nach deiner Reise, dem Gate, dem Status oder dem Wetter – freihändig."],
+        ["note","Du sprichst mit Rutas KI-Assistenten, nicht mit einer Person. Überprüfe alles Wichtige noch einmal."],
+      ]},
+      "languages": { title:"Sprachen", blocks:[
+        ["p","Ruta ist in neun Sprachen verfügbar. Stelle deine in den Einstellungen ein, und die App – einschließlich der Stimme – folgt."],
+      ]},
+      "notifications": { title:"Benachrichtigungen", blocks:[
+        ["p","Wähle genau, welche Meldungen du erhältst: Gate-Änderungen, Verspätungen, frühere Abflüge, Anschlussrisiko, Boarding, Wann-losfahren, Dokumentablauf und die Reisevorbereitungs-Erinnerung am Vorabend."],
+        ["h3","So funktioniert es"],
+        ["ul",["Schalte jede Benachrichtigungsart in den Einstellungen unter Benachrichtigungen ein oder aus."]],
+      ]},
+      "offline": { title:"Offline-Modus", blocks:[
+        ["p","Deine gespeicherte Reise funktioniert auch ohne Empfang. Ruta zeigt deine Reise und die zuletzt synchronisierten Infos und aktualisiert die Live-Teile, sobald du wieder verbunden bist."],
+        ["note","Lade Offline-Karten für dein Ziel in Apple oder Google Maps herunter, damit die Navigation auch vor Ort funktioniert."],
+      ]},
+      "getting-help": { title:"Hilfe & Kontakt", blocks:[
+        ["p","Hilfe ist in die App integriert, und wir sind nur eine E-Mail entfernt."],
+        ["h3","So funktioniert es"],
+        ["ul",[
+          "Tippe auf jedem Bildschirm in der oberen Ecke auf das ?, um Hilfe zu dieser Funktion zu erhalten.",
+          "Dieses vollständige Handbuch findest du jederzeit in den Einstellungen unter Nutzerhandbuch.",
+          "Brauchst du eine Person? Tippe in den Einstellungen auf Support kontaktieren oder schreibe eine E-Mail an support@rutatravels.com.",
+        ]],
+      ]},
+      "privacy": { title:"Datenschutz & deine Daten", blocks:[
+        ["p","Deine Reise und sensible Dokumente bleiben auf deinem Gerät. Dokumentnummern werden im Keychain des Geräts verschlüsselt und niemals an unsere Server gesendet."],
+        ["h3","Gut zu wissen"],
+        ["ul",[
+          "Einige Funktionen nutzen KI und Live-Daten; diese sind gekennzeichnet, und bei allem Wichtigen verweisen wir dich auf offizielle Quellen.",
+          "Lies die vollständige Datenschutzrichtlinie unter rutatravels.com/privacy.html.",
+        ]],
+      ]},
+    },
+  },
+  ja: {
+    meta: {
+      langName: "日本語",
+      title: "ヘルプとユーザーガイド",
+      tagline: "旅行の計画から目的地への到着まで、Rutaができることのすべてをご紹介します。アプリ内のどの画面でも、上部の隅にある ? をタップすると、その機能に対応するこちらのセクションへ直接ジャンプできます。",
+      footer: "Ruta Travels ヘルプとユーザーガイドです。機能や提供状況はアプリの改善にともなって変更される場合があります。フライト、ゲート、入国要件など、時間に関わる重要な情報については、必ずご利用の航空会社または公式機関にご確認ください。",
+    },
+    groupLabels: {
+      start:"はじめに", plan:"計画", travelday:"移動日と空港",
+      arrival:"機内と到着", after:"旅行のあと", setup:"設定とアカウント",
+    },
+    sections: {
+      'getting-started': { title:"Ruta へようこそ", blocks:[
+        ['p',"Ruta は旅行のすべてを一つにまとめ、計画から着陸まであなたに寄り添います。フライトを追跡し、混乱が起こる前に予測し、到着すれば現地ガイドへと姿を変えます。"],
+        ['h3',"基本"],
+        ['ul',[
+          "旅行は次のフェーズで進みます。計画、まもなく、今日、そして旅行後です。「今日」は移動日から空の上までをご案内します。Ruta は今いるフェーズで大切なことを表示します。",
+          "まずはフライトを追加しましょう。ほかのすべてはそこから広がっていきます。",
+          "どの画面でも ? をタップすると、その機能に関するヘルプが表示されます。",
+        ]],
+      ]},
+      'add-flight': { title:"フライトを追加する", blocks:[
+        ['p',"いちばん簡単な方法で、フライトを Ruta に取り込みましょう。"],
+        ['h3',"追加する方法"],
+        ['ul',[
+          "フライト番号または区間で検索します。",
+          "搭乗券、または旅程のスクリーンショットや PDF をスキャンします。",
+          "確認メールの本文を貼り付けます。",
+          "航空会社アプリ、メール、写真から Ruta に直接共有します。",
+          "手入力で、フライトの各区間を入力します。",
+        ]],
+        ['p',"確認メールのテキストや鮮明なスクリーンショットの共有が、もっともうまくいきます。リンクだけの場合は、ログインの先にあるため通常は読み取れません。"],
+      ]},
+      'itinerary-timeline': { title:"旅行のタイムライン", blocks:[
+        ['p',"フライト、ホテル、レンタカー、電車、アクティビティが、一つの旅程タイムライン上に順番どおりまとまります。"],
+        ['h3',"使い方"],
+        ['ul',[
+          "旅行の画面からホテル、車、電車、アクティビティを追加できます。それぞれが旅程の適切な位置に表示されます。",
+          "保存した詳細（予約番号、時刻、住所）は、到着日を含め、必要なタイミングで表示されます。",
+        ]],
+      ]},
+      'add-calendar': { title:"フライトをカレンダーに追加する", blocks:[
+        ['p',"フライトをスマートフォンのカレンダーに入れて、ほかの予定と並べて確認しましょう。"],
+        ['h3',"使い方"],
+        ['ul',[
+          "アプリ上部のメニューを開き、「カレンダーに追加」をタップします。",
+          "確認メッセージが表示されたらカレンダーへのアクセスを許可します。Ruta が各フライトを、時刻と空港を含むイベントとして追加します。",
+        ]],
+      ]},
+      'multi-leg': { title:"複数区間の旅行と乗り継ぎ", blocks:[
+        ['p',"Ruta は乗り継ぎを理解し、時間の厳しいものを見守ります。"],
+        ['h3',"使い方"],
+        ['ul',[
+          "各区間を追加すると、Ruta はそれらを一つの旅程として追跡します。到着便の遅延が次のフライトを脅かす場合には、乗り継ぎのリスクを知らせます。",
+          "着陸すると、次の区間が自動的に有効になります。",
+        ]],
+      ]},
+      'packing-checklist': { title:"荷造りチェックリスト", blocks:[
+        ['p',"カテゴリー別に整理された、カスタマイズできるチェックリストで、忘れ物を防ぎます。"],
+        ['h3',"使い方"],
+        ['ul',[
+          "「旅程」の「準備」内にあります。項目をタップしてチェックを付けます。",
+          "「追加」ボタンで自分の項目を追加できます。追加した項目はこの旅行に紐づいて残ります。",
+          "追加した項目は、横の X で削除できます。",
+        ]],
+      ]},
+      'pre-trip-checklist': { title:"出発前チェックリストとリマインダー", blocks:[
+        ['p',"パスポート、ビザ、常備薬など重要なやることを、前夜のお知らせ（任意）とともに管理します。"],
+        ['h3',"使い方"],
+        ['ul',[
+          "対応が済んだ重要項目にチェックを付けます。",
+          "「通知」で「出発前リマインダー」をオンにすると、未チェックの項目について前夜に一度だけリマインダーが届きます。",
+        ]],
+      ]},
+      'travel-documents': { title:"渡航書類", blocks:[
+        ['p',"パスポート、ビザ、信頼された旅行者の情報を保存し、有効期限が切れる前にお知らせします。"],
+        ['h3',"使い方"],
+        ['ul',[
+          "書類番号を追加し、日付ピッカーで有効期限を選びます。",
+          "有効期限リマインダーをオンにすると、1年前、6か月前、1か月前にお知らせします。",
+        ]],
+        ['note',"書類番号は、ご利用の端末内（iOS Keychain）に暗号化して保存され、当社のサーバーへ送信されることは一切ありません。パスポートの写真も別に保存しておくと安心です。"],
+      ]},
+      'destination-briefing': { title:"目的地ブリーフィング", blocks:[
+        ['p',"向かう先について AI が作成する概要です。持ち物、税関の制限、健康に関する注意、文化、そしてプラグ、水、チップといった出発前に知っておきたい基本をお伝えします。"],
+        ['note',"AI が作成した内容のため、重要な事項は必ず公式の情報源と照らし合わせてご確認ください。"],
+      ]},
+      'visa-entry': { title:"ビザと入国要件", blocks:[
+        ['p',"目的地への入国に必要となりうるものの出発点となる情報を、国籍別の大使館連絡先とともにご案内します。"],
+        ['note',"渡航要件は変更されます。予約の前に、必ず目的地の大使館または領事館にご確認ください。これは出発点であり、正式な法的助言ではありません。"],
+      ]},
+      'city-guides': { title:"シティガイド", blocks:[
+        ['p',"厳選したおすすめの見どころや過ごし方を、迷わず一日を計画できるように整理してお届けします。"],
+        ['h3',"使い方"],
+        ['ul',["都市ごとに見て回り、場所をタップすると詳細が表示されます。「ナビ」をタップすると Maps で開きます。"]],
+      ]},
+      'flight-tracking': { title:"リアルタイムのフライト追跡", blocks:[
+        ['p',"フライトの状況、ゲート、ターミナル、進行状況をリアルタイムでお知らせします。"],
+        ['h3',"使い方"],
+        ['ul',["フライトを開くと最新の状況が表示されます。出発が近づくにつれ、Ruta はより頻繁に更新します。"]],
+        ['note',"ゲートと時刻はゲートで航空会社によって確定されます。空港の案内表示も必ずあわせてご確認ください。"],
+      ]},
+      'alerts': { title:"ゲート、遅延、出発のお知らせ", blocks:[
+        ['p',"ゲートが変更されたとき、フライトが遅延したとき、予定より早く出発するときに、プッシュ通知でお知らせします。"],
+        ['h3',"使い方"],
+        ['ul',["受け取りたいお知らせを「通知」でオンにします。旅行が有効な間、自動的に届きます。"]],
+      ]},
+      'risk-check': { title:"旅行リスクチェック", blocks:[
+        ['p',"すべてのフライトを一度のタップで確認し、遅延や乗り継ぎのリスクを調べます。問題がなければはっきりと「異常なし」をお知らせします。"],
+        ['h3',"使い方"],
+        ['ul',["「今日」のリスクカードをタップしてスキャンを実行します。指摘された項目をタップすると、対処方法が表示されます。"]],
+      ]},
+      'when-to-leave': { title:"出発のタイミング", blocks:[
+        ['p',"リアルタイムの交通状況をもとに、空港へ向かう出発時刻の目安をお知らせします。"],
+        ['note',"リアルタイムの交通状況は変わることがあります。出発前に改めてご確認ください。"],
+      ]},
+      'airport': { title:"空港：マップ、保安検査、ラウンジ", blocks:[
+        ['p',"ターミナルマップとゲートへのナビ、保安検査の待ち時間、施設、そしてラウンジの利用可否の検出をご案内します。"],
+        ['h3',"使い方"],
+        ['ul',["「空港」の画面を開くと、ターミナルのマップ、保安検査の待ち時間の目安、飲食店やショップ、利用できるラウンジが表示されます。"]],
+        ['note',"待ち時間は通常のパターンに基づく目安です。到着時に空港の表示をご確認ください。"],
+      ]},
+      'find-car': { title:"車を見つける", blocks:[
+        ['p',"出発前に空港で駐車した場所を保存しておき、戻ったときに簡単に見つけられます。"],
+        ['h3',"使い方"],
+        ['ul',[
+          "車を離れる前に、アプリ上部のメニューを開き、「駐車場所を保存」をタップします。",
+          "階と列をメモし、短い覚え書きを追加して、いちばん近い標識の写真を撮ります。「保存」をタップします。",
+          "戻ってきたら、保存した場所と写真が到着画面に表示されています。",
+        ]],
+        ['note',"立体駐車場は GPS が届きにくいため、階の標識の写真がもっとも確実な目印になります。駐車の情報はご利用の端末内に保存されます。"],
+      ]},
+      'in-flight': { title:"機内と乗り継ぎ", blocks:[
+        ['p',"空の上でも乗り継ぎを把握します。時間の厳しい乗り継ぎにリスクがあればお知らせし、着陸した瞬間に次の区間が準備できています。"],
+      ]},
+      'arrival-hub': { title:"到着ハブ", blocks:[
+        ['p',"着陸すると、Ruta は現地で必要なものを表示します。保存したその日のホテル、レンタカー、電車、手荷物受取所、そしてワンタップの配車です。"],
+        ['h3',"使い方"],
+        ['ul',[
+          "着陸後の「今日」で、保存した車・電車・ホテルをタップすると詳細が表示されます。Uber／Lyft をタップすると目的地方面への配車を手配できます。",
+          "「手荷物受取所」をタップすると、荷物を受け取る場所がわかります。",
+        ]],
+      ]},
+      'destination-tools': { title:"天気、通貨、翻訳", blocks:[
+        ['p',"現地の天気、母国通貨に設定した通貨換算、発音付きの重要フレーズ、自由入力の翻訳に加え、文化のヒントや緊急連絡先をご案内します。"],
+        ['h3',"使い方"],
+        ['ul',[
+          "到着したら「目的地」タブを開きます。ツールは今いる場所に合わせて変わります。",
+          "「現地の人に見せる」を使うと、翻訳したフレーズを相手に表示できます。",
+        ]],
+      ]},
+      'expenses': { title:"経費", blocks:[
+        ['p',"旅行中の支出をその都度記録し、あとで振り返ることができます。"],
+        ['h3',"使い方"],
+        ['ul',["金額とカテゴリーを付けて経費を追加します。合計は振り返りで確認できます。"]],
+      ]},
+      'post-trip': { title:"旅行の振り返りとアーカイブ", blocks:[
+        ['p',"旅行が終わると、Ruta は振り返りに切り替わり、その旅行をアーカイブに収めます。次の旅行を新たに始められます。"],
+      ]},
+      'voice': { title:"音声アシスタント", blocks:[
+        ['p',"旅行、ゲート、状況、天気について、手を使わずに尋ねられます。"],
+        ['note',"話しかけているのは Ruta の AI アシスタントであり、人ではありません。重要な事項は必ずご確認ください。"],
+      ]},
+      'languages': { title:"言語", blocks:[
+        ['p',"Ruta は9つの言語でご利用いただけます。「設定」で言語を選ぶと、音声を含むアプリ全体がそれに従います。"],
+      ]},
+      'notifications': { title:"通知", blocks:[
+        ['p',"受け取るお知らせを細かく選べます。ゲート変更、遅延、早発、乗り継ぎリスク、搭乗、出発のタイミング、書類の有効期限、そして前夜の出発前リマインダーです。"],
+        ['h3',"使い方"],
+        ['ul',["「設定」の「通知」で、各通知の種類を切り替えます。"]],
+      ]},
+      'offline': { title:"オフラインモード", blocks:[
+        ['p',"保存した旅行は電波がなくても使えます。Ruta は旅行と最後に同期した情報を表示し、再接続するとリアルタイムの部分を更新します。"],
+        ['note',"目的地のオフラインマップを Apple または Google Maps でダウンロードしておくと、現地でもナビが使えます。"],
+      ]},
+      'getting-help': { title:"ヘルプと問い合わせ", blocks:[
+        ['p',"ヘルプはアプリに組み込まれており、メールでもお問い合わせいただけます。"],
+        ['h3',"使い方"],
+        ['ul',[
+          "どの画面でも上部の隅にある ? をタップすると、その機能に関するヘルプが表示されます。",
+          "この完全なガイドは、いつでも「設定」の「ユーザーガイド」からご覧いただけます。",
+          "人に相談したいときは、「設定」の「サポートに問い合わせる」をタップするか、support@rutatravels.com までメールをお送りください。",
+        ]],
+      ]},
+      'privacy': { title:"プライバシーとあなたのデータ", blocks:[
+        ['p',"旅行や機微な書類は、ご利用の端末内にとどまります。書類番号は端末の Keychain に暗号化して保存され、当社のサーバーへ送信されることは一切ありません。"],
+        ['h3',"知っておくと便利なこと"],
+        ['ul',[
+          "一部の機能は AI とリアルタイムのデータを使用します。それらには表示があり、重要な事項については公式の情報源をご案内します。",
+          "プライバシーポリシーの全文は rutatravels.com/privacy.html でご覧いただけます。",
+        ]],
+      ]},
+    },
+  },
+  ar: {
+    meta: {
+      langName: "العربية",
+      title: "المساعدة ودليل المستخدم",
+      tagline: "كل ما تفعله Ruta، من التخطيط للرحلة حتى الهبوط في وجهتك. انقر على رمز ? في الزاوية العلوية من أي شاشة في التطبيق للانتقال مباشرةً إلى قسم تلك الميزة هنا.",
+      footer: "دليل المساعدة والمستخدم من Ruta Travels. قد تتغير الميزات وتوافرها مع تحسّن التطبيق. بالنسبة لأي أمر حسّاس زمنياً — الرحلات أو البوابات أو قواعد الدخول — تأكد دائماً من شركة الطيران أو الجهة الرسمية.",
+    },
+    groupLabels: {
+      start:"البدء", plan:"التخطيط", travelday:"يوم السفر والمطار",
+      arrival:"أثناء الرحلة والوصول", after:"بعد الرحلة", setup:"الإعداد والحساب",
+    },
+    sections: {
+      'getting-started': { title:"مرحباً بك في Ruta", blocks:[
+        ['p',"تحفظ Ruta رحلتك كاملةً في مكان واحد وترافقك من التخطيط حتى الهبوط — تتابع رحلاتك، وتتنبأ بالاضطرابات قبل وقوعها، وتتحول إلى دليل محلي عند وصولك."],
+        ['h3',"الأساسيات"],
+        ['ul',[
+          "تمر رحلتك بمراحل: التخطيط، والقادمة، واليوم، وما بعد الرحلة. مرحلة اليوم ترافقك خلال يوم السفر وحتى الإقلاع. وتعرض Ruta ما يهم في المرحلة التي أنت فيها.",
+          "أضف رحلة طيران للبدء. كل شيء آخر يُبنى حولها.",
+          "انقر على رمز ? في أي شاشة للحصول على مساعدة بخصوص تلك الميزة تحديداً.",
+        ]],
+      ]},
+      'add-flight': { title:"إضافة رحلة طيران", blocks:[
+        ['p',"أضف رحلتك إلى Ruta بأي طريقة تناسبك أكثر."],
+        ['h3',"طرق الإضافة"],
+        ['ul',[
+          "البحث برقم الرحلة أو المسار.",
+          "مسح بطاقة الصعود أو لقطة شاشة/ملف PDF لخط سيرك.",
+          "لصق نص رسالة تأكيد الحجز.",
+          "المشاركة مع Ruta مباشرةً من تطبيق شركة طيرانك أو البريد أو الصور.",
+          "الإدخال يدوياً — اكتب مراحل رحلتك.",
+        ]],
+        ['p',"مشاركة نص التأكيد أو لقطة شاشة واضحة تعطي أفضل النتائج. غالباً لا يمكن قراءة الرابط المجرد لأنه يقع خلف صفحة تسجيل دخول."],
+      ]},
+      'itinerary-timeline': { title:"الجدول الزمني لرحلتك", blocks:[
+        ['p',"الرحلات الجوية والفنادق وسيارات الإيجار والقطارات والأنشطة تجتمع معاً على جدول زمني واحد للرحلة، بالترتيب."],
+        ['h3',"طريقة الاستخدام"],
+        ['ul',[
+          "أضف الفنادق والسيارات والقطارات والأنشطة من واجهة رحلتك؛ يظهر كلٌّ منها في النقطة المناسبة ضمن الرحلة.",
+          "التفاصيل المحفوظة (أرقام التأكيد والأوقات والعناوين) تظهر عندما تصبح ذات صلة، بما في ذلك يوم الوصول.",
+        ]],
+      ]},
+      'add-calendar': { title:"إضافة الرحلات إلى تقويمك", blocks:[
+        ['p',"أضف رحلاتك إلى تقويم هاتفك لتظهر إلى جانب بقية جدول مواعيدك."],
+        ['h3',"طريقة الاستخدام"],
+        ['ul',[
+          "افتح القائمة في أعلى التطبيق وانقر على «إضافة إلى التقويم».",
+          "اسمح بالوصول إلى التقويم عند الطلب. تضيف Ruta كل رحلة كحدث مع أوقاتها ومطاراتها.",
+        ]],
+      ]},
+      'multi-leg': { title:"الرحلات متعددة المراحل والربط", blocks:[
+        ['p',"تفهم Ruta الرحلات المرتبطة وتراقب الاتصالات ذات الوقت الضيق."],
+        ['h3',"طريقة الاستخدام"],
+        ['ul',[
+          "أضف كل مرحلة، وتتابعها Ruta كرحلة واحدة — وتنبّهك إلى خطر فوات الاتصال إذا هدّد تأخير رحلة قادمة رحلتك التالية.",
+          "عند هبوطك، تُفعَّل المرحلة التالية تلقائياً.",
+        ]],
+      ]},
+      'packing-checklist': { title:"قائمة التحقق من الأمتعة", blocks:[
+        ['p',"قائمة تحقق قابلة للتخصيص، منظّمة حسب الفئة، حتى لا تنسى أي شيء."],
+        ['h3',"طريقة الاستخدام"],
+        ['ul',[
+          "تجدها في «الرحلة» ضمن «التحضير». انقر على العناصر لتحديدها.",
+          "أضف عناصرك الخاصة بزر «إضافة»؛ تبقى مرتبطة بهذه الرحلة.",
+          "احذف عنصراً مخصّصاً بالرمز X المجاور له.",
+        ]],
+      ]},
+      'pre-trip-checklist': { title:"قائمة التحقق قبل الرحلة والتذكيرات", blocks:[
+        ['p',"مهام أساسية (جواز السفر والتأشيرة والأدوية وغيرها) مع تنبيه اختياري في الليلة السابقة."],
+        ['h3',"طريقة الاستخدام"],
+        ['ul',[
+          "حدّد العناصر الأساسية أثناء إنجازها.",
+          "فعّل «تذكيرات ما قبل الرحلة» في «الإشعارات» لتصلك رسالة تذكير واحدة في الليلة السابقة بأي شيء لم يُحدَّد بعد.",
+        ]],
+      ]},
+      'travel-documents': { title:"وثائق السفر", blocks:[
+        ['p',"احفظ تفاصيل جواز سفرك وتأشيرتك وبرامج المسافر الموثوق، واحصل على تذكير قبل انتهاء صلاحية أي منها."],
+        ['h3',"طريقة الاستخدام"],
+        ['ul',[
+          "أضف أرقام الوثائق واختر تواريخ الانتهاء بمنتقي التاريخ.",
+          "فعّل تذكيرات انتهاء الصلاحية لتنبيهك قبل سنة، وستة أشهر، وشهر.",
+        ]],
+        ['note',"تُخزَّن أرقام الوثائق مشفّرة على جهازك (في Keychain الخاص بـ iOS) ولا تُرسَل أبداً إلى خوادمنا. احتفظ أيضاً بصورة لجواز سفرك محفوظة بشكل منفصل."],
+      ]},
+      'destination-briefing': { title:"موجز الوجهة", blocks:[
+        ['p',"ملخّص مُنشأ بالذكاء الاصطناعي عن وجهتك: ما ينبغي أن تحزمه، وحدود الجمارك، وملاحظات صحية، والثقافة، وأساسيات ما قبل السفر مثل المقابس الكهربائية والمياه والإكراميات."],
+        ['note',"مُنشأ بالذكاء الاصطناعي، لذا تحقّق من أي أمر حسّاس بالرجوع إلى مصدر رسمي."],
+      ]},
+      'visa-entry': { title:"متطلبات التأشيرة والدخول", blocks:[
+        ['p',"نقطة انطلاق حول ما قد تحتاجه لدخول وجهتك، مع جهات اتصال السفارات حسب الجنسية."],
+        ['note',"تتغير متطلبات السفر. تأكد دائماً من سفارة أو قنصلية الوجهة قبل الحجز — هذه نقطة انطلاق وليست إرشاداً قانونياً مُلزماً."],
+      ]},
+      'city-guides': { title:"أدلة المدن", blocks:[
+        ['p',"أنشطة وأماكن مختارة بعناية، منظّمة لتتمكن من تخطيط يومك دون إرهاق."],
+        ['h3',"طريقة الاستخدام"],
+        ['ul',["تصفّح حسب المدينة؛ انقر على مكان لعرض التفاصيل، وانقر على «التنقل» لفتحه في Google Maps."]],
+      ]},
+      'flight-tracking': { title:"تتبّع الرحلة المباشر", blocks:[
+        ['p',"حالة رحلتك وبوابتها وصالتها وتقدّمها في الوقت الفعلي."],
+        ['h3',"طريقة الاستخدام"],
+        ['ul',["افتح رحلتك لرؤية الحالة المباشرة؛ تحدّث Ruta المعلومات بوتيرة أعلى كلما اقترب موعد الإقلاع."]],
+        ['note',"يتم تأكيد البوابة والوقت من قبل شركة طيرانك عند البوابة — ألقِ نظرة دائماً على شاشات المطار أيضاً."],
+      ]},
+      'alerts': { title:"تنبيهات البوابة والتأخير والإقلاع", blocks:[
+        ['p',"إشعارات فورية عند تغيّر بوابتك، أو تأخّر رحلتك، أو مغادرتها أبكر مما هو مخطّط."],
+        ['h3',"طريقة الاستخدام"],
+        ['ul',["فعّل التنبيهات التي تريدها في «الإشعارات». تُطلَق تلقائياً أثناء وجود رحلة نشطة."]],
+      ]},
+      'risk-check': { title:"فحص مخاطر الرحلة", blocks:[
+        ['p',"فحص بنقرة واحدة عبر رحلاتك للتأخيرات ومخاطر الاتصال، مع رسالة واضحة تؤكد أن كل شيء على ما يرام."],
+        ['h3',"طريقة الاستخدام"],
+        ['ul',["انقر على بطاقة المخاطر في «اليوم» لإجراء الفحص؛ انقر على عنصر مُشار إليه لمعرفة ما ينبغي فعله."]],
+      ]},
+      'when-to-leave': { title:"متى تغادر", blocks:[
+        ['p',"وقت مغادرة مقترح للمطار بناءً على حركة المرور المباشرة."],
+        ['note',"قد تتغير حركة المرور المباشرة — تحقّق مجدداً قبل مغادرتك."],
+      ]},
+      'airport': { title:"المطار: الخرائط والأمن والصالات", blocks:[
+        ['p',"خرائط الصالات والتنقل إلى البوابات، وأوقات انتظار الأمن، والمرافق، والكشف عن إمكانية الوصول إلى صالات كبار الشخصيات."],
+        ['h3',"طريقة الاستخدام"],
+        ['ul',["افتح واجهة المطار لعرض خريطة صالتك، وتقديرات وقت انتظار الأمن، والمطاعم والمتاجر، والصالات التي يمكنك الوصول إليها."]],
+        ['note',"أوقات الانتظار تقديرات مبنية على الأنماط المعتادة؛ تحقّق من شاشات المطار عند وصولك."],
+      ]},
+      'find-car': { title:"اعثر على سيارتك", blocks:[
+        ['p',"احفظ مكان ركن سيارتك في المطار قبل إقلاعك، ثم اعثر عليها بسهولة عند عودتك."],
+        ['h3',"طريقة الاستخدام"],
+        ['ul',[
+          "قبل أن تغادر السيارة، افتح القائمة في أعلى التطبيق وانقر على «حفظ موقع الركن».",
+          "دوّن الطابق والصف، وأضف ملاحظة قصيرة، والتقط صورة لأقرب لافتة. انقر على «حفظ».",
+          "عند عودتك، ستجد موقعك المحفوظ وصورته في انتظارك على واجهة الوصول.",
+        ]],
+        ['note',"تحجب مواقف السيارات المغلقة إشارة GPS، لذا فإن صورة لافتة الطابق هي أضمن طريقة للعودة إلى سيارتك. تبقى تفاصيل ركنك على جهازك."],
+      ]},
+      'in-flight': { title:"أثناء الرحلة والاتصالات", blocks:[
+        ['p',"معرفة حالة الاتصال أثناء وجودك في الجو، مع تنبيهات إذا كان اتصال ضيق الوقت مهدّداً، ومرحلتك التالية جاهزة لحظة هبوطك."],
+      ]},
+      'arrival-hub': { title:"مركز الوصول", blocks:[
+        ['p',"عند هبوطك، تعرض Ruta ما تحتاجه على الأرض: فندقك المحفوظ، أو سيارة الإيجار، أو القطار لهذا اليوم، واستلام الأمتعة، ورحلة توصيل بنقرة واحدة."],
+        ['h3',"طريقة الاستخدام"],
+        ['ul',[
+          "في «اليوم» بعد الهبوط، انقر على سيارتك/قطارك/فندقك المحفوظ لرؤية التفاصيل، أو انقر على Uber/Lyft لطلب توصيلة نحو وجهتك.",
+          "انقر على «استلام الأمتعة» لمعرفة أين تجد حقائبك.",
+        ]],
+      ]},
+      'destination-tools': { title:"الطقس والعملة والترجمة", blocks:[
+        ['p',"الطقس المحلي، ومحوّل عملات مضبوط على عملة بلدك، وعبارات أساسية مع النطق، وترجمة حرة، إضافةً إلى نصائح ثقافية وأرقام الطوارئ."],
+        ['h3',"طريقة الاستخدام"],
+        ['ul',[
+          "افتح علامة «الوجهة» بمجرد وصولك؛ تتكيّف الأدوات مع مكانك.",
+          "استخدم «عرض للسكان المحليين» لعرض عبارة مترجمة لشخص ما.",
+        ]],
+      ]},
+      'expenses': { title:"المصروفات", blocks:[
+        ['p',"سجّل مصروفات رحلتك أولاً بأول وراجعها لاحقاً."],
+        ['h3',"طريقة الاستخدام"],
+        ['ul',["أضف مصروفاً بمبلغه وفئته؛ راجع المجاميع في ملخّصك."]],
+      ]},
+      'post-trip': { title:"ملخّص الرحلة والأرشيف", blocks:[
+        ['p',"عند انتهاء رحلتك، تنتقل Ruta إلى ملخّص وتحفظ الرحلة في أرشيفك لتبدأ الرحلة التالية من جديد."],
+      ]},
+      'voice': { title:"المساعد الصوتي", blocks:[
+        ['p',"اسأل عن رحلتك أو بوابتك أو حالتها أو الطقس — دون استخدام يديك."],
+        ['note',"أنت تتحدث إلى مساعد Ruta بالذكاء الاصطناعي، وليس إلى شخص. تحقّق من أي أمر حسّاس."],
+      ]},
+      'languages': { title:"اللغات", blocks:[
+        ['p',"تتوفر Ruta بتسع لغات. اختر لغتك في «الإعدادات»، ويتبعها التطبيق — بما في ذلك المساعد الصوتي."],
+      ]},
+      'notifications': { title:"الإشعارات", blocks:[
+        ['p',"اختر بالضبط التنبيهات التي تصلك: تغيّرات البوابة، والتأخيرات، والمغادرة الأبكر، ومخاطر الاتصال، والصعود، ووقت المغادرة، وانتهاء صلاحية الوثائق، وتذكير الليلة السابقة قبل الرحلة."],
+        ['h3',"طريقة الاستخدام"],
+        ['ul',["فعّل أو عطّل كل نوع من الإشعارات في «الإعدادات» ضمن «الإشعارات»."]],
+      ]},
+      'offline': { title:"وضع عدم الاتصال", blocks:[
+        ['p',"تعمل رحلتك المحفوظة دون إشارة. تعرض Ruta رحلتك وآخر معلومات تمت مزامنتها، وتحدّث الأجزاء المباشرة عند إعادة الاتصال."],
+        ['note',"نزّل خرائط عدم الاتصال لوجهتك في Apple أو Google Maps ليعمل التنقل على الأرض أيضاً."],
+      ]},
+      'getting-help': { title:"الحصول على المساعدة والتواصل", blocks:[
+        ['p',"المساعدة مدمجة في التطبيق، ونحن على بُعد رسالة بريد إلكتروني."],
+        ['h3',"طريقة الاستخدام"],
+        ['ul',[
+          "انقر على رمز ? في الزاوية العلوية من أي شاشة للحصول على مساعدة بخصوص تلك الميزة.",
+          "تجد هذا الدليل الكامل في أي وقت من «الإعدادات» ضمن «دليل المستخدم».",
+          "بحاجة إلى شخص؟ انقر على «التواصل مع الدعم» في «الإعدادات»، أو راسلنا على support@rutatravels.com.",
+        ]],
+      ]},
+      'privacy': { title:"الخصوصية وبياناتك", blocks:[
+        ['p',"تبقى رحلتك ووثائقك الحساسة على جهازك. تُشفَّر أرقام الوثائق في Keychain الجهاز ولا تُرسَل أبداً إلى خوادمنا."],
+        ['h3',"من الجيد أن تعرف"],
+        ['ul',[
+          "تستخدم بعض الميزات الذكاء الاصطناعي والبيانات المباشرة؛ وهي موسومة، ونوجّهك إلى المصادر الرسمية لأي أمر حسّاس.",
+          "اقرأ سياسة الخصوصية الكاملة على rutatravels.com/privacy.html.",
+        ]],
+      ]},
+    },
+  },
+  zh: {
+    meta: {
+      langName: "中文",
+      title: "帮助与用户指南",
+      tagline: "从规划行程到抵达目的地，Ruta 所做的一切尽在于此。在应用内任意界面点按右上角的 ? 符号，即可直接跳转到该功能在这里的对应章节。",
+      footer: "Ruta Travels 帮助与用户指南。随着应用不断完善，功能与可用性可能会有所调整。对于任何时效性强的信息，例如航班、登机口、入境规定，请务必向您的航空公司或官方机构核实。",
+    },
+    groupLabels: {
+      start:"快速上手", plan:"规划", travelday:"出行当天与机场",
+      arrival:"飞行途中与抵达", after:"行程结束后", setup:"设置与账户",
+    },
+    sections: {
+      'getting-started': { title:"欢迎使用 Ruta", blocks:[
+        ['p',"Ruta 把您的整段行程集中在一处，从规划到落地全程陪伴，帮您追踪航班、在突发状况来临前预测干扰，并在您抵达时化身为您的本地向导。"],
+        ['h3',"基础知识"],
+        ['ul',[
+          "您的行程会经历几个阶段：规划、即将出行、今天，以及行程结束后。今天会陪您走过出行当天并伴您登机起飞。Ruta 会根据您所处的阶段显示最重要的内容。",
+          "先添加一趟航班即可开始。其余的一切都围绕它展开。",
+          "在任意界面点按 ? 即可获取该功能的帮助。",
+        ]],
+      ]},
+      'add-flight': { title:"添加航班", blocks:[
+        ['p',"用最方便的方式把您的航班录入 Ruta。"],
+        ['h3',"添加方式"],
+        ['ul',[
+          "按航班号或航线搜索。",
+          "扫描登机牌，或行程单的截图/PDF。",
+          "粘贴确认邮件的文字内容。",
+          "直接从航空公司应用、邮件或照片分享到 Ruta。",
+          "手动录入，逐段输入您的航段。",
+        ]],
+        ['p',"分享确认文字或清晰的截图效果最好。单纯的链接通常无法读取，因为它需要登录才能查看。"],
+      ]},
+      'itinerary-timeline': { title:"您的行程时间线", blocks:[
+        ['p',"航班、酒店、租车、火车和活动会按顺序汇集在同一条行程时间线上。"],
+        ['h3',"如何使用"],
+        ['ul',[
+          "在行程视图中添加酒店、租车、火车和活动，每一项都会出现在行程中相应的时间点。",
+          "已保存的详情（确认号、时间、地址）会在相关时刻自动呈现，包括抵达当天。",
+        ]],
+      ]},
+      'add-calendar': { title:"将航班添加到日历", blocks:[
+        ['p',"把航班加入手机日历，与您的其他日程排在一起。"],
+        ['h3',"如何使用"],
+        ['ul',[
+          "打开应用顶部的菜单，点按添加到日历。",
+          "在提示时允许日历访问权限。Ruta 会将每趟航班添加为带有时间和机场信息的日程事件。",
+        ]],
+      ]},
+      'multi-leg': { title:"多航段行程与中转", blocks:[
+        ['p',"Ruta 了解中转，并会盯紧那些时间紧张的衔接。"],
+        ['h3',"如何使用"],
+        ['ul',[
+          "添加每一个航段，Ruta 会把它们作为一段完整旅程来追踪，当前序航班延误可能影响下一趟航班时提示中转风险。",
+          "当您落地后，下一航段会自动激活。",
+        ]],
+      ]},
+      'packing-checklist': { title:"行李清单", blocks:[
+        ['p',"一份可自定义、按类别整理的清单，让您不遗漏任何物品。"],
+        ['h3',"如何使用"],
+        ['ul',[
+          "在行程的准备部分中找到它。点按物品即可勾选。",
+          "用添加按钮加入您自己的物品，它们会保留在本次行程中。",
+          "点按物品旁的 X 即可删除自定义物品。",
+        ]],
+      ]},
+      'pre-trip-checklist': { title:"行前清单与提醒", blocks:[
+        ['p',"关键待办事项（护照、签证、药品等），并可选在出发前一晚温馨提醒。"],
+        ['h3',"如何使用"],
+        ['ul',[
+          "在处理完关键事项后逐一勾选。",
+          "在通知中开启行前提醒，即可在出发前一晚收到一条汇总提醒，涵盖所有尚未勾选的事项。",
+        ]],
+      ]},
+      'travel-documents': { title:"旅行证件", blocks:[
+        ['p',"保存您的护照、签证和可信旅客信息，并在任何证件到期前收到提醒。"],
+        ['h3',"如何使用"],
+        ['ul',[
+          "录入证件号码，并用日期选择器选择到期日。",
+          "开启到期提醒，即可在到期前一年、六个月和一个月收到提示。",
+        ]],
+        ['note',"证件号码以加密方式存储在您的设备上（保存在 iOS Keychain 中），绝不会发送到我们的服务器。也请另外单独保存一张护照照片。"],
+      ]},
+      'destination-briefing': { title:"目的地简报", blocks:[
+        ['p',"针对您目的地的 AI 生成概览：该带什么、海关限额、健康提示、文化礼仪，以及插头、饮用水、小费等出行前须知。"],
+        ['note',"内容由 AI 生成，因此对任何关键信息请再次对照官方来源核实。"],
+      ]},
+      'visa-entry': { title:"签证与入境要求", blocks:[
+        ['p',"关于入境目的地可能所需材料的起点参考，并按国籍提供使馆联系方式。"],
+        ['note',"旅行要求会变化。预订前请务必向目的地的使领馆核实，此处仅为起点参考，并非权威法律指导。"],
+      ]},
+      'city-guides': { title:"城市指南", blocks:[
+        ['p',"精选的游玩与观光去处，经过整理，让您轻松规划一天而不至于手忙脚乱。"],
+        ['h3',"如何使用"],
+        ['ul',["按城市浏览，点按某个地点查看详情，点按导航即可在地图中打开它。"]],
+      ]},
+      'flight-tracking': { title:"实时航班追踪", blocks:[
+        ['p',"您航班的实时状态、登机口、航站楼和进度。"],
+        ['h3',"如何使用"],
+        ['ul',["打开您的航班即可查看实时状态；随着起飞临近，Ruta 会更频繁地刷新。"]],
+        ['note',"登机口和时间以航空公司在登机口的确认为准，也请留意机场信息屏。"],
+      ]},
+      'alerts': { title:"登机口、延误与起飞提醒", blocks:[
+        ['p',"当登机口变更、航班延误，或比原计划提前起飞时，向您推送通知。"],
+        ['h3',"如何使用"],
+        ['ul',["在通知中开启您想要的提醒。行程进行期间它们会自动触发。"]],
+      ]},
+      'risk-check': { title:"行程风险检查", blocks:[
+        ['p',"一键扫描您的所有航班，检查延误和中转风险，一切顺利时会给出明确的安全提示。"],
+        ['h3',"如何使用"],
+        ['ul',["在今天点按风险卡片即可运行扫描；点按被标记的项目查看应对办法。"]],
+      ]},
+      'when-to-leave': { title:"何时出发", blocks:[
+        ['p',"基于实时路况，为您建议前往机场的出发时间。"],
+        ['note',"实时路况可能变化，出门前请再次确认。"],
+      ]},
+      'airport': { title:"机场：地图、安检、休息室", blocks:[
+        ['p',"航站楼地图与登机口导航、安检等待时间、设施，以及休息室使用权限识别。"],
+        ['h3',"如何使用"],
+        ['ul',["打开机场视图，查看您所在航站楼的地图、安检等待时间预估、餐饮商铺，以及您可使用的休息室。"]],
+        ['note',"等待时间为基于常规规律的预估，抵达后请查看机场信息屏。"],
+      ]},
+      'find-car': { title:"找到您的车", blocks:[
+        ['p',"起飞前先记下您在机场的停车位置，返程时就能轻松找到它。"],
+        ['h3',"如何使用"],
+        ['ul',[
+          "离开车辆前，打开应用顶部的菜单，点按保存停车位。",
+          "记下楼层和排号，添加一条简短备注，并拍下最近的标识牌。点按保存。",
+          "当您返回时，已保存的车位和照片会在您的抵达视图中等着您。",
+        ]],
+        ['note',"停车楼会遮挡 GPS 信号，因此拍下楼层标识照片是找回车辆最可靠的方式。您的停车信息会保留在您的设备上。"],
+      ]},
+      'in-flight': { title:"飞行途中与中转", blocks:[
+        ['p',"在空中也能掌握中转情况，衔接时间紧张有风险时会提醒您，落地那一刻下一航段即已就绪。"],
+      ]},
+      'arrival-hub': { title:"抵达中心", blocks:[
+        ['p',"当您落地后，Ruta 会为您呈现在当地所需的一切：您当天保存的酒店、租车或火车、行李提取处，以及一键叫车。"],
+        ['h3',"如何使用"],
+        ['ul',[
+          "落地后在今天中，点按已保存的租车/火车/酒店查看详情，或点按 Uber/Lyft 叫车前往目的地。",
+          "点按行李提取，查看在哪里领取您的行李。",
+        ]],
+      ]},
+      'destination-tools': { title:"天气、货币与翻译", blocks:[
+        ['p',"当地天气、以您本国货币为基准的汇率换算、带发音的常用短语、自由输入翻译，还有文化贴士和紧急电话号码。"],
+        ['h3',"如何使用"],
+        ['ul',[
+          "抵达后打开目的地标签页，各项工具会根据您所在的位置自动适配。",
+          "使用向当地人展示功能，把翻译好的短语出示给他人看。",
+        ]],
+      ]},
+      'expenses': { title:"开支", blocks:[
+        ['p',"随时记录行程开销，日后再回顾。"],
+        ['h3',"如何使用"],
+        ['ul',["添加一笔带金额和类别的开支；在您的行程回顾中查看合计。"]],
+      ]},
+      'post-trip': { title:"行程回顾与归档", blocks:[
+        ['p',"当行程结束时，Ruta 会切换到回顾视图，并把这段行程收入归档，让您可以焕然一新地开启下一段旅程。"],
+      ]},
+      'voice': { title:"语音助手", blocks:[
+        ['p',"随时询问您的行程、登机口、状态或天气，无需动手。"],
+        ['note',"您正在与 Ruta 的 AI 助手对话，而非真人。任何关键信息请再次核实。"],
+      ]},
+      'languages': { title:"语言", blocks:[
+        ['p',"Ruta 提供九种语言。在设置中选择您的语言，应用（包括语音）都会随之切换。"],
+      ]},
+      'notifications': { title:"通知", blocks:[
+        ['p',"精确选择您想接收的提醒：登机口变更、延误、提前起飞、中转风险、开始登机、何时出发、证件到期，以及出发前一晚的行前提醒。"],
+        ['h3',"如何使用"],
+        ['ul',["在设置的通知中逐项开关各类通知。"]],
+      ]},
+      'offline': { title:"离线模式", blocks:[
+        ['p',"没有信号时，您保存的行程照常可用。Ruta 会显示您的行程和上次同步的信息，并在您重新联网时更新实时内容。"],
+        ['note',"在 Apple 或 Google Maps 中下载目的地的离线地图，这样在当地也能正常导航。"],
+      ]},
+      'getting-help': { title:"获取帮助与联系我们", blocks:[
+        ['p',"帮助已内置于应用中，我们也只需一封邮件即可联系到。"],
+        ['h3',"如何使用"],
+        ['ul',[
+          "在任意界面点按右上角的 ? 即可获取该功能的帮助。",
+          "随时可在设置的用户指南中找到这份完整指南。",
+          "需要真人协助？在设置中点按联系客服，或发送邮件至 support@rutatravels.com。",
+        ]],
+      ]},
+      'privacy': { title:"隐私与您的数据", blocks:[
+        ['p',"您的行程和敏感证件都保留在您的设备上。证件号码在设备的 Keychain 中加密存储，绝不会发送到我们的服务器。"],
+        ['h3',"值得了解"],
+        ['ul',[
+          "部分功能会用到 AI 和实时数据，这些都会有标注，对于任何关键信息我们会指引您查阅官方来源。",
+          "在 rutatravels.com/privacy.html 阅读完整的隐私政策。",
+        ]],
+      ]},
+    },
+  },
+  pt: {
+    meta: {
+      langName: "Português",
+      title: "Ajuda e Guia do Usuário",
+      tagline: "Tudo o que o Ruta faz, do planejamento da viagem até o pouso no seu destino. Toque no ? no canto superior de qualquer tela do app para ir direto à seção correspondente àquele recurso aqui.",
+      footer: "Guia de Ajuda e do Usuário do Ruta Travels. Recursos e disponibilidade podem mudar conforme o app evolui. Para qualquer coisa urgente — voos, portões, regras de entrada — confirme sempre com a sua companhia aérea ou com o órgão oficial.",
+    },
+    groupLabels: {
+      start:"Primeiros passos", plan:"Planejar", travelday:"Dia da viagem e aeroporto",
+      arrival:"Durante o voo e chegada", after:"Depois da viagem", setup:"Configuração e conta",
+    },
+    sections: {
+      'getting-started': { title:"Bem-vindo ao Ruta", blocks:[
+        ['p',"O Ruta mantém toda a sua viagem em um só lugar e acompanha você do planejamento ao pouso — rastreando seus voos, prevendo transtornos antes que aconteçam e se transformando em um guia local quando você chega."],
+        ['h3',"O básico"],
+        ['ul',[
+          "Sua viagem passa por fases: Planejar, Em breve, Hoje e Pós-viagem. Hoje conduz você pelo dia da viagem e até o ar. O Ruta mostra o que importa para a fase em que você está.",
+          "Adicione um voo para começar. Todo o resto se organiza em torno dele.",
+          "Toque no ? em qualquer tela para obter ajuda com aquele recurso específico.",
+        ]],
+      ]},
+      'add-flight': { title:"Adicionar um voo", blocks:[
+        ['p',"Coloque seu voo no Ruta da forma que for mais fácil."],
+        ['h3',"Formas de adicionar"],
+        ['ul',[
+          "Busque pelo número do voo ou pela rota.",
+          "Escaneie um cartão de embarque ou uma captura de tela/PDF do seu itinerário.",
+          "Cole o texto de um e-mail de confirmação.",
+          "Compartilhe com o Ruta diretamente do app da sua companhia aérea, do Mail ou das Fotos.",
+          "Digite manualmente — informe os trechos do seu voo.",
+        ]],
+        ['p',"Compartilhar o texto da confirmação ou uma captura de tela nítida funciona melhor. Um link simples geralmente não pode ser lido porque fica protegido por um login."],
+      ]},
+      'itinerary-timeline': { title:"A linha do tempo da sua viagem", blocks:[
+        ['p',"Voos, hotéis, carros alugados, trens e atividades ficam juntos em uma única linha do tempo da jornada, em ordem."],
+        ['h3',"Como usar"],
+        ['ul',[
+          "Adicione hotéis, carros, trens e atividades pela visão da sua viagem; cada um aparece no ponto certo da jornada.",
+          "Detalhes salvos (números de confirmação, horários, endereços) aparecem quando são relevantes, inclusive no dia da chegada.",
+        ]],
+      ]},
+      'add-calendar': { title:"Adicionar voos ao seu calendário", blocks:[
+        ['p',"Coloque seus voos no calendário do seu telefone para que fiquem ao lado do resto da sua programação."],
+        ['h3',"Como usar"],
+        ['ul',[
+          "Abra o menu no topo do app e toque em Adicionar ao calendário.",
+          "Permita o acesso ao calendário quando solicitado. O Ruta adiciona cada voo como um evento com seus horários e aeroportos.",
+        ]],
+      ]},
+      'multi-leg': { title:"Viagens com várias etapas e conexões", blocks:[
+        ['p',"O Ruta entende conexões e fica de olho nas mais apertadas."],
+        ['h3',"Como usar"],
+        ['ul',[
+          "Adicione cada trecho, e o Ruta os acompanha como uma única jornada — sinalizando risco de conexão se um atraso na chegada ameaçar o seu próximo voo.",
+          "Quando você pousa, o próximo trecho é ativado automaticamente.",
+        ]],
+      ]},
+      'packing-checklist': { title:"Lista de bagagem", blocks:[
+        ['p',"Uma lista personalizável, organizada por categoria, para que nada fique para trás."],
+        ['h3',"Como usar"],
+        ['ul',[
+          "Encontre-a em Jornada, dentro de Preparar. Toque nos itens para marcá-los.",
+          "Adicione seus próprios itens com o botão Adicionar; eles ficam nesta viagem.",
+          "Remova um item personalizado com o X ao lado dele.",
+        ]],
+      ]},
+      'pre-trip-checklist': { title:"Lista e lembretes pré-viagem", blocks:[
+        ['p',"Tarefas essenciais (passaporte, visto, medicamentos e muito mais) com um lembrete opcional na véspera."],
+        ['h3',"Como usar"],
+        ['ul',[
+          "Marque os itens essenciais à medida que você os resolve.",
+          "Ative os Lembretes pré-viagem em Notificações para receber um único lembrete na véspera de qualquer item ainda não marcado.",
+        ]],
+      ]},
+      'travel-documents': { title:"Documentos de viagem", blocks:[
+        ['p',"Guarde os dados do seu passaporte, visto e programas de viajante confiável, e seja avisado antes que algo expire."],
+        ['h3',"Como usar"],
+        ['ul',[
+          "Adicione os números dos documentos e escolha as datas de validade no seletor de datas.",
+          "Ative os lembretes de validade para ser avisado com um ano, seis meses e um mês de antecedência.",
+        ]],
+        ['note',"Os números dos documentos são armazenados criptografados no seu dispositivo (no iOS Keychain) e nunca são enviados aos nossos servidores. Guarde também uma foto do seu passaporte separadamente."],
+      ]},
+      'destination-briefing': { title:"Resumo do destino", blocks:[
+        ['p',"Um panorama gerado por IA sobre para onde você vai: o que levar, limites da alfândega, notas de saúde, cultura e o básico que você precisa saber antes de ir, como tomadas, água e gorjetas."],
+        ['note',"Gerado por IA, então confira qualquer coisa importante em uma fonte oficial."],
+      ]},
+      'visa-entry': { title:"Requisitos de visto e entrada", blocks:[
+        ['p',"Um ponto de partida sobre o que você pode precisar para entrar no seu destino, com contatos de embaixadas por cidadania."],
+        ['note',"Os requisitos de viagem mudam. Confirme sempre com a embaixada ou o consulado do destino antes de reservar — isto é um ponto de partida, não uma orientação jurídica oficial."],
+      ]},
+      'city-guides': { title:"Guias de cidades", blocks:[
+        ['p',"Coisas selecionadas para fazer e ver, organizadas para você planejar um dia sem sobrecarga."],
+        ['h3',"Como usar"],
+        ['ul',["Navegue por cidade; toque em um lugar para ver detalhes e toque em Navegar para abri-lo no Maps."]],
+      ]},
+      'flight-tracking': { title:"Rastreamento de voo ao vivo", blocks:[
+        ['p',"Status, portão, terminal e progresso do seu voo em tempo real."],
+        ['h3',"Como usar"],
+        ['ul',["Abra o seu voo para ver o status ao vivo; o Ruta atualiza com mais frequência à medida que a partida se aproxima."]],
+        ['note',"O portão e o horário são confirmados pela sua companhia aérea no portão — dê sempre uma olhada nos painéis do aeroporto também."],
+      ]},
+      'alerts': { title:"Alertas de portão, atraso e partida", blocks:[
+        ['p',"Notificações push quando o seu portão muda, o seu voo atrasa ou vai partir mais cedo do que o previsto."],
+        ['h3',"Como usar"],
+        ['ul',["Ative os alertas que você quiser em Notificações. Eles disparam automaticamente enquanto uma viagem está ativa."]],
+      ]},
+      'risk-check': { title:"Verificação de risco da viagem", blocks:[
+        ['p',"Uma varredura com um toque em todos os seus voos em busca de atrasos e riscos de conexão, com um sinal de tudo certo quando você está tranquilo."],
+        ['h3',"Como usar"],
+        ['ul',["Toque no cartão de risco em Hoje para rodar a varredura; toque em um item sinalizado para ver o que fazer."]],
+      ]},
+      'when-to-leave': { title:"Quando sair", blocks:[
+        ['p',"Um horário de saída sugerido para o aeroporto com base no trânsito ao vivo."],
+        ['note',"O trânsito ao vivo pode mudar — confira antes de sair."],
+      ]},
+      'airport': { title:"Aeroporto: mapas, segurança, salas VIP", blocks:[
+        ['p',"Mapas do terminal e navegação até o portão, tempos de espera na segurança, comodidades e detecção de acesso a salas VIP."],
+        ['h3',"Como usar"],
+        ['ul',["Abra a visão do Aeroporto para ver o mapa do seu terminal, estimativas de espera na segurança, comidas e lojas, e as salas VIP a que você tem acesso."]],
+        ['note',"Os tempos de espera são estimativas baseadas em padrões típicos; confira os painéis do aeroporto ao chegar."],
+      ]},
+      'find-car': { title:"Encontre seu carro", blocks:[
+        ['p',"Salve onde você estacionou no aeroporto antes de viajar e depois encontre-o facilmente quando voltar."],
+        ['h3',"Como usar"],
+        ['ul',[
+          "Antes de sair do carro, abra o menu no topo do app e toque em Salvar vaga de estacionamento.",
+          "Anote o andar e a fileira, adicione uma nota curta e tire uma foto da placa mais próxima. Toque em Salvar.",
+          "Quando você voltar, a vaga salva e a foto estarão esperando na sua visão de chegada.",
+        ]],
+        ['note',"Estacionamentos cobertos bloqueiam o GPS, então uma foto da placa do andar é a forma mais confiável de voltar ao seu carro. Os detalhes do seu estacionamento ficam no seu dispositivo."],
+      ]},
+      'in-flight': { title:"Durante o voo e conexões", blocks:[
+        ['p',"Acompanhamento de conexões enquanto você está no ar, com alertas se uma conexão apertada estiver em risco, e o seu próximo trecho pronto no momento em que você pousa."],
+      ]},
+      'arrival-hub': { title:"Central de chegada", blocks:[
+        ['p',"Quando você pousa, o Ruta traz à tona o que você precisa em terra: o hotel, o carro alugado ou o trem salvos para o dia, a esteira de bagagem e uma corrida com um toque."],
+        ['h3',"Como usar"],
+        ['ul',[
+          "Em Hoje, após o pouso, toque no seu carro/trem/hotel salvo para ver os detalhes, ou toque em Uber/Lyft para pedir uma corrida rumo ao seu destino.",
+          "Toque em Esteira de bagagem para ver onde encontrar suas malas.",
+        ]],
+      ]},
+      'destination-tools': { title:"Clima, moeda e tradução", blocks:[
+        ['p',"Clima local, um conversor de moeda ajustado à sua moeda de origem, frases essenciais com pronúncia e tradução livre, além de dicas culturais e números de emergência."],
+        ['h3',"Como usar"],
+        ['ul',[
+          "Abra a aba Destino assim que chegar; as ferramentas se adaptam a onde você está.",
+          "Use Mostrar aos locais para exibir uma frase traduzida a alguém.",
+        ]],
+      ]},
+      'expenses': { title:"Despesas", blocks:[
+        ['p',"Registre os gastos da viagem à medida que acontecem e revise-os depois."],
+        ['h3',"Como usar"],
+        ['ul',["Adicione uma despesa com valor e categoria; revise os totais no seu resumo."]],
+      ]},
+      'post-trip': { title:"Resumo e arquivo da viagem", blocks:[
+        ['p',"Quando sua viagem termina, o Ruta passa para um resumo e guarda a viagem no seu arquivo para você começar a próxima do zero."],
+      ]},
+      'voice': { title:"Assistente de voz", blocks:[
+        ['p',"Pergunte sobre a sua viagem, portão, status ou clima — sem usar as mãos."],
+        ['note',"Você está falando com o assistente de IA do Ruta, não com uma pessoa. Confira qualquer coisa importante."],
+      ]},
+      'languages': { title:"Idiomas", blocks:[
+        ['p',"O Ruta está disponível em nove idiomas. Defina o seu em Ajustes, e o app — incluindo a voz — acompanha."],
+      ]},
+      'notifications': { title:"Notificações", blocks:[
+        ['p',"Escolha exatamente quais alertas você recebe: mudanças de portão, atrasos, partidas antecipadas, risco de conexão, embarque, quando sair, validade de documentos e o lembrete pré-viagem da véspera."],
+        ['h3',"Como usar"],
+        ['ul',["Ative ou desative cada tipo de notificação em Ajustes, dentro de Notificações."]],
+      ]},
+      'offline': { title:"Modo offline", blocks:[
+        ['p',"Sua viagem salva funciona sem sinal. O Ruta mostra a sua viagem e as informações da última sincronização, e atualiza as partes ao vivo quando você se reconecta."],
+        ['note',"Baixe mapas offline do seu destino no Apple ou Google Maps para que a navegação também funcione em terra."],
+      ]},
+      'getting-help': { title:"Obter ajuda e contato", blocks:[
+        ['p',"A ajuda está integrada ao app, e estamos a um e-mail de distância."],
+        ['h3',"Como usar"],
+        ['ul',[
+          "Toque no ? no canto superior de qualquer tela para obter ajuda com aquele recurso.",
+          "Encontre este guia completo a qualquer momento em Ajustes, dentro de Guia do Usuário.",
+          "Precisa de uma pessoa? Toque em Falar com o suporte em Ajustes, ou envie um e-mail para support@rutatravels.com.",
+        ]],
+      ]},
+      'privacy': { title:"Privacidade e seus dados", blocks:[
+        ['p',"Sua viagem e seus documentos sensíveis ficam no seu dispositivo. Os números dos documentos são criptografados no Keychain do dispositivo e nunca são enviados aos nossos servidores."],
+        ['h3',"Bom saber"],
+        ['ul',[
+          "Alguns recursos usam IA e dados ao vivo; esses são identificados, e indicamos fontes oficiais para qualquer coisa importante.",
+          "Leia a Política de Privacidade completa em rutatravels.com/privacy.html.",
+        ]],
+      ]},
+    },
+  },
+};
+
+/* ── Engine ── */
+const RTL_LANGS = ['ar'];
+const $ = s => document.querySelector(s);
+
+function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function linkify(s){
+  // auto-link emails and the privacy URL that appear in body text
+  s = s.replace(/support@rutatravels\.com/g,'<a href="mailto:support@rutatravels.com">support@rutatravels.com</a>');
+  s = s.replace(/rutatravels\.com\/privacy\.html/g,'<a href="https://rutatravels.com/privacy.html">rutatravels.com/privacy.html</a>');
+  return s;
+}
+function pick(lang){ return (GUIDE[lang] ? lang : 'en'); }
+function sec(lang, id){
+  const L = GUIDE[pick(lang)];
+  return (L.sections && L.sections[id]) || GUIDE.en.sections[id];
+}
+function label(lang, gid){
+  const L = GUIDE[pick(lang)];
+  return (L.groupLabels && L.groupLabels[gid]) || GUIDE.en.groupLabels[gid];
+}
+function meta(lang){ return (GUIDE[pick(lang)].meta) || GUIDE.en.meta; }
+
+function renderBlocks(blocks){
+  return blocks.map(b=>{
+    const t = b[0];
+    if(t==='p') return '<p>'+linkify(esc(b[1]))+'</p>';
+    if(t==='h3') return '<h3>'+esc(b[1])+'</h3>';
+    if(t==='note') return '<div class="note">'+linkify(esc(b[1]))+'</div>';
+    if(t==='ul') return '<ul>'+b[1].map(li=>'<li>'+linkify(esc(li))+'</li>').join('')+'</ul>';
+    if(t==='html') return b[1];
+    return '';
+  }).join('');
+}
+
+function render(lang){
+  lang = pick(lang);
+  const isRtl = RTL_LANGS.includes(lang);
+  document.documentElement.lang = lang;
+  document.documentElement.dir = isRtl ? 'rtl' : 'ltr';
+  const m = meta(lang);
+  $('#pageTitle').textContent = m.title;
+  $('#pageTagline').textContent = m.tagline;
+  $('#pageFooter').textContent = m.footer;
+
+  // TOC
+  let toc = '';
+  STRUCTURE.forEach(g=>{
+    toc += '<div class="grp"><div class="grplabel">'+esc(label(lang,g.id))+'</div><div class="links">';
+    g.items.forEach(id=>{ toc += '<a href="#'+id+'">'+esc(sec(lang,id).title)+'</a>'; });
+    toc += '</div></div>';
+  });
+  $('#toc').innerHTML = toc;
+
+  // Content
+  let html = '';
+  STRUCTURE.forEach(g=>{
+    html += '<section class="grp-h"><div class="gh">'+esc(label(lang,g.id))+'</div></section>';
+    g.items.forEach(id=>{
+      const s = sec(lang,id);
+      html += '<article id="'+id+'"><h2>'+esc(s.title)+'</h2>'+renderBlocks(s.blocks)+'</article>';
+    });
+  });
+  $('#content').innerHTML = html;
+
+  // Re-scroll to the hash section if present (e.g. app deep-link #add-flight)
+  if(location.hash){ const el = document.getElementById(location.hash.slice(1)); if(el) el.scrollIntoView(); }
+}
+
+function buildLangMenu(current){
+  const sel = $('#lang');
+  sel.innerHTML = Object.keys(GUIDE).map(code=>{
+    const name = (GUIDE[code].meta && GUIDE[code].meta.langName) || code;
+    return '<option value="'+code+'"'+(code===current?' selected':'')+'>'+esc(name)+'</option>';
+  }).join('');
+  // localized "Language" label
+  const labels = {en:'Language',es:'Idioma',it:'Lingua',fr:'Langue',de:'Sprache',ja:'言語',ar:'اللغة',zh:'语言',pt:'Idioma'};
+  $('#langLabel').textContent = labels[current] || 'Language';
+}
+
+function detectLang(){
+  const url = new URLSearchParams(location.search).get('lang');
+  if(url && GUIDE[url]) return url;                       // 1. explicit app link (?lang=xx)
+  try{ const saved = localStorage.getItem('rutaGuideLang'); if(saved && GUIDE[saved]) return saved; }catch(e){} // 2. saved choice
+  const navs = (navigator.languages || [navigator.language || 'en']);  // 3. phone/browser language
+  for(const n of navs){ const two = String(n).slice(0,2).toLowerCase(); if(GUIDE[two]) return two; }
+  return 'en';                                            // 4. fallback
+}
+
+function setLang(lang){
+  lang = pick(lang);
+  buildLangMenu(lang);
+  render(lang);
+  try{ localStorage.setItem('rutaGuideLang', lang); }catch(e){}
+}
+
+document.addEventListener('DOMContentLoaded', ()=>{
+  setLang(detectLang());
+  $('#lang').addEventListener('change', e=> setLang(e.target.value));
+  // smooth-scroll TOC taps
+  document.addEventListener('click', e=>{
+    const a = e.target.closest('a[href^="#"]');
+    if(a){ const el = document.getElementById(a.getAttribute('href').slice(1)); if(el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth'}); history.replaceState(null,'',a.getAttribute('href')); } }
+  });
+});
+</script>
 </body>
 </html>
