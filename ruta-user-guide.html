@@ -58,6 +58,9 @@
   article p{margin:0 0 16px;color:var(--text)}
   article ul{margin:0 0 16px;padding-inline-start:20px}
   article li{margin:0 0 9px;color:var(--text)}
+  /* Emphasis for page & feature names — full white + heaviest loaded weight so it reads
+     clearly against the light-300 body text. */
+  article strong, .note strong{color:var(--white);font-weight:600}
   .note{background:var(--navy-card);border-inline-start:3px solid var(--gold);border-radius:8px;
     padding:12px 15px;margin:0 0 16px;color:var(--muted);font-size:15px}
   .disclaimer{color:var(--muted);font-size:12.5px;line-height:1.65;letter-spacing:.02em;margin-top:50px;padding-top:20px;border-top:1px solid var(--hair)}
@@ -86,7 +89,6 @@
     <a href="/blog/">Journal</a>
     <label for="lang" id="langLabel">Language</label>
     <select id="lang" aria-label="Language"></select>
-    <a href="/#waitlist" class="topnav-cta">Join Waitlist</a>
   </div>
 </nav>
 <div class="wrap">
@@ -161,7 +163,7 @@ const GUIDE = {
         ['p','Drop your flights into your phone’s calendar so they sit alongside the rest of your schedule.'],
         ['h3','How to use'],
         ['ul',[
-          'Open the menu at the top of the app and tap Add to calendar.',
+          'Open the menu at the top of the app and tap **Add to calendar**.',
           'Allow calendar access when asked. Ruta adds each flight as an event with its times and airports.',
         ]],
       ]},
@@ -177,9 +179,9 @@ const GUIDE = {
         ['p','A customizable checklist, organized by category, so nothing gets left behind.'],
         ['h3','How to use'],
         ['ul',[
-          'Find it in Journey under Prepare. Tap items to check them off.',
-          'Add your own items with the Add button; they stay with this trip.',
-          'Remove a custom item with the X next to it.',
+          'Find it in **Journey** under **Prepare**. Tap items to check them off.',
+          'Add your own items with the **Add** button; they stay with this trip.',
+          'Remove a custom item with the **X** next to it.',
         ]],
       ]},
       'pre-trip-checklist': { title:'Pre-trip checklist & reminders', blocks:[
@@ -187,7 +189,7 @@ const GUIDE = {
         ['h3','How to use'],
         ['ul',[
           'Check off critical items as you handle them.',
-          'Turn on Pre-trip Reminders in Notifications to get a single night-before reminder for anything still unchecked.',
+          'Turn on **Pre-trip Reminders** in **Notifications** to get a single night-before reminder for anything still unchecked.',
         ]],
       ]},
       'travel-documents': { title:'Travel documents', blocks:[
@@ -210,7 +212,7 @@ const GUIDE = {
       'city-guides': { title:'City guides', blocks:[
         ['p','Curated things to do and see, organized so you can plan a day without the overwhelm.'],
         ['h3','How to use'],
-        ['ul',['Browse by city; tap a place for details and tap Navigate to open it in Maps.']],
+        ['ul',['Browse by city; tap a place for details and tap **Navigate** to open it in Maps.']],
       ]},
       'flight-tracking': { title:'Live flight tracking', blocks:[
         ['p','Real-time status, gate, terminal, and progress for your flight.'],
@@ -221,7 +223,7 @@ const GUIDE = {
       'alerts': { title:'Gate, delay & departure alerts', blocks:[
         ['p','Push notifications when your gate changes, your flight is delayed, or it’s leaving earlier than planned.'],
         ['h3','How to use'],
-        ['ul',['Turn the alerts you want on in Notifications. They fire automatically while a trip is active.']],
+        ['ul',['Turn the alerts you want on in **Notifications**. They fire automatically while a trip is active.']],
       ]},
       'risk-check': { title:'Trip risk check', blocks:[
         ['p','A one-tap check across all your flights for delays and tight connections. If nothing is at risk, you get an all-clear. If something is, Ruta flags it and shows you what to do.'],
@@ -242,8 +244,8 @@ const GUIDE = {
         ['p','Save where you parked at the airport before you fly, then find it easily when you’re back.'],
         ['h3','How to use'],
         ['ul',[
-          'Before you leave the car, open the menu at the top of the app and tap Save parking spot.',
-          'Note the level and row, add a short note, and snap a photo of the nearest sign. Tap Save.',
+          'Before you leave the car, open the menu at the top of the app and tap **Save parking spot**.',
+          'Note the level and row, add a short note, and snap a photo of the nearest sign. Tap **Save**.',
           'When you return, your saved spot and photo are waiting on your arrival view.',
         ]],
         ['note','Parking garages block GPS, so a photo of the level sign is the most reliable way back to your car. Your parking details stay on your device.'],
@@ -256,15 +258,15 @@ const GUIDE = {
         ['h3','How to use'],
         ['ul',[
           'On **Today** after landing, tap your saved car/train/hotel to see details, or tap Uber/Lyft to get a ride toward your destination.',
-          'Tap Baggage claim for where to find your bags.',
+          'Tap **Baggage claim** for where to find your bags.',
         ]],
       ]},
       'destination-tools': { title:'Weather, currency & translation', blocks:[
         ['p','Local weather, a currency converter set to your home currency, key phrases with pronunciation, and free-form translation, plus cultural tips and emergency numbers.'],
         ['h3','How to use'],
         ['ul',[
-          'Open the Destination tab once you’ve arrived; tools adapt to where you are.',
-          'Use Show to Locals to display a translated phrase to someone.',
+          'Open the **Destination** tab once you’ve arrived; tools adapt to where you are.',
+          'Use **Show to Locals** to display a translated phrase to someone.',
         ]],
       ]},
       'expenses': { title:'Expenses', blocks:[
@@ -285,7 +287,7 @@ const GUIDE = {
       'notifications': { title:'Notifications', blocks:[
         ['p','Choose exactly which alerts you get: gate changes, delays, earlier departures, connection risk, boarding, when-to-leave, document expiry, and the night-before pre-trip reminder.'],
         ['h3','How to use'],
-        ['ul',['Toggle each notification type in Settings under Notifications.']],
+        ['ul',['Toggle each notification type in **Settings** under **Notifications**.']],
       ]},
       'offline': { title:'Offline mode', blocks:[
         ['p','Your saved trip works without a signal. Ruta shows your trip and last-synced info, and updates the live pieces when you reconnect.'],
@@ -295,9 +297,9 @@ const GUIDE = {
         ['p','Help is built into the app, and we’re an email away.'],
         ['h3','How to use'],
         ['ul',[
-          'Tap the ? in the top corner of any screen for help with that feature.',
-          'Find this full guide any time from Settings under User Guide.',
-          'Need a person? Tap Contact support in Settings, or email support@rutatravels.com.',
+          'Tap the **?** in the top corner of any screen for help with that feature.',
+          'Find this full guide any time from **Settings** under **User Guide**.',
+          'Need a person? Tap **Contact support** in **Settings**, or email support@rutatravels.com.',
         ]],
       ]},
       'privacy': { title:'Privacy & your data', blocks:[
