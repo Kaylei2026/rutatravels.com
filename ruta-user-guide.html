@@ -111,7 +111,7 @@ const STRUCTURE = [
   { id:'travelday', items:['flight-tracking','alerts','risk-check','when-to-leave','airport','find-car'] },
   { id:'arrival',   items:['in-flight','arrival-hub','destination-tools'] },
   { id:'after',     items:['expenses','post-trip'] },
-  { id:'setup',     items:['voice','languages','notifications','offline','getting-help','privacy'] },
+  { id:'setup',     items:['modes','voice','languages','notifications','offline','getting-help','privacy'] },
 ];
 
 /* ── Content, per language. Falls back to English for any missing language or section. ──
@@ -310,6 +310,21 @@ const GUIDE = {
           'Read the full Privacy Policy at rutatravels.com/privacy.html.',
         ]],
       ]},
+      'modes': { title:'App modes & Simple mode', blocks:[
+        ['p','Ruta can focus on exactly the kind of trip you’re taking, and offers a stripped-down view for the times you just want the essentials.'],
+        ['h3','Choose how Ruta works'],
+        ['ul',[
+          '**Get there** shows only the travel-day essentials: your flights, gate, timing, and the airport. Ideal when you just need to make your flight.',
+          '**Explore** focuses on the destination: city guides, places to see, and on-the-ground tools.',
+          '**Both** combines them into the full app. Pick your mode in **Settings**, or just say it to the voice assistant.',
+        ]],
+        ['h3','Simple mode'],
+        ['p','Simple mode is a calmer, larger view that shows just the next thing you need, when to leave, your gate, and boarding, in a big, clear layout. It helps any time the full app feels busy, and it’s great for handing your phone to a travel companion.'],
+        ['ul',[
+          'Turn it on in **Settings**; tap **Full app** any time to switch back.',
+          'Ask the voice assistant for your gate, time, or terminal to get a hands-free answer.',
+        ]],
+      ]},
     },
   },
   es: {
@@ -502,6 +517,21 @@ const GUIDE = {
         ['ul',[
           "Algunas funciones usan IA y datos en vivo; están señaladas y te remitimos a fuentes oficiales para todo lo importante.",
           "Lee la Política de privacidad completa en rutatravels.com/privacy.html.",
+        ]],
+      ]},
+      'modes': { title:"Modos de la app y modo sencillo", blocks:[
+        ["p","Ruta puede centrarse justo en el tipo de viaje que haces, y ofrece una vista simplificada para cuando solo quieres lo esencial."],
+        ["h3","Elige cómo funciona Ruta"],
+        ["ul",[
+          "**Llegar** muestra solo lo esencial del día de viaje: tus vuelos, la puerta, los horarios y el aeropuerto. Ideal cuando solo necesitas tomar tu vuelo.",
+          "**Explorar** se centra en el destino: guías de la ciudad, lugares que ver y herramientas sobre el terreno.",
+          "**Ambos** los combina en la app completa. Elige tu modo en **Ajustes** o simplemente díselo al asistente de voz.",
+        ]],
+        ["h3","Modo sencillo"],
+        ["p","El modo sencillo es una vista más tranquila y grande que muestra solo lo siguiente que necesitas: cuándo salir, tu puerta y el embarque, con un diseño amplio y claro. Ayuda siempre que la app completa te resulte recargada, y es perfecto para pasarle el teléfono a un acompañante."],
+        ["ul",[
+          "Actívalo en **Ajustes**; toca **App completa** en cualquier momento para volver.",
+          "Pide tu puerta, la hora o la terminal al asistente de voz para obtener una respuesta con las manos libres.",
         ]],
       ]},
     },
@@ -698,6 +728,21 @@ const GUIDE = {
           "Leggi l'Informativa sulla privacy completa su rutatravels.com/privacy.html.",
         ]],
       ]},
+      'modes': { title:"Modalità dell'app e modalità semplice", blocks:[
+        ["p","Ruta può concentrarsi esattamente sul tipo di viaggio che stai facendo e offre una vista essenziale per quando vuoi solo lo stretto necessario."],
+        ["h3","Scegli come funziona Ruta"],
+        ["ul",[
+          "**Arriva** mostra solo l'essenziale del giorno di viaggio: i tuoi voli, il gate, gli orari e l'aeroporto. Ideale quando devi solo prendere il volo.",
+          "**Esplora** si concentra sulla destinazione: guide della città, luoghi da vedere e strumenti sul posto.",
+          "**Entrambe** le combina nell'app completa. Scegli la modalità in **Impostazioni** oppure dillo semplicemente all'assistente vocale.",
+        ]],
+        ["h3","Modalità semplice"],
+        ["p","La modalità semplice è una vista più tranquilla e ingrandita che mostra solo la cosa successiva che ti serve: quando partire, il gate e l'imbarco, con un layout ampio e chiaro. È utile ogni volta che l'app completa ti sembra troppo carica ed è perfetta per passare il telefono a un compagno di viaggio."],
+        ["ul",[
+          "Attivala in **Impostazioni**; tocca **App completa** in qualsiasi momento per tornare indietro.",
+          "Chiedi il gate, l'orario o il terminal all'assistente vocale per una risposta a mani libere.",
+        ]],
+      ]},
     },
   },
   fr: {
@@ -890,6 +935,21 @@ const GUIDE = {
         ['ul', [
           "Certaines fonctionnalités utilisent l'IA et des données en direct ; celles-ci sont signalées, et nous vous orientons vers des sources officielles pour tout élément critique.",
           "Lisez la Politique de confidentialité complète sur rutatravels.com/privacy.html.",
+        ]],
+      ]},
+      'modes': { title:"Modes de l'app et mode simple", blocks:[
+        ["p","Ruta peut se concentrer exactement sur le type de voyage que vous faites, et propose une vue épurée pour les moments où vous ne voulez que l'essentiel."],
+        ["h3","Choisissez le fonctionnement de Ruta"],
+        ["ul",[
+          "**Arriver** n'affiche que l'essentiel du jour de voyage : vos vols, la porte, les horaires et l'aéroport. Idéal quand vous devez simplement attraper votre vol.",
+          "**Explorer** se concentre sur la destination : guides de la ville, lieux à voir et outils sur place.",
+          "**Les deux** les combine dans l'app complète. Choisissez votre mode dans **Réglages** ou dites-le simplement à l'assistant vocal.",
+        ]],
+        ["h3","Mode simple"],
+        ["p","Le mode simple est une vue plus calme et plus grande qui n'affiche que la prochaine chose dont vous avez besoin : quand partir, votre porte et l'embarquement, avec une mise en page ample et claire. Il est utile dès que l'app complète vous semble chargée, et parfait pour tendre votre téléphone à un compagnon de voyage."],
+        ["ul",[
+          "Activez-le dans **Réglages** ; touchez **App complète** à tout moment pour revenir.",
+          "Demandez votre porte, l'heure ou le terminal à l'assistant vocal pour une réponse mains libres.",
         ]],
       ]},
     },
@@ -1086,6 +1146,21 @@ const GUIDE = {
           "Lies die vollständige Datenschutzrichtlinie unter rutatravels.com/privacy.html.",
         ]],
       ]},
+      'modes': { title:"App-Modi & Einfacher Modus", blocks:[
+        ["p","Ruta kann sich genau auf die Art von Reise konzentrieren, die du machst, und bietet eine reduzierte Ansicht für die Momente, in denen du nur das Wesentliche willst."],
+        ["h3","Wähle, wie Ruta arbeitet"],
+        ["ul",[
+          "**Hinkommen** zeigt nur das Wesentliche des Reisetags: deine Flüge, das Gate, die Zeiten und den Flughafen. Ideal, wenn du einfach nur deinen Flug erreichen musst.",
+          "**Entdecken** konzentriert sich auf das Reiseziel: Städteführer, sehenswerte Orte und Tools vor Ort.",
+          "**Beides** vereint sie zur vollständigen App. Wähle deinen Modus in den **Einstellungen** oder sag ihn einfach dem Sprachassistenten.",
+        ]],
+        ["h3","Einfacher Modus"],
+        ["p","Der einfache Modus ist eine ruhigere, größere Ansicht, die nur das Nächste zeigt, was du brauchst: wann du losmusst, dein Gate und das Boarding, in einem großen, klaren Layout. Er hilft immer dann, wenn die volle App zu unübersichtlich wirkt, und eignet sich gut, um dein Telefon einer Begleitperson zu reichen."],
+        ["ul",[
+          "Aktiviere ihn in den **Einstellungen**; tippe jederzeit auf **Volle App**, um zurückzuwechseln.",
+          "Frag den Sprachassistenten nach deinem Gate, der Zeit oder dem Terminal für eine freihändige Antwort.",
+        ]],
+      ]},
     },
   },
   ja: {
@@ -1278,6 +1353,21 @@ const GUIDE = {
         ['ul',[
           "一部の機能は AI とリアルタイムのデータを使用します。それらには表示があり、重要な事項については公式の情報源をご案内します。",
           "プライバシーポリシーの全文は rutatravels.com/privacy.html でご覧いただけます。",
+        ]],
+      ]},
+      'modes': { title:"アプリのモードとシンプルモード", blocks:[
+        ["p","Ruta は、あなたの旅のスタイルにぴったり合わせて表示を絞り込むことができ、必要最低限だけを見たいときのための簡潔な表示も用意しています。"],
+        ["h3","Ruta の動作を選ぶ"],
+        ["ul",[
+          "**移動する** は移動日に必要なことだけを表示します。フライト、ゲート、時刻、空港など。とにかくフライトに間に合えばよいときに最適です。",
+          "**巡る** は目的地に焦点を当てます。街のガイド、見どころ、現地で使えるツールなど。",
+          "**両方** はそれらを組み合わせた、フル機能のアプリです。モードは**設定**で選ぶか、音声アシスタントに伝えるだけでも切り替えられます。",
+        ]],
+        ["h3","シンプルモード"],
+        ["p","シンプルモードは、より落ち着いた大きめの表示で、次に必要なことだけを表示します。出発時刻、ゲート、搭乗などを、大きく見やすいレイアウトで示します。フル機能のアプリが煩雑に感じるときにいつでも役立ち、同行者にスマートフォンを手渡すのにも最適です。"],
+        ["ul",[
+          "**設定**でオンにできます。いつでも**フル表示**をタップすれば戻れます。",
+          "ゲート、時刻、ターミナルは音声アシスタントに尋ねれば、手を使わずに確認できます。",
         ]],
       ]},
     },
@@ -1474,6 +1564,21 @@ const GUIDE = {
           "اقرأ سياسة الخصوصية الكاملة على rutatravels.com/privacy.html.",
         ]],
       ]},
+      'modes': { title:"أوضاع التطبيق والوضع البسيط", blocks:[
+        ["p","يمكن لـ Ruta أن يركّز تمامًا على نوع الرحلة التي تقوم بها، ويوفّر عرضًا مبسّطًا للأوقات التي تريد فيها الأساسيات فقط."],
+        ["h3","اختر كيف يعمل Ruta"],
+        ["ul",[
+          "**الوصول** يعرض أساسيات يوم السفر فقط: رحلاتك والبوابة والأوقات والمطار. مثالي حين يكون كل ما تحتاجه هو اللحاق برحلتك.",
+          "**استكشاف** يركّز على الوجهة: أدلة المدينة والأماكن التي تستحق الزيارة والأدوات على أرض الواقع.",
+          "**كلاهما** يجمع بينهما في التطبيق الكامل. اختر وضعك من **الإعدادات** أو أخبر المساعد الصوتي به ببساطة.",
+        ]],
+        ["h3","الوضع البسيط"],
+        ["p","الوضع البسيط عرض أهدأ وأكبر يُظهر فقط الشيء التالي الذي تحتاجه: موعد المغادرة وبوابتك والصعود، بتصميم كبير وواضح. وهو مفيد في أي وقت يبدو فيه التطبيق الكامل مزدحمًا، ورائع لمناولة هاتفك لمرافقك."],
+        ["ul",[
+          "فعّله من **الإعدادات**؛ واضغط على **التطبيق الكامل** في أي وقت للعودة.",
+          "اسأل المساعد الصوتي عن بوابتك أو وقتك أو المبنى للحصول على إجابة دون استخدام يديك.",
+        ]],
+      ]},
     },
   },
   zh: {
@@ -1668,6 +1773,21 @@ const GUIDE = {
           "在 rutatravels.com/privacy.html 阅读完整的隐私政策。",
         ]],
       ]},
+      'modes': { title:"应用模式与简洁模式", blocks:[
+        ["p","Ruta 能够精准贴合您的出行类型进行聚焦，并在您只想查看要点时提供精简视图。"],
+        ["h3","选择 Ruta 的工作方式"],
+        ["ul",[
+          "**抵达**仅显示出行当天的要点：您的航班、登机口、时间和机场。当您只需赶上航班时最为合适。",
+          "**探索**聚焦目的地：城市指南、值得一看的地点以及落地后的实用工具。",
+          "**两者兼顾**将它们合并为完整应用。在**设置**中选择您的模式，或直接告诉语音助手。",
+        ]],
+        ["h3","简洁模式"],
+        ["p","简洁模式是一种更平静、更大字的视图，只显示您接下来需要的信息：何时出发、您的登机口以及登机，采用大而清晰的布局。当完整应用显得繁杂时，它随时都能派上用场，也非常适合把手机递给同行的人。"],
+        ["ul",[
+          "在**设置**中开启；随时点按**完整应用**即可切换回去。",
+          "向语音助手询问您的登机口、时间或航站楼，即可免提获得答案。",
+        ]],
+      ]},
     },
   },
   pt: {
@@ -1860,6 +1980,21 @@ const GUIDE = {
         ['ul',[
           "Alguns recursos usam IA e dados ao vivo; esses são identificados, e indicamos fontes oficiais para qualquer coisa importante.",
           "Leia a Política de Privacidade completa em rutatravels.com/privacy.html.",
+        ]],
+      ]},
+      'modes': { title:"Modos do app e modo simples", blocks:[
+        ["p","O Ruta pode focar exatamente no tipo de viagem que você está fazendo e oferece uma visão enxuta para quando você quer apenas o essencial."],
+        ["h3","Escolha como o Ruta funciona"],
+        ["ul",[
+          "**Chegar** mostra apenas o essencial do dia da viagem: seus voos, o portão, os horários e o aeroporto. Ideal quando você só precisa pegar seu voo.",
+          "**Explorar** foca no destino: guias da cidade, lugares para ver e ferramentas no local.",
+          "**Ambos** os combina no app completo. Escolha seu modo em **Configurações** ou simplesmente diga ao assistente de voz.",
+        ]],
+        ["h3","Modo simples"],
+        ["p","O modo simples é uma visão mais calma e maior que mostra apenas o próximo passo de que você precisa: quando sair, seu portão e o embarque, com um layout amplo e claro. É útil sempre que o app completo parecer cheio e ótimo para passar o telefone a um acompanhante."],
+        ["ul",[
+          "Ative-o em **Configurações**; toque em **App completo** a qualquer momento para voltar.",
+          "Peça seu portão, horário ou terminal ao assistente de voz para uma resposta com as mãos livres.",
         ]],
       ]},
     },
