@@ -3,33 +3,36 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Help & User Guide — Ruta Travels</title>
+<title>Help & User Guide - Ruta Travels</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Montserrat:wght@200;300;400;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --navy:#18273F; --navy-mid:#1A2C3D; --navy-card:#1F3347;
-    --gold:#F2A65A; --gold-dim:#B8851F;
-    --white:#FFFFFF; --text:rgba(255,255,255,0.80); --muted:rgba(255,255,255,0.5);
-    --border:rgba(242,166,90,0.18); --hair:rgba(255,255,255,0.06);
+    --navy:#18273F; --navy-deep:#101C2E; --navy-mid:#1A2C3D; --navy-card:#1F3347;
+    --gold:#F2A65A; --gold-dim:#B8851F; --teal:#1D9E75; --teal-deep:#0F6E56;
+    --white:#FFFFFF; --text:rgba(255,255,255,0.80); --muted:rgba(255,255,255,0.52);
+    --border:rgba(242,166,90,0.18); --hair:rgba(255,255,255,0.07);
   }
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
-  body{background:var(--navy);color:var(--text);
+  body{background:var(--navy-deep);color:var(--text);position:relative;overflow-x:hidden;
     font-family:'DM Sans',-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans","Noto Sans",sans-serif;
     font-weight:300;font-size:17px;line-height:1.7;-webkit-font-smoothing:antialiased;min-height:100vh}
+  body::before,body::after{content:"";position:absolute;border-radius:50%;filter:blur(90px);z-index:0;pointer-events:none}
+  body::before{width:600px;height:600px;background:radial-gradient(circle,rgba(242,166,90,0.26),transparent 62%);top:-200px;right:-150px}
+  body::after{width:520px;height:520px;background:radial-gradient(circle,rgba(29,158,117,0.20),transparent 62%);top:320px;left:-180px}
   a{color:var(--gold);text-decoration:none}
   a:hover{text-decoration:underline}
   .topnav{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;
-    padding:18px 40px;border-bottom:1px solid var(--hair);background:rgba(24,39,63,0.92);backdrop-filter:saturate(140%) blur(10px)}
+    padding:18px 40px;border-bottom:1px solid var(--hair);background:#18273F}
   .topnav-brand{display:inline-flex;align-items:center;text-decoration:none;line-height:0}
-  .topnav-brand img{height:44px;width:auto;display:block}
+  .topnav-brand img{height:40px;width:auto;display:block}
   .topnav-links{display:flex;align-items:center;gap:22px}
   .topnav-links a{font-family:'DM Sans',sans-serif;font-size:12px;font-weight:400;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.75);text-decoration:none;transition:color .2s}
   .topnav-links a:hover{color:var(--gold);text-decoration:none}
-  .topnav-cta{background:var(--white);color:var(--gold)!important;border:1px solid var(--white);border-radius:50px;padding:7px 18px;font-weight:600!important;letter-spacing:0.08em!important;transition:background .2s,color .2s,transform .15s}
-  .topnav-cta:hover{background:transparent;color:var(--white)!important;transform:scale(1.03)}
+  .topnav-cta{background:var(--white);color:var(--navy-deep)!important;border:1px solid var(--white);border-radius:50px;padding:8px 18px;font-weight:600!important;letter-spacing:0.08em!important;transition:background .2s,color .2s,transform .15s}
+  .topnav-cta:hover{background:var(--gold);border-color:var(--gold);color:var(--navy-deep)!important;transform:scale(1.03)}
   #langLabel{display:none}
   select#lang{appearance:none;background:transparent;color:rgba(255,255,255,0.75);border:1px solid var(--hair);border-radius:50px;
     padding:7px 30px 7px 14px;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:400;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;
@@ -37,7 +40,7 @@
     background-repeat:no-repeat;background-position:right 12px center}
   select#lang:hover{border-color:var(--border);color:var(--gold)}
   select#lang option{color:#18273F}
-  .wrap{max-width:820px;margin:0 auto;padding:0 24px 90px}
+  .wrap{position:relative;z-index:1;max-width:820px;margin:0 auto;padding:0 24px 90px}
   h1{font-family:'Montserrat',sans-serif;font-weight:300;color:var(--white);font-size:clamp(30px,5vw,42px);letter-spacing:0.05em;line-height:1.15;margin:46px 0 8px}
   .tagline{color:var(--muted);font-size:16px;margin:0 0 30px}
   nav.toc{background:var(--navy-mid);border:1px solid var(--hair);border-radius:16px;padding:20px 22px;margin:0 0 36px}
@@ -87,6 +90,7 @@
   <a href="/" class="topnav-brand"><img src="/logo-nav.svg" alt="Ruta Travels"></a>
   <div class="topnav-links">
     <a href="/blog/">Journal</a>
+    <a href="/support">Support</a>
     <label for="lang" id="langLabel">Language</label>
     <select id="lang" aria-label="Language"></select>
   </div>
@@ -99,7 +103,7 @@
   <p class="disclaimer" id="pageFooter"></p>
   <footer class="foot">
     <span>© 2026 Ruta Travels</span>
-    <span class="fl"><a href="/">Home</a><a href="/privacy.html">Privacy</a></span>
+    <span class="fl"><a href="/">Home</a><a href="/support">Support</a><a href="/privacy.html">Privacy</a></span>
   </footer>
 </div>
 
