@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <!-- Google tag (gtag.js) -->
@@ -7,127 +7,146 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-SKQVLGF483');
 </script>
-<meta charset="UTF-8"/>
+<meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>RUTA TRAVELS - First class intelligence. For every traveler.</title>
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<meta name="description" content="First class intelligence for every traveler. Live flight status, gate directions, and curated city guides that take the stress out of the journey. Launching soon on iOS. Join the waitlist."/>
+<meta name="description" content="First class intelligence for every traveler. Live flight status, gate directions, and curated city guides that take the stress out of the journey. Coming soon to iOS."/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Montserrat:wght@200;300;400;600&display=swap" rel="stylesheet">
 <style>
-:root{--navy:#18273F;--navy-mid:#1A2C3D;--navy-card:#1F3347;--gold:#F2A65A;--gold-dim:#B8851F;--white:#FFFFFF;--muted:rgba(255,255,255,0.5);--border:rgba(242,166,90,0.18)}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{background:var(--navy);color:var(--white);font-family:'DM Sans',sans-serif;font-weight:300;line-height:1.7;overflow-x:hidden;min-height:100vh;display:flex;flex-direction:column}
+  :root{
+    --navy:#18273F; --navy-deep:#101C2E; --navy-card:#1F3347;
+    --gold:#F2A65A; --gold-dim:#B8851F;
+    --teal:#1D9E75; --teal-deep:#0F6E56;
+    --white:#FFFFFF; --text:rgba(255,255,255,0.80); --muted:rgba(255,255,255,0.52);
+    --border:rgba(242,166,90,0.18); --hair:rgba(255,255,255,0.07);
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;-webkit-font-smoothing:antialiased}
+  html{scroll-behavior:smooth}
+  body{background:var(--navy-deep);color:var(--text);
+    font-family:'DM Sans',-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans","Noto Sans",sans-serif;
+    font-weight:300;line-height:1.7;overflow-x:hidden;min-height:100vh;display:flex;flex-direction:column}
+  a{color:var(--gold);text-decoration:none}
 
-.topnav{display:flex;align-items:center;justify-content:space-between;padding:18px 40px;border-bottom:1px solid rgba(255,255,255,0.04)}
-.topnav-brand{display:inline-flex;align-items:center;text-decoration:none;line-height:0}
-.topnav-brand img{height:56px;width:auto;display:block}
-.topnav-links{display:flex;align-items:center;gap:28px}
-.topnav-links a{font-family:'DM Sans',sans-serif;font-size:12px;font-weight:400;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.75);text-decoration:none;transition:color 0.2s}
-.topnav-links a:hover{color:var(--gold)}
-.topnav-cta{background:var(--white);color:var(--gold)!important;border:1px solid var(--white);border-radius:50px;padding:7px 18px;font-weight:600!important;letter-spacing:0.08em!important;transition:background 0.2s,color 0.2s,transform 0.15s}
-.topnav-cta:hover{background:transparent;color:var(--white)!important;transform:scale(1.03)}
+  /* ---------- Nav ---------- */
+  .nav{position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;
+    padding:16px 28px;background:rgba(16,28,46,0.72);backdrop-filter:saturate(150%) blur(12px);
+    border-bottom:1px solid var(--hair)}
+  .brand{display:inline-flex;align-items:center;line-height:0}
+  .brand img{height:40px;width:auto;display:block}
+  .nav-links{display:flex;align-items:center;gap:26px}
+  .nav-links a.link{font-size:12px;font-weight:400;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.7);transition:color .2s}
+  .nav-links a.link:hover{color:var(--gold)}
+  .nav-cta{background:var(--white);color:var(--navy-deep)!important;border-radius:50px;padding:9px 20px;
+    font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;transition:transform .15s,background .2s,color .2s}
+  .nav-cta:hover{transform:scale(1.04);background:var(--gold);color:var(--navy-deep)!important}
+  @media(max-width:720px){.nav-links a.link{display:none}}
 
-.hero{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 24px;position:relative}
-.logo-block{margin-bottom:52px;opacity:0;animation:fadeUp 0.9s ease 0.2s forwards}
-.fp-row{display:flex;align-items:center;justify-content:center;margin-bottom:16px}
-.fp-dot{width:12px;height:12px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 4px rgba(242,166,90,0.18);flex-shrink:0}
-.fp-dash{width:90px;height:1px;background:repeating-linear-gradient(90deg,rgba(242,166,90,0.7) 0,rgba(242,166,90,0.7) 6px,transparent 6px,transparent 12px)}
-.fp-plane{color:var(--gold);font-size:18px;margin:0 10px;transform:translateY(-2px)}
-.logo-ruta{font-family:'Montserrat',sans-serif;font-weight:300;font-size:clamp(72px,13vw,130px);letter-spacing:0.18em;color:var(--white);line-height:1;margin-bottom:8px}
-.logo-rule{width:55%;height:1px;background:rgba(242,166,90,0.4);margin:0 auto 10px}
-.logo-travels{font-family:'Montserrat',sans-serif;font-weight:600;font-size:clamp(12px,2vw,17px);letter-spacing:0.45em;color:var(--gold)}
-.tagline{font-size:15px;font-weight:300;color:var(--muted);letter-spacing:0.06em;margin-bottom:14px;opacity:0;animation:fadeUp 0.9s ease 0.5s forwards}
-.sub-tagline{font-size:13px;color:rgba(255,255,255,0.3);letter-spacing:0.08em;margin-bottom:44px;opacity:0;animation:fadeUp 0.9s ease 0.6s forwards}
-.social-row{display:flex;gap:14px;justify-content:center;opacity:0;animation:fadeUp 0.9s ease 0.7s forwards}
-.social-link{font-size:11px;color:rgba(255,255,255,0.32);text-decoration:none;letter-spacing:0.1em;border:1px solid rgba(255,255,255,0.1);border-radius:50px;padding:7px 20px;transition:color 0.2s,border-color 0.2s}
-.social-link:hover{color:var(--gold);border-color:var(--border)}
-.bottom-cta{padding:90px 24px;text-align:center;border-top:1px solid var(--border)}
-.bottom-headline{font-family:'Montserrat',sans-serif;font-weight:200;font-size:clamp(28px,5vw,50px);color:var(--white);letter-spacing:0.06em;margin-bottom:12px;line-height:1.3}
-.bottom-sub{font-size:14px;color:var(--muted);margin-bottom:36px}
-.form-wrap{width:100%;max-width:440px;margin:0 auto}
-.form-inner{display:flex;background:rgba(255,255,255,0.06);border:1px solid var(--border);border-radius:50px;padding:5px 5px 5px 22px;backdrop-filter:blur(8px)}
-.form-inner input{flex:1;background:transparent;border:none;outline:none;color:var(--white);font-family:'DM Sans',sans-serif;font-size:14px;font-weight:300;min-width:0}
-.form-inner input::placeholder{color:rgba(255,255,255,0.28)}
-.form-btn{background:var(--gold);color:var(--);border:none;border-radius:50px;padding:11px 24px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;letter-spacing:0.05em;cursor:pointer;transition:background 0.2s,transform 0.15s;white-space:nowrap;flex-shrink:0}
-.form-btn:hover{background:#e89540;transform:scale(1.02)}
-.form-note{font-size:11px;color:rgba(255,255,255,0.18);margin-top:12px;letter-spacing:0.04em;text-align:center}
-.form-success{display:none;color:var(--gold);font-size:14px;padding:14px;text-align:center;letter-spacing:0.04em}
-footer{padding:24px 40px;border-top:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px}
-.footer-left{font-size:11px;color:rgba(255,255,255,0.18);letter-spacing:0.04em}
-.footer-links{display:flex;gap:22px}
-.footer-links a{font-size:11px;color:rgba(255,255,255,0.22);text-decoration:none;letter-spacing:0.06em;transition:color 0.2s}
-.footer-links a:hover{color:var(--gold)}
-@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
-@media(max-width:640px){
-  .topnav{padding:14px 20px}
-  .topnav-brand img{height:36px}
-  .topnav-links{gap:16px}
-  .topnav-links a{font-size:11px;letter-spacing:0.1em}
-  .topnav-links a.topnav-cta{padding:7px 14px}
-  .hero{padding:60px 20px}
-  .fp-dash{width:52px}
-  footer{padding:20px;flex-direction:column;align-items:center;text-align:center}
-  .form-inner{flex-direction:column;border-radius:12px;padding:14px;gap:10px}
-  .form-btn{width:100%;padding:13px}
-  .bottom-cta{padding:70px 20px}
-}
+  /* ---------- Hero ---------- */
+  .hero{position:relative;overflow:hidden;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:96px 24px 104px}
+  .hero::before,.hero::after{content:"";position:absolute;border-radius:50%;filter:blur(90px);opacity:.55;z-index:0;pointer-events:none}
+  .hero::before{width:620px;height:620px;background:radial-gradient(circle,rgba(242,166,90,0.42),transparent 62%);top:-200px;right:-140px}
+  .hero::after{width:560px;height:560px;background:radial-gradient(circle,rgba(29,158,117,0.34),transparent 62%);bottom:-240px;left:-160px}
+  .logo-block{position:relative;z-index:1;margin-bottom:34px;opacity:0;animation:fadeUp 0.9s ease 0.2s forwards}
+  .fp-row{display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+  .fp-dot{width:12px;height:12px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 4px rgba(242,166,90,0.18);flex-shrink:0}
+  .fp-dash{width:90px;height:1px;background:repeating-linear-gradient(90deg,rgba(242,166,90,0.7) 0,rgba(242,166,90,0.7) 6px,transparent 6px,transparent 12px)}
+  .fp-plane{color:var(--gold);font-size:18px;margin:0 10px;transform:translateY(-2px)}
+  .logo-ruta{font-family:'Montserrat',sans-serif;font-weight:300;font-size:clamp(72px,13vw,130px);letter-spacing:0.18em;color:var(--white);line-height:1;margin-bottom:8px}
+  .logo-rule{width:55%;height:1px;background:rgba(242,166,90,0.4);margin:0 auto 10px}
+  .logo-travels{font-family:'Montserrat',sans-serif;font-weight:600;font-size:clamp(12px,2vw,17px);letter-spacing:0.45em;color:var(--gold)}
+  .tagline{position:relative;z-index:1;font-size:clamp(17px,2.4vw,21px);font-weight:300;color:var(--text);letter-spacing:0.02em;max-width:24em;margin-bottom:14px;opacity:0;animation:fadeUp 0.9s ease 0.5s forwards}
+  .sub-tagline{position:relative;z-index:1;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:600;letter-spacing:0.24em;text-transform:uppercase;color:var(--gold);margin-bottom:30px;opacity:0;animation:fadeUp 0.9s ease 0.6s forwards}
+  .badge-ios{position:relative;z-index:1;display:inline-flex;align-items:center;gap:8px;margin-bottom:36px;padding:10px 18px;border:1px solid var(--hair);
+    border-radius:12px;color:var(--white);font-size:13px;letter-spacing:0.04em;opacity:0;animation:fadeUp 0.9s ease 0.66s forwards}
+  .social-row{position:relative;z-index:1;display:flex;gap:14px;justify-content:center;opacity:0;animation:fadeUp 0.9s ease 0.74s forwards}
+  .social-link{font-size:11px;color:rgba(255,255,255,0.4);text-decoration:none;letter-spacing:0.1em;border:1px solid rgba(255,255,255,0.12);border-radius:50px;padding:8px 22px;transition:color 0.2s,border-color 0.2s}
+  .social-link:hover{color:var(--gold);border-color:var(--border)}
+
+  /* ---------- Final CTA ---------- */
+  .final{position:relative;overflow:hidden;padding:96px 24px;text-align:center;border-top:1px solid var(--hair)}
+  .final::before{content:"";position:absolute;width:700px;height:700px;border-radius:50%;
+    background:radial-gradient(circle,rgba(242,166,90,0.18),transparent 60%);top:-260px;left:50%;transform:translateX(-50%);filter:blur(70px);z-index:0}
+  .final-inner{position:relative;z-index:1}
+  .final h2{font-family:'Montserrat',sans-serif;font-weight:200;color:var(--white);font-size:clamp(30px,5vw,54px);letter-spacing:0.04em;line-height:1.12;margin-bottom:14px}
+  .final p{color:var(--muted);font-size:14px;letter-spacing:0.02em}
+
+  /* ---------- Footer ---------- */
+  footer{border-top:1px solid var(--hair);padding:28px 40px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px}
+  footer .fl{color:var(--muted);font-size:12px;letter-spacing:0.05em}
+  footer .fr{display:flex;gap:22px}
+  footer .fr a{color:rgba(255,255,255,0.45);font-size:12px;letter-spacing:0.08em;text-transform:uppercase;transition:color .2s}
+  footer .fr a:hover{color:var(--gold)}
+
+  @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+  @media(prefers-reduced-motion:reduce){.logo-block,.tagline,.sub-tagline,.badge-ios,.social-row{opacity:1;animation:none}html{scroll-behavior:auto}}
+  @media(max-width:640px){
+    .nav{padding:14px 20px}
+    .brand img{height:34px}
+    .hero{padding:64px 20px 72px}
+    .fp-dash{width:52px}
+    .final{padding:70px 20px}
+    footer{padding:22px 20px;flex-direction:column;align-items:center;text-align:center}
+  }
 </style>
 </head>
 <body>
 
-<nav class="topnav">
-  <a href="/" class="topnav-brand"><img src="/logo-nav.svg" alt="Ruta Travels" /></a>
-  <div class="topnav-links">
-    <a href="/blog/">Journal</a>
-  </div>
-</nav>
-
-<section class="hero">
-  <div class="logo-block">
-    <div class="fp-row">
-      <div class="fp-dot"></div>
-      <div class="fp-dash"></div>
-      <div class="fp-plane">✈</div>
-      <div class="fp-dash"></div>
-      <div class="fp-dot"></div>
+  <nav class="nav">
+    <a class="brand" href="/"><img src="/logo-nav.svg" alt="Ruta Travels"></a>
+    <div class="nav-links">
+      <a class="link" href="/blog/">Journal</a>
+      <a class="link" href="/support">Support</a>
+      <a class="link" href="/privacy.html">Privacy</a>
+      <a class="nav-cta" href="/">Coming to iOS</a>
     </div>
-    <div class="logo-ruta">RUTA</div>
-    <div class="logo-rule"></div>
-    <div class="logo-travels">TRAVELS</div>
-  </div>
-  <p class="tagline">RUTA TRAVELS - First class intelligence. For every traveler.</p>
-  <p class="sub-tagline">Launching soon on iOS</p>
-  <div class="social-row">
-    <a href="https://instagram.com/ruta_travels" class="social-link" target="_blank">Instagram</a>
-  </div>
-</section>
+  </nav>
 
-<section class="bottom-cta" id="waitlist">
-  <h2 class="bottom-headline">Your next trip.<br>Without the stress.</h2>
-</section>
+  <header class="hero">
+    <div class="logo-block">
+      <div class="fp-row">
+        <div class="fp-dot"></div>
+        <div class="fp-dash"></div>
+        <div class="fp-plane">✈</div>
+        <div class="fp-dash"></div>
+        <div class="fp-dot"></div>
+      </div>
+      <div class="logo-ruta">RUTA</div>
+      <div class="logo-rule"></div>
+      <div class="logo-travels">TRAVELS</div>
+    </div>
+    <p class="tagline">First class intelligence. For every traveler.</p>
+    <p class="sub-tagline">Launching soon on iOS</p>
+    <div class="badge-ios">Coming soon to the App Store</div>
+    <div class="social-row">
+      <a href="https://instagram.com/ruta_travels" class="social-link" target="_blank" rel="noopener">Instagram</a>
+    </div>
+  </header>
 
-<footer>
-  <div class="footer-left">© 2026 Ruta Travels</div>
-  <div class="footer-links">
-    <a href="/blog/">Journal</a>
-    <a href="/privacy.html">Privacy</a>
-  </div>
-</footer>
+  <section class="final" id="join">
+    <div class="final-inner">
+      <h2>Your next trip.<br>Without the stress.</h2>
+      <p>Launching on iPhone.</p>
+    </div>
+  </section>
 
-<script>
-function sub1(e){
-  setTimeout(function(){
-    document.getElementById('form1').style.display='none';
-    document.getElementById('s1').style.display='block';
-  },500);
-}
-</script>
+  <footer>
+    <span class="fl">© 2026 Ruta Travels</span>
+    <span class="fr">
+      <a href="/blog/">Journal</a>
+      <a href="/support">Support</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="https://instagram.com/ruta_travels" target="_blank" rel="noopener">Instagram</a>
+    </span>
+  </footer>
+
   <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "d516af67479748a6a1a63af70d2caa8d"}'></script>
 </body>
 </html>
