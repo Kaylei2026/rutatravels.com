@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ruta Travels, Pricing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy:    #18273F;
+    --card:    #1E304D;
+    --border:  #2A3F5C;
+    --gold:    #F0A55A;
+    --gold-dim:rgba(240,165,90,0.10);
+    --text:    #E8EDF2;
+    --muted:   #9DB0C4;
+    --dim:     #607D93;
+    --white:   #FFFFFF;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--navy);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.7;
+    letter-spacing: 0.01em;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    padding: 22px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border);
+  }
+  .wordmark {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.22em;
+    color: var(--gold);
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+  .nav-links { display: flex; gap: 32px; align-items: center; }
+  .nav-links a {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 300;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-cta {
+    background: transparent !important;
+    color: var(--gold) !important;
+    border: 1px solid rgba(240,165,90,0.4) !important;
+    padding: 8px 20px;
+    border-radius: 24px;
+  }
+
+  /* HERO */
+  .hero {
+    text-align: center;
+    padding: 96px 24px 72px;
+    max-width: 620px;
+    margin: 0 auto;
+  }
+  .hero-eyebrow {
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0.8;
+    margin-bottom: 22px;
+  }
+  .hero h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(26px, 4vw, 38px);
+    font-weight: 200;
+    line-height: 1.3;
+    color: var(--white);
+    margin-bottom: 20px;
+    letter-spacing: 0.03em;
+  }
+  .hero h1 strong {
+    font-weight: 600;
+    color: var(--gold);
+  }
+  .hero p {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    color: var(--muted);
+    font-weight: 300;
+    max-width: 460px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  /* FOUNDER BANNER */
+  .founder-banner {
+    background: var(--gold-dim);
+    border: 1px solid rgba(240,165,90,0.2);
+    border-radius: 10px;
+    max-width: 1040px;
+    margin: 0 auto 56px;
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .fb-icon { width: 32px; height: 32px; border-radius: 50%; background: rgba(240,165,90,0.15); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .fb-icon svg { width: 15px; height: 15px; stroke: var(--gold); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+  .founder-banner strong { display: block; font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 3px; }
+  .founder-banner span { font-family: 'DM Sans', sans-serif; font-size: 13px; color: var(--muted); font-weight: 300; }
+
+  /* PLANS */
+  .plans-section { padding: 0 24px 80px; }
+  .plans-grid { max-width: 760px; margin: 0 auto; display: grid; grid-template-columns: repeat(2,1fr); gap: 20px; align-items: start; }
+
+  .plan-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 30px 26px;
+    position: relative;
+    transition: transform 0.25s;
+  }
+  .plan-card:hover { transform: translateY(-2px); }
+  .plan-card.featured {
+    border-color: rgba(240,165,90,0.5);
+    background: linear-gradient(160deg, #243A56 0%, #1E304D 100%);
+  }
+  .plan-card.featured::before {
+    content: 'MOST POPULAR';
+    position: absolute;
+    top: -12px; left: 50%; transform: translateX(-50%);
+    background: var(--gold); color: var(--navy);
+    font-size: 9px; font-weight: 600; letter-spacing: 0.12em;
+    padding: 4px 14px; border-radius: 20px; white-space: nowrap;
+  }
+
+  .plan-label { font-size: 10px; font-weight: 400; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); opacity: 0.85; margin-bottom: 8px; }
+  .plan-name { font-size: 20px; font-weight: 400; color: var(--white); margin-bottom: 6px; letter-spacing: 0.04em; }
+  .plan-tagline { font-family: 'DM Sans', sans-serif; font-size: 13px; color: var(--dim); margin-bottom: 24px; font-weight: 300; line-height: 1.7; }
+
+  .plan-price { margin-bottom: 5px; display: flex; align-items: flex-end; gap: 4px; }
+  .price-amount { font-size: 40px; font-weight: 200; color: var(--white); line-height: 1; letter-spacing: -0.01em; }
+  .price-period { font-size: 13px; color: var(--dim); margin-bottom: 5px; font-weight: 300; }
+  .plan-savings { font-family: 'DM Sans', sans-serif; font-size: 12px; color: var(--gold); font-weight: 400; margin-bottom: 26px; min-height: 18px; opacity: 0.85; }
+
+  .plan-divider { border: none; border-top: 1px solid var(--border); margin-bottom: 20px; }
+
+  .plan-features { list-style: none; margin-bottom: 28px; }
+  .plan-features li {
+    display: flex; align-items: flex-start; gap: 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px; color: var(--muted); margin-bottom: 11px;
+    line-height: 1.7; font-weight: 300;
+  }
+  .plan-features li svg { width: 14px; height: 14px; stroke: var(--gold); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; margin-top: 2px; opacity: 0.8; }
+
+  .plan-btn {
+    display: block; width: 100%; text-align: center;
+    padding: 13px; border-radius: 8px;
+    font-size: 12px; font-weight: 500; letter-spacing: 0.08em;
+    text-decoration: none; cursor: pointer; border: none; transition: all 0.2s;
+  }
+  .btn-primary { background: var(--gold); color: var(--navy); }
+  .btn-primary:hover { background: #f5b96e; transform: translateY(-1px); }
+  .btn-outline { background: transparent; border: 1px solid var(--border); color: var(--muted); }
+  .btn-outline:hover { border-color: rgba(240,165,90,0.4); color: var(--gold); }
+
+  
+
+  /* BOOST */
+  .boost-section { max-width: 1040px; margin: 0 auto 80px; padding: 0 24px; }
+  .boost-header { text-align: center; margin-bottom: 40px; }
+  .boost-header h2 { font-size: 22px; font-weight: 300; color: var(--white); margin-bottom: 14px; letter-spacing: 0.05em; }
+  .boost-header p { font-family: 'DM Sans', sans-serif; font-size: 15px; color: var(--muted); max-width: 500px; margin: 0 auto; font-weight: 300; line-height: 1.7; }
+  .boost-header p em { color: var(--gold); font-style: normal; font-weight: 400; }
+
+  .boost-card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
+  .boost-top { padding: 34px 38px 26px; display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: start; border-bottom: 1px solid var(--border); }
+  .boost-title { font-size: 20px; font-weight: 300; color: var(--white); margin-bottom: 10px; letter-spacing: 0.04em; }
+  .boost-subtitle { font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--muted); font-weight: 300; line-height: 1.7; max-width: 480px; }
+  .boost-price-wrap { text-align: right; }
+  .boost-price { font-size: 40px; font-weight: 200; color: var(--white); line-height: 1; letter-spacing: -0.01em; }
+  .boost-price-note { font-size: 11px; color: var(--dim); margin-top: 5px; font-weight: 300; letter-spacing: 0.06em; }
+
+  .boost-scenarios { padding: 26px 38px 32px; display: grid; grid-template-columns: repeat(2,1fr); gap: 12px; }
+  .scenario {
+    background: rgba(240,165,90,0.04);
+    border: 1px solid rgba(240,165,90,0.12);
+    border-radius: 10px; padding: 18px 18px;
+    display: flex; gap: 14px; align-items: flex-start;
+  }
+  .scenario-icon {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: var(--gold-dim);
+    border: 1px solid rgba(240,165,90,0.2);
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+  .scenario-icon svg { width: 16px; height: 16px; stroke: var(--gold); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; opacity: 0.85; }
+  .scenario-text { font-family: 'DM Sans', sans-serif; font-size: 13px; color: var(--muted); line-height: 1.7; font-weight: 300; }
+  .scenario-text .boost-word { color: var(--gold); font-style: italic; font-weight: 400; }
+  .scenario-text strong {
+    color: var(--text); display: block; margin-bottom: 4px;
+    font-weight: 500; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+  }
+  .boost-footnote { font-family: 'DM Sans', sans-serif; padding: 0 38px 26px; font-size: 13px; color: var(--dim); font-weight: 300; line-height: 1.7; text-align: center; font-style: italic; }
+
+  
+
+  /* FAQ */
+  .faq-section { max-width: 660px; margin: 0 auto 80px; padding: 0 24px; }
+  .faq-section h2 { font-size: 22px; font-weight: 300; color: var(--white); text-align: center; margin-bottom: 40px; letter-spacing: 0.05em; }
+  .faq-item { border-bottom: 1px solid var(--border); padding: 22px 0; }
+  .faq-item:last-child { border-bottom: none; }
+  .faq-q { font-size: 14px; font-weight: 500; color: var(--white); margin-bottom: 10px; line-height: 1.5; }
+  .faq-a { font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--muted); line-height: 1.7; font-weight: 300; }
+
+  /* CTA */
+  .cta-section { border-top: 1px solid var(--border); text-align: center; padding: 80px 24px; }
+  .cta-section h2 { font-size: 28px; font-weight: 200; color: var(--white); margin-bottom: 14px; letter-spacing: 0.04em; }
+  .cta-section p { font-family: 'DM Sans', sans-serif; font-size: 15px; color: var(--muted); margin-bottom: 36px; font-weight: 300; }
+  .cta-btn {
+    display: inline-block; background: var(--gold); color: var(--navy);
+    padding: 15px 40px; border-radius: 8px;
+    font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+    text-decoration: none; transition: all 0.2s;
+  }
+  .cta-btn:hover { background: #f5b96e; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(240,165,90,0.25); }
+
+  footer { font-family: 'DM Sans', sans-serif; text-align: center; padding: 24px; font-size: 13px; color: var(--dim); font-weight: 300; border-top: 1px solid var(--border); }
+  footer a { color: var(--dim); text-decoration: none; }
+  footer a:hover { color: var(--gold); }
+
+  @media (max-width: 768px) {
+    nav { padding: 18px 20px; }
+    .nav-links { display: none; }
+    .plans-grid { grid-template-columns: 1fr; }
+    .trip-pass-card { grid-template-columns: 1fr; }
+    .trip-pass-price-wrap { text-align: left; }
+    .boost-top { grid-template-columns: 1fr; padding: 24px; }
+    .boost-price-wrap { text-align: left; }
+    .boost-scenarios { grid-template-columns: 1fr; padding: 20px 24px; }
+    .boost-footnote { padding: 0 24px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="https://rutatravels.com" class="wordmark">Ruta Travels</a>
+  <div class="nav-links">
+    <a href="#">Journal</a>
+    <a href="#">About</a>
+    <a href="#" class="nav-cta">Join Waitlist</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-eyebrow">Simple, honest pricing</div>
+  <h1>First class intelligence.<br><span style="color:var(--gold);font-weight:300;">For every traveler.</span></h1>
+  <p>One app. Every destination. Everything you need from the moment you book to the moment you arrive.</p>
+</section>
+
+<div style="padding: 0 24px; max-width: 1080px; margin: 0 auto;">
+  <div class="founder-banner">
+    <div class="fb-icon">
+      <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+    </div>
+    <div>
+      <strong>Founders Window, Limited Time</strong>
+      <span>Lock in the founders rate and keep it for as long as you stay subscribed. Start your trial during the launch window to qualify. If you cancel and resubscribe later, standard pricing applies.</span>
+    </div>
+  </div>
+</div>
+
+<section class="plans-section">
+  <div class="plans-grid">
+
+    <div class="plan-card">
+      <div class="plan-label">Founders Rate</div>
+      <div class="plan-name">Monthly</div>
+      <div class="plan-tagline">Lock in your rate. Keep it as long as you're subscribed.</div>
+      <div class="plan-price"><div class="price-amount">$9.99</div><div class="price-period">/mo</div></div>
+      <div class="plan-savings">Your founding rate holds while you're subscribed.</div>
+      <hr class="plan-divider">
+      <ul class="plan-features">
+        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Full flight tracking and gate intelligence</li>
+        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Real-time connection risk alerts</li>
+        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Customs, visa, and entry requirements</li>
+        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Cultural briefings and Know Before You Go</li>
+        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Language help and local discovery</li>
+        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Emergency services and travel safety</li>
+        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Full AI travel assistance included</li>
+      </ul>
+      <div style="font-family:'DM Sans',sans-serif;font-size:12px;color:var(--dim);text-align:center;margin-top:12px;font-weight:300;">7-day free trial included</div>
+      <a href="#" class="plan-btn btn-outline">Start Free Trial</a>
+    </div>
+
+    <div class="plan-card featured">
+      <div class="plan-label">Founders Rate · <span style="color:var(--white);opacity:0.7;font-weight:300;">Recommended</span></div>
+      <div class="plan-name">Annual</div>
+      <div class="plan-tagline">The best rate we'll ever offer, billed once a year.</div>
+      <div class="plan-price"><div class="price-amount">$5</div><div class="price-period">/mo</div></div>
+      <div class="plan-savings">billed yearly at $59.99</div>
+      <hr class="plan-divider">
+      <ul class="plan-features">
+        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Everything in Founders Monthly</li>
+        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Your rate never rises while you're subscribed</li>
+        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Priority access to new features</li>
+        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>One year, one payment, zero surprises</li>
+      </ul>
+      <div style="font-family:'DM Sans',sans-serif;font-size:12px;color:var(--dim);text-align:center;margin-top:12px;font-weight:300;">7-day free trial included</div>
+      <a href="#" class="plan-btn btn-primary">Start Free Trial</a>
+    </div>
+
+    </div>
+  </section>
+
+<section class="faq-section">
+  <h2>Things worth knowing</h2>
+
+  <div class="faq-item">
+    <div class="faq-q">What is the founders rate and how do I qualify?</div>
+    <div class="faq-a">The founders rate is the best price Ruta will ever be. Start your free trial during the launch window and you qualify, whether you convert from trial to monthly or annual. Your rate stays locked for as long as you remain subscribed. If you cancel and resubscribe after the window closes, standard pricing applies.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">What is the 7-day free trial?</div>
+    <div class="faq-a">New subscribers get 7 days of full access before their first charge. Start it while you are planning your trip rather than mid-journey, so you get a real feel for Ruta before the day that matters. You can cancel any time during the trial and you will not be charged.</div>
+  </div>
+
+
+  <div class="faq-item">
+    <div class="faq-q">Can I switch from monthly to annual?</div>
+    <div class="faq-a">Yes. If you start on Founders Monthly and switch to Founders Annual while the founders window is still open, your founders rate carries over to the annual plan.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">How do I cancel?</div>
+    <div class="faq-a">Through your iPhone Settings under Subscriptions. Find Ruta Travels, tap Cancel Subscription. Access continues until the end of your current billing period and you will not be charged again.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">What happens when the founders window closes?</div>
+    <div class="faq-a">Standard pricing replaces the founders rates for new subscribers. Standard monthly is $11.99 and standard annual is around $79.99. If you are already subscribed, your founders rate does not change. The window exists because we want our earliest users to have something real for believing in Ruta early.</div>
+  </div>
+
+</section>
+
+<section class="cta-section">
+  <h2>Your next trip deserves better.</h2>
+  <p>Start your 7-day free trial during the founders window and lock in your rate for as long as you stay subscribed.</p>
+  <a href="#" class="cta-btn">Start Free Trial</a>
+</section>
+
+<footer>
+  © 2026 Ruta Travels &nbsp;·&nbsp; <a href="#">Privacy</a> &nbsp;·&nbsp; <a href="#">Terms</a> &nbsp;·&nbsp; <a href="#">rutatravels.com</a>
+</footer>
+
+</body>
+</html>
