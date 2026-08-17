@@ -58,6 +58,7 @@
     padding:22px 24px 8px;margin:16px 0}
   article h2{font-family:'Montserrat',sans-serif;color:var(--white);font-size:20px;font-weight:400;letter-spacing:.01em;margin:0 0 12px}
   article h3{font-family:'Montserrat',sans-serif;color:var(--gold);font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin:18px 0 8px}
+  .tag-premium{display:inline-block;vertical-align:middle;margin-inline-start:10px;font-family:'Montserrat',sans-serif;font-size:9.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(242,166,90,0.45);border-radius:999px;padding:2px 8px;line-height:1.35;position:relative;top:-2px}
   article p{margin:0 0 16px;color:var(--text)}
   article ul{margin:0 0 16px;padding-inline-start:20px}
   article li{margin:0 0 9px;color:var(--text)}
@@ -117,6 +118,9 @@ const STRUCTURE = [
   { id:'after',     items:['expenses','post-trip'] },
   { id:'setup',     items:['modes','voice','languages','notifications','offline','getting-help','privacy'] },
 ];
+// Sections whose primary feature requires Ruta Premium (kept in one place so the tag stays accurate).
+const PREMIUM_IDS = new Set(['city-guides','destination-briefing','risk-check','expenses']);
+const PREMIUM_LABELS = {en:'Premium',es:'Premium',it:'Premium',fr:'Premium',de:'Premium',pt:'Premium',ja:'プレミアム',ar:'مميّز',zh:'高级版'};
 
 /* ── Content, per language. Falls back to English for any missing language or section. ──
    Block types inside a section: ['p', text] paragraph · ['h3', text] subheading ·
@@ -2121,7 +2125,8 @@ function render(lang){
     html += '<section class="grp-h"><div class="gh">'+esc(label(lang,g.id))+'</div></section>';
     g.items.forEach(id=>{
       const s = sec(lang,id);
-      html += '<article id="'+id+'"><h2>'+esc(s.title)+'</h2>'+renderBlocks(s.blocks)+'</article>';
+      const _ptag = PREMIUM_IDS.has(id) ? ' <span class="tag-premium">'+esc(PREMIUM_LABELS[lang]||'Premium')+'</span>' : '';
+      html += '<article id="'+id+'"><h2>'+esc(s.title)+_ptag+'</h2>'+renderBlocks(s.blocks)+'</article>';
     });
   });
   $('#content').innerHTML = html;
