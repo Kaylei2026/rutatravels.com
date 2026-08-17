@@ -55,6 +55,7 @@
   .hero::before{width:620px;height:620px;background:radial-gradient(circle,rgba(242,166,90,0.42),transparent 62%);top:-200px;right:-140px}
   .hero::after{width:560px;height:560px;background:radial-gradient(circle,rgba(29,158,117,0.34),transparent 62%);bottom:-240px;left:-160px}
   .logo-block{position:relative;z-index:1;margin-bottom:34px;opacity:0;animation:fadeUp 0.9s ease 0.2s forwards}
+  .logo-img{display:block;width:clamp(280px,46vw,460px);height:auto;margin:0 auto}
   .fp-row{display:flex;align-items:center;justify-content:center;margin-bottom:18px}
   .fp-dot{width:12px;height:12px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 4px rgba(242,166,90,0.18);flex-shrink:0}
   .fp-dash{width:90px;height:1px;background:repeating-linear-gradient(90deg,rgba(242,166,90,0.7) 0,rgba(242,166,90,0.7) 6px,transparent 6px,transparent 12px)}
@@ -111,16 +112,7 @@
 
   <header class="hero">
     <div class="logo-block">
-      <div class="fp-row">
-        <div class="fp-dot"></div>
-        <div class="fp-dash"></div>
-        <div class="fp-plane">✈</div>
-        <div class="fp-dash"></div>
-        <div class="fp-dot"></div>
-      </div>
-      <div class="logo-ruta">RUTA</div>
-      <div class="logo-rule"></div>
-      <div class="logo-travels">TRAVELS</div>
+      <img class="logo-img" src="/hero-logo.png" alt="Ruta Travels" />
     </div>
     <p class="tagline">First class intelligence. For every traveler.</p>
     <p class="sub-tagline">Launching soon on iOS</p>
