@@ -126,7 +126,7 @@ const GUIDE = {
     meta: {
       langName: 'English',
       title: 'Help & User Guide',
-      tagline: 'Everything Ruta does, from planning a trip to landing at your destination. Tap the ? in the top corner of any screen in the app to jump straight to that feature’s section here.',
+      tagline: 'Everything Ruta does, from planning a trip to landing at your destination. Tap the ? in the bottom corner of any screen in the app to jump straight to that feature’s section here.',
       footer: 'Ruta Travels Help & User Guide. Features and availability may change as the app improves. For anything time-critical, like flights, gates, and entry rules, always confirm with your airline or the official authority.',
     },
     groupLabels: {
@@ -232,16 +232,16 @@ const GUIDE = {
       'risk-check': { title:'Trip risk check', blocks:[
         ['p','A one-tap check across all your flights for delays and tight connections. If nothing is at risk, you get an all-clear. If something is, Ruta flags it and shows you what to do.'],
         ['h3','How to use'],
-        ['ul',['Tap the risk card on **Today** to run the scan, then tap a flagged item to see what to do.']],
+        ['ul',['Tap the risk card on **Today** to run the scan, then tap a flagged item to see what to do.', 'On a flagged item, tap the **…** for suggestions on how to manage the situation and to better understand your rights as a passenger.']],
       ]},
       'when-to-leave': { title:'When to leave', blocks:[
-        ['p','A suggested departure time for the airport based on live traffic.'],
+        ['p','A suggested departure time for the airport based on live traffic, bundling the airport timing you need: check-in cutoffs, security, and a boarding buffer, so the estimate covers the whole pre-flight sequence and not just the drive.'],
         ['note','Live traffic can shift, so double-check before you head out.'],
       ]},
       'airport': { title:'Airport: maps, security, lounges', blocks:[
         ['p','Terminal maps and gate navigation, security wait times, amenities, and lounge access detection.'],
         ['h3','How to use'],
-        ['ul',['Open the **Airport** view for your terminal’s map, security wait estimates, food and shops, and lounges you can access.']],
+        ['ul',['Open the **Airport** view for your terminal’s map, security-line wait estimates, food and shops, and lounges you can access.']],
         ['note','Gate navigation and live maps need a data connection, and indoor accuracy varies by airport, so follow the terminal signage too. Wait times are estimates based on typical patterns; check the airport screens on arrival.'],
       ]},
       'find-car': { title:'Find your car', blocks:[
@@ -256,6 +256,7 @@ const GUIDE = {
       ]},
       'in-flight': { title:'In-flight & connections', blocks:[
         ['p','While you’re in the air, Ruta keeps watching any tight connection and alerts you if it’s at risk, with your next leg ready the moment you land.'],
+        ['note','To get real-time updates in flight, connect to the plane’s Wi-Fi so Ruta can keep refreshing your connection status.'],
       ]},
       'arrival-hub': { title:'Arrival hub', blocks:[
         ['p','When you land, Ruta surfaces what you need on the ground: your saved hotel, rental car, or train for the day, baggage claim, and a one-tap ride.'],
@@ -274,9 +275,14 @@ const GUIDE = {
         ]],
       ]},
       'expenses': { title:'Expenses', blocks:[
-        ['p','Log trip spending as you go and review it later.'],
-        ['h3','How to use'],
-        ['ul',['Add an expense with amount and category; review the totals in your recap.']],
+        ['p','Set a trip budget and track your spending against it as you go, so you always know where you stand.'],
+        ['h3','Budget'],
+        ['ul',[
+          'Set a total trip budget, and optionally a daily budget, and Ruta tracks your spending against it.',
+          'A live card shows what you have spent, what is left, and whether your pace is on track for the rest of the trip.',
+        ]],
+        ['h3','Logging expenses'],
+        ['ul',['Add an expense with an amount and category, and review the running totals any time.']],
       ]},
       'post-trip': { title:'Trip recap & archive', blocks:[
         ['p','When your trip wraps, Ruta shifts to a recap and tucks the trip into your archive so you can start the next one fresh.'],
@@ -286,12 +292,12 @@ const GUIDE = {
         ['note','You’re talking to Ruta’s AI assistant, not a person. Double-check anything critical.'],
       ]},
       'languages': { title:'Languages', blocks:[
-        ['p','Ruta is available in nine languages. Set yours in **Settings**, and the app, including voice, follows.'],
+        ['p','Ruta is available in nine languages. Set yours in **Ruta settings**, and the app, including voice, follows.'],
       ]},
       'notifications': { title:'Notifications', blocks:[
         ['p','Choose exactly which alerts you get: gate changes, delays, earlier departures, connection risk, boarding, when-to-leave, document expiry, and the night-before pre-trip reminder.'],
         ['h3','How to use'],
-        ['ul',['Toggle each notification type in **Settings** under **Notifications**.']],
+        ['ul',['Toggle each notification type in **Ruta settings** under **Notifications**.']],
       ]},
       'offline': { title:'Offline mode', blocks:[
         ['p','Your saved trip works without a signal. Ruta shows your trip and last-synced info, and updates the live pieces when you reconnect.'],
@@ -301,9 +307,9 @@ const GUIDE = {
         ['p','Help is built into the app, and we’re an email away.'],
         ['h3','How to use'],
         ['ul',[
-          'Tap the **?** in the top corner of any screen for help with that feature.',
-          'Find this full guide any time from **Settings** under **User Guide**.',
-          'Need a person? Tap **Contact support** in **Settings**, or email support@rutatravels.com.',
+          'Tap the **?** in the bottom corner of any screen for help with that feature.',
+          'Find this full guide any time from **Ruta settings** under **User Guide**.',
+          'Need a person? Tap **Contact support** in **Ruta settings**, or email info@rutatravels.com.',
         ]],
       ]},
       'privacy': { title:'Privacy & your data', blocks:[
@@ -320,12 +326,12 @@ const GUIDE = {
         ['ul',[
           '**Get there** shows only the travel-day essentials: your flights, gate, timing, and the airport. Ideal when you just need to make your flight.',
           '**Explore** focuses on the destination: city guides, places to see, and on-the-ground tools.',
-          '**Both** combines them into the full app. Pick your mode in **Settings**, or just say it to the voice assistant.',
+          '**Both** combines them into the full app. Pick your mode in **Ruta settings**, or just say it to the voice assistant.',
         ]],
         ['h3','Simple mode'],
         ['p','Simple mode is a calmer, larger view that shows just the next thing you need, when to leave, your gate, and boarding, in a big, clear layout. It helps any time the full app feels busy, and it’s great for handing your phone to a travel companion.'],
         ['ul',[
-          'Turn it on in **Settings**; tap **Full app** any time to switch back.',
+          'Turn it on in **Ruta settings**; tap **Full app** any time to switch back.',
           'Ask the voice assistant for your gate, time, or terminal to get a hands-free answer.',
         ]],
       ]},
@@ -335,7 +341,7 @@ const GUIDE = {
     meta: {
       langName: "Español",
       title: "Ayuda y guía del usuario",
-      tagline: "Todo lo que hace Ruta, desde planear un viaje hasta aterrizar en tu destino. Toca el ? en la esquina superior de cualquier pantalla de la app para ir directamente a la sección de esa función aquí.",
+      tagline: "Todo lo que hace Ruta, desde planear un viaje hasta aterrizar en tu destino. Toca el ? en la esquina inferior de cualquier pantalla de la app para ir directamente a la sección de esa función aquí.",
       footer: "Ayuda y guía del usuario de Ruta Travels. Las funciones y la disponibilidad pueden cambiar a medida que la app mejora. Para cualquier cosa urgente —vuelos, puertas de embarque, requisitos de entrada— confirma siempre con tu aerolínea o con la autoridad oficial.",
     },
     groupLabels: {
@@ -441,16 +447,16 @@ const GUIDE = {
       'risk-check': { title:"Chequeo de riesgos del viaje", blocks:[
         ['p',"Un análisis con un toque de todos tus vuelos en busca de retrasos y riesgo de conexión, con un aviso claro de todo en orden cuando todo va bien."],
         ['h3',"Cómo usarlo"],
-        ['ul',["Toca la tarjeta de riesgo en Hoy para ejecutar el análisis; toca un elemento marcado para ver qué hacer."]],
+        ['ul',["Toca la tarjeta de riesgo en Hoy para ejecutar el análisis; toca un elemento marcado para ver qué hacer.", "En un elemento marcado, toca los **…** para ver sugerencias sobre cómo gestionar la situación y entender mejor tus derechos como pasajero."]],
       ]},
       'when-to-leave': { title:"Cuándo salir", blocks:[
-        ['p',"Una hora de salida sugerida hacia el aeropuerto según el tráfico en vivo."],
+        ['p',"Una hora de salida sugerida hacia el aeropuerto según el tráfico en vivo, que incorpora los tiempos que necesitas en el aeropuerto: cierres de facturación, seguridad y un margen para el embarque, de modo que la estimación cubra toda la secuencia previa al vuelo y no solo el trayecto."],
         ['note',"El tráfico en vivo puede cambiar: verifícalo antes de salir."],
       ]},
       'airport': { title:"Aeropuerto: mapas, seguridad, salas VIP", blocks:[
         ['p',"Mapas de terminal y navegación hacia la puerta, tiempos de espera en seguridad, servicios y detección de acceso a salas VIP."],
         ['h3',"Cómo usarlo"],
-        ['ul',["Abre la vista de Aeropuerto para ver el mapa de tu terminal, estimaciones de espera en seguridad, comida y tiendas, y las salas VIP a las que puedes acceder."]],
+        ['ul',["Abre la vista de Aeropuerto para ver el mapa de tu terminal, estimaciones de espera en las filas de seguridad, comida y tiendas, y las salas VIP a las que puedes acceder."]],
         ['note',"Los tiempos de espera son estimaciones basadas en patrones habituales; consulta las pantallas del aeropuerto al llegar."],
       ]},
       'find-car': { title:"Encuentra tu coche", blocks:[
@@ -465,6 +471,7 @@ const GUIDE = {
       ]},
       'in-flight': { title:"A bordo y conexiones", blocks:[
         ['p',"Seguimiento de conexiones mientras estás en el aire, con avisos si una conexión ajustada está en riesgo, y tu siguiente tramo listo en el momento en que aterrizas."],
+        ['note',"Para recibir actualizaciones en tiempo real durante el vuelo, conéctate al wifi del avión para que Ruta pueda seguir actualizando el estado de tu conexión."],
       ]},
       'arrival-hub': { title:"Centro de llegada", blocks:[
         ['p',"Cuando aterrizas, Ruta muestra lo que necesitas sobre el terreno: tu hotel guardado, coche de alquiler o tren del día, la recogida de equipaje y un viaje con un solo toque."],
@@ -483,9 +490,14 @@ const GUIDE = {
         ]],
       ]},
       'expenses': { title:"Gastos", blocks:[
-        ['p',"Registra lo que gastas durante el viaje y revísalo más tarde."],
-        ['h3',"Cómo usarlo"],
-        ['ul',["Añade un gasto con importe y categoría; revisa los totales en tu resumen."]],
+        ['p',"Fija un presupuesto para el viaje y controla tus gastos frente a él sobre la marcha, para saber siempre cómo vas."],
+        ['h3',"Presupuesto"],
+        ['ul',[
+          "Fija un presupuesto total del viaje y, si quieres, uno diario, y Ruta controla tus gastos frente a él.",
+          "Una tarjeta en vivo muestra cuánto has gastado, cuánto queda y si tu ritmo va bien para el resto del viaje.",
+        ]],
+        ['h3',"Registrar gastos"],
+        ['ul',["Añade un gasto con importe y categoría, y revisa los totales acumulados en cualquier momento."]],
       ]},
       'post-trip': { title:"Resumen y archivo del viaje", blocks:[
         ['p',"Cuando tu viaje termina, Ruta pasa a un resumen y guarda el viaje en tu archivo para que puedas empezar el siguiente desde cero."],
@@ -495,12 +507,12 @@ const GUIDE = {
         ['note',"Estás hablando con el asistente de IA de Ruta, no con una persona. Verifica todo lo importante."],
       ]},
       'languages': { title:"Idiomas", blocks:[
-        ['p',"Ruta está disponible en nueve idiomas. Configura el tuyo en Ajustes y la app —incluida la voz— lo seguirá."],
+        ['p',"Ruta está disponible en nueve idiomas. Configura el tuyo en Ajustes de Ruta y la app —incluida la voz— lo seguirá."],
       ]},
       'notifications': { title:"Notificaciones", blocks:[
         ['p',"Elige exactamente qué avisos recibes: cambios de puerta, retrasos, salidas anticipadas, riesgo de conexión, embarque, cuándo salir, caducidad de documentos y el recordatorio previo al viaje la noche anterior."],
         ['h3',"Cómo usarlo"],
-        ['ul',["Activa o desactiva cada tipo de notificación en Ajustes, dentro de Notificaciones."]],
+        ['ul',["Activa o desactiva cada tipo de notificación en Ajustes de Ruta, dentro de Notificaciones."]],
       ]},
       'offline': { title:"Modo sin conexión", blocks:[
         ['p',"Tu viaje guardado funciona sin señal. Ruta muestra tu viaje y la información sincronizada por última vez, y actualiza los datos en vivo cuando vuelves a conectarte."],
@@ -510,9 +522,9 @@ const GUIDE = {
         ['p',"La ayuda está integrada en la app y estamos a un correo de distancia."],
         ['h3',"Cómo usarlo"],
         ['ul',[
-          "Toca el ? en la esquina superior de cualquier pantalla para obtener ayuda con esa función.",
-          "Encuentra esta guía completa en cualquier momento en Ajustes, dentro de Guía del usuario.",
-          "¿Necesitas hablar con una persona? Toca Contactar con soporte en Ajustes, o escribe a support@rutatravels.com.",
+          "Toca el ? en la esquina inferior de cualquier pantalla para obtener ayuda con esa función.",
+          "Encuentra esta guía completa en cualquier momento en Ajustes de Ruta, dentro de Guía del usuario.",
+          "¿Necesitas hablar con una persona? Toca Contactar con soporte en Ajustes de Ruta, o escribe a info@rutatravels.com.",
         ]],
       ]},
       'privacy': { title:"Privacidad y tus datos", blocks:[
@@ -529,12 +541,12 @@ const GUIDE = {
         ["ul",[
           "**Llegar** muestra solo lo esencial del día de viaje: tus vuelos, la puerta, los horarios y el aeropuerto. Ideal cuando solo necesitas tomar tu vuelo.",
           "**Explorar** se centra en el destino: guías de la ciudad, lugares que ver y herramientas sobre el terreno.",
-          "**Ambos** los combina en la app completa. Elige tu modo en **Ajustes** o simplemente díselo al asistente de voz.",
+          "**Ambos** los combina en la app completa. Elige tu modo en **Ajustes de Ruta** o simplemente díselo al asistente de voz.",
         ]],
         ["h3","Modo sencillo"],
         ["p","El modo sencillo es una vista más tranquila y grande que muestra solo lo siguiente que necesitas: cuándo salir, tu puerta y el embarque, con un diseño amplio y claro. Ayuda siempre que la app completa te resulte recargada, y es perfecto para pasarle el teléfono a un acompañante."],
         ["ul",[
-          "Actívalo en **Ajustes**; toca **App completa** en cualquier momento para volver.",
+          "Actívalo en **Ajustes de Ruta**; toca **App completa** en cualquier momento para volver.",
           "Pide tu puerta, la hora o la terminal al asistente de voz para obtener una respuesta con las manos libres.",
         ]],
       ]},
@@ -544,7 +556,7 @@ const GUIDE = {
     meta: {
       langName: "Italiano",
       title: "Aiuto e Guida utente",
-      tagline: "Tutto quello che fa Ruta, dalla pianificazione del viaggio all'atterraggio a destinazione. Tocca il ? nell'angolo in alto di qualsiasi schermata dell'app per andare direttamente alla sezione di quella funzione qui.",
+      tagline: "Tutto quello che fa Ruta, dalla pianificazione del viaggio all'atterraggio a destinazione. Tocca il ? nell'angolo in basso di qualsiasi schermata dell'app per andare direttamente alla sezione di quella funzione qui.",
       footer: "Aiuto e Guida utente di Ruta Travels. Le funzioni e la disponibilità possono cambiare man mano che l'app migliora. Per qualsiasi cosa a tempo critico — voli, gate, regole d'ingresso — conferma sempre con la tua compagnia aerea o con l'autorità ufficiale.",
     },
     groupLabels: {
@@ -650,16 +662,16 @@ const GUIDE = {
       'risk-check': { title:"Controllo rischi del viaggio", blocks:[
         ['p',"Una scansione con un tocco su tutti i tuoi voli per ritardi e rischi di coincidenza, con un chiaro via libera quando è tutto a posto."],
         ['h3',"Come si usa"],
-        ['ul',["Tocca la scheda dei rischi in Oggi per avviare la scansione; tocca un elemento segnalato per vedere cosa fare."]],
+        ['ul',["Tocca la scheda dei rischi in Oggi per avviare la scansione; tocca un elemento segnalato per vedere cosa fare.", "Su un elemento segnalato, tocca i **…** per suggerimenti su come gestire la situazione e comprendere meglio i tuoi diritti come passeggero."]],
       ]},
       'when-to-leave': { title:"Quando partire", blocks:[
-        ['p',"Un orario di partenza suggerito per l'aeroporto in base al traffico in tempo reale."],
+        ['p',"Un orario di partenza suggerito per l'aeroporto in base al traffico in tempo reale, che tiene conto dei tempi necessari in aeroporto: chiusura del check-in, sicurezza e un margine per l'imbarco, così la stima copre l'intera sequenza pre-volo e non solo il tragitto."],
         ['note',"Il traffico in tempo reale può cambiare — verifica prima di uscire."],
       ]},
       'airport': { title:"Aeroporto: mappe, sicurezza, lounge", blocks:[
         ['p',"Mappe del terminal e navigazione verso il gate, tempi di attesa ai controlli di sicurezza, servizi e rilevamento dell'accesso alle lounge."],
         ['h3',"Come si usa"],
-        ['ul',["Apri la vista Aeroporto per la mappa del tuo terminal, le stime dei tempi di attesa ai controlli, ristoranti e negozi, e le lounge a cui puoi accedere."]],
+        ['ul',["Apri la vista Aeroporto per la mappa del tuo terminal, le stime dei tempi di attesa alle file dei controlli di sicurezza, ristoranti e negozi, e le lounge a cui puoi accedere."]],
         ['note',"I tempi di attesa sono stime basate su schemi tipici; controlla gli schermi dell'aeroporto all'arrivo."],
       ]},
       'find-car': { title:"Trova la tua auto", blocks:[
@@ -674,6 +686,7 @@ const GUIDE = {
       ]},
       'in-flight': { title:"In volo e coincidenze", blocks:[
         ['p',"Consapevolezza delle coincidenze mentre sei in volo, con avvisi se una coincidenza stretta è a rischio, e la tratta successiva pronta nel momento in cui atterri."],
+        ['note',"Per ricevere aggiornamenti in tempo reale durante il volo, connettiti al Wi-Fi dell’aereo così Ruta può continuare ad aggiornare lo stato della tua coincidenza."],
       ]},
       'arrival-hub': { title:"Centro arrivi", blocks:[
         ['p',"Quando atterri, Ruta ti mostra ciò che ti serve a terra: l'hotel, l'auto a noleggio o il treno del giorno che hai salvato, il ritiro bagagli e una corsa con un tocco."],
@@ -692,9 +705,14 @@ const GUIDE = {
         ]],
       ]},
       'expenses': { title:"Spese", blocks:[
-        ['p',"Registra le spese del viaggio man mano e rivedile in seguito."],
-        ['h3',"Come si usa"],
-        ['ul',["Aggiungi una spesa con importo e categoria; rivedi i totali nel tuo riepilogo."]],
+        ['p',"Imposta un budget per il viaggio e monitora le tue spese rispetto ad esso man mano, così sai sempre a che punto sei."],
+        ['h3',"Budget"],
+        ['ul',[
+          "Imposta un budget totale per il viaggio e, se vuoi, uno giornaliero, e Ruta monitora le tue spese rispetto ad esso.",
+          "Una scheda in tempo reale mostra quanto hai speso, quanto resta e se il tuo ritmo è in linea per il resto del viaggio.",
+        ]],
+        ['h3',"Registrare le spese"],
+        ['ul',["Aggiungi una spesa con importo e categoria e rivedi i totali aggiornati in qualsiasi momento."]],
       ]},
       'post-trip': { title:"Riepilogo e archivio del viaggio", blocks:[
         ['p',"Quando il tuo viaggio finisce, Ruta passa a un riepilogo e sposta il viaggio nel tuo archivio così puoi iniziarne uno nuovo da zero."],
@@ -704,12 +722,12 @@ const GUIDE = {
         ['note',"Stai parlando con l'assistente IA di Ruta, non con una persona. Verifica sempre qualsiasi cosa fondamentale."],
       ]},
       'languages': { title:"Lingue", blocks:[
-        ['p',"Ruta è disponibile in nove lingue. Imposta la tua in Impostazioni e l'app — voce inclusa — si adegua."],
+        ['p',"Ruta è disponibile in nove lingue. Imposta la tua in Impostazioni di Ruta e l'app — voce inclusa — si adegua."],
       ]},
       'notifications': { title:"Notifiche", blocks:[
         ['p',"Scegli esattamente quali avvisi ricevere: cambi di gate, ritardi, partenze anticipate, rischio coincidenze, imbarco, quando partire, scadenza dei documenti e il promemoria pre-viaggio della sera prima."],
         ['h3',"Come si usa"],
-        ['ul',["Attiva o disattiva ogni tipo di notifica in Impostazioni, sotto Notifiche."]],
+        ['ul',["Attiva o disattiva ogni tipo di notifica in Impostazioni di Ruta, sotto Notifiche."]],
       ]},
       'offline': { title:"Modalità offline", blocks:[
         ['p',"Il tuo viaggio salvato funziona senza segnale. Ruta mostra il tuo viaggio e le ultime informazioni sincronizzate, e aggiorna le parti in tempo reale quando ti riconnetti."],
@@ -719,9 +737,9 @@ const GUIDE = {
         ['p',"L'aiuto è integrato nell'app, e siamo a una email di distanza."],
         ['h3',"Come si usa"],
         ['ul',[
-          "Tocca il ? nell'angolo in alto di qualsiasi schermata per avere aiuto su quella funzione.",
-          "Trovi questa guida completa in qualsiasi momento in Impostazioni, sotto Guida utente.",
-          "Ti serve una persona? Tocca Contatta l'assistenza in Impostazioni, oppure scrivi a support@rutatravels.com.",
+          "Tocca il ? nell'angolo in basso di qualsiasi schermata per avere aiuto su quella funzione.",
+          "Trovi questa guida completa in qualsiasi momento in Impostazioni di Ruta, sotto Guida utente.",
+          "Ti serve una persona? Tocca Contatta l'assistenza in Impostazioni di Ruta, oppure scrivi a info@rutatravels.com.",
         ]],
       ]},
       'privacy': { title:"Privacy e i tuoi dati", blocks:[
@@ -738,12 +756,12 @@ const GUIDE = {
         ["ul",[
           "**Arriva** mostra solo l'essenziale del giorno di viaggio: i tuoi voli, il gate, gli orari e l'aeroporto. Ideale quando devi solo prendere il volo.",
           "**Esplora** si concentra sulla destinazione: guide della città, luoghi da vedere e strumenti sul posto.",
-          "**Entrambe** le combina nell'app completa. Scegli la modalità in **Impostazioni** oppure dillo semplicemente all'assistente vocale.",
+          "**Entrambe** le combina nell'app completa. Scegli la modalità in **Impostazioni di Ruta** oppure dillo semplicemente all'assistente vocale.",
         ]],
         ["h3","Modalità semplice"],
         ["p","La modalità semplice è una vista più tranquilla e ingrandita che mostra solo la cosa successiva che ti serve: quando partire, il gate e l'imbarco, con un layout ampio e chiaro. È utile ogni volta che l'app completa ti sembra troppo carica ed è perfetta per passare il telefono a un compagno di viaggio."],
         ["ul",[
-          "Attivala in **Impostazioni**; tocca **App completa** in qualsiasi momento per tornare indietro.",
+          "Attivala in **Impostazioni di Ruta**; tocca **App completa** in qualsiasi momento per tornare indietro.",
           "Chiedi il gate, l'orario o il terminal all'assistente vocale per una risposta a mani libere.",
         ]],
       ]},
@@ -753,7 +771,7 @@ const GUIDE = {
     meta: {
       langName: "Français",
       title: "Aide et guide d'utilisation",
-      tagline: "Tout ce que Ruta fait, de la préparation d'un voyage à l'atterrissage à destination. Touchez le ? dans le coin supérieur de n'importe quel écran de l'application pour accéder directement à la section correspondant à cette fonctionnalité.",
+      tagline: "Tout ce que Ruta fait, de la préparation d'un voyage à l'atterrissage à destination. Touchez le ? dans le coin inférieur de n'importe quel écran de l'application pour accéder directement à la section correspondant à cette fonctionnalité.",
       footer: "Aide et guide d'utilisation de Ruta Travels. Les fonctionnalités et leur disponibilité peuvent évoluer à mesure que l'application s'améliore. Pour tout ce qui est critique en termes de délais — vols, portes d'embarquement, règles d'entrée — vérifiez toujours auprès de votre compagnie aérienne ou de l'autorité officielle.",
     },
     groupLabels: {
@@ -859,16 +877,16 @@ const GUIDE = {
       'risk-check': { title: "Vérification des risques du voyage", blocks: [
         ['p', "Une analyse en un geste de tous vos vols pour détecter les retards et les risques de correspondance, avec un message rassurant clair quand tout va bien."],
         ['h3', "Comment l'utiliser"],
-        ['ul', ["Touchez la carte des risques dans Aujourd'hui pour lancer l'analyse ; touchez un élément signalé pour savoir quoi faire."]],
+        ['ul', ["Touchez la carte des risques dans Aujourd'hui pour lancer l'analyse ; touchez un élément signalé pour savoir quoi faire.", "Sur un élément signalé, touchez les **…** pour des suggestions sur la façon de gérer la situation et mieux comprendre vos droits en tant que passager."]],
       ]},
       'when-to-leave': { title: "Quand partir", blocks: [
-        ['p', "Une heure de départ suggérée pour l'aéroport en fonction du trafic en direct."],
+        ['p', "Une heure de départ suggérée pour l'aéroport en fonction du trafic en direct, qui intègre les délais nécessaires à l'aéroport : clôture de l'enregistrement, sécurité et une marge pour l'embarquement, afin que l'estimation couvre toute la séquence avant le vol et pas seulement le trajet."],
         ['note', "Le trafic en direct peut évoluer — vérifiez à nouveau avant de partir."],
       ]},
       'airport': { title: "Aéroport : plans, sécurité, salons", blocks: [
         ['p', "Plans des terminaux et navigation vers les portes, temps d'attente à la sécurité, commodités et détection de l'accès aux salons."],
         ['h3', "Comment l'utiliser"],
-        ['ul', ["Ouvrez la vue Aéroport pour le plan de votre terminal, les estimations de temps d'attente à la sécurité, les restaurants et boutiques, ainsi que les salons auxquels vous avez accès."]],
+        ['ul', ["Ouvrez la vue Aéroport pour le plan de votre terminal, les estimations de temps d'attente aux files de sécurité, les restaurants et boutiques, ainsi que les salons auxquels vous avez accès."]],
         ['note', "Les temps d'attente sont des estimations basées sur les tendances habituelles ; consultez les écrans de l'aéroport à votre arrivée."],
       ]},
       'find-car': { title: "Retrouver votre voiture", blocks: [
@@ -883,6 +901,7 @@ const GUIDE = {
       ]},
       'in-flight': { title: "En vol et correspondances", blocks: [
         ['p', "Un suivi des correspondances pendant que vous êtes dans les airs, avec des alertes si une correspondance serrée est menacée, et votre segment suivant prêt dès l'atterrissage."],
+        ['note', "Pour recevoir des mises à jour en temps réel en vol, connectez-vous au Wi-Fi de l’avion afin que Ruta puisse continuer à actualiser l’état de votre correspondance."],
       ]},
       'arrival-hub': { title: "Centre d'arrivée", blocks: [
         ['p', "Lorsque vous atterrissez, Ruta fait remonter ce dont vous avez besoin sur place : votre hôtel enregistré, votre voiture de location ou votre train du jour, le retrait des bagages et une course en un geste."],
@@ -901,9 +920,14 @@ const GUIDE = {
         ]],
       ]},
       'expenses': { title: "Dépenses", blocks: [
-        ['p', "Enregistrez vos dépenses de voyage au fur et à mesure et consultez-les plus tard."],
-        ['h3', "Comment l'utiliser"],
-        ['ul', ["Ajoutez une dépense avec un montant et une catégorie ; consultez les totaux dans votre récapitulatif."]],
+        ['p', "Définissez un budget de voyage et suivez vos dépenses par rapport à celui-ci au fur et à mesure, pour toujours savoir où vous en êtes."],
+        ['h3', "Budget"],
+        ['ul', [
+          "Définissez un budget total pour le voyage et, si vous le souhaitez, un budget quotidien, et Ruta suit vos dépenses par rapport à celui-ci.",
+          "Une carte en direct indique ce que vous avez dépensé, ce qu'il reste et si votre rythme est en bonne voie pour le reste du voyage.",
+        ]],
+        ['h3', "Enregistrer les dépenses"],
+        ['ul', ["Ajoutez une dépense avec un montant et une catégorie, et consultez les totaux cumulés à tout moment."]],
       ]},
       'post-trip': { title: "Récapitulatif et archive du voyage", blocks: [
         ['p', "Lorsque votre voyage se termine, Ruta passe à un récapitulatif et range le voyage dans vos archives pour que vous puissiez en commencer un nouveau sereinement."],
@@ -913,12 +937,12 @@ const GUIDE = {
         ['note', "Vous parlez à l'assistant IA de Ruta, et non à une personne. Vérifiez tout élément critique."],
       ]},
       'languages': { title: "Langues", blocks: [
-        ['p', "Ruta est disponible en neuf langues. Définissez la vôtre dans les Réglages, et l'application — y compris la voix — s'y adapte."],
+        ['p', "Ruta est disponible en neuf langues. Définissez la vôtre dans les Réglages de Ruta, et l'application — y compris la voix — s'y adapte."],
       ]},
       'notifications': { title: "Notifications", blocks: [
         ['p', "Choisissez précisément les alertes que vous recevez : changements de porte, retards, départs anticipés, risque de correspondance, embarquement, quand partir, expiration de documents et rappel d'avant-voyage la veille."],
         ['h3', "Comment l'utiliser"],
-        ['ul', ["Activez ou désactivez chaque type de notification dans les Réglages, sous Notifications."]],
+        ['ul', ["Activez ou désactivez chaque type de notification dans les Réglages de Ruta, sous Notifications."]],
       ]},
       'offline': { title: "Mode hors ligne", blocks: [
         ['p', "Votre voyage enregistré fonctionne sans réseau. Ruta affiche votre voyage et les dernières informations synchronisées, et met à jour les éléments en direct lorsque vous vous reconnectez."],
@@ -928,9 +952,9 @@ const GUIDE = {
         ['p', "L'aide est intégrée à l'application, et nous sommes joignables par e-mail."],
         ['h3', "Comment l'utiliser"],
         ['ul', [
-          "Touchez le ? dans le coin supérieur de n'importe quel écran pour obtenir de l'aide sur cette fonctionnalité.",
-          "Retrouvez ce guide complet à tout moment dans les Réglages, sous Guide d'utilisation.",
-          "Besoin d'une personne ? Touchez Contacter le support dans les Réglages, ou écrivez à support@rutatravels.com.",
+          "Touchez le ? dans le coin inférieur de n'importe quel écran pour obtenir de l'aide sur cette fonctionnalité.",
+          "Retrouvez ce guide complet à tout moment dans les Réglages de Ruta, sous Guide d'utilisation.",
+          "Besoin d'une personne ? Touchez Contacter le support dans les Réglages de Ruta, ou écrivez à info@rutatravels.com.",
         ]],
       ]},
       'privacy': { title: "Confidentialité et vos données", blocks: [
@@ -947,12 +971,12 @@ const GUIDE = {
         ["ul",[
           "**Arriver** n'affiche que l'essentiel du jour de voyage : vos vols, la porte, les horaires et l'aéroport. Idéal quand vous devez simplement attraper votre vol.",
           "**Explorer** se concentre sur la destination : guides de la ville, lieux à voir et outils sur place.",
-          "**Les deux** les combine dans l'app complète. Choisissez votre mode dans **Réglages** ou dites-le simplement à l'assistant vocal.",
+          "**Les deux** les combine dans l'app complète. Choisissez votre mode dans **Réglages de Ruta** ou dites-le simplement à l'assistant vocal.",
         ]],
         ["h3","Mode simple"],
         ["p","Le mode simple est une vue plus calme et plus grande qui n'affiche que la prochaine chose dont vous avez besoin : quand partir, votre porte et l'embarquement, avec une mise en page ample et claire. Il est utile dès que l'app complète vous semble chargée, et parfait pour tendre votre téléphone à un compagnon de voyage."],
         ["ul",[
-          "Activez-le dans **Réglages** ; touchez **App complète** à tout moment pour revenir.",
+          "Activez-le dans **Réglages de Ruta** ; touchez **App complète** à tout moment pour revenir.",
           "Demandez votre porte, l'heure ou le terminal à l'assistant vocal pour une réponse mains libres.",
         ]],
       ]},
@@ -962,7 +986,7 @@ const GUIDE = {
     meta: {
       langName: "Deutsch",
       title: "Hilfe & Nutzerhandbuch",
-      tagline: "Alles, was Ruta kann, von der Reiseplanung bis zur Landung am Ziel. Tippe auf das ? in der oberen Ecke eines beliebigen Bildschirms in der App, um direkt zum passenden Abschnitt für diese Funktion zu springen.",
+      tagline: "Alles, was Ruta kann, von der Reiseplanung bis zur Landung am Ziel. Tippe auf das ? in der unteren Ecke eines beliebigen Bildschirms in der App, um direkt zum passenden Abschnitt für diese Funktion zu springen.",
       footer: "Ruta Travels Hilfe & Nutzerhandbuch. Funktionen und Verfügbarkeit können sich mit der Weiterentwicklung der App ändern. Bei allem Zeitkritischen – Flügen, Gates, Einreisebestimmungen – bestätige die Angaben immer bei deiner Airline oder der offiziellen Behörde.",
     },
     groupLabels: {
@@ -1068,16 +1092,16 @@ const GUIDE = {
       "risk-check": { title:"Reise-Risikoprüfung", blocks:[
         ["p","Ein Scan deiner Flüge mit nur einem Tippen auf Verspätungen und Anschlussrisiken, mit klarer Entwarnung, wenn alles passt."],
         ["h3","So funktioniert es"],
-        ["ul",["Tippe auf die Risikokarte unter Heute, um den Scan zu starten; tippe auf einen markierten Punkt, um zu sehen, was zu tun ist."]],
+        ["ul",["Tippe auf die Risikokarte unter Heute, um den Scan zu starten; tippe auf einen markierten Punkt, um zu sehen, was zu tun ist.", "Tippe bei einem markierten Punkt auf die **…** für Vorschläge, wie du mit der Situation umgehst, und um deine Rechte als Fluggast besser zu verstehen."]],
       ]},
       "when-to-leave": { title:"Wann losfahren", blocks:[
-        ["p","Eine empfohlene Abfahrtszeit zum Flughafen auf Basis der aktuellen Verkehrslage."],
+        ["p","Eine empfohlene Abfahrtszeit zum Flughafen auf Basis der aktuellen Verkehrslage, die die nötigen Zeiten am Flughafen einbezieht: Check-in-Schluss, Sicherheitskontrolle und einen Puffer fürs Boarding, damit die Schätzung die gesamte Abfolge vor dem Flug abdeckt und nicht nur die Fahrt."],
         ["note","Die Verkehrslage kann sich ändern – prüfe sie noch einmal, bevor du losfährst."],
       ]},
       "airport": { title:"Flughafen: Karten, Sicherheit, Lounges", blocks:[
         ["p","Terminalkarten und Gate-Navigation, Wartezeiten an der Sicherheitskontrolle, Serviceangebote und Erkennung des Lounge-Zugangs."],
         ["h3","So funktioniert es"],
-        ["ul",["Öffne die Flughafenansicht für die Karte deines Terminals, geschätzte Wartezeiten an der Sicherheitskontrolle, Essen und Geschäfte sowie Lounges, die dir offenstehen."]],
+        ["ul",["Öffne die Flughafenansicht für die Karte deines Terminals, geschätzte Wartezeiten in der Schlange der Sicherheitskontrolle, Essen und Geschäfte sowie Lounges, die dir offenstehen."]],
         ["note","Wartezeiten sind Schätzungen auf Basis üblicher Muster; prüfe bei der Ankunft die Anzeigen am Flughafen."],
       ]},
       "find-car": { title:"Dein Auto finden", blocks:[
@@ -1092,6 +1116,7 @@ const GUIDE = {
       ]},
       "in-flight": { title:"An Bord & Anschlüsse", blocks:[
         ["p","Anschlussüberwachung, während du in der Luft bist, mit Meldungen, wenn ein knapper Anschluss gefährdet ist, und deinem nächsten Abschnitt bereit, sobald du landest."],
+        ["note","Um während des Flugs Echtzeit-Updates zu erhalten, verbinde dich mit dem WLAN des Flugzeugs, damit Ruta den Status deines Anschlusses weiter aktualisieren kann."],
       ]},
       "arrival-hub": { title:"Ankunfts-Hub", blocks:[
         ["p","Wenn du landest, zeigt dir Ruta, was du am Boden brauchst: dein gespeichertes Hotel, deinen Mietwagen oder Zug für den Tag, die Gepäckausgabe und eine Fahrt mit nur einem Tippen."],
@@ -1110,9 +1135,14 @@ const GUIDE = {
         ]],
       ]},
       "expenses": { title:"Ausgaben", blocks:[
-        ["p","Erfasse deine Reiseausgaben unterwegs und sieh sie dir später an."],
-        ["h3","So funktioniert es"],
-        ["ul",["Füge eine Ausgabe mit Betrag und Kategorie hinzu; überprüfe die Summen in deinem Rückblick."]],
+        ["p","Lege ein Reisebudget fest und verfolge deine Ausgaben unterwegs dagegen, damit du immer weißt, wo du stehst."],
+        ["h3","Budget"],
+        ["ul",[
+          "Lege ein Gesamtbudget für die Reise und optional ein Tagesbudget fest, und Ruta verfolgt deine Ausgaben dagegen.",
+          "Eine Live-Karte zeigt, was du ausgegeben hast, was übrig ist und ob dein Tempo für den Rest der Reise im Plan liegt.",
+        ]],
+        ["h3","Ausgaben erfassen"],
+        ["ul",["Füge eine Ausgabe mit Betrag und Kategorie hinzu und sieh dir die laufenden Summen jederzeit an."]],
       ]},
       "post-trip": { title:"Reise-Rückblick & Archiv", blocks:[
         ["p","Wenn deine Reise endet, wechselt Ruta zu einem Rückblick und legt die Reise in deinem Archiv ab, damit du frisch in die nächste starten kannst."],
@@ -1122,12 +1152,12 @@ const GUIDE = {
         ["note","Du sprichst mit Rutas KI-Assistenten, nicht mit einer Person. Überprüfe alles Wichtige noch einmal."],
       ]},
       "languages": { title:"Sprachen", blocks:[
-        ["p","Ruta ist in neun Sprachen verfügbar. Stelle deine in den Einstellungen ein, und die App – einschließlich der Stimme – folgt."],
+        ["p","Ruta ist in neun Sprachen verfügbar. Stelle deine in den Ruta-Einstellungen ein, und die App – einschließlich der Stimme – folgt."],
       ]},
       "notifications": { title:"Benachrichtigungen", blocks:[
         ["p","Wähle genau, welche Meldungen du erhältst: Gate-Änderungen, Verspätungen, frühere Abflüge, Anschlussrisiko, Boarding, Wann-losfahren, Dokumentablauf und die Reisevorbereitungs-Erinnerung am Vorabend."],
         ["h3","So funktioniert es"],
-        ["ul",["Schalte jede Benachrichtigungsart in den Einstellungen unter Benachrichtigungen ein oder aus."]],
+        ["ul",["Schalte jede Benachrichtigungsart in den Ruta-Einstellungen unter Benachrichtigungen ein oder aus."]],
       ]},
       "offline": { title:"Offline-Modus", blocks:[
         ["p","Deine gespeicherte Reise funktioniert auch ohne Empfang. Ruta zeigt deine Reise und die zuletzt synchronisierten Infos und aktualisiert die Live-Teile, sobald du wieder verbunden bist."],
@@ -1137,9 +1167,9 @@ const GUIDE = {
         ["p","Hilfe ist in die App integriert, und wir sind nur eine E-Mail entfernt."],
         ["h3","So funktioniert es"],
         ["ul",[
-          "Tippe auf jedem Bildschirm in der oberen Ecke auf das ?, um Hilfe zu dieser Funktion zu erhalten.",
-          "Dieses vollständige Handbuch findest du jederzeit in den Einstellungen unter Nutzerhandbuch.",
-          "Brauchst du eine Person? Tippe in den Einstellungen auf Support kontaktieren oder schreibe eine E-Mail an support@rutatravels.com.",
+          "Tippe auf jedem Bildschirm in der unteren Ecke auf das ?, um Hilfe zu dieser Funktion zu erhalten.",
+          "Dieses vollständige Handbuch findest du jederzeit in den Ruta-Einstellungen unter Nutzerhandbuch.",
+          "Brauchst du eine Person? Tippe in den Ruta-Einstellungen auf Support kontaktieren oder schreibe eine E-Mail an info@rutatravels.com.",
         ]],
       ]},
       "privacy": { title:"Datenschutz & deine Daten", blocks:[
@@ -1156,12 +1186,12 @@ const GUIDE = {
         ["ul",[
           "**Hinkommen** zeigt nur das Wesentliche des Reisetags: deine Flüge, das Gate, die Zeiten und den Flughafen. Ideal, wenn du einfach nur deinen Flug erreichen musst.",
           "**Entdecken** konzentriert sich auf das Reiseziel: Städteführer, sehenswerte Orte und Tools vor Ort.",
-          "**Beides** vereint sie zur vollständigen App. Wähle deinen Modus in den **Einstellungen** oder sag ihn einfach dem Sprachassistenten.",
+          "**Beides** vereint sie zur vollständigen App. Wähle deinen Modus in den **Ruta-Einstellungen** oder sag ihn einfach dem Sprachassistenten.",
         ]],
         ["h3","Einfacher Modus"],
         ["p","Der einfache Modus ist eine ruhigere, größere Ansicht, die nur das Nächste zeigt, was du brauchst: wann du losmusst, dein Gate und das Boarding, in einem großen, klaren Layout. Er hilft immer dann, wenn die volle App zu unübersichtlich wirkt, und eignet sich gut, um dein Telefon einer Begleitperson zu reichen."],
         ["ul",[
-          "Aktiviere ihn in den **Einstellungen**; tippe jederzeit auf **Volle App**, um zurückzuwechseln.",
+          "Aktiviere ihn in den **Ruta-Einstellungen**; tippe jederzeit auf **Volle App**, um zurückzuwechseln.",
           "Frag den Sprachassistenten nach deinem Gate, der Zeit oder dem Terminal für eine freihändige Antwort.",
         ]],
       ]},
@@ -1171,7 +1201,7 @@ const GUIDE = {
     meta: {
       langName: "日本語",
       title: "ヘルプとユーザーガイド",
-      tagline: "旅行の計画から目的地への到着まで、Rutaができることのすべてをご紹介します。アプリ内のどの画面でも、上部の隅にある ? をタップすると、その機能に対応するこちらのセクションへ直接ジャンプできます。",
+      tagline: "旅行の計画から目的地への到着まで、Rutaができることのすべてをご紹介します。アプリ内のどの画面でも、下部の隅にある ? をタップすると、その機能に対応するこちらのセクションへ直接ジャンプできます。",
       footer: "Ruta Travels ヘルプとユーザーガイドです。機能や提供状況はアプリの改善にともなって変更される場合があります。フライト、ゲート、入国要件など、時間に関わる重要な情報については、必ずご利用の航空会社または公式機関にご確認ください。",
     },
     groupLabels: {
@@ -1277,16 +1307,16 @@ const GUIDE = {
       'risk-check': { title:"旅行リスクチェック", blocks:[
         ['p',"すべてのフライトを一度のタップで確認し、遅延や乗り継ぎのリスクを調べます。問題がなければはっきりと「異常なし」をお知らせします。"],
         ['h3',"使い方"],
-        ['ul',["「今日」のリスクカードをタップしてスキャンを実行します。指摘された項目をタップすると、対処方法が表示されます。"]],
+        ['ul',["「今日」のリスクカードをタップしてスキャンを実行します。指摘された項目をタップすると、対処方法が表示されます。", "指摘された項目で **…** をタップすると、状況への対処方法の提案や、乗客としてのあなたの権利についての案内が表示されます。"]],
       ]},
       'when-to-leave': { title:"出発のタイミング", blocks:[
-        ['p',"リアルタイムの交通状況をもとに、空港へ向かう出発時刻の目安をお知らせします。"],
+        ['p',"リアルタイムの交通状況をもとに、空港へ向かう出発時刻の目安をお知らせします。移動だけでなく、チェックイン締め切り、保安検査、搭乗までの余裕といった空港で必要な時間もまとめて見込んでいるため、出発前の一連の流れ全体をカバーします。"],
         ['note',"リアルタイムの交通状況は変わることがあります。出発前に改めてご確認ください。"],
       ]},
       'airport': { title:"空港：マップ、保安検査、ラウンジ", blocks:[
         ['p',"ターミナルマップとゲートへのナビ、保安検査の待ち時間、施設、そしてラウンジの利用可否の検出をご案内します。"],
         ['h3',"使い方"],
-        ['ul',["「空港」の画面を開くと、ターミナルのマップ、保安検査の待ち時間の目安、飲食店やショップ、利用できるラウンジが表示されます。"]],
+        ['ul',["「空港」の画面を開くと、ターミナルのマップ、保安検査の列の待ち時間の目安、飲食店やショップ、利用できるラウンジが表示されます。"]],
         ['note',"待ち時間は通常のパターンに基づく目安です。到着時に空港の表示をご確認ください。"],
       ]},
       'find-car': { title:"車を見つける", blocks:[
@@ -1301,6 +1331,7 @@ const GUIDE = {
       ]},
       'in-flight': { title:"機内と乗り継ぎ", blocks:[
         ['p',"空の上でも乗り継ぎを把握します。時間の厳しい乗り継ぎにリスクがあればお知らせし、着陸した瞬間に次の区間が準備できています。"],
+        ['note',"機内でリアルタイムの更新を受け取るには、機内 Wi-Fi に接続してください。そうすると Ruta が乗り継ぎの状況を更新し続けられます。"],
       ]},
       'arrival-hub': { title:"到着ハブ", blocks:[
         ['p',"着陸すると、Ruta は現地で必要なものを表示します。保存したその日のホテル、レンタカー、電車、手荷物受取所、そしてワンタップの配車です。"],
@@ -1319,9 +1350,14 @@ const GUIDE = {
         ]],
       ]},
       'expenses': { title:"経費", blocks:[
-        ['p',"旅行中の支出をその都度記録し、あとで振り返ることができます。"],
-        ['h3',"使い方"],
-        ['ul',["金額とカテゴリーを付けて経費を追加します。合計は振り返りで確認できます。"]],
+        ['p',"旅行の予算を設定し、旅の途中で支出を予算と照らし合わせて把握できるので、いつでも現状がわかります。"],
+        ['h3',"予算"],
+        ['ul',[
+          "旅行全体の予算を設定し、必要に応じて1日あたりの予算も設定すると、Ruta が支出を予算と照らし合わせて管理します。",
+          "リアルタイムのカードに、使った金額、残額、そして残りの旅行に対してペースが順調かどうかが表示されます。",
+        ]],
+        ['h3',"経費を記録する"],
+        ['ul',["金額とカテゴリーを付けて経費を追加し、累計はいつでも確認できます。"]],
       ]},
       'post-trip': { title:"旅行の振り返りとアーカイブ", blocks:[
         ['p',"旅行が終わると、Ruta は振り返りに切り替わり、その旅行をアーカイブに収めます。次の旅行を新たに始められます。"],
@@ -1331,12 +1367,12 @@ const GUIDE = {
         ['note',"話しかけているのは Ruta の AI アシスタントであり、人ではありません。重要な事項は必ずご確認ください。"],
       ]},
       'languages': { title:"言語", blocks:[
-        ['p',"Ruta は9つの言語でご利用いただけます。「設定」で言語を選ぶと、音声を含むアプリ全体がそれに従います。"],
+        ['p',"Ruta は9つの言語でご利用いただけます。「Ruta の設定」で言語を選ぶと、音声を含むアプリ全体がそれに従います。"],
       ]},
       'notifications': { title:"通知", blocks:[
         ['p',"受け取るお知らせを細かく選べます。ゲート変更、遅延、早発、乗り継ぎリスク、搭乗、出発のタイミング、書類の有効期限、そして前夜の出発前リマインダーです。"],
         ['h3',"使い方"],
-        ['ul',["「設定」の「通知」で、各通知の種類を切り替えます。"]],
+        ['ul',["「Ruta の設定」の「通知」で、各通知の種類を切り替えます。"]],
       ]},
       'offline': { title:"オフラインモード", blocks:[
         ['p',"保存した旅行は電波がなくても使えます。Ruta は旅行と最後に同期した情報を表示し、再接続するとリアルタイムの部分を更新します。"],
@@ -1346,9 +1382,9 @@ const GUIDE = {
         ['p',"ヘルプはアプリに組み込まれており、メールでもお問い合わせいただけます。"],
         ['h3',"使い方"],
         ['ul',[
-          "どの画面でも上部の隅にある ? をタップすると、その機能に関するヘルプが表示されます。",
-          "この完全なガイドは、いつでも「設定」の「ユーザーガイド」からご覧いただけます。",
-          "人に相談したいときは、「設定」の「サポートに問い合わせる」をタップするか、support@rutatravels.com までメールをお送りください。",
+          "どの画面でも下部の隅にある ? をタップすると、その機能に関するヘルプが表示されます。",
+          "この完全なガイドは、いつでも「Ruta の設定」の「ユーザーガイド」からご覧いただけます。",
+          "人に相談したいときは、「Ruta の設定」の「サポートに問い合わせる」をタップするか、info@rutatravels.com までメールをお送りください。",
         ]],
       ]},
       'privacy': { title:"プライバシーとあなたのデータ", blocks:[
@@ -1365,12 +1401,12 @@ const GUIDE = {
         ["ul",[
           "**移動する** は移動日に必要なことだけを表示します。フライト、ゲート、時刻、空港など。とにかくフライトに間に合えばよいときに最適です。",
           "**巡る** は目的地に焦点を当てます。街のガイド、見どころ、現地で使えるツールなど。",
-          "**両方** はそれらを組み合わせた、フル機能のアプリです。モードは**設定**で選ぶか、音声アシスタントに伝えるだけでも切り替えられます。",
+          "**両方** はそれらを組み合わせた、フル機能のアプリです。モードは**Ruta の設定**で選ぶか、音声アシスタントに伝えるだけでも切り替えられます。",
         ]],
         ["h3","シンプルモード"],
         ["p","シンプルモードは、より落ち着いた大きめの表示で、次に必要なことだけを表示します。出発時刻、ゲート、搭乗などを、大きく見やすいレイアウトで示します。フル機能のアプリが煩雑に感じるときにいつでも役立ち、同行者にスマートフォンを手渡すのにも最適です。"],
         ["ul",[
-          "**設定**でオンにできます。いつでも**フル表示**をタップすれば戻れます。",
+          "**Ruta の設定**でオンにできます。いつでも**フル表示**をタップすれば戻れます。",
           "ゲート、時刻、ターミナルは音声アシスタントに尋ねれば、手を使わずに確認できます。",
         ]],
       ]},
@@ -1380,7 +1416,7 @@ const GUIDE = {
     meta: {
       langName: "العربية",
       title: "المساعدة ودليل المستخدم",
-      tagline: "كل ما تفعله Ruta، من التخطيط للرحلة حتى الهبوط في وجهتك. انقر على رمز ? في الزاوية العلوية من أي شاشة في التطبيق للانتقال مباشرةً إلى قسم تلك الميزة هنا.",
+      tagline: "كل ما تفعله Ruta، من التخطيط للرحلة حتى الهبوط في وجهتك. انقر على رمز ? في الزاوية السفلية من أي شاشة في التطبيق للانتقال مباشرةً إلى قسم تلك الميزة هنا.",
       footer: "دليل المساعدة والمستخدم من Ruta Travels. قد تتغير الميزات وتوافرها مع تحسّن التطبيق. بالنسبة لأي أمر حسّاس زمنياً — الرحلات أو البوابات أو قواعد الدخول — تأكد دائماً من شركة الطيران أو الجهة الرسمية.",
     },
     groupLabels: {
@@ -1486,16 +1522,16 @@ const GUIDE = {
       'risk-check': { title:"فحص مخاطر الرحلة", blocks:[
         ['p',"فحص بنقرة واحدة عبر رحلاتك للتأخيرات ومخاطر الاتصال، مع رسالة واضحة تؤكد أن كل شيء على ما يرام."],
         ['h3',"طريقة الاستخدام"],
-        ['ul',["انقر على بطاقة المخاطر في «اليوم» لإجراء الفحص؛ انقر على عنصر مُشار إليه لمعرفة ما ينبغي فعله."]],
+        ['ul',["انقر على بطاقة المخاطر في «اليوم» لإجراء الفحص؛ انقر على عنصر مُشار إليه لمعرفة ما ينبغي فعله.", "على عنصر مُشار إليه، انقر على **…** للحصول على اقتراحات حول كيفية التعامل مع الموقف وفهم حقوقك كمسافر بشكل أفضل."]],
       ]},
       'when-to-leave': { title:"متى تغادر", blocks:[
-        ['p',"وقت مغادرة مقترح للمطار بناءً على حركة المرور المباشرة."],
+        ['p',"وقت مغادرة مقترح للمطار بناءً على حركة المرور المباشرة، يجمع الأوقات التي تحتاجها في المطار: مواعيد إغلاق تسجيل الوصول، والأمن، وهامشاً للصعود، بحيث يغطي التقدير تسلسل ما قبل الرحلة بأكمله وليس الطريق فقط."],
         ['note',"قد تتغير حركة المرور المباشرة — تحقّق مجدداً قبل مغادرتك."],
       ]},
       'airport': { title:"المطار: الخرائط والأمن والصالات", blocks:[
         ['p',"خرائط الصالات والتنقل إلى البوابات، وأوقات انتظار الأمن، والمرافق، والكشف عن إمكانية الوصول إلى صالات كبار الشخصيات."],
         ['h3',"طريقة الاستخدام"],
-        ['ul',["افتح واجهة المطار لعرض خريطة صالتك، وتقديرات وقت انتظار الأمن، والمطاعم والمتاجر، والصالات التي يمكنك الوصول إليها."]],
+        ['ul',["افتح واجهة المطار لعرض خريطة صالتك، وتقديرات وقت الانتظار في طابور الأمن، والمطاعم والمتاجر، والصالات التي يمكنك الوصول إليها."]],
         ['note',"أوقات الانتظار تقديرات مبنية على الأنماط المعتادة؛ تحقّق من شاشات المطار عند وصولك."],
       ]},
       'find-car': { title:"اعثر على سيارتك", blocks:[
@@ -1510,6 +1546,7 @@ const GUIDE = {
       ]},
       'in-flight': { title:"أثناء الرحلة والاتصالات", blocks:[
         ['p',"معرفة حالة الاتصال أثناء وجودك في الجو، مع تنبيهات إذا كان اتصال ضيق الوقت مهدّداً، ومرحلتك التالية جاهزة لحظة هبوطك."],
+        ['note',"لتلقّي التحديثات الفورية أثناء الرحلة، اتصل بشبكة Wi-Fi الخاصة بالطائرة كي تتمكن Ruta من مواصلة تحديث حالة اتصالك."],
       ]},
       'arrival-hub': { title:"مركز الوصول", blocks:[
         ['p',"عند هبوطك، تعرض Ruta ما تحتاجه على الأرض: فندقك المحفوظ، أو سيارة الإيجار، أو القطار لهذا اليوم، واستلام الأمتعة، ورحلة توصيل بنقرة واحدة."],
@@ -1528,9 +1565,14 @@ const GUIDE = {
         ]],
       ]},
       'expenses': { title:"المصروفات", blocks:[
-        ['p',"سجّل مصروفات رحلتك أولاً بأول وراجعها لاحقاً."],
-        ['h3',"طريقة الاستخدام"],
-        ['ul',["أضف مصروفاً بمبلغه وفئته؛ راجع المجاميع في ملخّصك."]],
+        ['p',"حدّد ميزانية للرحلة وتابع نفقاتك مقارنةً بها أولاً بأول، لتعرف دائماً أين تقف."],
+        ['h3',"الميزانية"],
+        ['ul',[
+          "حدّد ميزانية إجمالية للرحلة، وميزانية يومية إن أردت، وتتابع Ruta نفقاتك مقارنةً بها.",
+          "تعرض بطاقة مباشرة ما أنفقته وما تبقّى وما إذا كان معدّل إنفاقك في المسار الصحيح لبقية الرحلة.",
+        ]],
+        ['h3',"تسجيل النفقات"],
+        ['ul',["أضف نفقة بمبلغها وفئتها، وراجع المجاميع الجارية في أي وقت."]],
       ]},
       'post-trip': { title:"ملخّص الرحلة والأرشيف", blocks:[
         ['p',"عند انتهاء رحلتك، تنتقل Ruta إلى ملخّص وتحفظ الرحلة في أرشيفك لتبدأ الرحلة التالية من جديد."],
@@ -1540,12 +1582,12 @@ const GUIDE = {
         ['note',"أنت تتحدث إلى مساعد Ruta بالذكاء الاصطناعي، وليس إلى شخص. تحقّق من أي أمر حسّاس."],
       ]},
       'languages': { title:"اللغات", blocks:[
-        ['p',"تتوفر Ruta بتسع لغات. اختر لغتك في «الإعدادات»، ويتبعها التطبيق — بما في ذلك المساعد الصوتي."],
+        ['p',"تتوفر Ruta بتسع لغات. اختر لغتك في «إعدادات Ruta»، ويتبعها التطبيق — بما في ذلك المساعد الصوتي."],
       ]},
       'notifications': { title:"الإشعارات", blocks:[
         ['p',"اختر بالضبط التنبيهات التي تصلك: تغيّرات البوابة، والتأخيرات، والمغادرة الأبكر، ومخاطر الاتصال، والصعود، ووقت المغادرة، وانتهاء صلاحية الوثائق، وتذكير الليلة السابقة قبل الرحلة."],
         ['h3',"طريقة الاستخدام"],
-        ['ul',["فعّل أو عطّل كل نوع من الإشعارات في «الإعدادات» ضمن «الإشعارات»."]],
+        ['ul',["فعّل أو عطّل كل نوع من الإشعارات في «إعدادات Ruta» ضمن «الإشعارات»."]],
       ]},
       'offline': { title:"وضع عدم الاتصال", blocks:[
         ['p',"تعمل رحلتك المحفوظة دون إشارة. تعرض Ruta رحلتك وآخر معلومات تمت مزامنتها، وتحدّث الأجزاء المباشرة عند إعادة الاتصال."],
@@ -1555,9 +1597,9 @@ const GUIDE = {
         ['p',"المساعدة مدمجة في التطبيق، ونحن على بُعد رسالة بريد إلكتروني."],
         ['h3',"طريقة الاستخدام"],
         ['ul',[
-          "انقر على رمز ? في الزاوية العلوية من أي شاشة للحصول على مساعدة بخصوص تلك الميزة.",
-          "تجد هذا الدليل الكامل في أي وقت من «الإعدادات» ضمن «دليل المستخدم».",
-          "بحاجة إلى شخص؟ انقر على «التواصل مع الدعم» في «الإعدادات»، أو راسلنا على support@rutatravels.com.",
+          "انقر على رمز ? في الزاوية السفلية من أي شاشة للحصول على مساعدة بخصوص تلك الميزة.",
+          "تجد هذا الدليل الكامل في أي وقت من «إعدادات Ruta» ضمن «دليل المستخدم».",
+          "بحاجة إلى شخص؟ انقر على «التواصل مع الدعم» في «إعدادات Ruta»، أو راسلنا على info@rutatravels.com.",
         ]],
       ]},
       'privacy': { title:"الخصوصية وبياناتك", blocks:[
@@ -1574,12 +1616,12 @@ const GUIDE = {
         ["ul",[
           "**الوصول** يعرض أساسيات يوم السفر فقط: رحلاتك والبوابة والأوقات والمطار. مثالي حين يكون كل ما تحتاجه هو اللحاق برحلتك.",
           "**استكشاف** يركّز على الوجهة: أدلة المدينة والأماكن التي تستحق الزيارة والأدوات على أرض الواقع.",
-          "**كلاهما** يجمع بينهما في التطبيق الكامل. اختر وضعك من **الإعدادات** أو أخبر المساعد الصوتي به ببساطة.",
+          "**كلاهما** يجمع بينهما في التطبيق الكامل. اختر وضعك من **إعدادات Ruta** أو أخبر المساعد الصوتي به ببساطة.",
         ]],
         ["h3","الوضع البسيط"],
         ["p","الوضع البسيط عرض أهدأ وأكبر يُظهر فقط الشيء التالي الذي تحتاجه: موعد المغادرة وبوابتك والصعود، بتصميم كبير وواضح. وهو مفيد في أي وقت يبدو فيه التطبيق الكامل مزدحمًا، ورائع لمناولة هاتفك لمرافقك."],
         ["ul",[
-          "فعّله من **الإعدادات**؛ واضغط على **التطبيق الكامل** في أي وقت للعودة.",
+          "فعّله من **إعدادات Ruta**؛ واضغط على **التطبيق الكامل** في أي وقت للعودة.",
           "اسأل المساعد الصوتي عن بوابتك أو وقتك أو المبنى للحصول على إجابة دون استخدام يديك.",
         ]],
       ]},
@@ -1589,7 +1631,7 @@ const GUIDE = {
     meta: {
       langName: "中文",
       title: "帮助与用户指南",
-      tagline: "从规划行程到抵达目的地，Ruta 所做的一切尽在于此。在应用内任意界面点按右上角的 ? 符号，即可直接跳转到该功能在这里的对应章节。",
+      tagline: "从规划行程到抵达目的地，Ruta 所做的一切尽在于此。在应用内任意界面点按右下角的 ? 符号，即可直接跳转到该功能在这里的对应章节。",
       footer: "Ruta Travels 帮助与用户指南。随着应用不断完善，功能与可用性可能会有所调整。对于任何时效性强的信息，例如航班、登机口、入境规定，请务必向您的航空公司或官方机构核实。",
     },
     groupLabels: {
@@ -1695,16 +1737,16 @@ const GUIDE = {
       'risk-check': { title:"行程风险检查", blocks:[
         ['p',"一键扫描您的所有航班，检查延误和中转风险，一切顺利时会给出明确的安全提示。"],
         ['h3',"如何使用"],
-        ['ul',["在今天点按风险卡片即可运行扫描；点按被标记的项目查看应对办法。"]],
+        ['ul',["在今天点按风险卡片即可运行扫描；点按被标记的项目查看应对办法。", "在被标记的项目上点按 **…**，可获得如何应对该情况的建议，并更好地了解您作为乘客的权利。"]],
       ]},
       'when-to-leave': { title:"何时出发", blocks:[
-        ['p',"基于实时路况，为您建议前往机场的出发时间。"],
+        ['p',"基于实时路况，为您建议前往机场的出发时间，并把您在机场所需的各项时间一并计入：值机截止、安检以及登机的缓冲时间，因此该预估涵盖起飞前的整个流程，而不只是路途时间。"],
         ['note',"实时路况可能变化，出门前请再次确认。"],
       ]},
       'airport': { title:"机场：地图、安检、休息室", blocks:[
         ['p',"航站楼地图与登机口导航、安检等待时间、设施，以及休息室使用权限识别。"],
         ['h3',"如何使用"],
-        ['ul',["打开机场视图，查看您所在航站楼的地图、安检等待时间预估、餐饮商铺，以及您可使用的休息室。"]],
+        ['ul',["打开机场视图，查看您所在航站楼的地图、安检排队等待时间预估、餐饮商铺，以及您可使用的休息室。"]],
         ['note',"等待时间为基于常规规律的预估，抵达后请查看机场信息屏。"],
       ]},
       'find-car': { title:"找到您的车", blocks:[
@@ -1719,6 +1761,7 @@ const GUIDE = {
       ]},
       'in-flight': { title:"飞行途中与中转", blocks:[
         ['p',"在空中也能掌握中转情况，衔接时间紧张有风险时会提醒您，落地那一刻下一航段即已就绪。"],
+        ['note',"要在飞行途中获得实时更新，请连接飞机的 Wi-Fi，这样 Ruta 就能持续刷新您的中转状态。"],
       ]},
       'arrival-hub': { title:"抵达中心", blocks:[
         ['p',"当您落地后，Ruta 会为您呈现在当地所需的一切：您当天保存的酒店、租车或火车、行李提取处，以及一键叫车。"],
@@ -1737,9 +1780,14 @@ const GUIDE = {
         ]],
       ]},
       'expenses': { title:"开支", blocks:[
-        ['p',"随时记录行程开销，日后再回顾。"],
-        ['h3',"如何使用"],
-        ['ul',["添加一笔带金额和类别的开支；在您的行程回顾中查看合计。"]],
+        ['p',"为行程设定预算，并在旅途中随时对照预算跟踪您的支出，让您始终清楚自己的状况。"],
+        ['h3',"预算"],
+        ['ul',[
+          "设定行程总预算，并可选择设定每日预算，Ruta 会对照预算跟踪您的支出。",
+          "实时卡片会显示您已花费多少、还剩多少，以及在余下的行程中您的花钱节奏是否合理。",
+        ]],
+        ['h3',"记录开支"],
+        ['ul',["添加一笔带金额和类别的开支，并随时查看累计合计。"]],
       ]},
       'post-trip': { title:"行程回顾与归档", blocks:[
         ['p',"当行程结束时，Ruta 会切换到回顾视图，并把这段行程收入归档，让您可以焕然一新地开启下一段旅程。"],
@@ -1749,12 +1797,12 @@ const GUIDE = {
         ['note',"您正在与 Ruta 的 AI 助手对话，而非真人。任何关键信息请再次核实。"],
       ]},
       'languages': { title:"语言", blocks:[
-        ['p',"Ruta 提供九种语言。在设置中选择您的语言，应用（包括语音）都会随之切换。"],
+        ['p',"Ruta 提供九种语言。在 Ruta 设置中选择您的语言，应用（包括语音）都会随之切换。"],
       ]},
       'notifications': { title:"通知", blocks:[
         ['p',"精确选择您想接收的提醒：登机口变更、延误、提前起飞、中转风险、开始登机、何时出发、证件到期，以及出发前一晚的行前提醒。"],
         ['h3',"如何使用"],
-        ['ul',["在设置的通知中逐项开关各类通知。"]],
+        ['ul',["在 Ruta 设置的通知中逐项开关各类通知。"]],
       ]},
       'offline': { title:"离线模式", blocks:[
         ['p',"没有信号时，您保存的行程照常可用。Ruta 会显示您的行程和上次同步的信息，并在您重新联网时更新实时内容。"],
@@ -1764,9 +1812,9 @@ const GUIDE = {
         ['p',"帮助已内置于应用中，我们也只需一封邮件即可联系到。"],
         ['h3',"如何使用"],
         ['ul',[
-          "在任意界面点按右上角的 ? 即可获取该功能的帮助。",
-          "随时可在设置的用户指南中找到这份完整指南。",
-          "需要真人协助？在设置中点按联系客服，或发送邮件至 support@rutatravels.com。",
+          "在任意界面点按右下角的 ? 即可获取该功能的帮助。",
+          "随时可在 Ruta 设置的用户指南中找到这份完整指南。",
+          "需要真人协助？在 Ruta 设置中点按联系客服，或发送邮件至 info@rutatravels.com。",
         ]],
       ]},
       'privacy': { title:"隐私与您的数据", blocks:[
@@ -1783,12 +1831,12 @@ const GUIDE = {
         ["ul",[
           "**抵达**仅显示出行当天的要点：您的航班、登机口、时间和机场。当您只需赶上航班时最为合适。",
           "**探索**聚焦目的地：城市指南、值得一看的地点以及落地后的实用工具。",
-          "**两者兼顾**将它们合并为完整应用。在**设置**中选择您的模式，或直接告诉语音助手。",
+          "**两者兼顾**将它们合并为完整应用。在**Ruta 设置**中选择您的模式，或直接告诉语音助手。",
         ]],
         ["h3","简洁模式"],
         ["p","简洁模式是一种更平静、更大字的视图，只显示您接下来需要的信息：何时出发、您的登机口以及登机，采用大而清晰的布局。当完整应用显得繁杂时，它随时都能派上用场，也非常适合把手机递给同行的人。"],
         ["ul",[
-          "在**设置**中开启；随时点按**完整应用**即可切换回去。",
+          "在**Ruta 设置**中开启；随时点按**完整应用**即可切换回去。",
           "向语音助手询问您的登机口、时间或航站楼，即可免提获得答案。",
         ]],
       ]},
@@ -1798,7 +1846,7 @@ const GUIDE = {
     meta: {
       langName: "Português",
       title: "Ajuda e Guia do Usuário",
-      tagline: "Tudo o que o Ruta faz, do planejamento da viagem até o pouso no seu destino. Toque no ? no canto superior de qualquer tela do app para ir direto à seção correspondente àquele recurso aqui.",
+      tagline: "Tudo o que o Ruta faz, do planejamento da viagem até o pouso no seu destino. Toque no ? no canto inferior de qualquer tela do app para ir direto à seção correspondente àquele recurso aqui.",
       footer: "Guia de Ajuda e do Usuário do Ruta Travels. Recursos e disponibilidade podem mudar conforme o app evolui. Para qualquer coisa urgente — voos, portões, regras de entrada — confirme sempre com a sua companhia aérea ou com o órgão oficial.",
     },
     groupLabels: {
@@ -1904,16 +1952,16 @@ const GUIDE = {
       'risk-check': { title:"Verificação de risco da viagem", blocks:[
         ['p',"Uma varredura com um toque em todos os seus voos em busca de atrasos e riscos de conexão, com um sinal de tudo certo quando você está tranquilo."],
         ['h3',"Como usar"],
-        ['ul',["Toque no cartão de risco em Hoje para rodar a varredura; toque em um item sinalizado para ver o que fazer."]],
+        ['ul',["Toque no cartão de risco em Hoje para rodar a varredura; toque em um item sinalizado para ver o que fazer.", "Em um item sinalizado, toque nos **…** para ver sugestões de como lidar com a situação e entender melhor os seus direitos como passageiro."]],
       ]},
       'when-to-leave': { title:"Quando sair", blocks:[
-        ['p',"Um horário de saída sugerido para o aeroporto com base no trânsito ao vivo."],
+        ['p',"Um horário de saída sugerido para o aeroporto com base no trânsito ao vivo, que já inclui os tempos necessários no aeroporto: encerramento do check-in, segurança e uma margem para o embarque, de modo que a estimativa cubra toda a sequência antes do voo e não apenas o trajeto."],
         ['note',"O trânsito ao vivo pode mudar — confira antes de sair."],
       ]},
       'airport': { title:"Aeroporto: mapas, segurança, salas VIP", blocks:[
         ['p',"Mapas do terminal e navegação até o portão, tempos de espera na segurança, comodidades e detecção de acesso a salas VIP."],
         ['h3',"Como usar"],
-        ['ul',["Abra a visão do Aeroporto para ver o mapa do seu terminal, estimativas de espera na segurança, comidas e lojas, e as salas VIP a que você tem acesso."]],
+        ['ul',["Abra a visão do Aeroporto para ver o mapa do seu terminal, estimativas de espera nas filas de segurança, comidas e lojas, e as salas VIP a que você tem acesso."]],
         ['note',"Os tempos de espera são estimativas baseadas em padrões típicos; confira os painéis do aeroporto ao chegar."],
       ]},
       'find-car': { title:"Encontre seu carro", blocks:[
@@ -1928,6 +1976,7 @@ const GUIDE = {
       ]},
       'in-flight': { title:"Durante o voo e conexões", blocks:[
         ['p',"Acompanhamento de conexões enquanto você está no ar, com alertas se uma conexão apertada estiver em risco, e o seu próximo trecho pronto no momento em que você pousa."],
+        ['note',"Para receber atualizações em tempo real durante o voo, conecte-se ao Wi-Fi do avião para que o Ruta possa continuar atualizando o status da sua conexão."],
       ]},
       'arrival-hub': { title:"Central de chegada", blocks:[
         ['p',"Quando você pousa, o Ruta traz à tona o que você precisa em terra: o hotel, o carro alugado ou o trem salvos para o dia, a esteira de bagagem e uma corrida com um toque."],
@@ -1946,9 +1995,14 @@ const GUIDE = {
         ]],
       ]},
       'expenses': { title:"Despesas", blocks:[
-        ['p',"Registre os gastos da viagem à medida que acontecem e revise-os depois."],
-        ['h3',"Como usar"],
-        ['ul',["Adicione uma despesa com valor e categoria; revise os totais no seu resumo."]],
+        ['p',"Defina um orçamento de viagem e acompanhe seus gastos em relação a ele ao longo do caminho, para sempre saber como está."],
+        ['h3',"Orçamento"],
+        ['ul',[
+          "Defina um orçamento total da viagem e, se quiser, um diário, e o Ruta acompanha seus gastos em relação a ele.",
+          "Um cartão ao vivo mostra quanto você gastou, quanto resta e se o seu ritmo está no caminho certo para o resto da viagem.",
+        ]],
+        ['h3',"Registrar despesas"],
+        ['ul',["Adicione uma despesa com valor e categoria e revise os totais acumulados a qualquer momento."]],
       ]},
       'post-trip': { title:"Resumo e arquivo da viagem", blocks:[
         ['p',"Quando sua viagem termina, o Ruta passa para um resumo e guarda a viagem no seu arquivo para você começar a próxima do zero."],
@@ -1958,12 +2012,12 @@ const GUIDE = {
         ['note',"Você está falando com o assistente de IA do Ruta, não com uma pessoa. Confira qualquer coisa importante."],
       ]},
       'languages': { title:"Idiomas", blocks:[
-        ['p',"O Ruta está disponível em nove idiomas. Defina o seu em Ajustes, e o app — incluindo a voz — acompanha."],
+        ['p',"O Ruta está disponível em nove idiomas. Defina o seu em Ajustes do Ruta, e o app — incluindo a voz — acompanha."],
       ]},
       'notifications': { title:"Notificações", blocks:[
         ['p',"Escolha exatamente quais alertas você recebe: mudanças de portão, atrasos, partidas antecipadas, risco de conexão, embarque, quando sair, validade de documentos e o lembrete pré-viagem da véspera."],
         ['h3',"Como usar"],
-        ['ul',["Ative ou desative cada tipo de notificação em Ajustes, dentro de Notificações."]],
+        ['ul',["Ative ou desative cada tipo de notificação em Ajustes do Ruta, dentro de Notificações."]],
       ]},
       'offline': { title:"Modo offline", blocks:[
         ['p',"Sua viagem salva funciona sem sinal. O Ruta mostra a sua viagem e as informações da última sincronização, e atualiza as partes ao vivo quando você se reconecta."],
@@ -1973,9 +2027,9 @@ const GUIDE = {
         ['p',"A ajuda está integrada ao app, e estamos a um e-mail de distância."],
         ['h3',"Como usar"],
         ['ul',[
-          "Toque no ? no canto superior de qualquer tela para obter ajuda com aquele recurso.",
-          "Encontre este guia completo a qualquer momento em Ajustes, dentro de Guia do Usuário.",
-          "Precisa de uma pessoa? Toque em Falar com o suporte em Ajustes, ou envie um e-mail para support@rutatravels.com.",
+          "Toque no ? no canto inferior de qualquer tela para obter ajuda com aquele recurso.",
+          "Encontre este guia completo a qualquer momento em Ajustes do Ruta, dentro de Guia do Usuário.",
+          "Precisa de uma pessoa? Toque em Falar com o suporte em Ajustes do Ruta, ou envie um e-mail para info@rutatravels.com.",
         ]],
       ]},
       'privacy': { title:"Privacidade e seus dados", blocks:[
@@ -1992,12 +2046,12 @@ const GUIDE = {
         ["ul",[
           "**Chegar** mostra apenas o essencial do dia da viagem: seus voos, o portão, os horários e o aeroporto. Ideal quando você só precisa pegar seu voo.",
           "**Explorar** foca no destino: guias da cidade, lugares para ver e ferramentas no local.",
-          "**Ambos** os combina no app completo. Escolha seu modo em **Configurações** ou simplesmente diga ao assistente de voz.",
+          "**Ambos** os combina no app completo. Escolha seu modo em **Ajustes do Ruta** ou simplesmente diga ao assistente de voz.",
         ]],
         ["h3","Modo simples"],
         ["p","O modo simples é uma visão mais calma e maior que mostra apenas o próximo passo de que você precisa: quando sair, seu portão e o embarque, com um layout amplo e claro. É útil sempre que o app completo parecer cheio e ótimo para passar o telefone a um acompanhante."],
         ["ul",[
-          "Ative-o em **Configurações**; toque em **App completo** a qualquer momento para voltar.",
+          "Ative-o em **Ajustes do Ruta**; toque em **App completo** a qualquer momento para voltar.",
           "Peça seu portão, horário ou terminal ao assistente de voz para uma resposta com as mãos livres.",
         ]],
       ]},
@@ -2012,7 +2066,7 @@ const $ = s => document.querySelector(s);
 function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 function linkify(s){
   // auto-link emails and the privacy URL that appear in body text
-  s = s.replace(/support@rutatravels\.com/g,'<a href="mailto:support@rutatravels.com">support@rutatravels.com</a>');
+  s = s.replace(/support@rutatravels\.com/g,'<a href="mailto:info@rutatravels.com">info@rutatravels.com</a>');
   s = s.replace(/rutatravels\.com\/privacy\.html/g,'<a href="https://rutatravels.com/privacy.html">rutatravels.com/privacy.html</a>');
   return s;
 }
