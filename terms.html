@@ -1,0 +1,161 @@
+<!doctype html>
+<!--
+  Ruta Travels — Terms of Service
+  DRAFT for legal review before going live. Sections flagged [LAWYER] (limitation of
+  liability, arbitration/class-action waiver, governing law) are jurisdiction-sensitive
+  and must be reviewed by counsel. English is the governing version.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Terms of Service - Ruta Travels</title>
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Montserrat:wght@200;300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#18273F; --navy-deep:#101C2E; --navy-mid:#1A2C3D; --navy-card:#1F3347;
+    --gold:#F2A65A; --gold-dim:#B8851F; --teal:#1D9E75; --teal-deep:#0F6E56;
+    --white:#FFFFFF; --text:rgba(255,255,255,0.80); --muted:rgba(255,255,255,0.52);
+    --border:rgba(242,166,90,0.18); --hair:rgba(255,255,255,0.07);
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--navy-deep);color:var(--text);position:relative;overflow-x:hidden;
+    font-family:'DM Sans',-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans","Noto Sans",sans-serif;
+    font-weight:300;font-size:17px;line-height:1.7;-webkit-font-smoothing:antialiased;min-height:100vh}
+  body::before,body::after{content:"";position:absolute;border-radius:50%;filter:blur(90px);z-index:0;pointer-events:none}
+  body::before{width:600px;height:600px;background:radial-gradient(circle,rgba(242,166,90,0.28),transparent 62%);top:-200px;right:-150px}
+  body::after{width:520px;height:520px;background:radial-gradient(circle,rgba(29,158,117,0.22),transparent 62%);top:300px;left:-180px}
+  a{color:var(--gold);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .topnav{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;
+    padding:18px 40px;border-bottom:1px solid var(--hair);background:#18273F}
+  .topnav-brand{display:inline-flex;align-items:center;text-decoration:none;line-height:0}
+  .topnav-brand img{height:50px;width:auto;display:block}
+  .topnav-links{display:flex;align-items:center;gap:22px}
+  .topnav-links a{font-family:'DM Sans',sans-serif;font-size:12px;font-weight:400;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.75);text-decoration:none;transition:color .2s}
+  .topnav-links a:hover{color:var(--gold);text-decoration:none}
+  .topnav-cta{background:var(--white);color:var(--navy-deep)!important;border:1px solid var(--white);border-radius:50px;padding:8px 18px;font-weight:600!important;letter-spacing:0.08em!important;transition:background .2s,color .2s,transform .15s}
+  .topnav-cta:hover{background:var(--gold);border-color:var(--gold);color:var(--navy-deep)!important;transform:scale(1.03)}
+  .wrap{position:relative;z-index:1;max-width:820px;margin:0 auto;padding:0 24px 90px}
+  h1{font-family:'Montserrat',sans-serif;font-weight:300;color:var(--white);font-size:clamp(30px,5vw,42px);letter-spacing:0.05em;line-height:1.15;margin:46px 0 8px}
+  .updated{color:var(--muted);font-size:13px;letter-spacing:0.04em;margin:0 0 28px}
+  .intro{font-size:16px;color:var(--text);margin:0 0 30px}
+  h2{font-family:'Montserrat',sans-serif;font-weight:600;color:var(--gold);font-size:14px;letter-spacing:0.14em;text-transform:uppercase;margin:40px 0 12px;padding-top:24px;border-top:1px solid var(--border)}
+  p{margin:0 0 14px;color:var(--text)}
+  ul{margin:0 0 14px;padding-inline-start:20px}
+  li{margin:0 0 10px;color:var(--text)}
+  li strong{color:var(--white);font-weight:500}
+  strong{color:var(--white);font-weight:500}
+  footer.foot{color:var(--muted);font-size:12px;letter-spacing:0.05em;margin-top:52px;padding:22px 0 10px;border-top:1px solid var(--hair);
+    display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+  footer.foot .fl a{color:rgba(255,255,255,0.4);font-size:12px;letter-spacing:0.06em;margin-inline-start:22px;text-transform:uppercase}
+  footer.foot .fl a:hover{color:var(--gold)}
+  @media(max-width:640px){
+    .topnav{padding:14px 20px}
+    .topnav-brand img{height:42px}
+    .topnav-links{gap:12px}
+    .topnav-links a{font-size:11px;letter-spacing:0.08em}
+    h1{font-size:28px}
+    .wrap{padding:0 20px 70px}
+    footer.foot{padding:22px 0 10px;flex-direction:column;text-align:center;gap:10px}
+    footer.foot .fl a{margin:0 11px}
+  }
+</style>
+</head>
+<body>
+<nav class="topnav">
+  <a href="/" class="topnav-brand"><img src="/nav-wordmark.png" alt="Ruta Travels"></a>
+  <div class="topnav-links">
+    <a href="/blog/">Journal</a>
+    <a href="/support">Support</a>
+    <a href="/" class="topnav-cta">Coming to iOS</a>
+  </div>
+</nav>
+<div class="wrap">
+  <h1>Terms of Service</h1>
+  <div class="updated">Last updated: August 20, 2026</div>
+  <p class="intro">These Terms of Service ("Terms") govern your access to and use of the Ruta Travels mobile application and related services (together, "Ruta," the "app," or the "Service"), provided by Ruta Travels ("Ruta Travels," "we," "us," or "our"). By downloading, accessing, or using the Service, you agree to these Terms. If you do not agree, do not use the Service.</p>
+
+  <h2>1. Who may use the Service</h2>
+  <p>You must be at least 18 years old, or the age of majority in your jurisdiction, and able to form a binding contract, to use the Service. By using Ruta you represent that you meet these requirements and that your use complies with all applicable laws.</p>
+
+  <h2>2. What Ruta provides</h2>
+  <p>Ruta is a travel companion app. Depending on your plan and the features available, it may offer flight tracking and status, disruption and delay predictions, itinerary management, airport information and navigation, destination and city guides, document and entry-requirement guidance, and related travel tools, some generated with artificial intelligence. Features vary by device, location, airport, and subscription tier, and may not be available everywhere.</p>
+
+  <h2>3. Informational and advisory use only</h2>
+  <p>Everything Ruta shows you is provided for general information and convenience only. It is not a guarantee, a booking, an authorization, or professional advice, and you should not rely on it as your sole source of truth for any travel decision.</p>
+  <ul>
+    <li><strong>Flight and travel data</strong> (status, times, gates, delays, wait times, baggage, connections) can be incomplete, delayed, or inaccurate. Always confirm directly with your airline, the airport, and official displays.</li>
+    <li><strong>Predictions and risk assessments</strong> (delay likelihood, disruption alerts, connection risk, when to leave) are estimates based on historical and third-party data. They are not guarantees and outcomes will vary.</li>
+    <li><strong>Entry, visa, passport, and document guidance</strong> is general background that changes frequently and may not reflect current government policy. Always verify with the destination's official government sources, embassy, or consulate before booking or traveling.</li>
+    <li><strong>Health, safety, and other advisories</strong> are general information only, not medical, legal, or safety advice.</li>
+  </ul>
+  <p>You are solely responsible for your travel decisions. Ruta is not responsible for missed flights or connections, denied boarding, denied entry, visa or document issues, additional costs, or any other loss arising from reliance on the Service.</p>
+
+  <h2>4. No professional advice</h2>
+  <p>Ruta does not provide legal, immigration, medical, financial, or other professional advice, and no content in the Service creates a professional relationship. Consult a qualified professional for advice specific to your situation.</p>
+
+  <h2>5. Third-party data and services</h2>
+  <p>The Service relies on data and services from third parties, including flight-data providers, aviation and weather authorities, mapping and navigation providers, translation services, and rideshare and airline links. We do not control and are not responsible for the accuracy, availability, or content of third-party sources, and your use of any third-party service or link is subject to that provider's own terms and privacy policies.</p>
+
+  <h2>6. Artificial intelligence features</h2>
+  <p>Some features use artificial intelligence to generate guides, briefings, summaries, and suggestions. AI-generated content may be inaccurate, incomplete, or out of date, and may not fit your specific circumstances. Treat it as a starting point and verify anything you rely on. How AI requests are handled is described in our <a href="/privacy">Privacy Policy</a>.</p>
+
+  <h2>7. Subscriptions, billing, and free trials</h2>
+  <p>Certain features require a paid, auto-renewable subscription purchased through the Apple App Store. By subscribing you agree to the following, in addition to Apple's <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Licensed Application End User License Agreement</a>, which governs your license to use the app:</p>
+  <ul>
+    <li>Payment is charged to your Apple ID at confirmation of purchase.</li>
+    <li>Your subscription automatically renews for the same period unless you turn off auto-renew at least 24 hours before the end of the current period.</li>
+    <li>Your Apple ID is charged for renewal within 24 hours before the end of the current period, at the price then shown.</li>
+    <li>Any free trial converts to a paid subscription at the price shown unless you cancel at least 24 hours before the trial ends. Unused trial time is forfeited when you purchase a subscription.</li>
+    <li>You manage and cancel subscriptions in your App Store account settings. Refunds are handled by Apple under its policies; we do not process payments directly.</li>
+  </ul>
+  <p>Prices, plans, and promotional rates may change. Any change to your existing subscription price will be handled through the App Store and will not take effect without the notice and consent the App Store requires.</p>
+
+  <h2>8. Your information and content</h2>
+  <p>You do not need an account to use Ruta. Your trips, preferences, and travel details are stored primarily on your device, as described in our <a href="/privacy">Privacy Policy</a>. You retain ownership of the information you enter. You grant us a limited license to use that information only as needed to operate and provide the Service to you (for example, sending a flight number to a data provider to return its status). You are responsible for the accuracy of what you enter and for keeping your device secure.</p>
+
+  <h2>9. Acceptable use</h2>
+  <p>You agree not to misuse the Service. You will not, and will not attempt to: reverse engineer, decompile, or extract source code except where the law permits; scrape, harvest, or bulk-download data; resell or redistribute the Service or its data; interfere with or disrupt the Service or its infrastructure; use the Service to violate any law or third-party right; or circumvent security, usage limits, or access controls.</p>
+
+  <h2>10. Intellectual property</h2>
+  <p>The Service, including the app, its content, guides, design, and trademarks, is owned by Ruta Travels or its licensors and is protected by intellectual-property laws. We grant you a personal, limited, non-exclusive, non-transferable, revocable license to use the Service for your own non-commercial travel use, subject to these Terms. All rights not expressly granted are reserved.</p>
+
+  <h2>11. Changes to the Service and future features</h2>
+  <p>We are actively developing Ruta. We may add, change, suspend, or remove features at any time, and features described anywhere as planned, upcoming, or coming in a future version are provided as a statement of direction only, not a promise. We do not guarantee that any particular feature will be released, remain available, or work at any specific airport or location. Availability of location-dependent features, including indoor navigation, depends on partnerships, hardware, and coverage that may not exist everywhere.</p>
+
+  <h2>12. Disclaimer of warranties</h2>
+  <p>The Service is provided "as is" and "as available," without warranties of any kind, whether express, implied, or statutory, including any implied warranties of merchantability, fitness for a particular purpose, accuracy, title, and non-infringement. We do not warrant that the Service will be uninterrupted, timely, secure, error-free, or accurate, or that it will meet your requirements. Some jurisdictions do not allow certain warranty exclusions, so some of the above may not apply to you.</p>
+
+  <h2>13. Limitation of liability</h2>
+  <p>To the maximum extent permitted by law, Ruta Travels and its owners, employees, and suppliers will not be liable for any indirect, incidental, special, consequential, exemplary, or punitive damages, or for any loss of profits, data, goodwill, or travel arrangements, or for missed flights, connections, or events, arising out of or relating to your use of or inability to use the Service, even if we have been advised of the possibility of such damages. To the maximum extent permitted by law, our total liability for all claims relating to the Service will not exceed the greater of the amount you paid us for the Service in the twelve months before the claim, or twenty five US dollars (US$25). Some jurisdictions do not allow certain limitations, so some of the above may not apply to you.</p>
+
+  <h2>14. Indemnification</h2>
+  <p>You agree to indemnify and hold harmless Ruta Travels and its owners, employees, and suppliers from any claims, damages, losses, and expenses, including reasonable legal fees, arising out of your use of the Service, your violation of these Terms, or your violation of any law or third-party right.</p>
+
+  <h2>15. Termination</h2>
+  <p>You may stop using the Service at any time and cancel any subscription through the App Store. We may suspend or terminate your access if you violate these Terms or if we discontinue the Service. Sections that by their nature should survive termination, including sections 3, 4, 8, 10, 12, 13, 14, and 16, will survive.</p>
+
+  <h2>16. Governing law and disputes</h2>
+  <p>These Terms are governed by the laws of the State of California, United States, without regard to its conflict-of-laws rules, except where mandatory local consumer-protection laws of your place of residence apply. Before filing any claim, you agree to first try to resolve it informally by contacting us at <a href="mailto:info@rutatravels.com">info@rutatravels.com</a> and allowing at least 30 days to resolve it. Any dispute not resolved informally will be subject to the exclusive jurisdiction of the state and federal courts located in California, and you consent to that jurisdiction and venue, except where applicable law gives you the right to bring a claim in your local courts.</p>
+
+  <h2>17. Changes to these Terms</h2>
+  <p>We may update these Terms from time to time. When we do, we will revise the "Last updated" date above, and material changes will be reflected in the app or on this page. Your continued use of the Service after changes take effect means you accept the updated Terms.</p>
+
+  <h2>18. Contact</h2>
+  <p>Questions about these Terms? Contact us at <a href="mailto:info@rutatravels.com">info@rutatravels.com</a>.</p>
+
+  <footer class="foot">
+    <span>© 2026 Ruta Travels</span>
+    <span class="fl"><a href="/">Home</a><a href="/privacy">Privacy</a><a href="/support">Support</a></span>
+  </footer>
+</div>
+</body>
+</html>
