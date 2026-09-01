@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;1,300;1,400&amp;family=DM+Sans:wght@300;400;500&amp;display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+  html, body { margin: 0; padding: 0; background: #101C33; }
+  * { box-sizing: border-box; }
+  a { color: #F4F0E8; text-decoration: none; transition: color .3s ease, opacity .3s ease; }
+  a:hover { color: #EDA25E; }
+  ::selection { background: #EDA25E; color: #101C33; }
+  @keyframes rutaDrift { from { transform: translateX(0) } to { transform: translateX(-50%) } }
+  input::placeholder { color: rgba(244,240,232,.34) }
+  @keyframes rutaCue { 0%,100% { transform: translateY(0); opacity: .5 } 50% { transform: translateY(7px); opacity: 1 } }
+</style>
+</helmet>
+
+<div style="background:#101C33;font-family:'DM Sans',system-ui,sans-serif;color:#F4F0E8;overflow-x:hidden">
+
+  <div data-preloader="1" style="position:fixed;inset:0;z-index:200;background:#101C33;transform:translateY(0);transition:transform 1.15s cubic-bezier(.76,0,.24,1);display:flex;align-items:center;justify-content:center">
+    <span data-preword="1" style="font-family:'Montserrat',sans-serif;font-size:clamp(24px,3.4vw,42px);line-height:1;color:#F4F0E8;opacity:0;transition:opacity .36s ease"></span>
+    <span data-precount="1" style="position:absolute;left:40px;bottom:32px;font-family:'Montserrat',sans-serif;font-weight:300;font-size:28px;letter-spacing:.1em;color:#F4F0E8">00</span>
+    <span style="position:absolute;right:40px;bottom:38px;font-family:'Montserrat',sans-serif;font-weight:300;font-size:9px;letter-spacing:.44em;text-transform:uppercase;color:#EDA25E">Ruta Travels</span>
+  </div>
+
+  <nav data-nav="1" style="position:fixed;top:0;left:0;right:0;height:74px;z-index:60;display:flex;align-items:center;justify-content:space-between;padding:0 40px;background:rgba(16,28,51,0);border-bottom:1px solid rgba(244,240,232,0);backdrop-filter:blur(10px);transition:background .4s ease, border-color .4s ease">
+    <a href="#top" style="display:inline-flex;align-items:center">
+      <img data-navlogo="1" src="ruta-logo-nav.png" alt="Ruta Travels" style="height:54px;width:auto;display:block">
+    </a>
+    <div style="display:flex;align-items:center;gap:38px">
+      <a href="#what" data-navlink="1" style="font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:500;color:#F4F0E8">Features</a>
+      <a href="#journal" data-navlink="1" style="font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:500;color:#F4F0E8">Journal</a>
+      <a href="#support" data-navlink="1" style="font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:500;color:#F4F0E8">Support</a>
+      <a href="#get" data-navbtn="1" style="font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:500;border:1px solid rgba(244,240,232,.5);padding:11px 20px;color:#F4F0E8" style-hover="background:#F4F0E8;color:#17253F;border-color:#F4F0E8">Coming to iOS</a>
+    </div>
+  </nav>
+
+  <section id="top" style="position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:130px 40px 110px;background:#101C33;overflow:hidden">
+    <div data-aperture="1" style="position:absolute;bottom:0;left:50%;margin-left:-17px;width:34px;height:34%;overflow:hidden;border-radius:50% 50% 0 0 / 42% 42% 0 0;background:#22345A;transition:width 2.1s cubic-bezier(.24,1,.32,1),height 2.1s cubic-bezier(.24,1,.32,1),margin-left 2.1s cubic-bezier(.24,1,.32,1),border-radius 2.1s cubic-bezier(.24,1,.32,1)">
+      <div style="position:absolute;bottom:0;left:50%;margin-left:-50vw;width:100vw;height:100vh">
+        <image-slot id="ruta-hero-arch" shape="rect" placeholder="Drop the hero photo — the view you walk out onto" src="photos/25.jpg"></image-slot>
+        <div style="position:absolute;inset:0;background:radial-gradient(ellipse 58% 42% at 50% 44%,rgba(16,26,45,.5) 0%,rgba(16,26,45,.3) 55%,rgba(16,26,45,0) 100%),linear-gradient(180deg,rgba(23,37,63,.38) 0%,rgba(23,37,63,.2) 45%,rgba(23,37,63,.45) 100%);pointer-events:none"></div>
+      </div>
+    </div>
+
+    <div data-reveal="1" data-delay="2500" style="position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:34px;text-align:center;pointer-events:none;opacity:0;transform:translateY(26px);transition:opacity 1.2s ease,transform 1.2s cubic-bezier(.24,1,.32,1)">
+      <div style="max-width:900px">
+        <h1 style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:clamp(30px,3.9vw,54px);line-height:1.1;letter-spacing:-.015em;margin:0;color:#F4F0E8">First class intelligence.<br><em style="font-style:italic">For every traveler.</em></h1>
+        <p style="font-size:16px;line-height:1.75;color:rgba(244,240,232,.95);max-width:520px;margin:26px auto 0;text-wrap:pretty">Real-time flight updates throughout your journey. Precise directions from where you're standing. Explore like someone who lives there.</p>
+      </div>
+      <div style="display:flex;gap:14px;pointer-events:auto">
+        <a href="#get" style="font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:500;background:#F4F0E8;color:#17253F;padding:16px 30px" style-hover="background:#EDA25E;color:#17253F">Coming to iPhone</a>
+        <a href="#what" style="font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:500;border:1px solid rgba(244,240,232,.55);padding:16px 30px;color:#F4F0E8" style-hover="background:#F4F0E8;color:#17253F;border-color:#F4F0E8">See How It Works</a>
+      </div>
+    </div>
+
+
+    
+    <div style="position:absolute;z-index:2;bottom:26px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:9px">
+      <span style="font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:rgba(244,240,232,.75)">Scroll</span>
+      <span style="width:1px;height:34px;background:linear-gradient(rgba(244,240,232,.9),rgba(244,240,232,0));animation:rutaCue 2.6s ease-in-out infinite"></span>
+    </div>
+  </section>
+
+  <section id="what" style="padding:130px 40px 40px;max-width:1180px;margin:0 auto">
+    <div data-reveal="1" style="display:flex;align-items:baseline;justify-content:space-between;gap:40px;border-bottom:1px solid rgba(244,240,232,.13);padding-bottom:26px;opacity:0;transform:translateY(24px);transition:opacity 1s ease,transform 1s cubic-bezier(.22,1,.36,1)">
+      <span data-accent="1" style="font-size:10px;letter-spacing:.36em;text-transform:uppercase;font-weight:500;color:#EDA25E">Built for the moments that matter</span>
+    </div>
+  </section>
+
+  <section style="max-width:1180px;margin:0 auto;padding:0 40px 40px;display:flex;flex-direction:column;gap:130px">
+
+    <div data-reveal="1" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:90px;align-items:center;opacity:0;transform:translateY(30px);transition:opacity 1s ease,transform 1s cubic-bezier(.22,1,.36,1)">
+      <div style="position:relative;height:440px">
+        <div style="position:absolute;inset:0;overflow:hidden;background:#22345A">
+          <image-slot id="ruta-feature-1" shape="rect" placeholder="Airport / departures board" src="photos/board.jpg"></image-slot>
+        </div>
+        <div style="position:absolute;inset:-11px;border:1px solid rgba(244,240,232,.16);pointer-events:none"></div>
+      </div>
+      <div>
+        <h2 style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:clamp(23px,2.5vw,33px);line-height:1.2;margin:0;letter-spacing:-.01em">Real-time travel updates</h2>
+        <p style="font-size:16px;line-height:1.8;color:#9AA6BA;margin:22px 0 0;max-width:420px;text-wrap:pretty">Status the moment it changes, not the moment it's announced. Then walking directions from exactly where you're standing to exactly where you need to be, with the minutes it will take.</p>
+      </div>
+    </div>
+
+    <div data-reveal="1" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:90px;align-items:center;opacity:0;transform:translateY(30px);transition:opacity 1s ease,transform 1s cubic-bezier(.22,1,.36,1)">
+      <div style="order:2;position:relative;height:440px">
+        <div style="position:absolute;inset:0;overflow:hidden;background:#22345A">
+          <image-slot id="ruta-feature-2" shape="rect" placeholder="A street, a doorway, a market" src="photos/essaouira-arch.jpg"></image-slot>
+        </div>
+        <div style="position:absolute;inset:-11px;border:1px solid rgba(244,240,232,.16);pointer-events:none"></div>
+      </div>
+      <div style="order:1">
+        <h2 style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:clamp(23px,2.5vw,33px);line-height:1.2;margin:0;letter-spacing:-.01em">Local knowledge worth reading</h2>
+        <p style="font-size:16px;line-height:1.8;color:#9AA6BA;margin:22px 0 0;max-width:420px;text-wrap:pretty">Curated by people who actually live there. What is worth the detour, what closes at four, which side of the square to sit on in the afternoon. Written like a friend's notes, not a listicle.</p>
+      </div>
+    </div>
+
+    <div data-reveal="1" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:90px;align-items:center;opacity:0;transform:translateY(30px);transition:opacity 1s ease,transform 1s cubic-bezier(.22,1,.36,1)">
+      <div style="position:relative;height:440px">
+        <div style="position:absolute;inset:0;overflow:hidden;background:#22345A">
+          <image-slot id="ruta-feature-3" shape="rect" placeholder="Quiet interior, morning light" src="photos/cabanas.jpg"></image-slot>
+        </div>
+        <div style="position:absolute;inset:-11px;border:1px solid rgba(244,240,232,.16);pointer-events:none"></div>
+      </div>
+      <div>
+        <h2 style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:clamp(23px,2.5vw,33px);line-height:1.2;margin:0;letter-spacing:-.01em">Your day, organized once</h2>
+        <p style="font-size:16px;line-height:1.8;color:#9AA6BA;margin:22px 0 0;max-width:420px;text-wrap:pretty">Everything sequenced into one timeline. Flights, transfers, reservations. You know exactly when to leave.</p>
+      </div>
+    </div>
+
+    <div data-reveal="1" style="max-width:1180px;margin:130px auto 0;padding:0 40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:clamp(48px,6vw,80px);align-items:center;justify-items:center;opacity:0;transform:translateY(24px);transition:opacity 1s ease,transform 1s cubic-bezier(.22,1,.36,1)">
+      <div style="display:flex;flex-direction:column;align-items:center;gap:26px;width:100%;max-width:262px">
+        <div style="width:100%;max-width:262px;aspect-ratio:262/540;border-radius:38px;padding:9px;background:linear-gradient(150deg,#2C3F63 0%,#18273F 55%,#101B2E 100%);box-shadow:0 40px 90px rgba(0,0,0,.55),0 0 0 1px rgba(237,162,94,.34);transform:perspective(1400px) rotateY(9deg) rotateZ(-6deg)">
+          <div style="position:relative;width:100%;height:100%;border-radius:30px;overflow:hidden;background:#0F1419">
+            <image-slot id="ruta-app-leave" shape="rect" placeholder="Screenshot — when to leave"></image-slot>
+          </div>
+        </div>
+        <span style="font-size:10px;letter-spacing:.3em;text-transform:uppercase;font-weight:500;transform:translateX(26px);color:#EDA25E">When to leave</span>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:26px;width:100%;max-width:262px">
+        <div style="width:100%;max-width:262px;aspect-ratio:262/540;border-radius:38px;padding:9px;background:linear-gradient(150deg,#2C3F63 0%,#18273F 55%,#101B2E 100%);box-shadow:0 40px 90px rgba(0,0,0,.55),0 0 0 1px rgba(79,124,130,.5);transform:perspective(1400px) rotateY(-9deg) rotateZ(6deg)">
+          <div style="position:relative;width:100%;height:100%;border-radius:30px;overflow:hidden;background:#0F1419">
+            <image-slot id="ruta-app-guide" shape="rect" placeholder="Screenshot — city guide"></image-slot>
+          </div>
+        </div>
+        <span style="font-size:10px;letter-spacing:.3em;text-transform:uppercase;font-weight:500;transform:translateX(-26px);color:#7FA6AC">A city, in three days</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="places" style="padding:140px 0 150px;margin:130px 0 0;border-top:1px solid rgba(244,240,232,.13)">
+    <div data-reveal="1" style="max-width:1180px;margin:0 auto;padding:0 40px;display:flex;align-items:baseline;justify-content:space-between;gap:40px;opacity:0;transform:translateY(24px);transition:opacity 1s ease,transform 1s cubic-bezier(.22,1,.36,1)">
+      <span data-accent="1" style="font-size:10px;letter-spacing:.36em;text-transform:uppercase;font-weight:500;color:#EDA25E">Depth in every destination</span>
+      <p style="font-family:'Montserrat',sans-serif;font-style:italic;font-weight:300;font-size:15px;color:#9AA6BA;margin:0">Hover to look through.</p>
+    </div>
+
+    <div data-places="1" style="display:flex;flex-direction:column;gap:6px;margin-top:70px">
+      <div style="overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)">
+        <div data-marquee="1" style="display:flex;align-items:baseline;gap:0 20px;width:max-content;animation:rutaDrift 96s linear infinite;"><span data-place="0" style="font-family:'Montserrat',sans-serif;font-size:clamp(19px,2.3vw,32px);line-height:1.5;cursor:default;white-space:nowrap;transition:opacity .4s ease,color .4s ease">Lisbon</span><span style="font-size:clamp(18px,1.8vw,24px);color:rgba(244,240,232,.3)">·</span><span data-place="1" style="font-family:'Montserrat',sans-serif;font-size:clamp(19px,2.3vw,32px);line-height:1.5;cursor:default;white-space:nowrap;transition:opacity .4s ease,color .4s ease">Ouro Preto</span><span style="font-size:clamp(18px,1.8vw,24px);color:rgba(244,240,232,.3)">·</span><span data-place="2" style="font-family:'Montserrat',sans-serif;font-size:clamp(19px,2.3vw,32px);line-height:1.5;cursor:default;white-space:nowrap;transition:opacity .4s ease,color .4s ease">Kyoto</span><span style="font-size:clamp(18px,1.8vw,24px);color:rgba(244,240,232,.3)">·</span><span data-place="3" style="font-family:'Montserrat',sans-serif;font-size:clamp(19px,2.3vw,32px);line-height:1.5;cursor:default;white-space:nowrap;transition:opacity .4s ease,color .4s ease">Mexico City</span><span style="font-size:clamp(18px,1.8vw,24px);color:rgba(244,240,232,.3)">·</span><span data-place="4" style="font-family:'Montserrat',sans-serif;font-size:clamp(19px,2.3vw,32px);line-height:1.5;cursor:default;white-space:nowrap;transition:opacity .4s ease,color .4s ease">Copenhagen</span><span style="font-size:clamp(18px,1.8vw,24px);color:rgba(244,240,232,.3)">·</span><span data-place="5" style="font-family:'Montserrat',sans-serif;font-size:clamp(19px,2.3vw,32px);line-height:1.5;cursor:default;white-space:nowrap;transition:opacity .4s ease,color .4s ease">Marrakech</span><span style="font-size:clamp(18px,1.8vw,24px);color:rgba(244,240,232,.3)">·</span><span data-place="6" style="font-family:'Montserrat',sans-serif;font-size:clamp(19px,2.3vw,32px);line-height:1.5;cursor:default;white-space:nowrap;transition:opacity .4s ease,color .4s ease">Cartagena</span><span style="font-size:clamp(18px,1.8vw,24px);color:rgba(244,240,232,.3)">·</span><span data-place="7" style="font-family:'Montserrat',sans-serif;font-size:clamp(19px,2.3vw,32px);line-height:1.5;cursor:default;white-space:nowrap;transition:opacity .4s ease,color .4s ease">Porto</span><span style="font-size:clamp(18px,1.8vw,24px);color:rgba(244,240,232,.3)">·</span><span data-place="8" style="font-family:'Montserrat',sans-serif;font-size:clamp(19px,2.3vw,32px);line-height:1.5;cursor:default;white-space:nowrap;transition:opacity .4s ease,color .4s ease">Oaxaca</span><span style="font-size:clamp(18px,1.8vw,24px);color:rgba(244,240,232,.3)">·</span><span data-place="9" style="font-family:'Montserrat',sans-serif;font-size:clamp(19px,2.3vw,32px);line-height:1.5;cursor:default;white-space:nowrap;transition:opacity .4s ease,color .4s ease">Seoul</span><span style="font-size:clamp(18px,1.8vw,24px);color:rgba(244,240,232,.3)">·</span><span data-place="10" style="font-family:'Montserrat',sans-serif;font-size:clamp(19px,2.3vw,32px);line-height:1.5;cursor:default;white-space:nowrap;transition:opacity .4s ease,color .4s ease">Zermatt</span><span style="font-size:clamp(18px,1.8vw,24px);color:rgba(244,240,232,.3)">·</span><span data-place="11" style="font-family:'Montserrat',sans-serif;font-size:clamp(19px,2.3vw,32px);line-height:1.5;cursor:default;white-space:nowrap;transition:opacity .4s ease,color .4s ease">Hanoi</span><span style="font-size:clamp(18px,1.8vw,24px);color:rgba(244,240,232,.3)">·</span><span data-place="0" style="font-family:'Montserrat',sans-serif;font-size:clamp(19px,2.3vw,32px);line-height:1.5;cursor:default;white-space:nowrap;transition:opacity .4s ease,color .4s ease">Lisbon</span><span style="font-size:clamp(18px,1.8vw,24px);color:rgba(244,240,232,.3)">·</span><span data-place="1" style="font-family:'Montserrat',sans-serif;font-size:clamp(19px,2.3vw,32px);line-height:1.5;cursor:default;white-space:nowrap;transition:opacity .4s ease,color .4s ease">Ouro Preto</span><span style="font-size:clamp(18px,1.8vw,24px);color:rgba(244,240,232,.3)">·</span><span data-place="2" style="font-family:'Montserrat',sans-serif;font-size:clamp(19px,2.3vw,32px);line-height:1.5;cursor:default;white-space:nowrap;transition:opacity .4s ease,color .4s ease">Kyoto</span><span style="font-size:clamp(18px,1.8vw,24px);color:rgba(244,240,232,.3)">·</span><span data-place="3" style="font-family:'Montserrat',sans-serif;font-size:clamp(19px,2.3vw,32px);line-height:1.5;cursor:default;white-space:nowrap;transition:opacity .4s ease,color .4s ease">Mexico City</span><span style="font-size:clamp(18px,1.8vw,24px);color:rgba(244,240,232,.3)">·</span><span data-place="4" style="font-family:'Montserrat',sans-serif;font-size:clamp(19px,2.3vw,32px);line-height:1.5;cursor:default;white-space:nowrap;transition:opacity .4s ease,color .4s ease">Copenhagen</span><span style="font-size:clamp(18px,1.8vw,24px);color:rgba(244,240,232,.3)">·</span><span data-place="5" style="font-family:'Montserrat',sans-serif;font-size:clamp(19px,2.3vw,32px);line-height:1.5;cursor:default;white-space:nowrap;transition:opacity .4s ease,color .4s ease">Marrakech</span><span style="font-size:clamp(18px,1.8vw,24px);color:rgba(244,240,232,.3)">·</span><span data-place="6" style="font-family:'Montserrat',sans-serif;font-size:clamp(19px,2.3vw,32px);line-height:1.5;cursor:default;white-space:nowrap;transition:opacity .4s ease,color .4s ease">Cartagena</span><span style="font-size:clamp(18px,1.8vw,24px);color:rgba(244,240,232,.3)">·</span><span data-place="7" style="font-family:'Montserrat',sans-serif;font-size:clamp(19px,2.3vw,32px);line-height:1.5;cursor:default;white-space:nowrap;transition:opacity .4s ease,color .4s ease">Porto</span><span style="font-size:clamp(18px,1.8vw,24px);color:rgba(244,240,232,.3)">·</span><span data-place="8" style="font-family:'Montserrat',sans-serif;font-size:clamp(19px,2.3vw,32px);line-height:1.5;cursor:default;white-space:nowrap;transition:opacity .4s ease,color .4s ease">Oaxaca</span><span style="font-size:clamp(18px,1.8vw,24px);color:rgba(244,240,232,.3)">·</span><span data-place="9" style="font-family:'Montserrat',sans-serif;font-size:clamp(19px,2.3vw,32px);line-height:1.5;cursor:default;white-space:nowrap;transition:opacity .4s ease,color .4s ease">Seoul</span><span style="font-size:clamp(18px,1.8vw,24px);color:rgba(244,240,232,.3)">·</span><span data-place="10" style="font-family:'Montserrat',sans-serif;font-size:clamp(19px,2.3vw,32px);line-height:1.5;cursor:default;white-space:nowrap;transition:opacity .4s ease,color .4s ease">Zermatt</span><span style="font-size:clamp(18px,1.8vw,24px);color:rgba(244,240,232,.3)">·</span><span data-place="11" style="font-family:'Montserrat',sans-serif;font-size:clamp(19px,2.3vw,32px);line-height:1.5;cursor:default;white-space:nowrap;transition:opacity .4s ease,color .4s ease">Hanoi</span><span style="font-size:clamp(18px,1.8vw,24px);color:rgba(244,240,232,.3)">·</span></div>
+      </div>
+      <div style="overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)">
+        <div data-marquee="1" style="display:flex;align-items:baseline;gap:0 20px;width:max-content;animation:rutaDrift 112s linear infinite;animation-direction:reverse;"><span data-place="12" style="font-family:'Montserrat',sans-serif;font-size:clamp(19px,2.3vw,32px);line-height:1.5;cursor:default;white-space:nowrap;transition:opacity .4s ease,color .4s ease">Tangier</span><span style="font-size:clamp(18px,1.8vw,24px);color:rgba(244,240,232,.3)">·</span><span data-place="13" style="font-family:'Montserrat',sans-serif;font-size:clamp(19px,2.3vw,32px);line-height:1.5;cursor:default;white-space:nowrap;transition:opacity .4s ease,color .4s ease">Buenos Aires</span><span style="font-size:clamp(18px,1.8vw,24px);color:rgba(244,240,232,.3)">·</span><span data-place="14" style="font-family:'Montserrat',sans-serif;font-size:clamp(19px,2.3vw,32px);line-height:1.5;cursor:default;white-space:nowrap;transition:opacity .4s ease,color .4s ease">Reykjavík</span><span style="font-size:clamp(18px,1.8vw,24px);color:rgba(244,240,232,.3)">·</span><span data-place="15" style="font-family:'Montserrat',sans-serif;font-size:clamp(19px,2.3vw,32px);line-height:1.5;cursor:default;white-space:nowrap;transition:opacity .4s ease,color .4s ease">Salvador</span><span style="font-size:clamp(18px,1.8vw,24px);color:rgba(244,240,232,.3)">·</span><span data-place="16" style="font-family:'Montserrat',sans-serif;font-size:clamp(19px,2.3vw,32px);line-height:1.5;cursor:default;white-space:nowrap;transition:opacity .4s ease,color .4s ease">Naples</span><span style="font-size:clamp(18px,1.8vw,24px);color:rgba(244,240,232,.3)">·</span><span data-place="17" style="font-family:'Montserrat',sans-serif;font-size:clamp(19px,2.3vw,32px);line-height:1.5;cursor:default;white-space:nowrap;transition:opacity .4s ease,color .4s ease">Bruges</span><span style="font-size:clamp(18px,1.8vw,24px);color:rgba(244,240,232,.3)">·</span><span data-place="18" style="font-family:'Montserrat',sans-serif;font-size:clamp(19px,2.3vw,32px);line-height:1.5;cursor:default;white-space:nowrap;transition:opacity .4s ease,color .4s ease">Chiang Mai</span><span style="font-size:clamp(18px,1.8vw,24px);color:rgba(244,240,232,.3)">·</span><span data-place="19" style="font-family:'Montserrat',sans-serif;font-size:clamp(19px,2.3vw,32px);line-height:1.5;cursor:default;white-space:nowrap;transition:opacity .4s ease,color .4s ease">Valparaíso</span><span style="font-size:clamp(18px,1.8vw,24px);color:rgba(244,240,232,.3)">·</span><span data-place="20" style="font-family:'Montserrat',sans-serif;font-size:clamp(19px,2.3vw,32px);line-height:1.5;cursor:default;white-space:nowrap;transition:opacity .4s ease,color .4s ease">Tbilisi</span><span style="font-size:clamp(18px,1.8vw,24px);color:rgba(244,240,232,.3)">·</span><span data-place="21" style="font-family:'Montserrat',sans-serif;font-size:clamp(19px,2.3vw,32px);line-height:1.5;cursor:default;white-space:nowrap;transition:opacity .4s ease,color .4s ease">Lofoten</span><span style="font-size:clamp(18px,1.8vw,24px);color:rgba(244,240,232,.3)">·</span><span data-place="22" style="font-family:'Montserrat',sans-serif;font-size:clamp(19px,2.3vw,32px);line-height:1.5;cursor:default;white-space:nowrap;transition:opacity .4s ease,color .4s ease">San Sebastián</span><span style="font-size:clamp(18px,1.8vw,24px);color:rgba(244,240,232,.3)">·</span><span data-place="23" style="font-family:'Montserrat',sans-serif;font-size:clamp(19px,2.3vw,32px);line-height:1.5;cursor:default;white-space:nowrap;transition:opacity .4s ease,color .4s ease">Kandy</span><span style="font-size:clamp(18px,1.8vw,24px);color:rgba(244,240,232,.3)">·</span><span data-place="12" style="font-family:'Montserrat',sans-serif;font-size:clamp(19px,2.3vw,32px);line-height:1.5;cursor:default;white-space:nowrap;transition:opacity .4s ease,color .4s ease">Tangier</span><span style="font-size:clamp(18px,1.8vw,24px);color:rgba(244,240,232,.3)">·</span><span data-place="13" style="font-family:'Montserrat',sans-serif;font-size:clamp(19px,2.3vw,32px);line-height:1.5;cursor:default;white-space:nowrap;transition:opacity .4s ease,color .4s ease">Buenos Aires</span><span style="font-size:clamp(18px,1.8vw,24px);color:rgba(244,240,232,.3)">·</span><span data-place="14" style="font-family:'Montserrat',sans-serif;font-size:clamp(19px,2.3vw,32px);line-height:1.5;cursor:default;white-space:nowrap;transition:opacity .4s ease,color .4s ease">Reykjavík</span><span style="font-size:clamp(18px,1.8vw,24px);color:rgba(244,240,232,.3)">·</span><span data-place="15" style="font-family:'Montserrat',sans-serif;font-size:clamp(19px,2.3vw,32px);line-height:1.5;cursor:default;white-space:nowrap;transition:opacity .4s ease,color .4s ease">Salvador</span><span style="font-size:clamp(18px,1.8vw,24px);color:rgba(244,240,232,.3)">·</span><span data-place="16" style="font-family:'Montserrat',sans-serif;font-size:clamp(19px,2.3vw,32px);line-height:1.5;cursor:default;white-space:nowrap;transition:opacity .4s ease,color .4s ease">Naples</span><span style="font-size:clamp(18px,1.8vw,24px);color:rgba(244,240,232,.3)">·</span><span data-place="17" style="font-family:'Montserrat',sans-serif;font-size:clamp(19px,2.3vw,32px);line-height:1.5;cursor:default;white-space:nowrap;transition:opacity .4s ease,color .4s ease">Bruges</span><span style="font-size:clamp(18px,1.8vw,24px);color:rgba(244,240,232,.3)">·</span><span data-place="18" style="font-family:'Montserrat',sans-serif;font-size:clamp(19px,2.3vw,32px);line-height:1.5;cursor:default;white-space:nowrap;transition:opacity .4s ease,color .4s ease">Chiang Mai</span><span style="font-size:clamp(18px,1.8vw,24px);color:rgba(244,240,232,.3)">·</span><span data-place="19" style="font-family:'Montserrat',sans-serif;font-size:clamp(19px,2.3vw,32px);line-height:1.5;cursor:default;white-space:nowrap;transition:opacity .4s ease,color .4s ease">Valparaíso</span><span style="font-size:clamp(18px,1.8vw,24px);color:rgba(244,240,232,.3)">·</span><span data-place="20" style="font-family:'Montserrat',sans-serif;font-size:clamp(19px,2.3vw,32px);line-height:1.5;cursor:default;white-space:nowrap;transition:opacity .4s ease,color .4s ease">Tbilisi</span><span style="font-size:clamp(18px,1.8vw,24px);color:rgba(244,240,232,.3)">·</span><span data-place="21" style="font-family:'Montserrat',sans-serif;font-size:clamp(19px,2.3vw,32px);line-height:1.5;cursor:default;white-space:nowrap;transition:opacity .4s ease,color .4s ease">Lofoten</span><span style="font-size:clamp(18px,1.8vw,24px);color:rgba(244,240,232,.3)">·</span><span data-place="22" style="font-family:'Montserrat',sans-serif;font-size:clamp(19px,2.3vw,32px);line-height:1.5;cursor:default;white-space:nowrap;transition:opacity .4s ease,color .4s ease">San Sebastián</span><span style="font-size:clamp(18px,1.8vw,24px);color:rgba(244,240,232,.3)">·</span><span data-place="23" style="font-family:'Montserrat',sans-serif;font-size:clamp(19px,2.3vw,32px);line-height:1.5;cursor:default;white-space:nowrap;transition:opacity .4s ease,color .4s ease">Kandy</span><span style="font-size:clamp(18px,1.8vw,24px);color:rgba(244,240,232,.3)">·</span></div>
+      </div>
+      <div style="overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)">
+        <div data-marquee="1" style="display:flex;align-items:baseline;gap:0 20px;width:max-content;animation:rutaDrift 104s linear infinite;"><span data-place="24" style="font-family:'Montserrat',sans-serif;font-size:clamp(19px,2.3vw,32px);line-height:1.5;cursor:default;white-space:nowrap;transition:opacity .4s ease,color .4s ease">Paraty</span><span style="font-size:clamp(18px,1.8vw,24px);color:rgba(244,240,232,.3)">·</span><span data-place="25" style="font-family:'Montserrat',sans-serif;font-size:clamp(19px,2.3vw,32px);line-height:1.5;cursor:default;white-space:nowrap;transition:opacity .4s ease,color .4s ease">Hoi An</span><span style="font-size:clamp(18px,1.8vw,24px);color:rgba(244,240,232,.3)">·</span><span data-place="26" style="font-family:'Montserrat',sans-serif;font-size:clamp(19px,2.3vw,32px);line-height:1.5;cursor:default;white-space:nowrap;transition:opacity .4s ease,color .4s ease">Sintra</span><span style="font-size:clamp(18px,1.8vw,24px);color:rgba(244,240,232,.3)">·</span><span data-place="27" style="font-family:'Montserrat',sans-serif;font-size:clamp(19px,2.3vw,32px);line-height:1.5;cursor:default;white-space:nowrap;transition:opacity .4s ease,color .4s ease">Aarhus</span><span style="font-size:clamp(18px,1.8vw,24px);color:rgba(244,240,232,.3)">·</span><span data-place="28" style="font-family:'Montserrat',sans-serif;font-size:clamp(19px,2.3vw,32px);line-height:1.5;cursor:default;white-space:nowrap;transition:opacity .4s ease,color .4s ease">Antigua</span><span style="font-size:clamp(18px,1.8vw,24px);color:rgba(244,240,232,.3)">·</span><span data-place="29" style="font-family:'Montserrat',sans-serif;font-size:clamp(19px,2.3vw,32px);line-height:1.5;cursor:default;white-space:nowrap;transition:opacity .4s ease,color .4s ease">Ubud</span><span style="font-size:clamp(18px,1.8vw,24px);color:rgba(244,240,232,.3)">·</span><span data-place="30" style="font-family:'Montserrat',sans-serif;font-size:clamp(19px,2.3vw,32px);line-height:1.5;cursor:default;white-space:nowrap;transition:opacity .4s ease,color .4s ease">Ronda</span><span style="font-size:clamp(18px,1.8vw,24px);color:rgba(244,240,232,.3)">·</span><span data-place="31" style="font-family:'Montserrat',sans-serif;font-size:clamp(19px,2.3vw,32px);line-height:1.5;cursor:default;white-space:nowrap;transition:opacity .4s ease,color .4s ease">Matera</span><span style="font-size:clamp(18px,1.8vw,24px);color:rgba(244,240,232,.3)">·</span><span data-place="32" style="font-family:'Montserrat',sans-serif;font-size:clamp(19px,2.3vw,32px);line-height:1.5;cursor:default;white-space:nowrap;transition:opacity .4s ease,color .4s ease">Luang Prabang</span><span style="font-size:clamp(18px,1.8vw,24px);color:rgba(244,240,232,.3)">·</span><span data-place="33" style="font-family:'Montserrat',sans-serif;font-size:clamp(19px,2.3vw,32px);line-height:1.5;cursor:default;white-space:nowrap;transition:opacity .4s ease,color .4s ease">Cusco</span><span style="font-size:clamp(18px,1.8vw,24px);color:rgba(244,240,232,.3)">·</span><span data-place="34" style="font-family:'Montserrat',sans-serif;font-size:clamp(19px,2.3vw,32px);line-height:1.5;cursor:default;white-space:nowrap;transition:opacity .4s ease,color .4s ease">Kotor</span><span style="font-size:clamp(18px,1.8vw,24px);color:rgba(244,240,232,.3)">·</span><span data-place="35" style="font-family:'Montserrat',sans-serif;font-size:clamp(19px,2.3vw,32px);line-height:1.5;cursor:default;white-space:nowrap;transition:opacity .4s ease,color .4s ease">Nara</span><span style="font-size:clamp(18px,1.8vw,24px);color:rgba(244,240,232,.3)">·</span><span data-place="24" style="font-family:'Montserrat',sans-serif;font-size:clamp(19px,2.3vw,32px);line-height:1.5;cursor:default;white-space:nowrap;transition:opacity .4s ease,color .4s ease">Paraty</span><span style="font-size:clamp(18px,1.8vw,24px);color:rgba(244,240,232,.3)">·</span><span data-place="25" style="font-family:'Montserrat',sans-serif;font-size:clamp(19px,2.3vw,32px);line-height:1.5;cursor:default;white-space:nowrap;transition:opacity .4s ease,color .4s ease">Hoi An</span><span style="font-size:clamp(18px,1.8vw,24px);color:rgba(244,240,232,.3)">·</span><span data-place="26" style="font-family:'Montserrat',sans-serif;font-size:clamp(19px,2.3vw,32px);line-height:1.5;cursor:default;white-space:nowrap;transition:opacity .4s ease,color .4s ease">Sintra</span><span style="font-size:clamp(18px,1.8vw,24px);color:rgba(244,240,232,.3)">·</span><span data-place="27" style="font-family:'Montserrat',sans-serif;font-size:clamp(19px,2.3vw,32px);line-height:1.5;cursor:default;white-space:nowrap;transition:opacity .4s ease,color .4s ease">Aarhus</span><span style="font-size:clamp(18px,1.8vw,24px);color:rgba(244,240,232,.3)">·</span><span data-place="28" style="font-family:'Montserrat',sans-serif;font-size:clamp(19px,2.3vw,32px);line-height:1.5;cursor:default;white-space:nowrap;transition:opacity .4s ease,color .4s ease">Antigua</span><span style="font-size:clamp(18px,1.8vw,24px);color:rgba(244,240,232,.3)">·</span><span data-place="29" style="font-family:'Montserrat',sans-serif;font-size:clamp(19px,2.3vw,32px);line-height:1.5;cursor:default;white-space:nowrap;transition:opacity .4s ease,color .4s ease">Ubud</span><span style="font-size:clamp(18px,1.8vw,24px);color:rgba(244,240,232,.3)">·</span><span data-place="30" style="font-family:'Montserrat',sans-serif;font-size:clamp(19px,2.3vw,32px);line-height:1.5;cursor:default;white-space:nowrap;transition:opacity .4s ease,color .4s ease">Ronda</span><span style="font-size:clamp(18px,1.8vw,24px);color:rgba(244,240,232,.3)">·</span><span data-place="31" style="font-family:'Montserrat',sans-serif;font-size:clamp(19px,2.3vw,32px);line-height:1.5;cursor:default;white-space:nowrap;transition:opacity .4s ease,color .4s ease">Matera</span><span style="font-size:clamp(18px,1.8vw,24px);color:rgba(244,240,232,.3)">·</span><span data-place="32" style="font-family:'Montserrat',sans-serif;font-size:clamp(19px,2.3vw,32px);line-height:1.5;cursor:default;white-space:nowrap;transition:opacity .4s ease,color .4s ease">Luang Prabang</span><span style="font-size:clamp(18px,1.8vw,24px);color:rgba(244,240,232,.3)">·</span><span data-place="33" style="font-family:'Montserrat',sans-serif;font-size:clamp(19px,2.3vw,32px);line-height:1.5;cursor:default;white-space:nowrap;transition:opacity .4s ease,color .4s ease">Cusco</span><span style="font-size:clamp(18px,1.8vw,24px);color:rgba(244,240,232,.3)">·</span><span data-place="34" style="font-family:'Montserrat',sans-serif;font-size:clamp(19px,2.3vw,32px);line-height:1.5;cursor:default;white-space:nowrap;transition:opacity .4s ease,color .4s ease">Kotor</span><span style="font-size:clamp(18px,1.8vw,24px);color:rgba(244,240,232,.3)">·</span><span data-place="35" style="font-family:'Montserrat',sans-serif;font-size:clamp(19px,2.3vw,32px);line-height:1.5;cursor:default;white-space:nowrap;transition:opacity .4s ease,color .4s ease">Nara</span><span style="font-size:clamp(18px,1.8vw,24px);color:rgba(244,240,232,.3)">·</span></div>
+      </div>
+    </div>
+
+    <div data-reveal="1" style="max-width:700px;margin:96px auto 0;padding:0 40px;text-align:center;opacity:0;transform:translateY(24px);transition:opacity 1s ease,transform 1s cubic-bezier(.22,1,.36,1)">
+      <p style="font-size:16px;line-height:1.8;color:#9AA6BA;margin:0;text-wrap:pretty">Every city on Ruta gets the same care. Lisbon and Lagos. Copenhagen and Cusco. A capital, a coastline, the village your family is from. Hand-curated with the same depth everywhere.</p>
+    </div>
+  </section>
+
+  <div data-cardlayer="1" style="position:fixed;top:0;left:0;width:0;height:0;z-index:90;pointer-events:none">
+    <div data-card="0" style="position:absolute;left:0;top:0;width:300px;height:380px;opacity:0;transform:translate(-50%,-50%) scale(.94);transition:opacity .38s ease,transform .55s cubic-bezier(.22,1,.36,1);overflow:hidden;border-radius:50% 50% 0 0 / 39% 39% 0 0;background:#22345A;pointer-events:none"><image-slot id="ruta-place-0" shape="rect" placeholder="Lisbon" src="photos/12.jpg"></image-slot></div>
+    <div data-card="1" style="position:absolute;left:0;top:0;width:300px;height:380px;opacity:0;transform:translate(-50%,-50%) scale(.94);transition:opacity .38s ease,transform .55s cubic-bezier(.22,1,.36,1);overflow:hidden;border-radius:50% 50% 0 0 / 39% 39% 0 0;background:#22345A;pointer-events:none"><image-slot id="ruta-place-1" shape="rect" placeholder="Ouro Preto" src="photos/matera.jpg"></image-slot></div>
+    <div data-card="2" style="position:absolute;left:0;top:0;width:300px;height:380px;opacity:0;transform:translate(-50%,-50%) scale(.94);transition:opacity .38s ease,transform .55s cubic-bezier(.22,1,.36,1);overflow:hidden;border-radius:50% 50% 0 0 / 39% 39% 0 0;background:#22345A;pointer-events:none"><image-slot id="ruta-place-2" shape="rect" placeholder="Kyoto" src="photos/majorelle.jpg"></image-slot></div>
+    <div data-card="3" style="position:absolute;left:0;top:0;width:300px;height:380px;opacity:0;transform:translate(-50%,-50%) scale(.94);transition:opacity .38s ease,transform .55s cubic-bezier(.22,1,.36,1);overflow:hidden;border-radius:50% 50% 0 0 / 39% 39% 0 0;background:#22345A;pointer-events:none"><image-slot id="ruta-place-3" shape="rect" placeholder="Mexico City" src="photos/21.jpg"></image-slot></div>
+    <div data-card="4" style="position:absolute;left:0;top:0;width:300px;height:380px;opacity:0;transform:translate(-50%,-50%) scale(.94);transition:opacity .38s ease,transform .55s cubic-bezier(.22,1,.36,1);overflow:hidden;border-radius:50% 50% 0 0 / 39% 39% 0 0;background:#22345A;pointer-events:none"><image-slot id="ruta-place-4" shape="rect" placeholder="Copenhagen" src="photos/10.jpg"></image-slot></div>
+    <div data-card="5" style="position:absolute;left:0;top:0;width:300px;height:380px;opacity:0;transform:translate(-50%,-50%) scale(.94);transition:opacity .38s ease,transform .55s cubic-bezier(.22,1,.36,1);overflow:hidden;border-radius:50% 50% 0 0 / 39% 39% 0 0;background:#22345A;pointer-events:none"><image-slot id="ruta-place-5" shape="rect" placeholder="Marrakech" src="photos/cabanas.jpg"></image-slot></div>
+    <div data-card="6" style="position:absolute;left:0;top:0;width:300px;height:380px;opacity:0;transform:translate(-50%,-50%) scale(.94);transition:opacity .38s ease,transform .55s cubic-bezier(.22,1,.36,1);overflow:hidden;border-radius:50% 50% 0 0 / 39% 39% 0 0;background:#22345A;pointer-events:none"><image-slot id="ruta-place-6" shape="rect" placeholder="Cartagena" src="photos/22.jpg"></image-slot></div>
+    <div data-card="7" style="position:absolute;left:0;top:0;width:300px;height:380px;opacity:0;transform:translate(-50%,-50%) scale(.94);transition:opacity .38s ease,transform .55s cubic-bezier(.22,1,.36,1);overflow:hidden;border-radius:50% 50% 0 0 / 39% 39% 0 0;background:#22345A;pointer-events:none"><image-slot id="ruta-place-7" shape="rect" placeholder="Porto" src="photos/journal-arch.jpg"></image-slot></div>
+    <div data-card="8" style="position:absolute;left:0;top:0;width:300px;height:380px;opacity:0;transform:translate(-50%,-50%) scale(.94);transition:opacity .38s ease,transform .55s cubic-bezier(.22,1,.36,1);overflow:hidden;border-radius:50% 50% 0 0 / 39% 39% 0 0;background:#22345A;pointer-events:none"><image-slot id="ruta-place-8" shape="rect" placeholder="Oaxaca" src="photos/24.jpg"></image-slot></div>
+    <div data-card="9" style="position:absolute;left:0;top:0;width:300px;height:380px;opacity:0;transform:translate(-50%,-50%) scale(.94);transition:opacity .38s ease,transform .55s cubic-bezier(.22,1,.36,1);overflow:hidden;border-radius:50% 50% 0 0 / 39% 39% 0 0;background:#22345A;pointer-events:none"><image-slot id="ruta-place-9" shape="rect" placeholder="Seoul" src="photos/essaouira-arch.jpg"></image-slot></div>
+  </div>
+
+  <section style="margin-top:0;background:#F4F0E8;color:#17253F;padding:140px 40px">
+    <div data-reveal="1" style="max-width:860px;margin:0 auto;text-align:center;opacity:0;transform:translateY(26px);transition:opacity 1.1s ease,transform 1.1s cubic-bezier(.22,1,.36,1)">
+      <span style="font-size:10px;letter-spacing:.36em;text-transform:uppercase;font-weight:500;color:#C0763A">Built for the margins</span>
+      <p style="font-family:'Montserrat',sans-serif;font-style:italic;font-weight:400;font-size:clamp(21px,2.5vw,33px);line-height:1.42;margin:34px 0 0;text-wrap:pretty">We designed Ruta for the hours in between: the transfer, the layover, the walk from one gate to the next. Master those moments and the rest of your trip becomes simpler. That is where we focus.</p>
+    </div>
+  </section>
+
+  <section id="journal" data-section="journal" style="padding:130px 40px;max-width:1180px;margin:0 auto">
+    <div data-reveal="1" style="display:flex;align-items:baseline;justify-content:space-between;border-bottom:1px solid rgba(244,240,232,.13);padding-bottom:26px;opacity:0;transform:translateY(24px);transition:opacity 1s ease,transform 1s cubic-bezier(.22,1,.36,1)">
+      <span data-accent="1" style="font-size:10px;letter-spacing:.36em;text-transform:uppercase;font-weight:500;color:#EDA25E">The Journal</span>
+      <a href="https://rutatravels.com/blog/" target="_blank" rel="noopener" style="font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:500;color:#9AA6BA" style-hover="color:#EDA25E">All Entries →</a>
+    </div>
+      <p style="max-width:520px;margin:30px 0 0;font-size:16px;line-height:1.8;color:currentColor;opacity:.62;text-wrap:pretty;transition:opacity 1s ease">Stories from Ruta users and our guides. Real trips, real discoveries.</p>
+
+    <div data-reveal="1" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px;margin-top:52px;opacity:0;transform:translateY(28px);transition:opacity 1s ease,transform 1s cubic-bezier(.22,1,.36,1)">
+      <a href="https://rutatravels.com/blog/perfect-day-copenhagen-norrebro/" target="_blank" rel="noopener" style="display:block" style-hover="opacity:.72">
+        <div style="height:250px;overflow:hidden;background:#22345A"><image-slot id="ruta-journal-1" shape="rect" placeholder="Journal image" src="photos/copenhagen-journal.jpg"></image-slot></div>
+        <p style="font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:#9AA6BA;margin:22px 0 0">Destinations · 7 Min</p>
+        <h3 style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:20px;line-height:1.35;margin:12px 0 0">A perfect day in Copenhagen's Nørrebro</h3>
+      </a>
+      <a href="https://rutatravels.com/blog/premium-ends-at-the-aircraft-door/" target="_blank" rel="noopener" style="display:block" style-hover="opacity:.72">
+        <div style="height:250px;overflow:hidden;background:#22345A"><image-slot id="ruta-journal-2" shape="rect" placeholder="Journal image" src="photos/jetbridge.jpg"></image-slot></div>
+        <p style="font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:#9AA6BA;margin:22px 0 0">Trip Planning · 3 Min</p>
+        <h3 style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:20px;line-height:1.35;margin:12px 0 0">Premium ends at the aircraft door</h3>
+      </a>
+      <a href="https://rutatravels.com/blog/why-we-hand-curate-travel-guides/" target="_blank" rel="noopener" style="display:block" style-hover="opacity:.72">
+        <div style="height:250px;overflow:hidden;background:#22345A"><image-slot id="ruta-journal-3" shape="rect" placeholder="Journal image" src="photos/photowall.jpg"></image-slot></div>
+        <p style="font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:#9AA6BA;margin:22px 0 0">Travel Writing · 5 Min</p>
+        <h3 style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:20px;line-height:1.35;margin:12px 0 0">Why we hand-curate our city guides</h3>
+      </a>
+    </div>
+  </section>
+
+  <section id="get" style="background:#1A2A48;padding:140px 40px;display:flex;flex-direction:column;align-items:center;gap:34px;text-align:center">
+    <div data-reveal="1" style="opacity:0;transform:translateY(26px);transition:opacity 1s ease,transform 1s cubic-bezier(.22,1,.36,1);display:flex;flex-direction:column;align-items:center;gap:26px">
+      <div style="position:relative;width:min(230px,52vw);height:min(306px,46vh);flex-shrink:0">
+        <div style="position:absolute;inset:0;overflow:hidden;border-radius:50% 50% 0 0 / 39% 39% 0 0;background:#22345A">
+          <image-slot id="ruta-cta-door" shape="rect" placeholder="The door" src="photos/door-arch.jpg"></image-slot>
+        </div>
+        <div style="position:absolute;inset:-11px;border:1px solid rgba(244,240,232,.2);border-radius:50% 50% 0 0 / 39% 39% 0 0;pointer-events:none"></div>
+      </div>
+      <h2 style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:clamp(27px,3.2vw,42px);line-height:1.14;margin:0">Open the door.</h2>
+      <p style="font-size:16px;line-height:1.75;color:#9AA6BA;max-width:440px;margin:0">Ruta arrives on iPhone first. Leave your email and we will tell you the day it lands.</p>
+      <a href="mailto:info@rutatravels.com?subject=Notify%20me%20when%20Ruta%20launches" style="font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:500;background:#F4F0E8;color:#17253F;padding:17px 34px" style-hover="background:#EDA25E;color:#17253F">Notify me at launch</a>
+    </div>
+  </section>
+
+  <footer id="support" style="background:#0B1526;color:#F4F0E8;padding:80px 40px 40px">
+    <div style="max-width:1180px;margin:0 auto;display:flex;justify-content:space-between;align-items:flex-start;gap:60px;flex-wrap:wrap;border-bottom:1px solid rgba(244,240,232,.14);padding-bottom:52px">
+      <img src="ruta-logo-full.png" alt="Ruta Travels" style="height:104px;width:auto;display:block">
+      <div style="display:flex;gap:70px;flex-wrap:wrap">
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <span style="font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:rgba(244,240,232,.45)">Product</span>
+          <a href="#what" style="font-size:14px;color:#F4F0E8" style-hover="color:#EDA25E">Features</a>
+          <a href="#get" style="font-size:14px;color:#F4F0E8" style-hover="color:#EDA25E">Download</a>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <span style="font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:rgba(244,240,232,.45)">Read</span>
+          <a href="#journal" style="font-size:14px;color:#F4F0E8" style-hover="color:#EDA25E">Journal</a>
+          <a href="https://instagram.com/ruta_travels" style="font-size:14px;color:#F4F0E8" style-hover="color:#EDA25E">Instagram</a>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <span style="font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:rgba(244,240,232,.45)">Company</span>
+          <a href="#support" style="font-size:14px;color:#F4F0E8" style-hover="color:#EDA25E">Support</a>
+          <a href="#support" style="font-size:14px;color:#F4F0E8" style-hover="color:#EDA25E">Privacy</a>
+          <a href="#support" style="font-size:14px;color:#F4F0E8" style-hover="color:#EDA25E">Terms</a>
+        </div>
+      </div>
+    </div>
+    <div style="max-width:1180px;margin:26px auto 0;display:flex;justify-content:space-between;gap:20px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(244,240,232,.45)">
+      <span>© 2026 Ruta Travels</span>
+      <span>First Class Intelligence. For Every Traveler.</span>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;accent&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#EDA25E&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;options&quot;:[&quot;#C0763A&quot;,&quot;#EDA25E&quot;,&quot;#17253F&quot;,&quot;#7FA4C4&quot;],&quot;section&quot;:&quot;Brand&quot;},&quot;openingSequence&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Motion&quot;},&quot;showJournal&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;}}">
+class Component extends DCLogic {
+  componentDidMount() {
+    this.applyTheme();
+    this.initReveal();
+    this.initPreloader();
+    this.initPlaces();
+    this.onScroll = () => {
+      const nav = document.querySelector('[data-nav]');
+      if (!nav) return;
+      const past = window.scrollY > 40;
+      nav.style.background = past ? 'rgba(16,28,51,.92)' : 'rgba(16,28,51,0)';
+      nav.style.borderBottomColor = past ? 'rgba(244,240,232,.14)' : 'rgba(244,240,232,0)';
+      const ink = '#F4F0E8';
+      const word = document.querySelector('[data-navword]');
+      if (word) word.style.color = ink;
+      document.querySelectorAll('[data-navlink]').forEach(a => { a.style.color = ink; });
+      const btn = document.querySelector('[data-navbtn]');
+      if (btn) {
+        btn.style.color = ink;
+        btn.style.borderColor = 'rgba(244,240,232,.5)';
+      }
+    };
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    this.onScroll();
+  }
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.onScroll);
+    if (this.io) this.io.disconnect();
+    if (this.sweepReveal) {
+      window.removeEventListener('scroll', this.sweepReveal);
+      window.removeEventListener('hashchange', this.sweepReveal);
+    }
+    if (this._raf) cancelAnimationFrame(this._raf);
+  }
+  componentDidUpdate() { this.applyTheme(); this.initPreloader(); }
+
+  applyTheme() {
+    const accent = this.props.accent || '#EDA25E';
+    document.querySelectorAll('[data-accent]').forEach(el => { el.style.color = accent; });
+    const journal = document.querySelector('[data-section="journal"]');
+    if (journal) journal.style.display = this.props.showJournal === false ? 'none' : '';
+  }
+
+  openAperture(instant) {
+    const ap = document.querySelector('[data-aperture]');
+    if (!ap) return;
+    if (instant) ap.style.transition = 'none';
+    ap.style.width = '100%';
+    ap.style.height = '100%';
+    ap.style.marginLeft = '-50%';
+    ap.style.borderRadius = '0';
+  }
+
+
+  initPreloader() {
+    const pre = document.querySelector('[data-preloader]');
+    const word = document.querySelector('[data-preword]');
+    const count = document.querySelector('[data-precount]');
+
+    if (this.props.openingSequence === false) {
+      if (pre) pre.style.display = 'none';
+      this.openAperture(true);
+      return;
+    }
+    if (this._openRan) return;
+    this._openRan = true;
+    if (!pre) { this.openAperture(false); return; }
+
+    const DUR = 1750;
+    const words = ['Lisbon', 'Kyoto', 'Ouro Preto', 'Anywhere'];
+    document.body.style.overflow = 'hidden';
+    window.scrollTo(0, 0);
+
+    let i = -1;
+    const step = () => {
+      i += 1;
+      if (i >= words.length || !word) return;
+      word.textContent = words[i];
+      word.style.opacity = '1';
+      setTimeout(() => { if (i < words.length - 1) word.style.opacity = '0'; }, 320);
+      setTimeout(step, 420);
+    };
+    setTimeout(step, 220);
+
+    const t0 = performance.now();
+    const tick = now => {
+      const p = Math.min(1, (now - t0) / DUR);
+      if (count) count.textContent = String(Math.round(p * 100)).padStart(2, '0');
+      if (p < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+
+    setTimeout(() => {
+      if (word) word.style.opacity = '0';
+      pre.style.transform = 'translateY(-100%)';
+      document.body.style.overflow = '';
+    }, DUR + 140);
+
+    setTimeout(() => { pre.style.display = 'none'; }, DUR + 1400);
+    setTimeout(() => this.openAperture(false), DUR + 620);
+  }
+
+  initPlaces() {
+    if (this._placesRan) return;
+    const items = Array.from(document.querySelectorAll('[data-place]'));
+    const cards = Array.from(document.querySelectorAll('[data-card]'));
+    if (!items.length || !cards.length) return;
+    this._placesRan = true;
+
+    let tx = 0, ty = 0, cx = 0, cy = 0, active = -1, pinned = false;
+    const CARD_W = 300, CARD_H = 380;
+
+    const clamp = (v, lo, hi) => Math.max(lo, Math.min(hi, v));
+    const target = e => {
+      tx = clamp(e.clientX + 168, CARD_W / 2 + 16, window.innerWidth - CARD_W / 2 - 16);
+      ty = clamp(e.clientY - 10, CARD_H / 2 + 16, window.innerHeight - CARD_H / 2 - 16);
+    };
+
+    const marquees = Array.from(document.querySelectorAll('[data-marquee]'));
+    const drift = state => marquees.forEach(m => { m.style.animationPlayState = state; });
+
+    const hide = () => {
+      if (pinned) return;
+      if (active >= 0) {
+        cards[active].style.opacity = '0';
+        cards[active].style.transform = 'translate(-50%,-50%) scale(.94) rotate(0deg)';
+      }
+      active = -1;
+      items.forEach(el => { el.style.opacity = '1'; el.style.color = ''; });
+      drift('running');
+    };
+
+    // Cities with their own photograph override the cycling card image.
+    const CITY_PHOTOS = {
+      'Matera': 'photos/matera.jpg',
+      'Kyoto': 'photos/kyoto.jpg',
+      'Mexico City': 'photos/mexico-city.jpg',
+      'Copenhagen': 'photos/copenhagen.jpg',
+      'Marrakech': 'photos/majorelle.jpg',
+      'Tangier': 'photos/tangier.jpg',
+      'Ouro Preto': 'photos/ouro-preto.jpg',
+      'Cartagena': 'photos/cartagena.jpg',
+      'Porto': 'photos/porto.jpg',
+      'Oaxaca': 'photos/oaxaca.jpg',
+      'Seoul': 'photos/seoul.jpg',
+      'Zermatt': 'photos/zermatt.jpg',
+      'Hanoi': 'photos/hanoi.jpg',
+      'Lisbon': 'photos/lisbon.jpg',
+      'Salvador': 'photos/salvador.jpg',
+      'Naples': 'photos/naples.jpg',
+      'Bruges': 'photos/bruges.jpg',
+      'Chiang Mai': 'photos/chiang-mai.jpg',
+      'Valparaíso': 'photos/valparaiso.jpg',
+      'Kandy': 'photos/kandy.jpg',
+      'Ubud': 'photos/ubud.jpg',
+      'Tbilisi': 'photos/tbilisi.jpg',
+      'Buenos Aires': 'photos/buenos-aires.jpg',
+      'Reykjavík': 'photos/reykjavik.jpg',
+      'Aarhus': 'photos/aarhus.jpg',
+      'San Sebastián': 'photos/san-sebastian.jpg',
+      'Lofoten': 'photos/lofoten.jpg',
+      'Hoi An': 'photos/hoi-an.jpg',
+      'Sintra': 'photos/sintra.jpg',
+      'Antigua': 'photos/antigua.jpg',
+      'Luang Prabang': 'photos/luang-prabang.jpg',
+      'Cusco': 'photos/cusco.jpg',
+      'Ronda': 'photos/ronda.jpg',
+      'Kotor': 'photos/kotor.jpg',
+      'Nara': 'photos/nara.jpg',
+      'Paraty': 'photos/paraty.jpg'
+    };
+
+    const show = (ci, el, e) => {
+      if (pinned) return;
+      const own = CITY_PHOTOS[(el.textContent || '').trim()];
+      if (own) {
+        const slot = cards[ci].querySelector('image-slot');
+        if (slot && slot.getAttribute('src') !== own) slot.setAttribute('src', own);
+      }
+      if (active >= 0 && active !== ci) {
+        cards[active].style.opacity = '0';
+        cards[active].style.transform = 'translate(-50%,-50%) scale(.94) rotate(0deg)';
+      }
+      const fresh = active !== ci;
+      active = ci;
+      if (e && fresh) { target(e); cx = tx; cy = ty; }
+      const c = cards[ci];
+      c.style.left = cx + 'px';
+      c.style.top = cy + 'px';
+      c.style.opacity = '1';
+      c.style.transform = 'translate(-50%,-50%) scale(1) rotate(-2deg)';
+      const accent = this.props.accent || '#EDA25E';
+      items.forEach(other => { other.style.opacity = other === el ? '1' : '.24'; other.style.color = other === el ? accent : ''; });
+      drift('paused');
+    };
+
+    items.forEach(el => {
+      const ci = (parseInt(el.getAttribute('data-place'), 10) || 0) % cards.length;
+      el.addEventListener('mouseenter', e => show(ci, el, e));
+      el.addEventListener('click', () => {
+        if (active !== ci) return;
+        pinned = true;
+        cards[ci].style.pointerEvents = 'auto';
+        cards[ci].style.transform = 'translate(-50%,-50%) scale(1) rotate(0deg)';
+      });
+    });
+
+    const wrap = document.querySelector('[data-places]');
+    if (wrap) wrap.addEventListener('mouseleave', hide);
+
+    document.addEventListener('mousemove', e => {
+      if (pinned) return;
+      target(e);
+    }, { passive: true });
+
+    document.addEventListener('click', e => {
+      if (!pinned) return;
+      if (e.target.closest && e.target.closest('[data-card]')) return;
+      pinned = false;
+      cards.forEach(c => { c.style.pointerEvents = 'none'; });
+      hide();
+    });
+
+    const loop = () => {
+      if (!pinned && active >= 0) {
+        cx += (tx - cx) * 0.14;
+        cy += (ty - cy) * 0.14;
+        const c = cards[active];
+        c.style.left = cx + 'px';
+        c.style.top = cy + 'px';
+      }
+      this._raf = requestAnimationFrame(loop);
+    };
+    loop();
+  }
+
+  initReveal() {
+    const els = Array.from(document.querySelectorAll('[data-reveal]'));
+    const show = el => {
+      if (el.dataset.revealed) return;
+      el.dataset.revealed = '1';
+      const d = parseInt(el.getAttribute('data-delay') || '0', 10);
+      setTimeout(() => { el.style.opacity = '1'; el.style.transform = 'translateY(0)'; }, d);
+    };
+    if (!('IntersectionObserver' in window)) { els.forEach(show); return; }
+    this.io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting || e.boundingClientRect.top < 0) { show(e.target); this.io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    els.forEach(el => this.io.observe(el));
+
+    // A jump (nav anchor, deep link, End key) never fires an intersection for
+    // sections the viewport skipped, so sweep on scroll too.
+    this.sweepReveal = () => {
+      els.forEach(el => {
+        if (el.dataset.revealed) return;
+        if (el.getBoundingClientRect().top < window.innerHeight) {
+          show(el);
+          if (this.io) this.io.unobserve(el);
+        }
+      });
+    };
+    window.addEventListener('scroll', this.sweepReveal, { passive: true });
+    window.addEventListener('hashchange', this.sweepReveal);
+    requestAnimationFrame(this.sweepReveal);
+  }
+}
+</script>
+</body>
+</html>
