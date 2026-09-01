@@ -1,1130 +1,216 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Privacy Policy - Ruta Travels</title>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SKQVLGF483"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-SKQVLGF483');</script>
+<title>Privacy - Ruta Travels</title>
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="description" content="How Ruta Travels handles your information. We keep your data on your device wherever possible and do not sell your personal information.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Montserrat:wght@200;300;400;600&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --navy:#18273F; --navy-deep:#101C2E; --navy-mid:#1A2C3D; --navy-card:#1F3347;
-    --gold:#F2A65A; --gold-dim:#B8851F; --teal:#1D9E75; --teal-deep:#0F6E56;
-    --white:#FFFFFF; --text:rgba(255,255,255,0.80); --muted:rgba(255,255,255,0.52);
-    --border:rgba(242,166,90,0.18); --hair:rgba(255,255,255,0.07);
-  }
-  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
-  body{background:var(--navy-deep);color:var(--text);position:relative;overflow-x:hidden;
-    font-family:'DM Sans',-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans","Noto Sans",sans-serif;
-    font-weight:300;font-size:17px;line-height:1.7;-webkit-font-smoothing:antialiased;min-height:100vh}
-  body::before,body::after{content:"";position:absolute;border-radius:50%;filter:blur(90px);z-index:0;pointer-events:none}
-  body::before{width:600px;height:600px;background:radial-gradient(circle,rgba(242,166,90,0.28),transparent 62%);top:-200px;right:-150px}
-  body::after{width:520px;height:520px;background:radial-gradient(circle,rgba(29,158,117,0.22),transparent 62%);top:300px;left:-180px}
-  a{color:var(--gold);text-decoration:none}
-  a:hover{text-decoration:underline}
-  /* Top nav — matches the homepage */
-  .topnav{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;
-    padding:18px 40px;border-bottom:1px solid var(--hair);background:#18273F}
-  .topnav-brand{display:inline-flex;align-items:center;text-decoration:none;line-height:0}
-  .topnav-brand img{height:50px;width:auto;display:block}
-  .topnav-links{display:flex;align-items:center;gap:22px}
-  .topnav-links a{font-family:'DM Sans',sans-serif;font-size:12px;font-weight:400;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.75);text-decoration:none;transition:color .2s}
-  .topnav-links a:hover{color:var(--gold);text-decoration:none}
-  .topnav-cta{background:var(--white);color:var(--navy-deep)!important;border:1px solid var(--white);border-radius:50px;padding:8px 18px;font-weight:600!important;letter-spacing:0.08em!important;transition:background .2s,color .2s,transform .15s}
-  .topnav-cta:hover{background:var(--gold);border-color:var(--gold);color:var(--navy-deep)!important;transform:scale(1.03)}
-  #langLabel{display:none}
-  select#lang{appearance:none;background:transparent;color:rgba(255,255,255,0.75);border:1px solid var(--hair);border-radius:50px;
-    padding:7px 30px 7px 14px;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:400;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;
-    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23F2A65A' stroke-width='3'><path d='M6 9l6 6 6-6'/></svg>");
-    background-repeat:no-repeat;background-position:right 12px center}
-  select#lang:hover{border-color:var(--border);color:var(--gold)}
-  select#lang option{color:#18273F}
-  .wrap{position:relative;z-index:1;max-width:820px;margin:0 auto;padding:0 24px 90px}
-  h1{font-family:'Montserrat',sans-serif;font-weight:300;color:var(--white);font-size:clamp(30px,5vw,42px);letter-spacing:0.05em;line-height:1.15;margin:46px 0 8px}
-  .updated{color:var(--muted);font-size:13px;letter-spacing:0.04em;margin:0 0 28px}
-  .intro{font-size:16px;color:var(--text);margin:0 0 30px}
-  h2{font-family:'Montserrat',sans-serif;font-weight:600;color:var(--gold);font-size:14px;letter-spacing:0.14em;text-transform:uppercase;margin:40px 0 12px;padding-top:24px;border-top:1px solid var(--border)}
-  p{margin:0 0 14px;color:var(--text)}
-  ul{margin:0 0 14px;padding-inline-start:20px}
-  li{margin:0 0 10px;color:var(--text)}
-  li strong{color:var(--white);font-weight:500}
-  footer.foot{color:var(--muted);font-size:12px;letter-spacing:0.05em;margin-top:52px;padding:22px 0 10px;border-top:1px solid var(--hair);
-    display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
-  footer.foot .fl a{color:rgba(255,255,255,0.4);font-size:12px;letter-spacing:0.06em;margin-inline-start:22px;text-transform:uppercase}
-  footer.foot .fl a:hover{color:var(--gold)}
-  html[dir="rtl"] body{font-family:'DM Sans',-apple-system,"Noto Sans Arabic","Geeza Pro",Tahoma,sans-serif}
-  @media(max-width:640px){
-    .topnav{padding:14px 20px}
-    .topnav-brand img{height:42px}
-    .topnav-links{gap:12px}
-    .topnav-links a{font-size:11px;letter-spacing:0.08em}
-    select#lang{padding:6px 26px 6px 12px}
-    h1{font-size:28px}
-    .wrap{padding:0 20px 70px}
-    footer.foot{padding:22px 0 10px;flex-direction:column;text-align:center;gap:10px}
-    footer.foot .fl a{margin:0 11px}
-  }
-</style>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-<nav class="topnav">
-  <a href="/" class="topnav-brand"><img src="/nav-wordmark.png" alt="Ruta Travels"></a>
-  <div class="topnav-links">
-    <a href="/blog/">Journal</a>
-    <a href="/support">Support</a>
-    <label for="lang" id="langLabel">Language</label>
-    <select id="lang" aria-label="Language"></select>
-    <a href="/" class="topnav-cta">Coming to iOS</a>
-  </div>
-</nav>
-<div class="wrap">
-  <h1 id="pageTitle"></h1>
-  <div class="updated" id="pageUpdated"></div>
-  <p class="intro" id="pageIntro"></p>
-  <div id="content"></div>
-  <footer class="foot">
-    <span id="pageFooter"></span>
-    <span class="fl"><a href="/">Home</a><a href="/blog/">Journal</a><a href="/support">Support</a></span>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;1,300;1,400&amp;family=DM+Sans:wght@300;400;500&amp;display=swap" rel="stylesheet">
+<style>
+  html, body { margin: 0; padding: 0; background: #101C33; }
+  * { box-sizing: border-box; }
+  a { color: #EDA25E; text-decoration: none; transition: color .3s ease, opacity .3s ease; }
+  a:hover { color: #F4F0E8; }
+  ::selection { background: #EDA25E; color: #101C33; }
+</style>
+</helmet>
+
+<div style="background:#101C33;font-family:'DM Sans',system-ui,sans-serif;color:#F4F0E8;overflow-x:hidden">
+
+  <nav style="position:fixed;top:0;left:0;right:0;min-height:74px;z-index:60;display:flex;align-items:center;justify-content:space-between;flex-wrap:nowrap;gap:12px;padding:10px clamp(10px,4vw,40px);background:rgba(16,28,51,.9);border-bottom:1px solid rgba(244,240,232,.12);backdrop-filter:blur(10px)">
+    <a href="https://rutatravels.com/" style="display:inline-flex;align-items:center">
+      <img src="logo-nav.png" alt="Ruta Travels" style="height:clamp(26px,6vw,54px);width:auto;display:block">
+    </a>
+    <div style="display:flex;align-items:center;gap:clamp(7px,2.2vw,38px);flex-wrap:nowrap;min-width:0">
+      <a href="https://rutatravels.com/blog/" style="font-size:clamp(8px,1.5vw,11px);letter-spacing:clamp(.04em,.4vw,.22em);text-transform:uppercase;font-weight:500;color:#F4F0E8;white-space:nowrap" data-i18n="a1">Journal</a>
+      <a href="https://rutatravels.com/support.html" style="font-size:clamp(8px,1.5vw,11px);letter-spacing:clamp(.04em,.4vw,.22em);text-transform:uppercase;font-weight:500;color:#F4F0E8;white-space:nowrap" data-i18n="a2">Support</a>
+      <a href="https://rutatravels.com/privacy.html" style="font-size:clamp(8px,1.5vw,11px);letter-spacing:clamp(.04em,.4vw,.22em);text-transform:uppercase;font-weight:500;color:#EDA25E;white-space:nowrap" data-i18n="a3">Privacy</a>
+      <a href="https://rutatravels.com/" style="font-size:clamp(8px,1.5vw,11px);letter-spacing:clamp(.04em,.4vw,.22em);text-transform:uppercase;font-weight:500;color:#F4F0E8;border:1px solid rgba(244,240,232,.4);padding:clamp(6px,1.4vw,12px) clamp(7px,2.4vw,22px);white-space:nowrap;flex-shrink:0" data-i18n="a4">Get Ruta</a>
+    </div>
+  </nav>
+
+  <header style="padding:clamp(118px,22vw,190px) clamp(20px,5vw,40px) 0">
+    <div style="max-width:720px;margin:0 auto">
+      <span style="font-size:10px;letter-spacing:.36em;text-transform:uppercase;font-weight:500;color:#EDA25E" data-i18n="span5">Legal</span>
+      <h1 style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:clamp(36px,5.4vw,64px);line-height:1.06;letter-spacing:-.02em;margin:28px 0 0" data-i18n="h16">Privacy Policy</h1>
+      <p style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(244,240,232,.45);margin:24px 0 0" data-i18n="p7">Last updated August 5, 2026</p>
+      <p style="font-size:16px;line-height:1.9;color:#9AA6BA;margin:34px 0 0;text-wrap:pretty" data-i18n="p8">Ruta Travels ("Ruta Travels," "we," "us," or "our") built the Ruta Travels app as a commercial service. This policy reflects our commitment to your privacy: we keep your information on your device wherever possible, and we do not sell your personal information. It explains what information the app handles, where it lives, and the limited cases where it leaves your device.</p>
+    </div>
+  </header>
+
+  <section style="padding:clamp(60px,10vw,90px) clamp(20px,5vw,40px) 0">
+    <div style="max-width:720px;margin:0 auto;display:flex;flex-direction:column">
+
+      <div style="padding:44px 0;border-top:1px solid rgba(244,240,232,.14)">
+        <h2 style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:clamp(21px,2.4vw,26px);line-height:1.25;letter-spacing:-.01em;margin:0" data-i18n="h29">Our approach</h2>
+        <p style="font-size:15px;line-height:1.9;color:#9AA6BA;margin:18px 0 0" data-i18n="p10">Ruta is built to keep your information on your device. You do not create an account to use Ruta, and we do not build a profile of you. Your trips, preferences, and history live locally on your phone. Sensitive travel-document details are encrypted in your device's secure Keychain and never leave it. A few features need to contact outside services to work (live flight status, maps, weather, translation, and AI), and in those cases we send only what is needed to answer the request, and we do not retain it afterward.</p>
+      </div>
+
+      <div style="padding:44px 0;border-top:1px solid rgba(244,240,232,.14)">
+        <h2 style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:clamp(21px,2.4vw,26px);line-height:1.25;letter-spacing:-.01em;margin:0" data-i18n="h211">Information stored on your device</h2>
+        <p style="font-size:15px;line-height:1.9;color:#9AA6BA;margin:18px 0 0" data-i18n="p12">The following stays on your device and is not sent to our servers.</p>
+        <div style="display:flex;flex-direction:column;gap:18px;margin-top:26px;padding-left:22px;border-left:1px solid rgba(237,162,94,.4)">
+          <p style="font-size:15px;line-height:1.9;color:#9AA6BA;margin:0"><strong style="color:#F4F0E8;font-weight:500" data-i18n="strong13">Trips and itineraries.</strong> Flights, hotels, rental cars, trains, and activities you add.</p>
+          <p style="font-size:15px;line-height:1.9;color:#9AA6BA;margin:0"><strong style="color:#F4F0E8;font-weight:500" data-i18n="strong14">Preferences.</strong> Language, units, accessibility settings, notification choices, and app mode.</p>
+          <p style="font-size:15px;line-height:1.9;color:#9AA6BA;margin:0"><strong style="color:#F4F0E8;font-weight:500" data-i18n="strong15">Flight history and saved details.</strong> Flight numbers, confirmation numbers, times, and addresses you enter or import.</p>
+          <p style="font-size:15px;line-height:1.9;color:#9AA6BA;margin:0"><strong style="color:#F4F0E8;font-weight:500" data-i18n="strong16">Parking location.</strong> The spot, note, and photo you save to find your car.</p>
+          <p style="font-size:15px;line-height:1.9;color:#9AA6BA;margin:0"><strong style="color:#F4F0E8;font-weight:500" data-i18n="strong17">Travel-document numbers.</strong> Passport, visa, Known Traveler (KTN), and Global Entry numbers are encrypted in the device Keychain and are never transmitted to us.</p>
+          <p style="font-size:15px;line-height:1.9;color:#9AA6BA;margin:0"><strong style="color:#F4F0E8;font-weight:500" data-i18n="strong18">A random app identifier.</strong> A device-generated ID with no name, email, or location attached, used only for the anonymous analytics described below.</p>
+        </div>
+      </div>
+
+      <div style="padding:44px 0;border-top:1px solid rgba(244,240,232,.14)">
+        <h2 style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:clamp(21px,2.4vw,26px);line-height:1.25;letter-spacing:-.01em;margin:0" data-i18n="h219">Permissions we request, and why</h2>
+        <p style="font-size:15px;line-height:1.9;color:#9AA6BA;margin:18px 0 0" data-i18n="p20">Each permission is used only for the purpose below, and only when you use that feature. You can grant or revoke any of them in your device settings.</p>
+        <div style="display:flex;flex-direction:column;gap:18px;margin-top:26px;padding-left:22px;border-left:1px solid rgba(237,162,94,.4)">
+          <p style="font-size:15px;line-height:1.9;color:#9AA6BA;margin:0"><strong style="color:#F4F0E8;font-weight:500" data-i18n="strong21">Location, while in use.</strong> To detect your current airport, estimate when to leave, and show nearby places. Not accessed in the background.</p>
+          <p style="font-size:15px;line-height:1.9;color:#9AA6BA;margin:0"><strong style="color:#F4F0E8;font-weight:500" data-i18n="strong22">Camera.</strong> To scan a boarding pass and, where supported, for indoor LiDAR navigation. Used only when you start those features.</p>
+          <p style="font-size:15px;line-height:1.9;color:#9AA6BA;margin:0"><strong style="color:#F4F0E8;font-weight:500" data-i18n="strong23">Microphone.</strong> To power voice search, used only while you are speaking to it.</p>
+          <p style="font-size:15px;line-height:1.9;color:#9AA6BA;margin:0"><strong style="color:#F4F0E8;font-weight:500" data-i18n="strong24">Photo library.</strong> To let you upload a boarding pass or itinerary image.</p>
+          <p style="font-size:15px;line-height:1.9;color:#9AA6BA;margin:0"><strong style="color:#F4F0E8;font-weight:500" data-i18n="strong25">Calendar.</strong> To add your flights to your calendar when you choose to.</p>
+          <p style="font-size:15px;line-height:1.9;color:#9AA6BA;margin:0"><strong style="color:#F4F0E8;font-weight:500" data-i18n="strong26">Notifications.</strong> To send the flight and trip alerts you turn on.</p>
+        </div>
+      </div>
+
+      <div style="padding:44px 0;border-top:1px solid rgba(244,240,232,.14)">
+        <h2 style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:clamp(21px,2.4vw,26px);line-height:1.25;letter-spacing:-.01em;margin:0" data-i18n="h227">When information leaves your device</h2>
+        <p style="font-size:15px;line-height:1.9;color:#9AA6BA;margin:18px 0 0" data-i18n="p28">To provide certain features, the app sends the minimum necessary data to us and/or a third-party provider, uses it to answer that single request, and does not retain it afterward.</p>
+        <div style="display:flex;flex-direction:column;gap:18px;margin-top:26px;padding-left:22px;border-left:1px solid rgba(237,162,94,.4)">
+          <p style="font-size:15px;line-height:1.9;color:#9AA6BA;margin:0"><strong style="color:#F4F0E8;font-weight:500" data-i18n="strong29">Flight tracking.</strong> The flight numbers you track are sent to our flight-data providers to return status, gate, and schedule information.</p>
+          <p style="font-size:15px;line-height:1.9;color:#9AA6BA;margin:0"><strong style="color:#F4F0E8;font-weight:500" data-i18n="strong30">Nearby places, directions, and when to leave.</strong> Your approximate location and place queries are sent to our servers and our maps provider solely to return those results. We do not store or retain your location after the request completes.</p>
+          <p style="font-size:15px;line-height:1.9;color:#9AA6BA;margin:0"><strong style="color:#F4F0E8;font-weight:500" data-i18n="strong31">Weather.</strong> The airport or destination location is sent to our weather provider to return the forecast.</p>
+          <p style="font-size:15px;line-height:1.9;color:#9AA6BA;margin:0"><strong style="color:#F4F0E8;font-weight:500" data-i18n="strong32">Translation.</strong> Text you translate is sent to our translation provider.</p>
+          <p style="font-size:15px;line-height:1.9;color:#9AA6BA;margin:0"><strong style="color:#F4F0E8;font-weight:500" data-i18n="strong33">Currency conversion.</strong> Exchange rates are fetched from a rates provider; the amounts you enter stay on your device.</p>
+          <p style="font-size:15px;line-height:1.9;color:#9AA6BA;margin:0"><strong style="color:#F4F0E8;font-weight:500" data-i18n="strong34">AI features and email import.</strong> Described in the two sections that follow.</p>
+        </div>
+      </div>
+
+      <div style="padding:44px 0;border-top:1px solid rgba(244,240,232,.14)">
+        <h2 style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:clamp(21px,2.4vw,26px);line-height:1.25;letter-spacing:-.01em;margin:0" data-i18n="h235">AI features</h2>
+        <p style="font-size:15px;line-height:1.9;color:#9AA6BA;margin:18px 0 0" data-i18n="p36">Some Ruta features use artificial intelligence, provided by a third-party AI provider. These include destination briefings, reading an itinerary from a screenshot, PDF, or forwarded email, and the in-app assistant. When you use one of these features, the relevant content (for example, the itinerary image or text, or your question) is sent to that provider to generate a response. To reduce cost and repeat processing, identical AI requests may be de-duplicated using a one-way hash, which is not used to identify you. AI output can be wrong; for anything critical we point you to official sources, and we label AI-generated content in the app.</p>
+      </div>
+
+      <div style="padding:44px 0;border-top:1px solid rgba(244,240,232,.14)">
+        <h2 style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:clamp(21px,2.4vw,26px);line-height:1.25;letter-spacing:-.01em;margin:0" data-i18n="h237">Importing trips by email</h2>
+        <p style="font-size:15px;line-height:1.9;color:#9AA6BA;margin:18px 0 0" data-i18n="p38">If you use forward-to-Ruta, forwarded booking confirmations (including their text, HTML, and any attachments such as PDFs or screenshots) are received by our inbound-email provider and our server, and the itinerary content is processed, including by our AI provider, to extract your flights, hotels, and other trip details. Pairing between your forwarded email and your device is anonymous. We use this content only to build your trip and do not retain the raw email after processing.</p>
+      </div>
+
+      <div style="padding:44px 0;border-top:1px solid rgba(244,240,232,.14)">
+        <h2 style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:clamp(21px,2.4vw,26px);line-height:1.25;letter-spacing:-.01em;margin:0" data-i18n="h239">Third-party services</h2>
+        <p style="font-size:15px;line-height:1.9;color:#9AA6BA;margin:18px 0 0" data-i18n="p40">We do not sell your personal information. We share data only with the service providers needed to operate the app, and only as described above.</p>
+        <div style="display:flex;flex-direction:column;gap:18px;margin-top:26px;padding-left:22px;border-left:1px solid rgba(237,162,94,.4)">
+          <p style="font-size:15px;line-height:1.9;color:#9AA6BA;margin:0"><strong style="color:#F4F0E8;font-weight:500" data-i18n="strong41">Flight-data providers.</strong> Flight status, gates, and schedules.</p>
+          <p style="font-size:15px;line-height:1.9;color:#9AA6BA;margin:0"><strong style="color:#F4F0E8;font-weight:500" data-i18n="strong42">A maps and places provider.</strong> Nearby places, place details and photos, geocoding, time zones, and directions.</p>
+          <p style="font-size:15px;line-height:1.9;color:#9AA6BA;margin:0"><strong style="color:#F4F0E8;font-weight:500" data-i18n="strong43">A translation provider.</strong> In-app translation.</p>
+          <p style="font-size:15px;line-height:1.9;color:#9AA6BA;margin:0"><strong style="color:#F4F0E8;font-weight:500" data-i18n="strong44">A weather provider.</strong> Weather data.</p>
+          <p style="font-size:15px;line-height:1.9;color:#9AA6BA;margin:0"><strong style="color:#F4F0E8;font-weight:500" data-i18n="strong45">An AI provider.</strong> AI features and itinerary parsing.</p>
+          <p style="font-size:15px;line-height:1.9;color:#9AA6BA;margin:0"><strong style="color:#F4F0E8;font-weight:500" data-i18n="strong46">A currency-rates provider.</strong> Daily exchange rates.</p>
+          <p style="font-size:15px;line-height:1.9;color:#9AA6BA;margin:0"><strong style="color:#F4F0E8;font-weight:500" data-i18n="strong47">An inbound-email provider.</strong> Receiving forwarded booking emails for import.</p>
+          <p style="font-size:15px;line-height:1.9;color:#9AA6BA;margin:0"><strong style="color:#F4F0E8;font-weight:500" data-i18n="strong48">An error-monitoring provider.</strong> Anonymous crash and error diagnostics, configured to exclude personal information, so we can find and fix bugs.</p>
+          <p style="font-size:15px;line-height:1.9;color:#9AA6BA;margin:0"><strong style="color:#F4F0E8;font-weight:500" data-i18n="strong49">An app-delivery and push-notification provider.</strong> App delivery and push notifications.</p>
+        </div>
+        <p style="font-size:15px;line-height:1.9;color:#9AA6BA;margin:26px 0 0" data-i18n="p50">Each provider processes data only to perform its function for us and under its own terms.</p>
+      </div>
+
+      <div style="padding:44px 0;border-top:1px solid rgba(244,240,232,.14)">
+        <h2 style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:clamp(21px,2.4vw,26px);line-height:1.25;letter-spacing:-.01em;margin:0" data-i18n="h251">What we keep on our servers</h2>
+        <p style="font-size:15px;line-height:1.9;color:#9AA6BA;margin:18px 0 0" data-i18n="p52">We do not keep your trips, saved details, or travel documents on our servers, and Ruta has no accounts, so nothing on our servers identifies you. The limited data that does reach our servers is:</p>
+        <div style="display:flex;flex-direction:column;gap:18px;margin-top:26px;padding-left:22px;border-left:1px solid rgba(237,162,94,.4)">
+          <p style="font-size:15px;line-height:1.9;color:#9AA6BA;margin:0"><strong style="color:#F4F0E8;font-weight:500" data-i18n="strong53">Anonymous usage counts.</strong> A random app identifier, with no name, email, or location, together with the dates it was first and last seen and which features were used, so we can see what to improve. This cannot be used to identify you.</p>
+          <p style="font-size:15px;line-height:1.9;color:#9AA6BA;margin:0"><strong style="color:#F4F0E8;font-weight:500" data-i18n="strong54">Shared caches.</strong> Copies of third-party results, including flight status, weather, translations, and AI responses, kept briefly to speed things up and reduce cost. These are keyed by content, not by you.</p>
+          <p style="font-size:15px;line-height:1.9;color:#9AA6BA;margin:0"><strong style="color:#F4F0E8;font-weight:500" data-i18n="strong55">A temporary import queue.</strong> When you forward a booking email, the extracted itinerary waits in an anonymous queue only until your device picks it up.</p>
+          <p style="font-size:15px;line-height:1.9;color:#9AA6BA;margin:0"><strong style="color:#F4F0E8;font-weight:500" data-i18n="strong56">Crash and error diagnostics.</strong> Collected through our error-monitoring provider and configured to exclude personal information, so we can find and fix bugs.</p>
+        </div>
+        <p style="font-size:15px;line-height:1.9;color:#9AA6BA;margin:26px 0 0" data-i18n="p57">We may also keep aggregate, non-identifying operational metrics, such as which destinations are popular.</p>
+      </div>
+
+      <div style="padding:44px 0;border-top:1px solid rgba(244,240,232,.14)">
+        <h2 style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:clamp(21px,2.4vw,26px);line-height:1.25;letter-spacing:-.01em;margin:0" data-i18n="h258">Data retention</h2>
+        <p style="font-size:15px;line-height:1.9;color:#9AA6BA;margin:18px 0 0" data-i18n="p59">Information stored on your device remains until you delete it or remove the app. Data sent to providers to answer a live request, such as location for nearby places or content for AI parsing, is not retained by us after the request completes. Providers may retain data briefly per their own policies to deliver and secure their service.</p>
+      </div>
+
+      <div style="padding:44px 0;border-top:1px solid rgba(244,240,232,.14)">
+        <h2 style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:clamp(21px,2.4vw,26px);line-height:1.25;letter-spacing:-.01em;margin:0" data-i18n="h260">Your choices and rights</h2>
+        <div style="display:flex;flex-direction:column;gap:18px;margin-top:22px">
+          <p style="font-size:15px;line-height:1.9;color:#9AA6BA;margin:0" data-i18n="p61">Ruta does not require an account. Your data lives on your device.</p>
+          <p style="font-size:15px;line-height:1.9;color:#9AA6BA;margin:0" data-i18n="p62">You can clear saved trips and details in the app, and deleting the app removes all locally stored data, including anything in the Keychain.</p>
+          <p style="font-size:15px;line-height:1.9;color:#9AA6BA;margin:0" data-i18n="p63">You can grant or revoke location, camera, microphone, photo, calendar, and notification permissions at any time in your device settings.</p>
+          <p style="font-size:15px;line-height:1.9;color:#9AA6BA;margin:0" data-i18n="p64">Depending on where you live, you may have rights to access, correct, or delete your personal information. Because your trips and documents live on your device rather than on our servers, they stay under your direct control. Contact us with any request and we will help.</p>
+          <p style="font-size:15px;line-height:1.9;color:#9AA6BA;margin:0" data-i18n="p65">We follow applicable local, national, and international privacy laws. Because your information stays on your device and only anonymous, unlinked data reaches our servers, there is no personal profile for us to sell or that you would need us to delete. Your on-device data is yours to remove at any time.</p>
+        </div>
+      </div>
+
+      <div style="padding:44px 0;border-top:1px solid rgba(244,240,232,.14)">
+        <h2 style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:clamp(21px,2.4vw,26px);line-height:1.25;letter-spacing:-.01em;margin:0" data-i18n="h266">Children's privacy</h2>
+        <p style="font-size:15px;line-height:1.9;color:#9AA6BA;margin:18px 0 0" data-i18n="p67">Ruta Travels is not directed to children under the age of 13, and we do not knowingly collect personal information from children under 13. Where a higher age of digital consent applies, for example 16 in parts of the EU and EEA, that age applies instead.</p>
+      </div>
+
+      <div style="padding:44px 0;border-top:1px solid rgba(244,240,232,.14)">
+        <h2 style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:clamp(21px,2.4vw,26px);line-height:1.25;letter-spacing:-.01em;margin:0" data-i18n="h268">Subscriptions and payments</h2>
+        <p style="font-size:15px;line-height:1.9;color:#9AA6BA;margin:18px 0 0" data-i18n="p69">Ruta offers an optional paid subscription with a free trial. Subscriptions are sold through Apple's App Store, and Apple processes all payments. We never receive or store your card number or billing details.</p>
+        <div style="display:flex;flex-direction:column;gap:18px;margin-top:26px;padding-left:22px;border-left:1px solid rgba(237,162,94,.4)">
+          <p style="font-size:15px;line-height:1.9;color:#9AA6BA;margin:0"><strong style="color:#F4F0E8;font-weight:500" data-i18n="strong70">Apple, App Store.</strong> Processes your purchase, billing, and renewals under Apple's own privacy policy. You can manage or cancel your subscription anytime in your App Store account settings.</p>
+          <p style="font-size:15px;line-height:1.9;color:#9AA6BA;margin:0"><strong style="color:#F4F0E8;font-weight:500" data-i18n="strong71">Our subscription-management provider.</strong> Confirms and manages your subscription status for us using an anonymous purchase identifier and your App Store receipt. It does not receive your name, email, or payment details.</p>
+        </div>
+      </div>
+
+      <div style="padding:44px 0;border-top:1px solid rgba(244,240,232,.14)">
+        <h2 style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:clamp(21px,2.4vw,26px);line-height:1.25;letter-spacing:-.01em;margin:0" data-i18n="h272">Changes to this policy</h2>
+        <p style="font-size:15px;line-height:1.9;color:#9AA6BA;margin:18px 0 0" data-i18n="p73">We may update this privacy policy from time to time. We will notify you of any changes by updating the date at the top of this page.</p>
+      </div>
+
+      <div style="padding:44px 0;border-top:1px solid rgba(244,240,232,.14);border-bottom:1px solid rgba(244,240,232,.14)">
+        <h2 style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:clamp(21px,2.4vw,26px);line-height:1.25;letter-spacing:-.01em;margin:0" data-i18n="h274">Contact us</h2>
+        <p style="font-size:15px;line-height:1.9;color:#9AA6BA;margin:18px 0 0">If you have questions about this privacy policy, contact us at <a href="mailto:info@rutatravels.com" data-i18n="a75">info@rutatravels.com</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer style="background:#0B1526;color:#F4F0E8;padding:80px clamp(20px,5vw,40px) 40px;margin-top:120px">
+    <div style="max-width:1180px;margin:0 auto;display:flex;justify-content:space-between;align-items:flex-start;gap:60px;flex-wrap:wrap;border-bottom:1px solid rgba(244,240,232,.14);padding-bottom:52px">
+      <img src="hero-logo.png" alt="Ruta Travels" style="height:104px;width:auto;display:block">
+      <div style="display:flex;gap:70px;flex-wrap:wrap">
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <span style="font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:rgba(244,240,232,.45)" data-i18n="span76">Product</span>
+          <a href="https://rutatravels.com/" style="font-size:14px;color:#F4F0E8" style-hover="color:#EDA25E" data-i18n="a77">Features</a>
+          <a href="https://rutatravels.com/" style="font-size:14px;color:#F4F0E8" style-hover="color:#EDA25E" data-i18n="a78">Download</a>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <span style="font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:rgba(244,240,232,.45)" data-i18n="span79">Read</span>
+          <a href="https://rutatravels.com/blog/" style="font-size:14px;color:#F4F0E8" style-hover="color:#EDA25E" data-i18n="a80">Journal</a>
+          <a href="https://instagram.com/ruta_travels" style="font-size:14px;color:#F4F0E8" style-hover="color:#EDA25E" data-i18n="a81">Instagram</a>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <span style="font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:rgba(244,240,232,.45)" data-i18n="span82">Company</span>
+          <a href="https://rutatravels.com/support.html" style="font-size:14px;color:#F4F0E8" style-hover="color:#EDA25E" data-i18n="a83">Support</a>
+          <a href="https://rutatravels.com/privacy.html" style="font-size:14px;color:#F4F0E8" style-hover="color:#EDA25E" data-i18n="a84">Privacy</a>
+          <a href="https://rutatravels.com/terms.html" style="font-size:14px;color:#F4F0E8" style-hover="color:#EDA25E" data-i18n="a85">Terms</a>
+        </div>
+      </div>
+    </div>
+    <div style="max-width:1180px;margin:26px auto 0;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(244,240,232,.45)">
+      <span data-i18n="span86">© 2026 Ruta Travels</span>
+      <span data-i18n="span87">First Class Intelligence. For Every Traveler.</span>
+    </div>
   </footer>
 </div>
-
-<script>
-/* Privacy policy content, per language. Falls back to English for anything missing.
-   Block types: ['p', text] paragraph · ['ul', [items]] plain bullets ·
-   ['dl', [[label, desc], ...]] bold-label bullets. */
-const POLICY = {
-  en: {
-    meta: {
-      langName: 'English',
-      title: 'Ruta Travels Privacy Policy',
-      updated: 'Last updated: August 5, 2026',
-      intro: 'Ruta Travels ("Ruta Travels," "we," "us," or "our") built the Ruta Travels app as a commercial service. This policy reflects our commitment to your privacy: we keep your information on your device wherever possible, and we do not sell your personal information. It explains what information the app handles, where it lives, and the limited cases where it leaves your device.',
-      footer: '© 2026 Ruta Travels',
-    },
-    sections: [
-      { h: 'Our approach', blocks: [
-        ['p', 'Ruta is built to keep your information on your device. You do not create an account to use Ruta, and we do not build a profile of you. Your trips, preferences, and history live locally on your phone. Sensitive travel-document details are encrypted in your device’s secure Keychain and never leave it. A few features need to contact outside services to work (live flight status, maps, weather, translation, and AI), and in those cases we send only what is needed to answer the request, and we do not retain it afterward.'],
-      ]},
-      { h: 'Information stored on your device', blocks: [
-        ['p', 'The following stays on your device and is not sent to our servers:'],
-        ['dl', [
-          ['Trips and itineraries', 'flights, hotels, rental cars, trains, and activities you add.'],
-          ['Preferences', 'language, units, accessibility settings, notification choices, and app mode.'],
-          ['Flight history and saved details', 'flight numbers, confirmation numbers, times, and addresses you enter or import.'],
-          ['Parking location', 'the spot, note, and photo you save to find your car.'],
-          ['Travel-document numbers', 'passport, visa, Known Traveler (KTN), and Global Entry numbers are encrypted in the device Keychain and are never transmitted to us.'],
-          ['A random app identifier', 'a device-generated ID with no name, email, or location attached, used only for the anonymous analytics described below.'],
-        ]],
-      ]},
-      { h: 'Permissions we request, and why', blocks: [
-        ['p', 'Each permission is used only for the purpose below, and only when you use that feature. You can grant or revoke any of them in your device settings.'],
-        ['dl', [
-          ['Location (while in use)', 'to detect your current airport, estimate when to leave, and show nearby places. Not accessed in the background.'],
-          ['Camera', 'to scan a boarding pass and, where supported, for indoor LiDAR navigation. Used only when you start those features.'],
-          ['Microphone', 'to power voice search, used only while you are speaking to it.'],
-          ['Photo library', 'to let you upload a boarding pass or itinerary image.'],
-          ['Calendar', 'to add your flights to your calendar when you choose to.'],
-          ['Notifications', 'to send the flight and trip alerts you turn on.'],
-        ]],
-      ]},
-      { h: 'When information leaves your device', blocks: [
-        ['p', 'To provide certain features, the app sends the minimum necessary data to us and/or a third-party provider, uses it to answer that single request, and does not retain it afterward:'],
-        ['dl', [
-          ['Flight tracking', 'the flight numbers you track are sent to our flight-data providers to return status, gate, and schedule information.'],
-          ['Nearby places, directions, and when to leave', 'your approximate location and place queries are sent to our servers and our maps provider solely to return those results. We do not store or retain your location after the request completes.'],
-          ['Weather', 'the airport or destination location is sent to our weather provider to return the forecast.'],
-          ['Translation', 'text you translate is sent to our translation provider.'],
-          ['Currency conversion', 'exchange rates are fetched from a rates provider; the amounts you enter stay on your device.'],
-          ['AI features', 'see the AI features section below.'],
-          ['Forward-to-Ruta email import', 'see the Importing trips by email section below.'],
-        ]],
-      ]},
-      { h: 'AI features', blocks: [
-        ['p', 'Some Ruta features use artificial intelligence, provided by a third-party AI provider. These include destination briefings, reading an itinerary from a screenshot, PDF, or forwarded email, and the in-app assistant. When you use one of these features, the relevant content (for example, the itinerary image or text, or your question) is sent to that provider to generate a response. To reduce cost and repeat processing, identical AI requests may be de-duplicated using a one-way hash, which is not used to identify you. AI output can be wrong; for anything critical we point you to official sources, and we label AI-generated content in the app.'],
-      ]},
-      { h: 'Importing trips by email', blocks: [
-        ['p', 'If you use forward-to-Ruta, forwarded booking confirmations (including their text, HTML, and any attachments such as PDFs or screenshots) are received by our inbound-email provider and our server, and the itinerary content is processed, including by our AI provider, to extract your flights, hotels, and other trip details. Pairing between your forwarded email and your device is anonymous. We use this content only to build your trip and do not retain the raw email after processing.'],
-      ]},
-      { h: 'Third-party services', blocks: [
-        ['p', 'We do not sell your personal information. We share data only with the service providers needed to operate the app, and only as described above:'],
-        ['dl', [
-          ['Flight-data providers', 'flight status, gates, and schedules.'],
-          ['A maps and places provider', 'nearby places, place details and photos, geocoding, time zones, and directions.'],
-          ['A translation provider', 'in-app translation.'],
-          ['A weather provider', 'weather data.'],
-          ['An AI provider', 'AI features and itinerary parsing.'],
-          ['A currency-rates provider', 'daily exchange rates.'],
-          ['An inbound-email provider', 'receiving forwarded booking emails for import.'],
-          ['An error-monitoring provider', 'anonymous crash and error diagnostics, configured to exclude personal information, so we can find and fix bugs.'],
-          ['An app-delivery and push-notification provider', 'app delivery and push notifications.'],
-        ]],
-        ['p', 'Each provider processes data only to perform its function for us and under its own terms.'],
-      ]},
-      { h: 'What we keep on our servers', blocks: [
-        ['p', 'We do not keep your trips, saved details, or travel documents on our servers, and Ruta has no accounts, so nothing on our servers identifies you. The limited data that does reach our servers is:'],
-        ['dl', [
-          ['Anonymous usage counts', 'a random app identifier (no name, email, or location) with the dates it was first and last seen and which features were used, so we can see what to improve. This cannot be used to identify you.'],
-          ['Shared caches', 'copies of third-party results (flight status, weather, translations, and AI responses) kept briefly to speed things up and reduce cost. These are keyed by content, not by you.'],
-          ['A temporary import queue', 'when you forward a booking email, the extracted itinerary waits in an anonymous queue only until your device picks it up.'],
-          ['Crash and error diagnostics', 'collected through our error-monitoring provider and configured to exclude personal information, so we can find and fix bugs.'],
-        ]],
-        ['p', 'We may also keep aggregate, non-identifying operational metrics, such as which destinations are popular.'],
-      ]},
-      { h: 'Data retention', blocks: [
-        ['p', 'Information stored on your device remains until you delete it or remove the app. Data sent to providers to answer a live request (such as location for nearby places, or content for AI parsing) is not retained by us after the request completes. Providers may retain data briefly per their own policies to deliver and secure their service.'],
-      ]},
-      { h: 'Your choices and rights', blocks: [
-        ['ul', [
-          'Ruta does not require an account. Your data lives on your device.',
-          'You can clear saved trips and details in the app, and deleting the app removes all locally stored data, including anything in the Keychain.',
-          'You can grant or revoke location, camera, microphone, photo, calendar, and notification permissions at any time in your device settings.',
-          'Depending on where you live, you may have rights to access, correct, or delete your personal information. Because your trips and documents live on your device rather than on our servers, they stay under your direct control. Contact us with any request and we will help.',
-          'We follow applicable local, national, and international privacy laws. Because your information stays on your device and only anonymous, unlinked data reaches our servers, there is no personal profile for us to sell or that you would need us to delete. Your on-device data is yours to remove at any time.',
-        ]],
-      ]},
-      { h: 'Children’s privacy', blocks: [
-        ['p', 'Ruta Travels is not directed to children under the age of 13, and we do not knowingly collect personal information from children under 13. Where a higher age of digital consent applies (for example, 16 in parts of the EU/EEA), that age applies instead.'],
-      ]},
-      { h: 'Subscriptions and payments', blocks: [
-        ['p', 'Ruta offers an optional paid subscription with a free trial. Subscriptions are sold through Apple’s App Store, and Apple processes all payments. We never receive or store your card number or billing details.'],
-        ['dl', [
-          ['Apple (App Store)', 'processes your purchase, billing, and renewals under Apple’s own privacy policy. You can manage or cancel your subscription anytime in your App Store account settings.'],
-          ['Our subscription-management provider', 'confirms and manages your subscription status for us using an anonymous purchase identifier and your App Store receipt. It does not receive your name, email, or payment details.'],
-        ]],
-      ]},
-      { h: 'Changes to this policy', blocks: [
-        ['p', 'We may update this privacy policy from time to time. We will notify you of any changes by updating the date at the top of this page.'],
-      ]},
-      { h: 'Contact us', blocks: [
-        ['p', 'If you have questions about this privacy policy, contact us at info@rutatravels.com.'],
-      ]},
-    ],
-  },
-  es: {
-    meta: {
-      langName: "Español",
-      title: "Política de Privacidad de Ruta Travels",
-      updated: "Última actualización: 5 de agosto de 2026",
-      intro: "Ruta Travels («Ruta Travels», «nosotros» o «nuestro») creó la aplicación Ruta Travels como un servicio comercial. Esta política refleja nuestro compromiso con tu privacidad: mantenemos tu información en tu dispositivo siempre que es posible y no vendemos tu información personal. Explica qué información gestiona la aplicación, dónde reside y los casos limitados en los que sale de tu dispositivo.",
-      footer: "© 2026 Ruta Travels",
-    },
-    sections: [
-      { h: "Nuestro enfoque", blocks: [
-        ["p", "Ruta está diseñada para mantener tu información en tu dispositivo. No creas una cuenta para usar Ruta y no elaboramos un perfil sobre ti. Tus viajes, preferencias e historial residen localmente en tu teléfono. Los datos sensibles de tus documentos de viaje se cifran en el Keychain seguro de tu dispositivo y nunca lo abandonan. Algunas funciones necesitan contactar con servicios externos para funcionar (estado de vuelos en directo, mapas, clima, traducción e IA), y en esos casos enviamos solo lo necesario para responder a la solicitud, y no lo conservamos después."],
-      ]},
-      { h: "Información almacenada en tu dispositivo", blocks: [
-        ["p", "Lo siguiente permanece en tu dispositivo y no se envía a nuestros servidores:"],
-        ["dl", [
-          ["Viajes e itinerarios", "vuelos, hoteles, coches de alquiler, trenes y actividades que añadas."],
-          ["Preferencias", "idioma, unidades, ajustes de accesibilidad, opciones de notificaciones y modo de la aplicación."],
-          ["Historial de vuelos y datos guardados", "números de vuelo, números de confirmación, horarios y direcciones que introduzcas o importes."],
-          ["Ubicación del aparcamiento", "el lugar, la nota y la foto que guardas para encontrar tu coche."],
-          ["Números de documentos de viaje", "los números de pasaporte, visado, Known Traveler (KTN) y Global Entry se cifran en el Keychain del dispositivo y nunca se nos transmiten."],
-          ["Un identificador aleatorio de la aplicación", "un ID generado por el dispositivo sin nombre, correo electrónico ni ubicación asociados, usado únicamente para las analíticas anónimas que se describen a continuación."],
-        ]],
-      ]},
-      { h: "Permisos que solicitamos, y por qué", blocks: [
-        ["p", "Cada permiso se usa únicamente para el propósito indicado a continuación, y solo cuando usas esa función. Puedes concederlos o revocarlos en cualquier momento en los ajustes de tu dispositivo."],
-        ["dl", [
-          ["Ubicación (mientras se usa)", "para detectar tu aeropuerto actual, estimar cuándo salir y mostrar lugares cercanos. No se accede en segundo plano."],
-          ["Cámara", "para escanear una tarjeta de embarque y, donde esté disponible, para la navegación interior con LiDAR. Se usa solo cuando inicias esas funciones."],
-          ["Micrófono", "para permitir la búsqueda por voz, usado solo mientras le hablas."],
-          ["Fototeca", "para permitirte subir una imagen de una tarjeta de embarque o de un itinerario."],
-          ["Calendario", "para añadir tus vuelos a tu calendario cuando así lo elijas."],
-          ["Notificaciones", "para enviar las alertas de vuelos y viajes que actives."],
-        ]],
-      ]},
-      { h: "Cuándo sale la información de tu dispositivo", blocks: [
-        ["p", "Para proporcionar ciertas funciones, la aplicación nos envía y/o envía a un proveedor externo los datos mínimos necesarios, los usa para responder a esa única solicitud y no los conserva después:"],
-        ["dl", [
-          ["Seguimiento de vuelos", "los números de vuelo que sigues se envían a nuestros proveedores de datos de vuelos para devolver la información de estado, puerta de embarque y horario."],
-          ["Lugares cercanos, indicaciones y cuándo salir", "tu ubicación aproximada y tus consultas de lugares se envían a nuestros servidores y a nuestro proveedor de mapas únicamente para devolver esos resultados. No almacenamos ni conservamos tu ubicación una vez completada la solicitud."],
-          ["Clima", "la ubicación del aeropuerto o del destino se envía a nuestro proveedor de clima para devolver el pronóstico."],
-          ["Traducción", "el texto que traduces se envía a nuestro proveedor de traducción."],
-          ["Conversión de divisas", "los tipos de cambio se obtienen de un proveedor de tipos; los importes que introduces permanecen en tu dispositivo."],
-          ["Funciones de IA", "consulta la sección de funciones de IA más abajo."],
-          ["Importación por correo con reenvío a Ruta", "consulta la sección de importación de viajes por correo electrónico más abajo."],
-        ]],
-      ]},
-      { h: "Funciones de IA", blocks: [
-        ["p", "Algunas funciones de Ruta usan inteligencia artificial, proporcionada por un proveedor de IA externo. Estas incluyen los resúmenes de destinos, la lectura de un itinerario a partir de una captura de pantalla, un PDF o un correo reenviado, y el asistente dentro de la aplicación. Cuando usas una de estas funciones, el contenido pertinente (por ejemplo, la imagen o el texto del itinerario, o tu pregunta) se envía a ese proveedor para generar una respuesta. Para reducir el coste y el procesamiento repetido, las solicitudes de IA idénticas pueden eliminarse por duplicado mediante un hash unidireccional, que no se usa para identificarte. Los resultados de la IA pueden ser incorrectos; para cualquier asunto crítico te remitimos a fuentes oficiales, y etiquetamos el contenido generado por IA dentro de la aplicación."],
-      ]},
-      { h: "Importación de viajes por correo electrónico", blocks: [
-        ["p", "Si usas el reenvío a Ruta, las confirmaciones de reserva reenviadas (incluidos su texto, HTML y cualquier archivo adjunto como PDF o capturas de pantalla) son recibidas por nuestro proveedor de correo entrante y nuestro servidor, y el contenido del itinerario se procesa, incluso mediante nuestro proveedor de IA, para extraer tus vuelos, hoteles y demás detalles del viaje. La vinculación entre tu correo reenviado y tu dispositivo es anónima. Usamos este contenido únicamente para construir tu viaje y no conservamos el correo sin procesar después del procesamiento."],
-      ]},
-      { h: "Servicios de terceros", blocks: [
-        ["p", "No vendemos tu información personal. Compartimos datos únicamente con los proveedores de servicios necesarios para operar la aplicación, y solo como se describe anteriormente:"],
-        ["dl", [
-          ["Proveedores de datos de vuelos", "estado de vuelos, puertas de embarque y horarios."],
-          ["Un proveedor de mapas y lugares", "lugares cercanos, detalles y fotos de lugares, geocodificación, zonas horarias e indicaciones."],
-          ["Un proveedor de traducción", "traducción dentro de la aplicación."],
-          ["Un proveedor de clima", "datos meteorológicos."],
-          ["Un proveedor de IA", "funciones de IA y análisis de itinerarios."],
-          ["Un proveedor de tipos de cambio", "tipos de cambio diarios."],
-          ["Un proveedor de correo entrante", "recepción de correos de reserva reenviados para su importación."],
-          ["Un proveedor de monitorización de errores", "diagnósticos anónimos de fallos y errores, configurados para excluir la información personal, para que podamos encontrar y corregir errores."],
-          ["Un proveedor de distribución de la aplicación y notificaciones push", "distribución de la aplicación y notificaciones push."],
-        ]],
-        ["p", "Cada proveedor procesa los datos únicamente para cumplir su función para nosotros y conforme a sus propios términos."],
-      ]},
-      { h: "Qué guardamos en nuestros servidores", blocks: [
-        ["p", "No guardamos tus viajes, datos guardados ni documentos de viaje en nuestros servidores, y Ruta no tiene cuentas, por lo que nada en nuestros servidores te identifica. Los datos limitados que sí llegan a nuestros servidores son:"],
-        ["dl", [
-          ["Recuentos de uso anónimos", "un identificador aleatorio de la aplicación (sin nombre, correo electrónico ni ubicación) junto con las fechas en que se vio por primera y por última vez y qué funciones se usaron, para que podamos ver qué mejorar. Esto no puede usarse para identificarte."],
-          ["Cachés compartidas", "copias de resultados de terceros (estado de vuelos, clima, traducciones y respuestas de IA) que se conservan brevemente para agilizar las cosas y reducir el coste. Estas se indexan por contenido, no por ti."],
-          ["Una cola temporal de importación", "cuando reenvías un correo de reserva, el itinerario extraído espera en una cola anónima solo hasta que tu dispositivo lo recoge."],
-          ["Diagnósticos de fallos y errores", "recopilados a través de nuestro proveedor de monitorización de errores y configurados para excluir la información personal, para que podamos encontrar y corregir errores."],
-        ]],
-        ["p", "También podemos conservar métricas operativas agregadas y no identificativas, como qué destinos son populares."],
-      ]},
-      { h: "Conservación de datos", blocks: [
-        ["p", "La información almacenada en tu dispositivo permanece hasta que la elimines o desinstales la aplicación. Los datos enviados a los proveedores para responder a una solicitud en directo (como la ubicación para lugares cercanos, o el contenido para el análisis por IA) no son conservados por nosotros una vez completada la solicitud. Los proveedores pueden conservar datos brevemente conforme a sus propias políticas para prestar y proteger su servicio."],
-      ]},
-      { h: "Tus opciones y derechos", blocks: [
-        ["ul", [
-          "Ruta no requiere una cuenta. Tus datos residen en tu dispositivo.",
-          "Puedes borrar los viajes y datos guardados en la aplicación, y al desinstalar la aplicación se eliminan todos los datos almacenados localmente, incluido cualquier dato en el Keychain.",
-          "Puedes conceder o revocar los permisos de ubicación, cámara, micrófono, fotos, calendario y notificaciones en cualquier momento en los ajustes de tu dispositivo.",
-          "Según el lugar donde vivas, es posible que tengas derecho a acceder a tu información personal, corregirla o eliminarla. Dado que tus viajes y documentos residen en tu dispositivo y no en nuestros servidores, permanecen bajo tu control directo. Contáctanos con cualquier solicitud y te ayudaremos.",
-          "Cumplimos las leyes de privacidad locales, nacionales e internacionales aplicables. Como tu información permanece en tu dispositivo y a nuestros servidores solo llegan datos anónimos y no vinculados, no existe ningún perfil personal que podamos vender ni que necesites que eliminemos. Tus datos en el dispositivo son tuyos y puedes eliminarlos en cualquier momento.",
-        ]],
-      ]},
-      { h: "Privacidad de los menores", blocks: [
-        ["p", "Ruta Travels no está dirigida a menores de 13 años, y no recopilamos deliberadamente información personal de menores de 13 años. Cuando se aplique una edad más alta de consentimiento digital (por ejemplo, 16 años en partes de la UE/EEE), se aplicará esa edad en su lugar."],
-      ]},
-      { h: "Suscripciones y pagos", blocks: [
-        ["p", "Ruta ofrece una suscripción de pago opcional con una prueba gratuita. Las suscripciones se venden a través de la App Store de Apple, y Apple procesa todos los pagos. Nunca recibimos ni almacenamos tu número de tarjeta ni tus datos de facturación."],
-        ["dl", [
-          ["Apple (App Store)", "procesa tu compra, la facturación y las renovaciones conforme a la propia política de privacidad de Apple. Puedes gestionar o cancelar tu suscripción en cualquier momento en los ajustes de tu cuenta de la App Store."],
-          ["Nuestro proveedor de gestión de suscripciones", "confirma y gestiona el estado de tu suscripción por nosotros mediante un identificador de compra anónimo y tu recibo de la App Store. No recibe tu nombre, correo electrónico ni datos de pago."],
-        ]],
-      ]},
-      { h: "Cambios en esta política", blocks: [
-        ["p", "Podemos actualizar esta política de privacidad de vez en cuando. Te notificaremos cualquier cambio actualizando la fecha en la parte superior de esta página."],
-      ]},
-      { h: "Contáctanos", blocks: [
-        ["p", "Si tienes preguntas sobre esta política de privacidad, contáctanos en info@rutatravels.com."],
-      ]},
-    ],
-  },
-  it: {
-    meta: {
-      langName: "Italiano",
-      title: "Informativa sulla privacy di Ruta Travels",
-      updated: "Ultimo aggiornamento: 5 agosto 2026",
-      intro: "Ruta Travels («Ruta Travels», «noi» o «nostro») ha sviluppato l'app Ruta Travels come servizio commerciale. Questa informativa riflette il nostro impegno per la tua privacy: manteniamo le tue informazioni sul tuo dispositivo ove possibile e non vendiamo le tue informazioni personali. Spiega quali dati l'app gestisce, dove risiedono e i pochi casi in cui lasciano il tuo dispositivo.",
-      footer: "© 2026 Ruta Travels",
-    },
-    sections: [
-      { h: "Il nostro approccio", blocks: [
-        ["p", "Ruta è progettata per mantenere le tue informazioni sul tuo dispositivo. Non devi creare un account per usare Ruta e non costruiamo un profilo su di te. I tuoi viaggi, le preferenze e la cronologia risiedono localmente sul tuo telefono. I dettagli sensibili dei documenti di viaggio sono cifrati nel Keychain sicuro del tuo dispositivo e non lo lasciano mai. Alcune funzioni devono contattare servizi esterni per funzionare (stato dei voli in tempo reale, mappe, meteo, traduzione e IA) e, in questi casi, inviamo solo ciò che serve per rispondere alla richiesta, senza conservarlo in seguito."],
-      ]},
-      { h: "Informazioni conservate sul tuo dispositivo", blocks: [
-        ["p", "Le seguenti informazioni restano sul tuo dispositivo e non vengono inviate ai nostri server:"],
-        ["dl", [
-          ["Viaggi e itinerari", "voli, hotel, auto a noleggio, treni e attività che aggiungi."],
-          ["Preferenze", "lingua, unità di misura, impostazioni di accessibilità, scelte relative alle notifiche e modalità dell'app."],
-          ["Cronologia voli e dettagli salvati", "numeri di volo, numeri di prenotazione, orari e indirizzi che inserisci o importi."],
-          ["Posizione del parcheggio", "il posto, la nota e la foto che salvi per ritrovare la tua auto."],
-          ["Numeri dei documenti di viaggio", "i numeri di passaporto, visto, Known Traveler (KTN) e Global Entry sono cifrati nel Keychain del dispositivo e non ci vengono mai trasmessi."],
-          ["Un identificatore casuale dell'app", "un ID generato dal dispositivo, senza nome, email o posizione associati, usato solo per le analisi anonime descritte di seguito."],
-        ]],
-      ]},
-      { h: "I permessi che richiediamo e perché", blocks: [
-        ["p", "Ogni permesso è usato solo per lo scopo indicato di seguito e solo quando usi quella funzione. Puoi concedere o revocare ciascuno di essi nelle impostazioni del tuo dispositivo."],
-        ["dl", [
-          ["Posizione (durante l'uso)", "per rilevare l'aeroporto in cui ti trovi, stimare quando partire e mostrare i luoghi vicini. Non viene consultata in background."],
-          ["Fotocamera", "per scansionare una carta d'imbarco e, dove supportato, per la navigazione al chiuso tramite LiDAR. Usata solo quando avvii queste funzioni."],
-          ["Microfono", "per la ricerca vocale, usato solo mentre stai parlando."],
-          ["Libreria foto", "per consentirti di caricare un'immagine di una carta d'imbarco o di un itinerario."],
-          ["Calendario", "per aggiungere i tuoi voli al calendario quando lo desideri."],
-          ["Notifiche", "per inviare gli avvisi su voli e viaggi che attivi."],
-        ]],
-      ]},
-      { h: "Quando le informazioni lasciano il tuo dispositivo", blocks: [
-        ["p", "Per fornire determinate funzioni, l'app invia i dati minimi necessari a noi e/o a un fornitore terzo, li usa per rispondere a quella singola richiesta e non li conserva in seguito:"],
-        ["dl", [
-          ["Monitoraggio dei voli", "i numeri di volo che monitori vengono inviati ai nostri fornitori di dati sui voli per restituire informazioni su stato, gate e orari."],
-          ["Luoghi vicini, indicazioni e quando partire", "la tua posizione approssimativa e le ricerche di luoghi vengono inviate ai nostri server e al nostro fornitore di mappe unicamente per restituire tali risultati. Non memorizziamo né conserviamo la tua posizione dopo il completamento della richiesta."],
-          ["Meteo", "la posizione dell'aeroporto o della destinazione viene inviata al nostro fornitore meteo per restituire le previsioni."],
-          ["Traduzione", "il testo che traduci viene inviato al nostro fornitore di traduzioni."],
-          ["Conversione di valuta", "i tassi di cambio vengono recuperati da un fornitore di tassi; gli importi che inserisci restano sul tuo dispositivo."],
-          ["Funzioni di IA", "consulta la sezione Funzioni di IA più avanti."],
-          ["Importazione tramite inoltro email a Ruta", "consulta la sezione Importare i viaggi via email più avanti."],
-        ]],
-      ]},
-      { h: "Funzioni di IA", blocks: [
-        ["p", "Alcune funzioni di Ruta utilizzano l'intelligenza artificiale, fornita da un fornitore di IA esterno. Tra queste vi sono i briefing sulle destinazioni, la lettura di un itinerario da uno screenshot, un PDF o un'email inoltrata, e l'assistente integrato nell'app. Quando usi una di queste funzioni, il contenuto pertinente (ad esempio l'immagine o il testo dell'itinerario, oppure la tua domanda) viene inviato a tale fornitore per generare una risposta. Per ridurre i costi e le elaborazioni ripetute, le richieste di IA identiche possono essere deduplicate usando un hash unidirezionale, che non viene usato per identificarti. I risultati dell'IA possono essere errati; per tutto ciò che è critico ti indirizziamo alle fonti ufficiali ed etichettiamo i contenuti generati dall'IA nell'app."],
-      ]},
-      { h: "Importare i viaggi via email", blocks: [
-        ["p", "Se usi l'inoltro email a Ruta, le conferme di prenotazione inoltrate (compresi il testo, l'HTML ed eventuali allegati come PDF o screenshot) vengono ricevute dal nostro fornitore di email in entrata e dal nostro server, e il contenuto dell'itinerario viene elaborato, anche tramite il nostro fornitore di IA, per estrarre i tuoi voli, hotel e altri dettagli del viaggio. L'abbinamento tra l'email inoltrata e il tuo dispositivo è anonimo. Usiamo questo contenuto solo per creare il tuo viaggio e non conserviamo l'email originale dopo l'elaborazione."],
-      ]},
-      { h: "Servizi di terze parti", blocks: [
-        ["p", "Non vendiamo le tue informazioni personali. Condividiamo i dati solo con i fornitori di servizi necessari per far funzionare l'app e solo come descritto sopra:"],
-        ["dl", [
-          ["Fornitori di dati sui voli", "stato dei voli, gate e orari."],
-          ["Un fornitore di mappe e luoghi", "luoghi vicini, dettagli e foto dei luoghi, geocodifica, fusi orari e indicazioni stradali."],
-          ["Un fornitore di traduzioni", "traduzione integrata nell'app."],
-          ["Un fornitore meteo", "dati meteo."],
-          ["Un fornitore di IA", "funzioni di IA e analisi degli itinerari."],
-          ["Un fornitore di tassi di cambio", "tassi di cambio giornalieri."],
-          ["Un fornitore di email in entrata", "ricezione delle email di prenotazione inoltrate per l'importazione."],
-          ["Un fornitore di monitoraggio degli errori", "diagnostica anonima di arresti anomali ed errori, configurata per escludere le informazioni personali, così da poter individuare e correggere i bug."],
-          ["Un fornitore di distribuzione dell'app e notifiche push", "distribuzione dell'app e notifiche push."],
-        ]],
-        ["p", "Ogni fornitore elabora i dati solo per svolgere la propria funzione per nostro conto e secondo i propri termini."],
-      ]},
-      { h: "Cosa conserviamo sui nostri server", blocks: [
-        ["p", "Non conserviamo i tuoi viaggi, i dettagli salvati o i documenti di viaggio sui nostri server, e Ruta non prevede account, quindi nulla sui nostri server ti identifica. I pochi dati che raggiungono i nostri server sono:"],
-        ["dl", [
-          ["Conteggi d'uso anonimi", "un identificatore casuale dell'app (senza nome, email o posizione) con le date in cui è stato visto per la prima e l'ultima volta e quali funzioni sono state usate, così da capire cosa migliorare. Questo non può essere usato per identificarti."],
-          ["Cache condivise", "copie dei risultati di terze parti (stato dei voli, meteo, traduzioni e risposte dell'IA) conservate brevemente per velocizzare le operazioni e ridurre i costi. Sono indicizzate in base al contenuto, non a te."],
-          ["Una coda di importazione temporanea", "quando inoltri un'email di prenotazione, l'itinerario estratto resta in attesa in una coda anonima solo finché il tuo dispositivo non lo preleva."],
-          ["Diagnostica di arresti anomali ed errori", "raccolta tramite il nostro fornitore di monitoraggio degli errori e configurata per escludere le informazioni personali, così da poter individuare e correggere i bug."],
-        ]],
-        ["p", "Potremmo inoltre conservare metriche operative aggregate e non identificative, come quali destinazioni sono popolari."],
-      ]},
-      { h: "Conservazione dei dati", blocks: [
-        ["p", "Le informazioni conservate sul tuo dispositivo rimangono finché non le elimini o rimuovi l'app. I dati inviati ai fornitori per rispondere a una richiesta in tempo reale (come la posizione per i luoghi vicini o il contenuto per l'analisi tramite IA) non vengono conservati da noi dopo il completamento della richiesta. I fornitori possono conservare i dati brevemente in base alle proprie policy per erogare e proteggere il loro servizio."],
-      ]},
-      { h: "Le tue scelte e i tuoi diritti", blocks: [
-        ["ul", [
-          "Ruta non richiede un account. I tuoi dati risiedono sul tuo dispositivo.",
-          "Puoi cancellare i viaggi e i dettagli salvati nell'app, ed eliminando l'app vengono rimossi tutti i dati archiviati localmente, incluso qualsiasi elemento presente nel Keychain.",
-          "Puoi concedere o revocare i permessi di posizione, fotocamera, microfono, foto, calendario e notifiche in qualsiasi momento nelle impostazioni del tuo dispositivo.",
-          "A seconda di dove vivi, potresti avere il diritto di accedere, correggere o eliminare le tue informazioni personali. Poiché i tuoi viaggi e documenti risiedono sul tuo dispositivo anziché sui nostri server, restano sotto il tuo controllo diretto. Contattaci per qualsiasi richiesta e ti aiuteremo.",
-          "Rispettiamo le leggi sulla privacy locali, nazionali e internazionali applicabili. Poiché le tue informazioni restano sul tuo dispositivo e ai nostri server arrivano solo dati anonimi e non collegati, non esiste alcun profilo personale che possiamo vendere o che dovresti chiederci di eliminare. I dati sul tuo dispositivo sono tuoi e puoi rimuoverli in qualsiasi momento.",
-        ]],
-      ]},
-      { h: "Privacy dei minori", blocks: [
-        ["p", "Ruta Travels non è rivolta a bambini di età inferiore ai 13 anni e non raccogliamo consapevolmente informazioni personali da bambini di età inferiore ai 13 anni. Dove si applica un'età di consenso digitale più elevata (ad esempio 16 anni in alcune parti dell'UE/SEE), si applica invece quell'età."],
-      ]},
-      { h: "Abbonamenti e pagamenti", blocks: [
-        ["p", "Ruta offre un abbonamento a pagamento facoltativo con una prova gratuita. Gli abbonamenti sono venduti tramite l'App Store di Apple e Apple elabora tutti i pagamenti. Non riceviamo né conserviamo mai il numero della tua carta o i tuoi dati di fatturazione."],
-        ["dl", [
-          ["Apple (App Store)", "gestisce l'acquisto, la fatturazione e i rinnovi secondo l'informativa sulla privacy di Apple. Puoi gestire o annullare l'abbonamento in qualsiasi momento nelle impostazioni del tuo account App Store."],
-          ["Il nostro fornitore di gestione degli abbonamenti", "conferma e gestisce lo stato del tuo abbonamento per nostro conto usando un identificatore d'acquisto anonimo e la tua ricevuta dell'App Store. Non riceve il tuo nome, la tua email o i tuoi dati di pagamento."],
-        ]],
-      ]},
-      { h: "Modifiche a questa informativa", blocks: [
-        ["p", "Potremmo aggiornare periodicamente questa informativa sulla privacy. Ti informeremo di eventuali modifiche aggiornando la data in cima a questa pagina."],
-      ]},
-      { h: "Contattaci", blocks: [
-        ["p", "Se hai domande su questa informativa sulla privacy, contattaci all'indirizzo info@rutatravels.com."],
-      ]},
-    ],
-  },
-  fr: {
-    meta: {
-      langName: "Français",
-      title: "Politique de confidentialité de Ruta Travels",
-      updated: "Dernière mise à jour : 5 août 2026",
-      intro: "Ruta Travels (« Ruta Travels », « nous » ou « notre ») a conçu l'application Ruta Travels en tant que service commercial. Cette politique reflète notre engagement envers votre vie privée : nous conservons vos informations sur votre appareil dans la mesure du possible et nous ne vendons pas vos informations personnelles. Elle explique quelles informations l'application traite, où elles résident et les rares cas où elles quittent votre appareil.",
-      footer: "© 2026 Ruta Travels",
-    },
-    sections: [
-      { h: "Notre approche", blocks: [
-        ["p", "Ruta est conçue pour conserver vos informations sur votre appareil. Vous n'avez pas besoin de créer un compte pour utiliser Ruta, et nous ne constituons aucun profil vous concernant. Vos voyages, vos préférences et votre historique résident localement sur votre téléphone. Les informations sensibles de vos documents de voyage sont chiffrées dans le Keychain sécurisé de votre appareil et ne le quittent jamais. Quelques fonctionnalités doivent contacter des services externes pour fonctionner (statut des vols en temps réel, cartes, météo, traduction et IA) ; dans ces cas, nous n'envoyons que ce qui est nécessaire pour répondre à la demande, et nous ne le conservons pas ensuite."],
-      ]},
-      { h: "Informations stockées sur votre appareil", blocks: [
-        ["p", "Les éléments suivants restent sur votre appareil et ne sont pas envoyés à nos serveurs :"],
-        ["dl", [
-          ["Voyages et itinéraires", "les vols, hôtels, voitures de location, trains et activités que vous ajoutez."],
-          ["Préférences", "la langue, les unités, les réglages d'accessibilité, vos choix de notifications et le mode de l'application."],
-          ["Historique des vols et détails enregistrés", "les numéros de vol, les numéros de confirmation, les horaires et les adresses que vous saisissez ou importez."],
-          ["Emplacement de stationnement", "l'endroit, la note et la photo que vous enregistrez pour retrouver votre voiture."],
-          ["Numéros de documents de voyage", "les numéros de passeport, de visa, Known Traveler (KTN) et Global Entry sont chiffrés dans le Keychain de l'appareil et ne nous sont jamais transmis."],
-          ["Un identifiant d'application aléatoire", "un identifiant généré par l'appareil, sans nom, adresse e-mail ni localisation, utilisé uniquement pour les analyses anonymes décrites ci-dessous."],
-        ]],
-      ]},
-      { h: "Autorisations que nous demandons, et pourquoi", blocks: [
-        ["p", "Chaque autorisation est utilisée uniquement dans le but indiqué ci-dessous, et seulement lorsque vous utilisez la fonctionnalité concernée. Vous pouvez accorder ou révoquer chacune d'elles dans les réglages de votre appareil."],
-        ["dl", [
-          ["Localisation (lors de l'utilisation)", "pour détecter votre aéroport actuel, estimer le moment du départ et afficher les lieux à proximité. Elle n'est pas consultée en arrière-plan."],
-          ["Appareil photo", "pour scanner une carte d'embarquement et, lorsque cela est pris en charge, pour la navigation intérieure LiDAR. Utilisé uniquement lorsque vous lancez ces fonctionnalités."],
-          ["Microphone", "pour activer la recherche vocale, utilisé uniquement lorsque vous lui parlez."],
-          ["Photothèque", "pour vous permettre de télécharger l'image d'une carte d'embarquement ou d'un itinéraire."],
-          ["Calendrier", "pour ajouter vos vols à votre calendrier lorsque vous le choisissez."],
-          ["Notifications", "pour envoyer les alertes de vol et de voyage que vous activez."],
-        ]],
-      ]},
-      { h: "Quand les informations quittent votre appareil", blocks: [
-        ["p", "Pour fournir certaines fonctionnalités, l'application envoie le minimum de données nécessaires à nous et/ou à un prestataire tiers, les utilise pour répondre à cette seule demande, et ne les conserve pas ensuite :"],
-        ["dl", [
-          ["Suivi des vols", "les numéros de vol que vous suivez sont envoyés à nos fournisseurs de données de vol pour retourner les informations de statut, de porte et d'horaire."],
-          ["Lieux à proximité, itinéraires et moment du départ", "votre localisation approximative et vos requêtes de lieux sont envoyées à nos serveurs et à notre fournisseur de cartes uniquement pour retourner ces résultats. Nous ne stockons ni ne conservons votre localisation une fois la demande terminée."],
-          ["Météo", "la localisation de l'aéroport ou de la destination est envoyée à notre fournisseur météo pour retourner les prévisions."],
-          ["Traduction", "le texte que vous traduisez est envoyé à notre fournisseur de traduction."],
-          ["Conversion de devises", "les taux de change sont récupérés auprès d'un fournisseur de taux ; les montants que vous saisissez restent sur votre appareil."],
-          ["Fonctionnalités d'IA", "voir la section sur les fonctionnalités d'IA ci-dessous."],
-          ["Import d'e-mails par transfert vers Ruta", "voir la section sur l'importation de voyages par e-mail ci-dessous."],
-        ]],
-      ]},
-      { h: "Fonctionnalités d'IA", blocks: [
-        ["p", "Certaines fonctionnalités de Ruta utilisent l'intelligence artificielle, fournie par un fournisseur d'IA tiers. Elles incluent les briefings de destination, la lecture d'un itinéraire à partir d'une capture d'écran, d'un PDF ou d'un e-mail transféré, ainsi que l'assistant intégré à l'application. Lorsque vous utilisez l'une de ces fonctionnalités, le contenu pertinent (par exemple, l'image ou le texte de l'itinéraire, ou votre question) est envoyé à ce fournisseur pour générer une réponse. Afin de réduire les coûts et le traitement répété, les demandes d'IA identiques peuvent être dédupliquées à l'aide d'un hachage à sens unique, qui n'est pas utilisé pour vous identifier. Les résultats de l'IA peuvent être erronés ; pour tout ce qui est important, nous vous renvoyons vers les sources officielles, et nous signalons les contenus générés par l'IA dans l'application."],
-      ]},
-      { h: "Importation de voyages par e-mail", blocks: [
-        ["p", "Si vous utilisez le transfert vers Ruta, les confirmations de réservation transférées (y compris leur texte, leur HTML et toute pièce jointe telle que des PDF ou des captures d'écran) sont reçues par notre fournisseur d'e-mails entrants et notre serveur, et le contenu de l'itinéraire est traité, y compris par notre fournisseur d'IA, afin d'en extraire vos vols, hôtels et autres détails de voyage. L'association entre votre e-mail transféré et votre appareil est anonyme. Nous utilisons ce contenu uniquement pour construire votre voyage et ne conservons pas l'e-mail brut après traitement."],
-      ]},
-      { h: "Services tiers", blocks: [
-        ["p", "Nous ne vendons pas vos informations personnelles. Nous ne partageons vos données qu'avec les prestataires de services nécessaires au fonctionnement de l'application, et uniquement comme décrit ci-dessus :"],
-        ["dl", [
-          ["Fournisseurs de données de vol", "statut des vols, portes et horaires."],
-          ["Un fournisseur de cartes et de lieux", "lieux à proximité, détails et photos des lieux, géocodage, fuseaux horaires et itinéraires."],
-          ["Un fournisseur de traduction", "traduction dans l'application."],
-          ["Un fournisseur météo", "données météorologiques."],
-          ["Un fournisseur d'IA", "fonctionnalités d'IA et analyse des itinéraires."],
-          ["Un fournisseur de taux de change", "taux de change quotidiens."],
-          ["Un fournisseur d'e-mails entrants", "réception des e-mails de réservation transférés pour l'import."],
-          ["Un fournisseur de surveillance des erreurs", "diagnostics anonymes de plantages et d'erreurs, configurés pour exclure les informations personnelles, afin que nous puissions détecter et corriger les bugs."],
-          ["Un fournisseur de distribution d'application et de notifications push", "distribution de l'application et notifications push."],
-        ]],
-        ["p", "Chaque prestataire ne traite les données que pour remplir sa fonction pour nous et selon ses propres conditions."],
-      ]},
-      { h: "Ce que nous conservons sur nos serveurs", blocks: [
-        ["p", "Nous ne conservons pas vos voyages, vos détails enregistrés ni vos documents de voyage sur nos serveurs, et Ruta n'a pas de comptes, donc rien sur nos serveurs ne vous identifie. Les données limitées qui parviennent à nos serveurs sont :"],
-        ["dl", [
-          ["Décomptes d'utilisation anonymes", "un identifiant d'application aléatoire (sans nom, e-mail ni localisation) accompagné des dates de première et de dernière apparition et des fonctionnalités utilisées, afin que nous puissions voir ce qu'il faut améliorer. Cela ne peut pas être utilisé pour vous identifier."],
-          ["Caches partagés", "des copies des résultats de tiers (statut des vols, météo, traductions et réponses de l'IA) conservées brièvement pour accélérer le service et réduire les coûts. Elles sont indexées par contenu, et non par vous."],
-          ["Une file d'attente d'import temporaire", "lorsque vous transférez un e-mail de réservation, l'itinéraire extrait attend dans une file d'attente anonyme uniquement jusqu'à ce que votre appareil le récupère."],
-          ["Diagnostics de plantages et d'erreurs", "collectés via notre fournisseur de surveillance des erreurs et configurés pour exclure les informations personnelles, afin que nous puissions détecter et corriger les bugs."],
-        ]],
-        ["p", "Nous pouvons également conserver des mesures opérationnelles agrégées et non identifiantes, telles que les destinations les plus populaires."],
-      ]},
-      { h: "Conservation des données", blocks: [
-        ["p", "Les informations stockées sur votre appareil y restent jusqu'à ce que vous les supprimiez ou que vous retiriez l'application. Les données envoyées aux prestataires pour répondre à une demande en temps réel (comme la localisation pour les lieux à proximité, ou le contenu pour l'analyse par l'IA) ne sont pas conservées par nous une fois la demande terminée. Les prestataires peuvent conserver les données brièvement selon leurs propres politiques afin de fournir et de sécuriser leur service."],
-      ]},
-      { h: "Vos choix et vos droits", blocks: [
-        ["ul", [
-          "Ruta ne nécessite pas de compte. Vos données résident sur votre appareil.",
-          "Vous pouvez effacer les voyages et détails enregistrés dans l'application, et supprimer l'application efface toutes les données stockées localement, y compris tout ce qui se trouve dans le Keychain.",
-          "Vous pouvez accorder ou révoquer les autorisations de localisation, d'appareil photo, de microphone, de photos, de calendrier et de notifications à tout moment dans les réglages de votre appareil.",
-          "Selon votre lieu de résidence, vous pouvez disposer de droits d'accès, de rectification ou de suppression de vos informations personnelles. Comme vos voyages et documents résident sur votre appareil plutôt que sur nos serveurs, ils restent sous votre contrôle direct. Contactez-nous pour toute demande et nous vous aiderons.",
-          "Nous respectons les lois applicables en matière de protection de la vie privée aux niveaux local, national et international. Comme vos informations restent sur votre appareil et que seules des données anonymes et non reliées parviennent à nos serveurs, il n'existe aucun profil personnel que nous puissions vendre ou dont vous auriez besoin de nous demander la suppression. Les données sur votre appareil vous appartiennent et vous pouvez les supprimer à tout moment.",
-        ]],
-      ]},
-      { h: "Confidentialité des enfants", blocks: [
-        ["p", "Ruta Travels ne s'adresse pas aux enfants de moins de 13 ans, et nous ne collectons pas sciemment d'informations personnelles auprès d'enfants de moins de 13 ans. Lorsqu'un âge de consentement numérique plus élevé s'applique (par exemple, 16 ans dans certaines parties de l'UE/EEE), c'est cet âge qui s'applique à la place."],
-      ]},
-      { h: "Abonnements et paiements", blocks: [
-        ["p", "Ruta propose un abonnement payant facultatif avec un essai gratuit. Les abonnements sont vendus via l'App Store d'Apple, et Apple traite tous les paiements. Nous ne recevons ni ne stockons jamais votre numéro de carte ni vos informations de facturation."],
-        ["dl", [
-          ["Apple (App Store)", "traite votre achat, la facturation et les renouvellements conformément à la propre politique de confidentialité d'Apple. Vous pouvez gérer ou annuler votre abonnement à tout moment dans les réglages de votre compte App Store."],
-          ["Notre fournisseur de gestion des abonnements", "confirme et gère l'état de votre abonnement pour nous à l'aide d'un identifiant d'achat anonyme et de votre reçu de l'App Store. Il ne reçoit ni votre nom, ni votre e-mail, ni vos informations de paiement."],
-        ]],
-      ]},
-      { h: "Modifications de cette politique", blocks: [
-        ["p", "Nous pouvons mettre à jour cette politique de confidentialité de temps à autre. Nous vous informerons de tout changement en mettant à jour la date en haut de cette page."],
-      ]},
-      { h: "Nous contacter", blocks: [
-        ["p", "Si vous avez des questions concernant cette politique de confidentialité, contactez-nous à info@rutatravels.com."],
-      ]},
-    ],
-  },
-  de: {
-    meta: {
-      langName: "Deutsch",
-      title: "Datenschutzrichtlinie von Ruta Travels",
-      updated: "Zuletzt aktualisiert: 5. August 2026",
-      intro: "Ruta Travels („Ruta Travels“, „wir“, „uns“ oder „unser“) hat die Ruta-Travels-App als kommerziellen Dienst entwickelt. Diese Richtlinie spiegelt unser Bekenntnis zu deiner Privatsphäre wider: Wir bewahren deine Informationen nach Möglichkeit auf deinem Gerät auf und verkaufen deine personenbezogenen Daten nicht. Sie erklärt, welche Informationen die App verarbeitet, wo sie gespeichert sind und in welchen wenigen Fällen sie dein Gerät verlassen.",
-      footer: "© 2026 Ruta Travels",
-    },
-    sections: [
-      { h: "Unser Ansatz", blocks: [
-        ["p", "Ruta ist so konzipiert, dass deine Informationen auf deinem Gerät bleiben. Du erstellst kein Konto, um Ruta zu nutzen, und wir erstellen kein Profil von dir. Deine Reisen, Einstellungen und dein Verlauf bleiben lokal auf deinem Telefon. Sensible Angaben zu Reisedokumenten werden im sicheren Keychain deines Geräts verschlüsselt und verlassen es niemals. Einige Funktionen müssen externe Dienste kontaktieren, um zu funktionieren (Live-Flugstatus, Karten, Wetter, Übersetzung und KI), und in diesen Fällen senden wir nur, was zur Beantwortung der Anfrage nötig ist, und speichern es danach nicht."],
-      ]},
-      { h: "Auf deinem Gerät gespeicherte Informationen", blocks: [
-        ["p", "Folgendes bleibt auf deinem Gerät und wird nicht an unsere Server gesendet:"],
-        ["dl", [
-          ["Reisen und Reiserouten", "Flüge, Hotels, Mietwagen, Züge und Aktivitäten, die du hinzufügst."],
-          ["Einstellungen", "Sprache, Einheiten, Barrierefreiheitseinstellungen, Benachrichtigungsauswahl und App-Modus."],
-          ["Flugverlauf und gespeicherte Angaben", "Flugnummern, Bestätigungsnummern, Zeiten und Adressen, die du eingibst oder importierst."],
-          ["Parkposition", "der Ort, die Notiz und das Foto, die du speicherst, um dein Auto wiederzufinden."],
-          ["Nummern von Reisedokumenten", "Reisepass-, Visum-, Known Traveler (KTN)- und Global-Entry-Nummern werden im Keychain des Geräts verschlüsselt und niemals an uns übermittelt."],
-          ["Eine zufällige App-Kennung", "eine vom Gerät generierte ID ohne Name, E-Mail oder Standort, die nur für die unten beschriebene anonyme Analyse verwendet wird."],
-        ]],
-      ]},
-      { h: "Berechtigungen, die wir anfordern, und warum", blocks: [
-        ["p", "Jede Berechtigung wird nur für den unten genannten Zweck verwendet und nur, wenn du die betreffende Funktion nutzt. Du kannst jede davon in den Einstellungen deines Geräts erteilen oder widerrufen."],
-        ["dl", [
-          ["Standort (bei Nutzung)", "um deinen aktuellen Flughafen zu erkennen, zu schätzen, wann du losfahren solltest, und Orte in der Nähe anzuzeigen. Wird nicht im Hintergrund abgerufen."],
-          ["Kamera", "um eine Bordkarte zu scannen und, wo unterstützt, für die Indoor-Navigation mit LiDAR. Wird nur verwendet, wenn du diese Funktionen startest."],
-          ["Mikrofon", "um die Sprachsuche zu ermöglichen, wird nur verwendet, während du sprichst."],
-          ["Fotobibliothek", "damit du ein Bild einer Bordkarte oder Reiseroute hochladen kannst."],
-          ["Kalender", "um deine Flüge zu deinem Kalender hinzuzufügen, wenn du das möchtest."],
-          ["Benachrichtigungen", "um die Flug- und Reisehinweise zu senden, die du aktivierst."],
-        ]],
-      ]},
-      { h: "Wenn Informationen dein Gerät verlassen", blocks: [
-        ["p", "Um bestimmte Funktionen bereitzustellen, sendet die App die minimal notwendigen Daten an uns und/oder einen Drittanbieter, nutzt sie zur Beantwortung dieser einzelnen Anfrage und speichert sie danach nicht:"],
-        ["dl", [
-          ["Flugverfolgung", "die Flugnummern, die du verfolgst, werden an unsere Flugdatenanbieter gesendet, um Status-, Gate- und Zeitplaninformationen zurückzugeben."],
-          ["Orte in der Nähe, Wegbeschreibungen und wann du losfahren solltest", "dein ungefährer Standort und deine Ortsanfragen werden ausschließlich an unsere Server und unseren Kartenanbieter gesendet, um diese Ergebnisse zurückzugeben. Wir speichern deinen Standort nach Abschluss der Anfrage nicht."],
-          ["Wetter", "der Standort des Flughafens oder Reiseziels wird an unseren Wetteranbieter gesendet, um die Vorhersage zurückzugeben."],
-          ["Übersetzung", "Text, den du übersetzt, wird an unseren Übersetzungsanbieter gesendet."],
-          ["Währungsumrechnung", "Wechselkurse werden von einem Kursanbieter abgerufen; die Beträge, die du eingibst, bleiben auf deinem Gerät."],
-          ["KI-Funktionen", "siehe den Abschnitt KI-Funktionen weiter unten."],
-          ["E-Mail-Import per Weiterleitung an Ruta", "siehe den Abschnitt Reisen per E-Mail importieren weiter unten."],
-        ]],
-      ]},
-      { h: "KI-Funktionen", blocks: [
-        ["p", "Einige Ruta-Funktionen nutzen künstliche Intelligenz, bereitgestellt von einem externen KI-Anbieter. Dazu gehören Reiseziel-Briefings, das Auslesen einer Reiseroute aus einem Screenshot, einer PDF oder einer weitergeleiteten E-Mail sowie der In-App-Assistent. Wenn du eine dieser Funktionen nutzt, werden die relevanten Inhalte (zum Beispiel das Bild oder der Text der Reiseroute oder deine Frage) an diesen Anbieter gesendet, um eine Antwort zu erzeugen. Um Kosten und wiederholte Verarbeitung zu reduzieren, können identische KI-Anfragen mithilfe eines Einweg-Hashwerts dedupliziert werden, der nicht zu deiner Identifizierung verwendet wird. KI-Ausgaben können falsch sein; für alles Wichtige verweisen wir dich auf offizielle Quellen, und wir kennzeichnen KI-generierte Inhalte in der App."],
-      ]},
-      { h: "Reisen per E-Mail importieren", blocks: [
-        ["p", "Wenn du die Weiterleitung an Ruta nutzt, werden weitergeleitete Buchungsbestätigungen (einschließlich ihres Textes, HTML und aller Anhänge wie PDFs oder Screenshots) von unserem Anbieter für eingehende E-Mails und unserem Server empfangen, und die Inhalte der Reiseroute werden verarbeitet, auch durch unseren KI-Anbieter, um deine Flüge, Hotels und weitere Reisedetails zu extrahieren. Die Zuordnung zwischen deiner weitergeleiteten E-Mail und deinem Gerät ist anonym. Wir verwenden diese Inhalte nur, um deine Reise zu erstellen, und speichern die Roh-E-Mail nach der Verarbeitung nicht."],
-      ]},
-      { h: "Dienste von Drittanbietern", blocks: [
-        ["p", "Wir verkaufen deine personenbezogenen Daten nicht. Wir teilen Daten nur mit den Dienstleistern, die zum Betrieb der App erforderlich sind, und nur wie oben beschrieben:"],
-        ["dl", [
-          ["Fluginformationsanbieter", "Flugstatus, Gates und Zeitpläne."],
-          ["Ein Karten- und Ortsanbieter", "Orte in der Nähe, Ortsdetails und -fotos, Geokodierung, Zeitzonen und Wegbeschreibungen."],
-          ["Ein Übersetzungsanbieter", "In-App-Übersetzung."],
-          ["Ein Wetteranbieter", "Wetterdaten."],
-          ["Ein KI-Anbieter", "KI-Funktionen und das Auslesen von Reiserouten."],
-          ["Ein Wechselkursanbieter", "tägliche Wechselkurse."],
-          ["Ein Anbieter für eingehende E-Mails", "Empfang weitergeleiteter Buchungs-E-Mails für den Import."],
-          ["Ein Anbieter für Fehlerüberwachung", "anonyme Absturz- und Fehlerdiagnosen, so konfiguriert, dass personenbezogene Daten ausgeschlossen werden, damit wir Fehler finden und beheben können."],
-          ["Ein Anbieter für App-Auslieferung und Push-Benachrichtigungen", "App-Bereitstellung und Push-Benachrichtigungen."],
-        ]],
-        ["p", "Jeder Anbieter verarbeitet Daten nur, um seine Funktion für uns zu erfüllen, und gemäß seinen eigenen Bedingungen."],
-      ]},
-      { h: "Was wir auf unseren Servern speichern", blocks: [
-        ["p", "Wir speichern deine Reisen, gespeicherten Angaben oder Reisedokumente nicht auf unseren Servern, und Ruta hat keine Konten, sodass nichts auf unseren Servern dich identifiziert. Die begrenzten Daten, die tatsächlich unsere Server erreichen, sind:"],
-        ["dl", [
-          ["Anonyme Nutzungszahlen", "eine zufällige App-Kennung (kein Name, keine E-Mail, kein Standort) mit den Daten, an denen sie zuerst und zuletzt gesehen wurde, und welche Funktionen genutzt wurden, damit wir sehen können, was wir verbessern sollten. Dies kann nicht zu deiner Identifizierung verwendet werden."],
-          ["Gemeinsame Caches", "Kopien von Ergebnissen Dritter (Flugstatus, Wetter, Übersetzungen und KI-Antworten), die kurz aufbewahrt werden, um Abläufe zu beschleunigen und Kosten zu senken. Diese sind nach Inhalt und nicht nach dir zugeordnet."],
-          ["Eine temporäre Import-Warteschlange", "wenn du eine Buchungs-E-Mail weiterleitest, wartet die extrahierte Reiseroute nur so lange in einer anonymen Warteschlange, bis dein Gerät sie abruft."],
-          ["Absturz- und Fehlerdiagnosen", "erfasst über unseren Anbieter für Fehlerüberwachung und so konfiguriert, dass personenbezogene Daten ausgeschlossen werden, damit wir Fehler finden und beheben können."],
-        ]],
-        ["p", "Wir können außerdem aggregierte, nicht identifizierende Betriebskennzahlen aufbewahren, etwa welche Reiseziele beliebt sind."],
-      ]},
-      { h: "Datenspeicherung", blocks: [
-        ["p", "Auf deinem Gerät gespeicherte Informationen bleiben erhalten, bis du sie löschst oder die App entfernst. Daten, die an Anbieter gesendet werden, um eine Live-Anfrage zu beantworten (etwa der Standort für Orte in der Nähe oder Inhalte für die KI-Verarbeitung), werden von uns nach Abschluss der Anfrage nicht gespeichert. Anbieter können Daten gemäß ihren eigenen Richtlinien kurz aufbewahren, um ihren Dienst bereitzustellen und abzusichern."],
-      ]},
-      { h: "Deine Wahlmöglichkeiten und Rechte", blocks: [
-        ["ul", [
-          "Ruta erfordert kein Konto. Deine Daten bleiben auf deinem Gerät.",
-          "Du kannst gespeicherte Reisen und Angaben in der App löschen, und das Entfernen der App löscht alle lokal gespeicherten Daten, einschließlich aller Daten im Keychain.",
-          "Du kannst Berechtigungen für Standort, Kamera, Mikrofon, Fotos, Kalender und Benachrichtigungen jederzeit in den Einstellungen deines Geräts erteilen oder widerrufen.",
-          "Je nachdem, wo du lebst, hast du möglicherweise das Recht, auf deine personenbezogenen Daten zuzugreifen, sie zu korrigieren oder zu löschen. Da deine Reisen und Dokumente auf deinem Gerät und nicht auf unseren Servern gespeichert sind, bleiben sie unter deiner direkten Kontrolle. Kontaktiere uns bei einem Anliegen, und wir helfen dir.",
-          "Wir halten die geltenden lokalen, nationalen und internationalen Datenschutzgesetze ein. Da deine Informationen auf deinem Gerät bleiben und nur anonyme, nicht verknüpfte Daten unsere Server erreichen, gibt es kein persönliches Profil, das wir verkaufen könnten oder dessen Löschung du von uns verlangen müsstest. Die Daten auf deinem Gerät gehören dir und du kannst sie jederzeit entfernen.",
-        ]],
-      ]},
-      { h: "Datenschutz für Kinder", blocks: [
-        ["p", "Ruta Travels richtet sich nicht an Kinder unter 13 Jahren, und wir erheben wissentlich keine personenbezogenen Daten von Kindern unter 13 Jahren. Wo ein höheres Alter für die digitale Einwilligung gilt (zum Beispiel 16 in Teilen der EU/des EWR), gilt stattdessen dieses Alter."],
-      ]},
-      { h: "Abonnements und Zahlungen", blocks: [
-        ["p", "Ruta bietet ein optionales kostenpflichtiges Abonnement mit einer kostenlosen Testphase. Abonnements werden über Apples App Store verkauft, und Apple wickelt alle Zahlungen ab. Wir erhalten oder speichern niemals deine Kartennummer oder deine Rechnungsdaten."],
-        ["dl", [
-          ["Apple (App Store)", "wickelt deinen Kauf, die Abrechnung und Verlängerungen gemäß Apples eigener Datenschutzrichtlinie ab. Du kannst dein Abonnement jederzeit in den Einstellungen deines App-Store-Kontos verwalten oder kündigen."],
-          ["Unser Anbieter für Abonnementverwaltung", "bestätigt und verwaltet deinen Abonnementstatus für uns mithilfe einer anonymen Kaufkennung und deines App-Store-Belegs. Es erhält weder deinen Namen noch deine E-Mail-Adresse oder deine Zahlungsdaten."],
-        ]],
-      ]},
-      { h: "Änderungen an dieser Richtlinie", blocks: [
-        ["p", "Wir können diese Datenschutzrichtlinie von Zeit zu Zeit aktualisieren. Wir informieren dich über Änderungen, indem wir das Datum oben auf dieser Seite aktualisieren."],
-      ]},
-      { h: "Kontaktiere uns", blocks: [
-        ["p", "Wenn du Fragen zu dieser Datenschutzrichtlinie hast, kontaktiere uns unter info@rutatravels.com."],
-      ]},
-    ],
-  },
-  ja: {
-    meta: {
-      langName: "日本語",
-      title: "Ruta Travels プライバシーポリシー",
-      updated: "最終更新: 2026年8月5日",
-      intro: "Ruta Travels（以下「Ruta Travels」「当社」「私たち」）は、商用サービスとして Ruta Travels アプリを開発しました。本ポリシーは、当社のプライバシーへの取り組みを反映しています。当社は可能な限りお客様の情報をお客様の端末内に保持し、お客様の個人情報を販売することはありません。本ポリシーでは、アプリがどのような情報を扱い、それがどこに保存され、どのような限られた場合にお客様の端末から外部へ送信されるのかについてご説明します。",
-      footer: "© 2026 Ruta Travels",
-    },
-    sections: [
-      { h: "当社の考え方", blocks: [
-        ["p", "Ruta は、お客様の情報をお客様の端末内に保持するように設計されています。Ruta を利用するためにアカウントを作成する必要はなく、当社がお客様のプロフィールを作成することもありません。お客様の旅程、設定、履歴は、お客様のスマートフォン内にローカルに保存されます。機密性の高い渡航書類の情報は、端末内の安全な Keychain に暗号化して保存され、そこから外部へ送信されることは一切ありません。一部の機能は、動作するために外部サービスへの接続を必要とします（リアルタイムのフライト状況、地図、天気、翻訳、AI など）。そうした場合でも、当社はリクエストに応えるために必要な情報だけを送信し、その後にそれを保持することはありません。"],
-      ]},
-      { h: "端末に保存される情報", blocks: [
-        ["p", "以下の情報はお客様の端末内に保存され、当社のサーバーへ送信されることはありません:"],
-        ["dl", [
-          ["旅程と行程", "お客様が追加したフライト、ホテル、レンタカー、鉄道、アクティビティなど。"],
-          ["設定", "言語、単位、アクセシビリティ設定、通知の選択、アプリのモードなど。"],
-          ["フライト履歴と保存された詳細", "お客様が入力または取り込んだフライト番号、確認番号、時刻、住所など。"],
-          ["駐車位置", "車を見つけるために保存する場所、メモ、写真など。"],
-          ["渡航書類の番号", "パスポート、ビザ、Known Traveler（KTN）、Global Entry の番号は端末の Keychain に暗号化して保存され、当社へ送信されることは一切ありません。"],
-          ["ランダムなアプリ識別子", "氏名、メールアドレス、位置情報を一切ひも付けない、端末が生成した ID で、以下に記載する匿名の分析にのみ使用されます。"],
-        ]],
-      ]},
-      { h: "当社がリクエストする権限とその理由", blocks: [
-        ["p", "各権限は以下の目的にのみ、かつお客様がその機能を使用するときにのみ使用されます。これらの権限は、端末の設定でいつでも許可または取り消すことができます。"],
-        ["dl", [
-          ["位置情報（使用中のみ）", "現在の空港を検出し、出発の目安時刻を見積もり、近くの場所を表示するために使用します。バックグラウンドでアクセスすることはありません。"],
-          ["カメラ", "搭乗券をスキャンするため、また対応環境では屋内 LiDAR ナビゲーションのために使用します。これらの機能を開始したときにのみ使用します。"],
-          ["マイク", "音声検索を利用するために、お客様が話しかけている間のみ使用します。"],
-          ["写真ライブラリ", "搭乗券や旅程の画像をアップロードできるようにするために使用します。"],
-          ["カレンダー", "お客様が選択したときに、フライトをカレンダーに追加するために使用します。"],
-          ["通知", "お客様がオンにしたフライトや旅程のアラートを送信するために使用します。"],
-        ]],
-      ]},
-      { h: "情報が端末から送信される場合", blocks: [
-        ["p", "特定の機能を提供するために、アプリは必要最小限のデータを当社および／または第三者プロバイダーに送信し、その 1 回のリクエストに応えるためにそれを使用し、その後に保持することはありません:"],
-        ["dl", [
-          ["フライト追跡", "お客様が追跡するフライト番号は、状況、ゲート、スケジュール情報を返すために、当社のフライトデータプロバイダーへ送信されます。"],
-          ["近くの場所、経路案内、出発時刻", "お客様のおおよその位置情報と場所の検索は、その結果を返すためだけに、当社のサーバーおよび地図プロバイダーへ送信されます。リクエスト完了後に位置情報を保存または保持することはありません。"],
-          ["天気", "空港や目的地の位置情報は、予報を返すために当社の天気プロバイダーへ送信されます。"],
-          ["翻訳", "お客様が翻訳するテキストは、当社の翻訳プロバイダーへ送信されます。"],
-          ["通貨換算", "為替レートはレートプロバイダーから取得します。お客様が入力した金額は端末内に留まります。"],
-          ["AI 機能", "以下の AI 機能のセクションをご覧ください。"],
-          ["Ruta への転送によるメール取り込み", "以下のメールによる旅程の取り込みのセクションをご覧ください。"],
-        ]],
-      ]},
-      { h: "AI 機能", blocks: [
-        ["p", "Ruta の一部の機能は、外部の AI プロバイダーが提供する人工知能を使用します。これには、目的地のブリーフィング、スクリーンショット・PDF・転送メールからの旅程の読み取り、アプリ内アシスタントが含まれます。これらの機能のいずれかを使用すると、該当するコンテンツ（たとえば旅程の画像やテキスト、またはお客様の質問）が、応答を生成するためにそのプロバイダーへ送信されます。コストと重複処理を削減するため、同一の AI リクエストは一方向のハッシュを用いて重複排除される場合がありますが、これはお客様を識別するために使用されるものではありません。AI の出力は誤ることがあります。重要な事項については公式の情報源をご案内し、AI が生成したコンテンツにはアプリ内でその旨を表示します。"],
-      ]},
-      { h: "メールによる旅程の取り込み", blocks: [
-        ["p", "Ruta への転送機能をご利用の場合、転送された予約確認（そのテキスト、HTML、および PDF やスクリーンショットなどの添付ファイルを含む）は、当社の受信メールプロバイダーと当社のサーバーで受信され、その旅程コンテンツは、フライト、ホテル、その他の旅程の詳細を抽出するために、当社の AI プロバイダーによる処理を含めて処理されます。転送メールとお客様の端末との対応付けは匿名で行われます。当社はこのコンテンツを旅程の作成にのみ使用し、処理後に元のメールを保持することはありません。"],
-      ]},
-      { h: "第三者サービス", blocks: [
-        ["p", "当社はお客様の個人情報を販売しません。データは、アプリを運営するために必要なサービスプロバイダーとのみ、かつ上記に記載した範囲でのみ共有します:"],
-        ["dl", [
-          ["フライトデータプロバイダー", "フライト状況、ゲート、スケジュール。"],
-          ["地図・場所プロバイダー", "近くの場所、場所の詳細と写真、ジオコーディング、タイムゾーン、経路案内。"],
-          ["翻訳プロバイダー", "アプリ内翻訳。"],
-          ["天気プロバイダー", "天気データ。"],
-          ["AI プロバイダー", "AI 機能および旅程の解析。"],
-          ["為替レートプロバイダー", "日次の為替レート。"],
-          ["受信メールプロバイダー", "取り込みのための転送予約メールの受信。"],
-          ["エラー監視プロバイダー", "個人情報を除外するよう設定された匿名のクラッシュおよびエラー診断で、不具合の発見と修正に使用します。"],
-          ["アプリ配信・プッシュ通知プロバイダー", "アプリの配信およびプッシュ通知。"],
-        ]],
-        ["p", "各プロバイダーは、当社のためにその機能を果たす目的でのみ、かつ各自の規約に基づいてデータを処理します。"],
-      ]},
-      { h: "当社のサーバーに保持する情報", blocks: [
-        ["p", "当社は、お客様の旅程、保存された詳細、渡航書類を当社のサーバーに保持することはなく、Ruta にはアカウントが存在しないため、当社のサーバー上にお客様を識別できる情報はありません。当社のサーバーに実際に届く限られたデータは次のとおりです:"],
-        ["dl", [
-          ["匿名の利用回数", "ランダムなアプリ識別子（氏名、メールアドレス、位置情報なし）に、最初と最後に確認された日付、および使用された機能を組み合わせたもので、何を改善すべきかを把握するために使用します。これによってお客様を識別することはできません。"],
-          ["共有キャッシュ", "処理を高速化しコストを削減するために短時間保持される第三者の結果（フライト状況、天気、翻訳、AI の応答）のコピー。これらはお客様ではなくコンテンツをキーとして管理されます。"],
-          ["一時的な取り込みキュー", "予約メールを転送すると、抽出された旅程は、お客様の端末が取得するまでの間だけ匿名のキューで待機します。"],
-          ["クラッシュおよびエラー診断", "当社のエラー監視プロバイダーを通じて収集され、個人情報を除外するよう設定されており、不具合の発見と修正に使用します。"],
-        ]],
-        ["p", "また、どの目的地が人気かといった、集計された個人を特定できない運用上の指標を保持する場合があります。"],
-      ]},
-      { h: "データの保持", blocks: [
-        ["p", "端末に保存された情報は、お客様が削除するかアプリを削除するまで保持されます。リアルタイムのリクエストに応えるためにプロバイダーへ送信されたデータ（近くの場所のための位置情報や、AI 解析のためのコンテンツなど）は、リクエスト完了後に当社が保持することはありません。プロバイダーは、自社のサービスを提供し保護するために、各自のポリシーに従ってデータを短時間保持する場合があります。"],
-      ]},
-      { h: "お客様の選択と権利", blocks: [
-        ["ul", [
-          "Ruta はアカウントを必要としません。お客様のデータはお客様の端末内に保存されます。",
-          "アプリ内で保存した旅程や詳細を消去でき、アプリを削除すると、Keychain 内のものを含め、ローカルに保存されたすべてのデータが削除されます。",
-          "位置情報、カメラ、マイク、写真、カレンダー、通知の各権限は、端末の設定でいつでも許可または取り消すことができます。",
-          "お住まいの地域によっては、お客様の個人情報にアクセスし、訂正し、または削除する権利を有する場合があります。お客様の旅程や書類は当社のサーバーではなくお客様の端末内に保存されるため、それらはお客様の直接の管理下にあります。ご要望があればお問い合わせください。対応いたします。",
-          "当社は、適用される地域・国・国際的なプライバシー関連法を遵守します。お客様の情報はお客様の端末内に留まり、当社のサーバーには匿名でひも付けられないデータのみが届くため、当社が販売できるような、またお客様が削除を求める必要があるような個人プロフィールは存在しません。端末内のデータはお客様のものであり、いつでも削除できます。",
-        ]],
-      ]},
-      { h: "子どものプライバシー", blocks: [
-        ["p", "Ruta Travels は 13 歳未満の子どもを対象としておらず、当社が 13 歳未満の子どもから個人情報を故意に収集することはありません。より高いデジタル同意年齢が適用される場合（たとえば EU／EEA の一部では 16 歳）は、その年齢が代わりに適用されます。"],
-      ]},
-      { h: "サブスクリプションと支払い", blocks: [
-        ["p", "Ruta では、無料トライアル付きの任意の有料サブスクリプションを提供しています。サブスクリプションは Apple の App Store を通じて販売され、すべての支払いは Apple が処理します。当社がお客様のカード番号や請求情報を受け取ったり保存したりすることは一切ありません。"],
-        ["dl", [
-          ["Apple（App Store）", "Apple 自身のプライバシーポリシーに基づき、お客様の購入、請求、更新を処理します。サブスクリプションは、App Store アカウントの設定からいつでも管理または解約できます。"],
-          ["当社のサブスクリプション管理プロバイダー", "匿名の購入識別子とお客様の App Store のレシートを用いて、当社に代わってお客様のサブスクリプション状況を確認・管理します。お客様の氏名、メールアドレス、支払い情報を受け取ることはありません。"],
-        ]],
-      ]},
-      { h: "本ポリシーの変更", blocks: [
-        ["p", "当社は、本プライバシーポリシーを随時更新することがあります。変更があった場合は、本ページ上部の日付を更新することでお知らせします。"],
-      ]},
-      { h: "お問い合わせ", blocks: [
-        ["p", "本プライバシーポリシーについてご質問がある場合は、info@rutatravels.com までお問い合わせください。"],
-      ]},
-    ],
-  },
-  ar: {
-    meta: {
-      langName: "العربية",
-      title: "سياسة الخصوصية لتطبيق Ruta Travels",
-      updated: "آخر تحديث: 5 أغسطس 2026",
-      intro: "أنشأت Ruta Travels (والمشار إليها بـ «Ruta Travels» أو «نحن» أو «لنا» أو «الخاص بنا») تطبيق Ruta Travels كخدمة تجارية. تعكس هذه السياسة التزامنا بخصوصيتك: فنحن نحتفظ بمعلوماتك على جهازك كلما أمكن ذلك، ولا نبيع معلوماتك الشخصية. وتوضح هذه السياسة ما المعلومات التي يتعامل معها التطبيق، وأين تُخزَّن، والحالات المحدودة التي تغادر فيها جهازك.",
-      footer: "© 2026 Ruta Travels",
-    },
-    sections: [
-      { h: "نهجنا", blocks: [
-        ["p", "صُمِّم Ruta للاحتفاظ بمعلوماتك على جهازك. أنت لا تُنشئ حسابًا لاستخدام Ruta، ونحن لا نبني ملفًا تعريفيًا عنك. تبقى رحلاتك وتفضيلاتك وسِجلّك محفوظة محليًا على هاتفك. وتُشفَّر تفاصيل وثائق السفر الحسّاسة في Keychain الآمن الخاص بجهازك ولا تغادره أبدًا. وتحتاج بعض الميزات إلى الاتصال بخدمات خارجية كي تعمل (حالة الرحلات المباشرة، والخرائط، والطقس، والترجمة، والذكاء الاصطناعي)، وفي تلك الحالات نرسل فقط ما هو ضروري للرد على الطلب، ولا نحتفظ به بعد ذلك."],
-      ]},
-      { h: "المعلومات المخزّنة على جهازك", blocks: [
-        ["p", "يبقى ما يلي على جهازك ولا يُرسَل إلى خوادمنا:"],
-        ["dl", [
-          ["الرحلات وخطط السير", "الرحلات الجوية والفنادق والسيارات المستأجرة والقطارات والأنشطة التي تضيفها."],
-          ["التفضيلات", "اللغة والوحدات وإعدادات إمكانية الوصول وخيارات الإشعارات ووضع التطبيق."],
-          ["سجل الرحلات والتفاصيل المحفوظة", "أرقام الرحلات وأرقام التأكيد والأوقات والعناوين التي تُدخِلها أو تستوردها."],
-          ["موقع ركن السيارة", "المكان والملاحظة والصورة التي تحفظها للعثور على سيارتك."],
-          ["أرقام وثائق السفر", "تُشفَّر أرقام جواز السفر والتأشيرة و Known Traveler (KTN) و Global Entry في Keychain الخاص بالجهاز ولا تُنقَل إلينا أبدًا."],
-          ["معرّف عشوائي للتطبيق", "معرّف يُنشئه الجهاز دون ارتباطه بأي اسم أو بريد إلكتروني أو موقع، ويُستخدَم فقط لأغراض التحليلات المجهولة الموضّحة أدناه."],
-        ]],
-      ]},
-      { h: "الأذونات التي نطلبها، وأسبابها", blocks: [
-        ["p", "يُستخدَم كل إذن فقط للغرض المذكور أدناه، وفقط عندما تستخدم تلك الميزة. ويمكنك منح أي منها أو إلغاؤه من إعدادات جهازك."],
-        ["dl", [
-          ["الموقع (أثناء الاستخدام)", "لاكتشاف مطارك الحالي، وتقدير موعد المغادرة، وعرض الأماكن القريبة. ولا يُستخدَم في الخلفية."],
-          ["الكاميرا", "لمسح بطاقة الصعود إلى الطائرة، وحيثما كان مدعومًا، للملاحة الداخلية عبر LiDAR. ولا يُستخدَم إلا عند بدء تلك الميزات."],
-          ["الميكروفون", "لتشغيل البحث الصوتي، ويُستخدَم فقط أثناء تحدّثك إليه."],
-          ["مكتبة الصور", "للسماح لك برفع صورة بطاقة الصعود أو خطة السير."],
-          ["التقويم", "لإضافة رحلاتك إلى تقويمك عندما تختار ذلك."],
-          ["الإشعارات", "لإرسال تنبيهات الرحلات والسفر التي تُفعّلها."],
-        ]],
-      ]},
-      { h: "متى تغادر المعلومات جهازك", blocks: [
-        ["p", "لتوفير ميزات معيّنة، يرسل التطبيق الحد الأدنى الضروري من البيانات إلينا و/أو إلى مزوّد خارجي، ويستخدمها للرد على ذلك الطلب المفرد، ولا يحتفظ بها بعد ذلك:"],
-        ["dl", [
-          ["تتبّع الرحلات", "تُرسَل أرقام الرحلات التي تتتبّعها إلى مزوّدي بيانات الرحلات لدينا لإرجاع معلومات الحالة والبوابة والجدول الزمني."],
-          ["الأماكن القريبة والاتجاهات وموعد المغادرة", "يُرسَل موقعك التقريبي واستعلامات الأماكن إلى خوادمنا وإلى مزوّد الخرائط لدينا لغرض واحد فقط هو إرجاع تلك النتائج. ولا نُخزّن موقعك أو نحتفظ به بعد اكتمال الطلب."],
-          ["الطقس", "يُرسَل موقع المطار أو الوجهة إلى مزوّد الطقس لدينا لإرجاع التوقعات الجوية."],
-          ["الترجمة", "يُرسَل النص الذي تترجمه إلى مزوّد الترجمة لدينا."],
-          ["تحويل العملات", "تُجلب أسعار الصرف من مزوّد للأسعار؛ أما المبالغ التي تُدخِلها فتبقى على جهازك."],
-          ["ميزات الذكاء الاصطناعي", "راجع قسم ميزات الذكاء الاصطناعي أدناه."],
-          ["استيراد الرحلات عبر إعادة التوجيه إلى Ruta", "راجع قسم استيراد الرحلات عبر البريد الإلكتروني أدناه."],
-        ]],
-      ]},
-      { h: "ميزات الذكاء الاصطناعي", blocks: [
-        ["p", "تستخدم بعض ميزات Ruta الذكاء الاصطناعي المقدَّم من مزوّد خارجي للذكاء الاصطناعي. وتشمل هذه الميزات ملخصات الوجهات، وقراءة خطة السير من لقطة شاشة أو ملف PDF أو بريد إلكتروني معاد توجيهه، والمساعد داخل التطبيق. عندما تستخدم إحدى هذه الميزات، يُرسَل المحتوى ذو الصلة (على سبيل المثال، صورة خطة السير أو نصّها، أو سؤالك) إلى ذلك المزوّد لإنشاء رد. وللحد من التكلفة وتكرار المعالجة، قد يُزال التكرار عن طلبات الذكاء الاصطناعي المتطابقة باستخدام تجزئة أحادية الاتجاه لا تُستخدَم للتعرّف عليك. وقد يكون مخرج الذكاء الاصطناعي خاطئًا؛ ولأي أمر بالغ الأهمية نُحيلك إلى المصادر الرسمية، ونُصنّف المحتوى المُنشأ بالذكاء الاصطناعي داخل التطبيق."],
-      ]},
-      { h: "استيراد الرحلات عبر البريد الإلكتروني", blocks: [
-        ["p", "إذا استخدمت خاصية إعادة التوجيه إلى Ruta، فإن تأكيدات الحجز المعاد توجيهها (بما في ذلك نصّها و HTML وأي مرفقات مثل ملفات PDF أو لقطات الشاشة) يستقبلها مزوّد البريد الوارد لدينا وخادمنا، وتُعالَج محتويات خطة السير، بما في ذلك عبر مزوّد الذكاء الاصطناعي لدينا، لاستخراج رحلاتك وفنادقك وتفاصيل رحلتك الأخرى. ويتم الاقتران بين بريدك المعاد توجيهه وجهازك بشكل مجهول. ونستخدم هذا المحتوى فقط لبناء رحلتك، ولا نحتفظ بالبريد الأصلي بعد المعالجة."],
-      ]},
-      { h: "خدمات الأطراف الخارجية", blocks: [
-        ["p", "نحن لا نبيع معلوماتك الشخصية. ولا نشارك البيانات إلا مع مزوّدي الخدمات اللازمين لتشغيل التطبيق، وفقط على النحو الموضّح أعلاه:"],
-        ["dl", [
-          ["مزوّدو بيانات الرحلات", "حالة الرحلات والبوابات والجداول الزمنية."],
-          ["مزوّد للخرائط والأماكن", "الأماكن القريبة وتفاصيل الأماكن وصورها، وتحديد الإحداثيات الجغرافية، والمناطق الزمنية، والاتجاهات."],
-          ["مزوّد للترجمة", "الترجمة داخل التطبيق."],
-          ["مزوّد للطقس", "بيانات الطقس."],
-          ["مزوّد للذكاء الاصطناعي", "ميزات الذكاء الاصطناعي وتحليل خطط السير."],
-          ["مزوّد أسعار العملات", "أسعار الصرف اليومية."],
-          ["مزوّد للبريد الوارد", "استقبال رسائل الحجز المعاد توجيهها لأغراض الاستيراد."],
-          ["مزوّد لمراقبة الأخطاء", "تشخيصات مجهولة للأعطال والأخطاء، مُهيّأة لاستبعاد المعلومات الشخصية، كي نتمكن من العثور على الأخطاء البرمجية وإصلاحها."],
-          ["مزوّد لتوزيع التطبيق والإشعارات الفورية", "تسليم التطبيق والإشعارات الفورية."],
-        ]],
-        ["p", "يعالج كل مزوّد البيانات فقط لأداء وظيفته لصالحنا وبموجب شروطه الخاصة."],
-      ]},
-      { h: "ما نحتفظ به على خوادمنا", blocks: [
-        ["p", "نحن لا نحتفظ برحلاتك أو تفاصيلك المحفوظة أو وثائق سفرك على خوادمنا، وليس لدى Ruta أي حسابات، لذا لا يوجد على خوادمنا ما يُعرّف بك. أما البيانات المحدودة التي تصل بالفعل إلى خوادمنا فهي:"],
-        ["dl", [
-          ["أعداد الاستخدام المجهولة", "معرّف عشوائي للتطبيق (دون اسم أو بريد إلكتروني أو موقع) مع تواريخ أول وآخر ظهور له والميزات التي اُستخدِمت، كي نرى ما ينبغي تحسينه. ولا يمكن استخدام ذلك للتعرّف عليك."],
-          ["ذاكرات التخزين المؤقت المشتركة", "نسخ من نتائج الأطراف الخارجية (حالة الرحلات والطقس والترجمات وردود الذكاء الاصطناعي) تُحفَظ لفترة وجيزة لتسريع الأمور وخفض التكلفة. وهي مُفهرسة حسب المحتوى، لا حسبك أنت."],
-          ["قائمة انتظار مؤقتة للاستيراد", "عندما تُعيد توجيه رسالة حجز، تنتظر خطة السير المستخرَجة في قائمة انتظار مجهولة فقط إلى أن يسحبها جهازك."],
-          ["تشخيصات الأعطال والأخطاء", "تُجمَع عبر مزوّد مراقبة الأخطاء لدينا وتكون مُهيّأة لاستبعاد المعلومات الشخصية، كي نتمكن من العثور على الأخطاء البرمجية وإصلاحها."],
-        ]],
-        ["p", "قد نحتفظ أيضًا بمقاييس تشغيلية إجمالية وغير مُعرِّفة للهوية، مثل الوجهات الأكثر رواجًا."],
-      ]},
-      { h: "الاحتفاظ بالبيانات", blocks: [
-        ["p", "تبقى المعلومات المخزّنة على جهازك إلى أن تحذفها أو تُزيل التطبيق. أما البيانات المُرسَلة إلى المزوّدين للرد على طلب مباشر (مثل الموقع لإظهار الأماكن القريبة، أو المحتوى لتحليل الذكاء الاصطناعي) فلا نحتفظ بها بعد اكتمال الطلب. وقد يحتفظ المزوّدون بالبيانات لفترة وجيزة وفقًا لسياساتهم الخاصة لتقديم خدمتهم وتأمينها."],
-      ]},
-      { h: "خياراتك وحقوقك", blocks: [
-        ["ul", [
-          "لا يتطلب Ruta إنشاء حساب. فبياناتك تبقى على جهازك.",
-          "يمكنك مسح الرحلات والتفاصيل المحفوظة من داخل التطبيق، ويؤدي حذف التطبيق إلى إزالة جميع البيانات المخزّنة محليًا، بما في ذلك أي شيء في Keychain.",
-          "يمكنك منح أذونات الموقع والكاميرا والميكروفون والصور والتقويم والإشعارات أو إلغاءها في أي وقت من إعدادات جهازك.",
-          "بحسب مكان إقامتك، قد تكون لديك حقوق في الوصول إلى معلوماتك الشخصية أو تصحيحها أو حذفها. ولأن رحلاتك ووثائقك تبقى على جهازك لا على خوادمنا، فإنها تظل تحت سيطرتك المباشرة. تواصل معنا بأي طلب وسنساعدك.",
-          "نلتزم بقوانين الخصوصية المعمول بها محليًا ووطنيًا ودوليًا. ولأن معلوماتك تبقى على جهازك ولا يصل إلى خوادمنا سوى بيانات مجهولة وغير مرتبطة بك، فلا يوجد ملف شخصي يمكننا بيعه أو قد تحتاج إلى مطالبتنا بحذفه. والبيانات الموجودة على جهازك ملكٌ لك، ويمكنك إزالتها في أي وقت.",
-        ]],
-      ]},
-      { h: "خصوصية الأطفال", blocks: [
-        ["p", "لا يستهدف Ruta Travels الأطفال دون سن 13 عامًا، ونحن لا نجمع عن عِلم أي معلومات شخصية من الأطفال دون سن 13 عامًا. وحيثما تنطبق سن أعلى للموافقة الرقمية (على سبيل المثال، 16 عامًا في أجزاء من الاتحاد الأوروبي/المنطقة الاقتصادية الأوروبية)، تُطبَّق تلك السن بدلًا من ذلك."],
-      ]},
-      { h: "الاشتراكات والمدفوعات", blocks: [
-        ["p", "يوفّر Ruta اشتراكًا مدفوعًا اختياريًا مع فترة تجريبية مجانية. وتُباع الاشتراكات عبر App Store من Apple، وتتولى Apple معالجة جميع المدفوعات. ولا نستلم أو نخزّن مطلقًا رقم بطاقتك أو تفاصيل الفوترة الخاصة بك."],
-        ["dl", [
-          ["Apple (App Store)", "تتولى معالجة عملية الشراء والفوترة والتجديدات وفقًا لسياسة خصوصية Apple نفسها. ويمكنك إدارة اشتراكك أو إلغاؤه في أي وقت من إعدادات حساب App Store الخاص بك."],
-          ["مزوّد إدارة الاشتراكات لدينا", "تؤكّد وتدير حالة اشتراكك نيابةً عنا باستخدام معرّف شراء مجهول وإيصال App Store الخاص بك. ولا تستلم اسمك أو بريدك الإلكتروني أو تفاصيل الدفع الخاصة بك."],
-        ]],
-      ]},
-      { h: "التغييرات على هذه السياسة", blocks: [
-        ["p", "قد نُحدّث سياسة الخصوصية هذه من حين لآخر. وسنُعلمك بأي تغييرات عن طريق تحديث التاريخ في أعلى هذه الصفحة."],
-      ]},
-      { h: "تواصل معنا", blocks: [
-        ["p", "إذا كانت لديك أسئلة حول سياسة الخصوصية هذه، فتواصل معنا عبر info@rutatravels.com."],
-      ]},
-    ],
-  },
-  zh: {
-    meta: {
-      langName: "中文",
-      title: "Ruta Travels 隐私政策",
-      updated: "最后更新：2026年8月5日",
-      intro: "Ruta Travels（以下称「Ruta Travels」「我们」）将 Ruta Travels 应用作为一项商业服务开发。本政策体现了我们对您隐私的承诺：我们尽可能将您的信息保留在您的设备上，并且不会出售您的个人信息。本政策说明该应用处理哪些信息、这些信息存放在何处，以及信息在极少数情况下离开您设备的具体情形。",
-      footer: "© 2026 Ruta Travels",
-    },
-    sections: [
-      { h: "我们的理念", blocks: [
-        ["p", "Ruta 的设计宗旨是将您的信息保留在您的设备上。使用 Ruta 无需注册账户，我们也不会为您建立用户画像。您的行程、偏好和历史记录都存放在您手机的本地。敏感的旅行证件信息会加密保存在您设备的安全 Keychain 中，绝不会离开设备。少数功能需要联系外部服务才能运行（实时航班状态、地图、天气、翻译和 AI），在这些情况下，我们只发送响应请求所需的内容，并且在此之后不会保留这些内容。"],
-      ]},
-      { h: "存储在您设备上的信息", blocks: [
-        ["p", "以下内容保存在您的设备上，不会发送到我们的服务器："],
-        ["dl", [
-          ["行程和路线", "您添加的航班、酒店、租车、火车和活动。"],
-          ["偏好设置", "语言、单位、无障碍设置、通知选择和应用模式。"],
-          ["航班历史和已保存的信息", "您输入或导入的航班号、确认号、时间和地址。"],
-          ["停车位置", "您为寻找车辆而保存的车位、备注和照片。"],
-          ["旅行证件号码", "护照、签证、Known Traveler (KTN) 和 Global Entry 号码会加密保存在设备的 Keychain 中，绝不会传输给我们。"],
-          ["随机应用标识符", "由设备生成的 ID，不附带任何姓名、电子邮箱或位置信息，仅用于下文所述的匿名分析。"],
-        ]],
-      ]},
-      { h: "我们请求的权限及原因", blocks: [
-        ["p", "每项权限仅用于以下所述目的，且仅在您使用相应功能时使用。您可以随时在设备设置中授予或撤销任何权限。"],
-        ["dl", [
-          ["位置（使用期间）", "用于识别您当前所在的机场、估算何时出发以及显示附近的地点。不会在后台访问。"],
-          ["相机", "用于扫描登机牌，并在支持的情况下用于室内 LiDAR 导航。仅在您启动这些功能时使用。"],
-          ["麦克风", "用于支持语音搜索，仅在您对其说话时使用。"],
-          ["照片图库", "让您能够上传登机牌或行程图片。"],
-          ["日历", "在您选择时，将您的航班添加到日历中。"],
-          ["通知", "发送您所开启的航班和行程提醒。"],
-        ]],
-      ]},
-      { h: "信息何时离开您的设备", blocks: [
-        ["p", "为了提供某些功能，应用会将必要的最少数据发送给我们和／或第三方服务商，用于响应该单次请求，此后不会保留这些数据："],
-        ["dl", [
-          ["航班追踪", "您追踪的航班号会发送给我们的航班数据服务商，以返回状态、登机口和时刻表信息。"],
-          ["附近地点、路线和出发时间", "您的大致位置和地点查询会发送给我们的服务器及地图服务商，仅用于返回这些结果。请求完成后，我们不会存储或保留您的位置。"],
-          ["天气", "机场或目的地位置会发送给我们的天气服务商，以返回天气预报。"],
-          ["翻译", "您翻译的文本会发送给我们的翻译服务商。"],
-          ["货币换算", "汇率从汇率服务商获取；您输入的金额保留在您的设备上。"],
-          ["AI 功能", "参见下文的 AI 功能部分。"],
-          ["转发至 Ruta 的邮件导入", "参见下文的通过邮件导入行程部分。"],
-        ]],
-      ]},
-      { h: "AI 功能", blocks: [
-        ["p", "Ruta 的部分功能使用由第三方 AI 服务商提供的人工智能。这些功能包括目的地简报、从截图、PDF 或转发的邮件中读取行程，以及应用内助手。当您使用其中某项功能时，相关内容（例如行程图片或文本，或您的问题）会发送给该服务商以生成回复。为降低成本并减少重复处理，相同的 AI 请求可能会通过单向哈希进行去重，该哈希不会用于识别您的身份。AI 输出可能存在错误；对于任何重要事项，我们会引导您查阅官方来源，并在应用中对 AI 生成的内容进行标注。"],
-      ]},
-      { h: "通过邮件导入行程", blocks: [
-        ["p", "如果您使用转发至 Ruta 功能，转发的预订确认信息（包括其文本、HTML 以及任何附件，如 PDF 或截图）会由我们的入站邮件服务商和我们的服务器接收，行程内容会经过处理（包括通过我们的 AI 服务商）以提取您的航班、酒店和其他行程信息。您转发的邮件与您的设备之间的配对是匿名的。我们仅使用这些内容来构建您的行程，处理完成后不会保留原始邮件。"],
-      ]},
-      { h: "第三方服务", blocks: [
-        ["p", "我们不会出售您的个人信息。我们仅与运营应用所需的服务商共享数据，且仅限于上述所述情形："],
-        ["dl", [
-          ["航班数据服务商", "航班状态、登机口和时刻表。"],
-          ["地图和地点服务商", "附近地点、地点详情和照片、地理编码、时区和路线。"],
-          ["翻译服务商", "应用内翻译。"],
-          ["天气服务商", "天气数据。"],
-          ["AI 服务商", "AI 功能和行程解析。"],
-          ["汇率服务商", "每日汇率。"],
-          ["入站邮件服务商", "接收转发的预订邮件以供导入。"],
-          ["错误监控服务商", "匿名的崩溃和错误诊断，经配置以排除个人信息，使我们能够发现并修复错误。"],
-          ["应用分发和推送通知服务商", "应用分发和推送通知。"],
-        ]],
-        ["p", "每个服务商仅为我们执行其相应职能而处理数据，并受其自身条款约束。"],
-      ]},
-      { h: "我们在服务器上保留的内容", blocks: [
-        ["p", "我们不会在服务器上保存您的行程、已保存的信息或旅行证件，而且 Ruta 没有账户体系，因此我们服务器上没有任何内容能够识别您的身份。确实会到达我们服务器的有限数据包括："],
-        ["dl", [
-          ["匿名使用统计", "一个随机应用标识符（不含姓名、电子邮箱或位置）及其首次和最后一次出现的日期，以及所使用的功能，以便我们了解需要改进之处。这无法用于识别您的身份。"],
-          ["共享缓存", "第三方结果（航班状态、天气、翻译和 AI 回复）的副本，短暂保留以提升速度并降低成本。这些内容以内容为索引键，而非以您为索引键。"],
-          ["临时导入队列", "当您转发预订邮件时，提取出的行程会在匿名队列中等待，直到您的设备取用为止。"],
-          ["崩溃和错误诊断", "通过我们的错误监控服务商收集，并经配置以排除个人信息，使我们能够发现并修复错误。"],
-        ]],
-        ["p", "我们还可能保留汇总性的、非识别性的运营指标，例如哪些目的地受欢迎。"],
-      ]},
-      { h: "数据保留", blocks: [
-        ["p", "存储在您设备上的信息会一直保留，直到您将其删除或卸载应用。为响应实时请求而发送给服务商的数据（例如用于查询附近地点的位置，或用于 AI 解析的内容），在请求完成后我们不会保留。服务商可能会根据其自身政策短暂保留数据，以交付并保障其服务。"],
-      ]},
-      { h: "您的选择和权利", blocks: [
-        ["ul", [
-          "Ruta 不要求注册账户。您的数据存放在您的设备上。",
-          "您可以在应用中清除已保存的行程和信息，卸载应用会移除所有本地存储的数据，包括 Keychain 中的任何内容。",
-          "您可以随时在设备设置中授予或撤销位置、相机、麦克风、照片、日历和通知权限。",
-          "根据您所在地区的规定，您可能有权访问、更正或删除您的个人信息。由于您的行程和证件存放在您的设备上而非我们的服务器上，因此它们始终处于您的直接掌控之中。如有任何请求，请联系我们，我们将提供协助。",
-          "我们遵守适用的地方、国家和国际隐私法律。由于您的信息保留在您的设备上，只有匿名且无法关联到您的数据才会到达我们的服务器，因此不存在任何我们可以出售、或您需要要求我们删除的个人资料。您设备上的数据归您所有，您可以随时将其删除。",
-        ]],
-      ]},
-      { h: "儿童隐私", blocks: [
-        ["p", "Ruta Travels 并非面向 13 岁以下的儿童，我们也不会在知情的情况下收集 13 岁以下儿童的个人信息。若适用更高的数字同意年龄（例如欧盟／欧洲经济区部分地区为 16 岁），则以该年龄为准。"],
-      ]},
-      { h: "订阅与付款", blocks: [
-        ["p", "Ruta 提供可选的付费订阅，并附带免费试用。订阅通过 Apple 的 App Store 销售，所有付款均由 Apple 处理。我们绝不会接收或存储您的卡号或账单信息。"],
-        ["dl", [
-          ["Apple（App Store）", "根据 Apple 自身的隐私政策处理您的购买、账单和续订。您可以随时在 App Store 账户设置中管理或取消您的订阅。"],
-          ["我们的订阅管理服务商", "使用匿名的购买标识符和您的 App Store 收据，代表我们确认并管理您的订阅状态。它不会接收您的姓名、电子邮箱或付款信息。"],
-        ]],
-      ]},
-      { h: "本政策的变更", blocks: [
-        ["p", "我们可能会不时更新本隐私政策。我们将通过更新本页面顶部的日期来通知您任何变更。"],
-      ]},
-      { h: "联系我们", blocks: [
-        ["p", "如果您对本隐私政策有任何疑问，请通过 info@rutatravels.com 联系我们。"],
-      ]},
-    ],
-  },
-  pt: {
-    meta: {
-      langName: "Português",
-      title: "Política de Privacidade do Ruta Travels",
-      updated: "Última atualização: 5 de agosto de 2026",
-      intro: "A Ruta Travels («Ruta Travels», «nós» ou «nosso») desenvolveu o aplicativo Ruta Travels como um serviço comercial. Esta política reflete nosso compromisso com sua privacidade: mantemos suas informações no seu dispositivo sempre que possível e não vendemos suas informações pessoais. Ela explica quais informações o aplicativo trata, onde elas ficam e os casos limitados em que saem do seu dispositivo.",
-      footer: "© 2026 Ruta Travels",
-    },
-    sections: [
-      { h: "Nossa abordagem", blocks: [
-        ["p", "O Ruta foi criado para manter suas informações no seu dispositivo. Você não cria uma conta para usar o Ruta e nós não montamos um perfil sobre você. Suas viagens, preferências e histórico ficam localmente no seu telefone. Os dados sensíveis de documentos de viagem são criptografados no Keychain seguro do seu dispositivo e nunca saem dele. Alguns recursos precisam entrar em contato com serviços externos para funcionar (status de voo em tempo real, mapas, clima, tradução e IA) e, nesses casos, enviamos apenas o necessário para responder à solicitação e não guardamos nada depois disso."],
-      ]},
-      { h: "Informações armazenadas no seu dispositivo", blocks: [
-        ["p", "O seguinte permanece no seu dispositivo e não é enviado aos nossos servidores:"],
-        ["dl", [
-          ["Viagens e itinerários", "voos, hotéis, carros alugados, trens e atividades que você adiciona."],
-          ["Preferências", "idioma, unidades, configurações de acessibilidade, escolhas de notificação e modo do aplicativo."],
-          ["Histórico de voos e detalhes salvos", "números de voo, números de confirmação, horários e endereços que você insere ou importa."],
-          ["Local de estacionamento", "o ponto, a nota e a foto que você salva para encontrar seu carro."],
-          ["Números de documentos de viagem", "os números de passaporte, visto, Known Traveler (KTN) e Global Entry são criptografados no Keychain do dispositivo e nunca são transmitidos para nós."],
-          ["Um identificador aleatório do aplicativo", "um ID gerado pelo dispositivo, sem nome, e-mail ou localização associados, usado apenas para as análises anônimas descritas abaixo."],
-        ]],
-      ]},
-      { h: "Permissões que solicitamos e por quê", blocks: [
-        ["p", "Cada permissão é usada apenas para a finalidade abaixo e somente quando você usa aquele recurso. Você pode conceder ou revogar qualquer uma delas nas configurações do seu dispositivo."],
-        ["dl", [
-          ["Localização (durante o uso)", "para detectar seu aeroporto atual, estimar quando você deve sair e mostrar lugares próximos. Não é acessada em segundo plano."],
-          ["Câmera", "para escanear um cartão de embarque e, onde houver suporte, para navegação interna com LiDAR. Usada somente quando você inicia esses recursos."],
-          ["Microfone", "para viabilizar a busca por voz, usado apenas enquanto você está falando com ele."],
-          ["Biblioteca de fotos", "para permitir que você envie uma imagem de cartão de embarque ou de itinerário."],
-          ["Agenda", "para adicionar seus voos à sua agenda quando você optar por isso."],
-          ["Notificações", "para enviar os alertas de voo e de viagem que você ativar."],
-        ]],
-      ]},
-      { h: "Quando as informações saem do seu dispositivo", blocks: [
-        ["p", "Para oferecer determinados recursos, o aplicativo envia o mínimo de dados necessários para nós e/ou para um provedor terceirizado, usa esses dados para responder àquela única solicitação e não os guarda depois disso:"],
-        ["dl", [
-          ["Rastreamento de voos", "os números de voo que você acompanha são enviados aos nossos provedores de dados de voo para retornar informações de status, portão de embarque e horário."],
-          ["Lugares próximos, rotas e quando sair", "sua localização aproximada e suas consultas de lugares são enviadas aos nossos servidores e ao nosso provedor de mapas apenas para retornar esses resultados. Não armazenamos nem guardamos sua localização depois que a solicitação é concluída."],
-          ["Clima", "a localização do aeroporto ou do destino é enviada ao nosso provedor de clima para retornar a previsão."],
-          ["Tradução", "o texto que você traduz é enviado ao nosso provedor de tradução."],
-          ["Conversão de moeda", "as taxas de câmbio são obtidas de um provedor de taxas; os valores que você insere permanecem no seu dispositivo."],
-          ["Recursos de IA", "consulte a seção Recursos de IA abaixo."],
-          ["Importação de e-mail encaminhado ao Ruta", "consulte a seção Importar viagens por e-mail abaixo."],
-        ]],
-      ]},
-      { h: "Recursos de IA", blocks: [
-        ["p", "Alguns recursos do Ruta usam inteligência artificial fornecida por um provedor de IA terceirizado. Entre eles estão os resumos de destino, a leitura de um itinerário a partir de uma captura de tela, PDF ou e-mail encaminhado, e o assistente dentro do aplicativo. Quando você usa um desses recursos, o conteúdo relevante (por exemplo, a imagem ou o texto do itinerário, ou a sua pergunta) é enviado a esse provedor para gerar uma resposta. Para reduzir custos e reprocessamento, solicitações de IA idênticas podem ser desduplicadas por meio de um hash unidirecional, que não é usado para identificar você. Os resultados da IA podem estar errados; para qualquer coisa crítica, indicamos fontes oficiais e sinalizamos o conteúdo gerado por IA dentro do aplicativo."],
-      ]},
-      { h: "Importar viagens por e-mail", blocks: [
-        ["p", "Se você usar o encaminhamento ao Ruta, as confirmações de reserva encaminhadas (incluindo seu texto, HTML e quaisquer anexos, como PDFs ou capturas de tela) são recebidas pelo nosso provedor de e-mail de entrada e pelo nosso servidor, e o conteúdo do itinerário é processado, inclusive pelo nosso provedor de IA, para extrair seus voos, hotéis e outros detalhes da viagem. O pareamento entre o e-mail encaminhado e o seu dispositivo é anônimo. Usamos esse conteúdo apenas para montar sua viagem e não guardamos o e-mail bruto após o processamento."],
-      ]},
-      { h: "Serviços de terceiros", blocks: [
-        ["p", "Não vendemos suas informações pessoais. Compartilhamos dados apenas com os provedores de serviços necessários para operar o aplicativo e somente conforme descrito acima:"],
-        ["dl", [
-          ["Provedores de dados de voo", "status de voos, portões de embarque e horários."],
-          ["Um provedor de mapas e lugares", "lugares próximos, detalhes e fotos de lugares, geocodificação, fusos horários e rotas."],
-          ["Um provedor de tradução", "tradução dentro do aplicativo."],
-          ["Um provedor de clima", "dados de clima."],
-          ["Um provedor de IA", "recursos de IA e leitura de itinerários."],
-          ["Um provedor de taxas de câmbio", "taxas de câmbio diárias."],
-          ["Um provedor de e-mail de entrada", "recebimento de e-mails de reserva encaminhados para importação."],
-          ["Um provedor de monitoramento de erros", "diagnósticos anônimos de falhas e erros, configurados para excluir informações pessoais, para que possamos encontrar e corrigir bugs."],
-          ["Um provedor de distribuição de aplicativo e notificações push", "distribuição do aplicativo e notificações push."],
-        ]],
-        ["p", "Cada provedor processa os dados apenas para executar sua função para nós e sob seus próprios termos."],
-      ]},
-      { h: "O que mantemos em nossos servidores", blocks: [
-        ["p", "Não mantemos suas viagens, detalhes salvos ou documentos de viagem em nossos servidores e o Ruta não tem contas, portanto nada em nossos servidores identifica você. Os dados limitados que de fato chegam aos nossos servidores são:"],
-        ["dl", [
-          ["Contagens de uso anônimas", "um identificador aleatório do aplicativo (sem nome, e-mail ou localização) com as datas em que foi visto pela primeira e pela última vez e quais recursos foram usados, para que possamos ver o que melhorar. Isso não pode ser usado para identificar você."],
-          ["Caches compartilhados", "cópias de resultados de terceiros (status de voo, clima, traduções e respostas de IA) mantidas brevemente para agilizar as coisas e reduzir custos. Elas são indexadas por conteúdo, não por você."],
-          ["Uma fila temporária de importação", "quando você encaminha um e-mail de reserva, o itinerário extraído aguarda em uma fila anônima apenas até que o seu dispositivo o recupere."],
-          ["Diagnósticos de falhas e erros", "coletados por meio do nosso provedor de monitoramento de erros e configurados para excluir informações pessoais, para que possamos encontrar e corrigir bugs."],
-        ]],
-        ["p", "Também podemos manter métricas operacionais agregadas e não identificáveis, como quais destinos são populares."],
-      ]},
-      { h: "Retenção de dados", blocks: [
-        ["p", "As informações armazenadas no seu dispositivo permanecem até que você as exclua ou remova o aplicativo. Os dados enviados aos provedores para responder a uma solicitação em tempo real (como a localização para lugares próximos ou o conteúdo para leitura por IA) não são guardados por nós após a conclusão da solicitação. Os provedores podem reter dados brevemente, conforme suas próprias políticas, para entregar e proteger seus serviços."],
-      ]},
-      { h: "Suas escolhas e direitos", blocks: [
-        ["ul", [
-          "O Ruta não exige uma conta. Seus dados ficam no seu dispositivo.",
-          "Você pode limpar viagens e detalhes salvos no aplicativo, e excluir o aplicativo remove todos os dados armazenados localmente, incluindo qualquer coisa no Keychain.",
-          "Você pode conceder ou revogar as permissões de localização, câmera, microfone, fotos, agenda e notificações a qualquer momento nas configurações do seu dispositivo.",
-          "Dependendo de onde você mora, você pode ter direitos de acessar, corrigir ou excluir suas informações pessoais. Como suas viagens e documentos ficam no seu dispositivo, e não em nossos servidores, eles permanecem sob seu controle direto. Entre em contato conosco com qualquer solicitação e nós ajudaremos.",
-          "Seguimos as leis de privacidade locais, nacionais e internacionais aplicáveis. Como suas informações permanecem no seu dispositivo e apenas dados anônimos e não vinculados chegam aos nossos servidores, não há nenhum perfil pessoal que possamos vender ou que você precise que excluamos. Os dados no seu dispositivo são seus e podem ser removidos a qualquer momento.",
-        ]],
-      ]},
-      { h: "Privacidade das crianças", blocks: [
-        ["p", "O Ruta Travels não é direcionado a crianças menores de 13 anos e não coletamos intencionalmente informações pessoais de crianças menores de 13 anos. Onde se aplica uma idade mais alta de consentimento digital (por exemplo, 16 anos em partes da UE/EEE), essa idade se aplica em vez disso."],
-      ]},
-      { h: "Assinaturas e pagamentos", blocks: [
-        ["p", "O Ruta oferece uma assinatura paga opcional com um teste gratuito. As assinaturas são vendidas pela App Store da Apple, e a Apple processa todos os pagamentos. Nunca recebemos nem armazenamos o número do seu cartão ou seus dados de cobrança."],
-        ["dl", [
-          ["Apple (App Store)", "processa sua compra, a cobrança e as renovações conforme a própria política de privacidade da Apple. Você pode gerenciar ou cancelar sua assinatura a qualquer momento nas configurações da sua conta da App Store."],
-          ["Nosso provedor de gestão de assinaturas", "confirma e gerencia o status da sua assinatura em nosso nome usando um identificador de compra anônimo e o seu recibo da App Store. Não recebe seu nome, e-mail ou dados de pagamento."],
-        ]],
-      ]},
-      { h: "Alterações nesta política", blocks: [
-        ["p", "Podemos atualizar esta política de privacidade periodicamente. Notificaremos você sobre quaisquer alterações atualizando a data no topo desta página."],
-      ]},
-      { h: "Fale conosco", blocks: [
-        ["p", "Se você tiver dúvidas sobre esta política de privacidade, entre em contato conosco pelo e-mail info@rutatravels.com."],
-      ]},
-    ],
-  },
-};
-
-/* ── Engine (shared pattern with the user guide) ── */
-const RTL_LANGS = ['ar'];
-const $ = s => document.querySelector(s);
-function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
-function linkify(s){ return s.replace(/privacy@rutatravels\.com/g,'<a href="mailto:info@rutatravels.com">info@rutatravels.com</a>'); }
-function pick(lang){ return (POLICY[lang] ? lang : 'en'); }
-
-function renderBlocks(blocks){
-  return blocks.map(b=>{
-    const t=b[0];
-    if(t==='p') return '<p>'+linkify(esc(b[1]))+'</p>';
-    if(t==='ul') return '<ul>'+b[1].map(li=>'<li>'+linkify(esc(li))+'</li>').join('')+'</ul>';
-    if(t==='dl') return '<ul>'+b[1].map(pair=>'<li><strong>'+esc(pair[0])+':</strong> '+linkify(esc(pair[1]))+'</li>').join('')+'</ul>';
-    return '';
-  }).join('');
-}
-
-function render(lang){
-  lang=pick(lang);
-  const L=POLICY[lang], EN=POLICY.en;
-  const m=L.meta||EN.meta;
-  document.documentElement.lang=lang;
-  document.documentElement.dir=RTL_LANGS.includes(lang)?'rtl':'ltr';
-  $('#pageTitle').textContent=m.title;
-  $('#pageUpdated').textContent=m.updated;
-  $('#pageIntro').textContent=m.intro;
-  $('#pageFooter').textContent=m.footer;
-  const secs=(L.sections&&L.sections.length)?L.sections:EN.sections;
-  $('#content').innerHTML=secs.map(s=>'<section><h2>'+esc(s.h)+'</h2>'+renderBlocks(s.blocks)+'</section>').join('');
-}
-
-function buildLangMenu(current){
-  const sel=$('#lang');
-  sel.innerHTML=Object.keys(POLICY).map(code=>{
-    const name=(POLICY[code].meta&&POLICY[code].meta.langName)||code;
-    return '<option value="'+code+'"'+(code===current?' selected':'')+'>'+esc(name)+'</option>';
-  }).join('');
-  const labels={en:'Language',es:'Idioma',it:'Lingua',fr:'Langue',de:'Sprache',ja:'言語',ar:'اللغة',zh:'语言',pt:'Idioma'};
-  $('#langLabel').textContent=labels[current]||'Language';
-}
-
-function detectLang(){
-  const url=new URLSearchParams(location.search).get('lang');
-  if(url&&POLICY[url]) return url;                                   // 1. explicit ?lang from app/guide
-  try{ const s=localStorage.getItem('rutaLang'); if(s&&POLICY[s]) return s; }catch(e){} // 2. shared saved choice
-  const navs=(navigator.languages||[navigator.language||'en']);      // 3. phone/browser language
-  for(const n of navs){ const two=String(n).slice(0,2).toLowerCase(); if(POLICY[two]) return two; }
-  return 'en';                                                        // 4. fallback
-}
-
-function setLang(lang){
-  lang=pick(lang);
-  buildLangMenu(lang);
-  render(lang);
-  try{ localStorage.setItem('rutaLang', lang); }catch(e){}
-}
-
-document.addEventListener('DOMContentLoaded', ()=>{
-  setLang(detectLang());
-  $('#lang').addEventListener('change', e=> setLang(e.target.value));
-});
-</script>
+</x-dc>
 </body>
 </html>

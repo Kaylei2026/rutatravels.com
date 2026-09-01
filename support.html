@@ -1,376 +1,272 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-  <!-- Google tag (gtag.js) -->
+<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-SKQVLGF483"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-SKQVLGF483');
-</script>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-SKQVLGF483');</script>
 <title>Support - Ruta Travels</title>
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<meta name="description" content="Get help with Ruta Travels. Contact us, read the user guide, or review our privacy policy."/>
+<meta name="description" content="Get help with Ruta Travels. Contact us, read the user guide, or review our privacy policy.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Montserrat:wght@200;300;400;600&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --navy:#18273F; --navy-deep:#101C2E; --navy-card:#1F3347;
-    --gold:#F2A65A; --gold-dim:#B8851F;
-    --teal:#1D9E75; --teal-deep:#0F6E56;
-    --white:#FFFFFF; --text:rgba(255,255,255,0.80); --muted:rgba(255,255,255,0.52);
-    --border:rgba(242,166,90,0.18); --hair:rgba(255,255,255,0.07);
-  }
-  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;-webkit-font-smoothing:antialiased}
-  html{scroll-behavior:smooth}
-  body{background:var(--navy-deep);color:var(--text);
-    font-family:'DM Sans',-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans","Noto Sans",sans-serif;
-    font-weight:300;line-height:1.7;overflow-x:hidden;min-height:100vh;display:flex;flex-direction:column}
-  html[dir="rtl"] body{font-family:'DM Sans',-apple-system,"Noto Sans Arabic","Geeza Pro",Tahoma,sans-serif}
-  a{color:var(--gold);text-decoration:none}
 
-  /* ---------- Nav ---------- */
-  .nav{position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;
-    padding:16px 28px;background:#18273F;
-    border-bottom:1px solid var(--hair)}
-  .brand{display:inline-flex;align-items:center;line-height:0}
-  .brand img{height:50px;width:auto;display:block}
-  .nav-links{display:flex;align-items:center;gap:22px}
-  .nav-links a.link{font-size:12px;font-weight:400;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.7);transition:color .2s}
-  .nav-links a.link:hover,.nav-links a.link.active{color:var(--gold)}
-  .nav-cta{background:var(--white);color:var(--navy-deep)!important;border-radius:50px;padding:9px 20px;
-    font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;transition:transform .15s,background .2s,color .2s}
-  .nav-cta:hover{transform:scale(1.04);background:var(--gold);color:var(--navy-deep)!important}
-  select#lang{appearance:none;background:transparent;color:rgba(255,255,255,0.7);border:1px solid var(--hair);border-radius:50px;
-    padding:8px 30px 8px 14px;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:400;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;
-    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23F2A65A' stroke-width='3'><path d='M6 9l6 6 6-6'/></svg>");
-    background-repeat:no-repeat;background-position:right 12px center}
-  select#lang:hover{border-color:var(--border);color:var(--gold)}
-  select#lang option{color:#18273F}
-  @media(max-width:720px){.nav-links a.link{display:none}}
-
-  /* ---------- Page ---------- */
-  .page{position:relative;overflow:hidden;flex:1;padding:80px 24px 96px}
-  .page::before{content:"";position:absolute;width:620px;height:620px;border-radius:50%;filter:blur(90px);opacity:.5;z-index:0;pointer-events:none;
-    background:radial-gradient(circle,rgba(242,166,90,0.34),transparent 62%);top:-240px;right:-160px}
-  .page::after{content:"";position:absolute;width:520px;height:520px;border-radius:50%;filter:blur(90px);opacity:.42;z-index:0;pointer-events:none;
-    background:radial-gradient(circle,rgba(29,158,117,0.30),transparent 62%);bottom:-240px;left:-160px}
-  .inner{position:relative;z-index:1;max-width:760px;margin:0 auto}
-
-  .page-head{text-align:center;margin-bottom:52px}
-  .fp-row{display:flex;align-items:center;justify-content:center;margin-bottom:22px}
-  .fp-dot{width:10px;height:10px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 4px rgba(242,166,90,0.18);flex-shrink:0}
-  .fp-dash{width:70px;height:1px;background:repeating-linear-gradient(90deg,rgba(242,166,90,0.7) 0,rgba(242,166,90,0.7) 6px,transparent 6px,transparent 12px)}
-  .fp-plane{color:var(--gold);font-size:16px;margin:0 10px;transform:translateY(-2px)}
-  .page-title{font-family:'Montserrat',sans-serif;font-weight:200;font-size:clamp(40px,7vw,66px);letter-spacing:0.06em;color:var(--white);line-height:1.05;margin-bottom:18px}
-  .page-intro{font-size:18px;font-weight:300;color:var(--text);letter-spacing:0.01em;max-width:34em;margin:0 auto}
-
-  .cards{display:flex;flex-direction:column;gap:20px}
-  .card{position:relative;overflow:hidden;background:linear-gradient(160deg,var(--navy-card),var(--navy));
-    border:1px solid var(--hair);border-radius:20px;padding:32px 34px;box-shadow:0 24px 50px rgba(0,0,0,0.30)}
-  .card::after{content:"";position:absolute;width:220px;height:220px;border-radius:50%;
-    background:radial-gradient(circle,rgba(242,166,90,0.14),transparent 65%);top:-80px;right:-80px;pointer-events:none}
-  html[dir="rtl"] .card::after{right:auto;left:-80px}
-  .card > *{position:relative;z-index:1}
-  .kicker{font-family:'Montserrat',sans-serif;font-weight:600;font-size:11px;letter-spacing:0.24em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:14px}
-  .card p{font-size:16px;font-weight:300;color:var(--text)}
-  .card p + p{margin-top:12px}
-  .card strong{color:var(--white);font-weight:500}
-  .card a{color:var(--gold);border-bottom:1px solid rgba(242,166,90,0.35);transition:color .2s,border-color .2s}
-  .card a:hover{color:#f8bd7e;border-color:var(--gold)}
-  .email{display:inline-block;font-family:'Montserrat',sans-serif;font-size:22px;font-weight:400;letter-spacing:0.01em;color:var(--white)!important;border-bottom:none!important;margin-bottom:12px}
-  .email:hover{color:var(--gold)!important}
-  .link-arrow{display:inline-block;margin-top:16px;font-size:15px;letter-spacing:0.03em;border-bottom:none!important;font-weight:500}
-  .link-arrow:hover{color:#f8bd7e}
-  .disclaimer{margin-top:44px;text-align:center;font-size:13px;color:var(--muted);letter-spacing:0.02em;line-height:1.7;max-width:52em;margin-left:auto;margin-right:auto}
-
-  /* ---------- Footer ---------- */
-  footer{border-top:1px solid var(--hair);padding:28px 40px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px}
-  footer .fl{color:var(--muted);font-size:12px;letter-spacing:0.05em}
-  footer .fr{display:flex;gap:22px}
-  footer .fr a{color:rgba(255,255,255,0.45);font-size:12px;letter-spacing:0.08em;text-transform:uppercase;transition:color .2s}
-  footer .fr a:hover{color:var(--gold)}
-
-  @media(max-width:640px){
-    .nav{padding:14px 20px}
-    .brand img{height:42px}
-    .page{padding:56px 20px 72px}
-    .page-head{margin-bottom:40px}
-    .fp-dash{width:48px}
-    .card{padding:26px 22px}
-    footer{padding:22px 20px;flex-direction:column;align-items:center;text-align:center}
-  }
-</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;1,300&amp;family=DM+Sans:wght@300;400;500&amp;display=swap" rel="stylesheet">
+<style>
+  html, body { margin: 0; padding: 0; background: #101C33; }
+  * { box-sizing: border-box; }
+  a { color: #EDA25E; text-decoration: none; transition: color .3s ease; }
+  a:hover { color: #F4F0E8; }
+  ::selection { background: #EDA25E; color: #101C33; }
+  html[dir="rtl"] body { font-family: 'DM Sans', -apple-system, "Noto Sans Arabic", "Geeza Pro", Tahoma, sans-serif; }
+  select.ruta-lang option { color: #17253F; }
+</style>
+</helmet>
 
-  <nav class="nav">
-    <a class="brand" href="/"><img src="/nav-wordmark.png" alt="Ruta Travels"></a>
-    <div class="nav-links">
-      <a class="link" href="/blog/">Journal</a>
-      <a class="link active" href="/support">Support</a>
-      <a class="link" href="/privacy.html">Privacy</a>
-      <select id="lang" aria-label="Language"></select>
-      <a class="nav-cta" href="/">Coming to iOS</a>
+<div style="background:#101C33;font-family:'DM Sans',system-ui,sans-serif;color:#F4F0E8;overflow-x:hidden">
+
+  <nav style="position:fixed;top:0;left:0;right:0;min-height:74px;z-index:60;display:flex;align-items:center;justify-content:space-between;flex-wrap:nowrap;gap:12px;padding:10px clamp(10px,4vw,40px);background:rgba(16,28,51,.9);border-bottom:1px solid rgba(244,240,232,.12);backdrop-filter:blur(10px)">
+    <a href="https://rutatravels.com/" style="display:inline-flex;align-items:center;flex-shrink:0">
+      <img src="logo-nav.png" alt="Ruta Travels" style="height:clamp(26px,6vw,54px);width:auto;display:block">
+    </a>
+    <div style="display:flex;align-items:center;gap:clamp(7px,2.2vw,38px);flex-wrap:nowrap;min-width:0">
+      <a href="https://rutatravels.com/blog/" style="font-size:clamp(8px,1.5vw,11px);letter-spacing:clamp(.04em,.4vw,.22em);text-transform:uppercase;font-weight:500;color:#F4F0E8;white-space:nowrap">Journal</a>
+      <a href="https://rutatravels.com/privacy.html" style="font-size:clamp(8px,1.5vw,11px);letter-spacing:clamp(.04em,.4vw,.22em);text-transform:uppercase;font-weight:500;color:#F4F0E8;white-space:nowrap">Privacy</a>
+      <select class="ruta-lang" ref="{{ langRef }}" onChange="{{ onLang }}" aria-label="Language" style="appearance:none;background:transparent;color:#F4F0E8;border:1px solid rgba(244,240,232,.22);border-radius:0;padding:clamp(6px,1.4vw,10px) clamp(20px,3vw,26px) clamp(6px,1.4vw,10px) clamp(7px,2vw,12px);font-family:'DM Sans',sans-serif;font-size:clamp(8px,1.5vw,11px);font-weight:500;letter-spacing:clamp(.04em,.4vw,.14em);text-transform:uppercase;cursor:pointer;flex-shrink:0;background-image:url(&quot;data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23EDA25E' stroke-width='2'><path d='M6 9l6 6 6-6'/></svg>&quot;);background-repeat:no-repeat;background-position:right 8px center"></select>
+      <a href="https://rutatravels.com/" style="font-size:clamp(8px,1.5vw,11px);letter-spacing:clamp(.04em,.4vw,.22em);text-transform:uppercase;font-weight:500;color:#F4F0E8;border:1px solid rgba(244,240,232,.4);padding:clamp(6px,1.4vw,12px) clamp(7px,2.4vw,22px);white-space:nowrap;flex-shrink:0" style-hover="background:#EDA25E;color:#17253F;border-color:#EDA25E">Get Ruta</a>
     </div>
   </nav>
 
-  <main class="page">
-    <div class="inner">
-      <header class="page-head">
-        <div class="fp-row">
-          <div class="fp-dot"></div>
-          <div class="fp-dash"></div>
-          <div class="fp-plane">✈</div>
-          <div class="fp-dash"></div>
-          <div class="fp-dot"></div>
+  <header style="padding:clamp(118px,22vw,190px) clamp(20px,5vw,40px) 0">
+    <div style="max-width:820px;margin:0 auto">
+      <span style="font-size:10px;letter-spacing:.36em;text-transform:uppercase;font-weight:500;color:#EDA25E">Ruta Travels</span>
+      <h1 style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:clamp(38px,5.6vw,68px);line-height:1.05;letter-spacing:-.02em;margin:28px 0 0">{{ t.title }}</h1>
+      <p style="font-size:17px;line-height:1.85;color:#9AA6BA;max-width:520px;margin:30px 0 0;text-wrap:pretty">{{ t.intro }}</p>
+    </div>
+  </header>
+
+  <section style="padding:clamp(60px,10vw,104px) clamp(20px,5vw,40px) 0">
+    <div style="max-width:820px;margin:0 auto;display:flex;flex-direction:column">
+
+      <div style="display:flex;flex-wrap:wrap;gap:22px 40px;padding:46px 0;border-top:1px solid rgba(244,240,232,.14)">
+        <span style="flex:0 0 190px;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:rgba(244,240,232,.45);padding-top:8px">{{ t.contactKicker }}</span>
+        <div style="flex:1 1 300px;min-width:0">
+          <a href="mailto:info@rutatravels.com" style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:clamp(21px,2.6vw,29px);letter-spacing:-.01em;color:#F4F0E8" style-hover="color:#EDA25E">info@rutatravels.com</a>
+          <p style="font-size:15px;line-height:1.85;color:#9AA6BA;margin:18px 0 0;max-width:430px">{{ t.contactBody }}</p>
         </div>
-        <h1 class="page-title" id="title">Support</h1>
-        <p class="page-intro" id="intro">We're a small team and we read every message. Here's how to get help.</p>
-      </header>
-
-      <div class="cards">
-        <section class="card">
-          <span class="kicker" id="contactKicker">Contact us</span>
-          <a class="email" href="mailto:info@rutatravels.com">info@rutatravels.com</a>
-          <p id="contactBody">Email is the fastest way to reach us. We aim to reply within one business day.</p>
-        </section>
-
-        <section class="card">
-          <span class="kicker" id="guideKicker">User guide</span>
-          <p id="guideBody">Step-by-step help for every feature, from planning a trip to landing at your destination.</p>
-          <a class="link-arrow" id="guideLink" href="/ruta-user-guide.html">Open the Ruta user guide →</a>
-        </section>
-
-        <section class="card">
-          <span class="kicker" id="appKicker">In the app</span>
-          <p id="appBody">Tap the <strong>?</strong> in the bottom corner of any screen for help with that exact feature, or use Contact support in Settings.</p>
-        </section>
-
-        <section class="card">
-          <span class="kicker" id="privacyKicker">Privacy</span>
-          <p id="privacyBody">Your trip and your documents stay on your device. Read the full <a href="/privacy.html">Privacy Policy</a>.</p>
-        </section>
       </div>
 
-      <p class="disclaimer" id="disclaimer">For anything time-critical, flights, gates, entry rules, always confirm with your airline or the official authority.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:22px 40px;padding:46px 0;border-top:1px solid rgba(244,240,232,.14)">
+        <span style="flex:0 0 190px;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:rgba(244,240,232,.45);padding-top:8px">{{ t.guideKicker }}</span>
+        <div style="flex:1 1 300px;min-width:0">
+          <p style="font-size:15px;line-height:1.85;color:#9AA6BA;margin:0;max-width:430px">{{ t.guideBody }}</p>
+          <a href="https://rutatravels.com/ruta-user-guide.html" style="display:inline-block;margin-top:24px;font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:500;color:#EDA25E" style-hover="color:#F4F0E8">{{ t.guideLink }}</a>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-wrap:wrap;gap:22px 40px;padding:46px 0;border-top:1px solid rgba(244,240,232,.14)">
+        <span style="flex:0 0 190px;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:rgba(244,240,232,.45);padding-top:8px">{{ t.appKicker }}</span>
+        <div style="flex:1 1 300px;min-width:0">
+          <p style="font-size:15px;line-height:1.85;color:#9AA6BA;margin:0;max-width:430px">{{ appBody }}</p>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-wrap:wrap;gap:22px 40px;padding:46px 0;border-top:1px solid rgba(244,240,232,.14);border-bottom:1px solid rgba(244,240,232,.14)">
+        <span style="flex:0 0 190px;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:rgba(244,240,232,.45);padding-top:8px">{{ t.privacyKicker }}</span>
+        <div style="flex:1 1 300px;min-width:0">
+          <p style="font-size:15px;line-height:1.85;color:#9AA6BA;margin:0;max-width:430px">{{ privacyBody }}</p>
+          <a href="https://rutatravels.com/privacy.html" style="display:inline-block;margin-top:24px;font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:500;color:#EDA25E" style-hover="color:#F4F0E8">{{ t.privacyKicker }} →</a>
+        </div>
+      </div>
+
+      <p style="font-family:'Montserrat',sans-serif;font-style:italic;font-weight:300;font-size:16px;line-height:1.7;color:#9AA6BA;margin:56px 0 0;max-width:600px;text-wrap:pretty">{{ t.disclaimer }}</p>
     </div>
-  </main>
+  </section>
 
-  <footer>
-    <span class="fl" id="footerCopy">© 2026 Ruta Travels</span>
-    <span class="fr">
-      <a href="/blog/">Journal</a>
-      <a href="/support">Support</a>
-      <a href="/privacy.html">Privacy</a>
-      <a href="/terms.html">Terms</a>
-      <a href="https://instagram.com/ruta_travels" target="_blank" rel="noopener">Instagram</a>
-    </span>
+  <footer style="background:#0B1526;color:#F4F0E8;padding:80px clamp(20px,5vw,40px) 40px;margin-top:130px">
+    <div style="max-width:1180px;margin:0 auto;display:flex;justify-content:space-between;align-items:flex-start;gap:60px;flex-wrap:wrap;border-bottom:1px solid rgba(244,240,232,.14);padding-bottom:52px">
+      <img src="hero-logo.png" alt="Ruta Travels" style="height:104px;width:auto;display:block">
+      <div style="display:flex;gap:70px;flex-wrap:wrap">
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <span style="font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:rgba(244,240,232,.45)">Product</span>
+          <a href="https://rutatravels.com/" style="font-size:14px;color:#F4F0E8" style-hover="color:#EDA25E">Features</a>
+          <a href="https://rutatravels.com/" style="font-size:14px;color:#F4F0E8" style-hover="color:#EDA25E">Download</a>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <span style="font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:rgba(244,240,232,.45)">Read</span>
+          <a href="https://rutatravels.com/blog/" style="font-size:14px;color:#F4F0E8" style-hover="color:#EDA25E">Journal</a>
+          <a href="https://instagram.com/ruta_travels" style="font-size:14px;color:#F4F0E8" style-hover="color:#EDA25E">Instagram</a>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <span style="font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:rgba(244,240,232,.45)">Company</span>
+          <a href="https://rutatravels.com/support.html" style="font-size:14px;color:#F4F0E8" style-hover="color:#EDA25E">Support</a>
+          <a href="https://rutatravels.com/privacy.html" style="font-size:14px;color:#F4F0E8" style-hover="color:#EDA25E">Privacy</a>
+          <a href="https://rutatravels.com/terms.html" style="font-size:14px;color:#F4F0E8" style-hover="color:#EDA25E">Terms</a>
+        </div>
+      </div>
+    </div>
+    <div style="max-width:1180px;margin:26px auto 0;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(244,240,232,.45)">
+      <span>{{ t.footer }}</span>
+      <span>First Class Intelligence. For Every Traveler.</span>
+    </div>
   </footer>
-
-<script>
-/* Support page copy, per language. Falls back to English for anything missing.
-   Mirrors the language system used on the privacy page: honors ?lang= from the
-   app, remembers the shared rutaLang choice, and switches via the menu. */
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
 const SUPPORT = {
-  en: { langName:'English',
-    title:'Support',
+  en: { langName:'English', title:'Support',
     intro:"We're a small team and we read every message. Here's how to get help.",
-    contactKicker:'Contact us',
-    contactBody:'Email is the fastest way to reach us. We aim to reply within one business day.',
-    guideKicker:'User guide',
-    guideBody:'Step-by-step help for every feature, from planning a trip to landing at your destination.',
-    guideLink:'Open the Ruta user guide →',
-    appKicker:'In the app',
-    appBody:'Tap the <strong>?</strong> in the top corner of any screen for help with that exact feature, or use Contact support in Settings.',
-    privacyKicker:'Privacy',
-    privacyBody:'Your trip and your documents stay on your device. Read the full <a href="/privacy.html">Privacy Policy</a>.',
+    contactKicker:'Contact us', contactBody:'Email is the fastest way to reach us. We aim to reply within one business day.',
+    guideKicker:'User guide', guideBody:'Step-by-step help for every feature, from planning a trip to landing at your destination.',
+    guideLink:'Open the Ruta user guide →', appKicker:'In the app',
+    appBody:'Tap the ? in the top corner of any screen for help with that exact feature, or use Contact support in Settings.',
+    privacyKicker:'Privacy', privacyBody:'Your trip and your documents stay on your device. Read the full Privacy Policy.',
     disclaimer:'For anything time-critical, flights, gates, entry rules, always confirm with your airline or the official authority.',
     footer:'© 2026 Ruta Travels' },
-
-  es: { langName:'Español',
-    title:'Soporte',
+  es: { langName:'Español', title:'Soporte',
     intro:'Somos un equipo pequeño y leemos cada mensaje. Así puedes obtener ayuda.',
-    contactKicker:'Contáctanos',
-    contactBody:'El correo electrónico es la forma más rápida de contactarnos. Intentamos responder en un día hábil.',
-    guideKicker:'Guía del usuario',
-    guideBody:'Ayuda paso a paso para cada función, desde planificar un viaje hasta llegar a tu destino.',
-    guideLink:'Abrir la guía del usuario de Ruta →',
-    appKicker:'En la app',
-    appBody:'Toca el <strong>?</strong> en la esquina superior de cualquier pantalla para obtener ayuda sobre esa función, o usa Contactar con soporte en Ajustes.',
-    privacyKicker:'Privacidad',
-    privacyBody:'Tu viaje y tus documentos permanecen en tu dispositivo. Lee la <a href="/privacy.html">Política de Privacidad</a> completa.',
+    contactKicker:'Contáctanos', contactBody:'El correo electrónico es la forma más rápida de contactarnos. Intentamos responder en un día hábil.',
+    guideKicker:'Guía del usuario', guideBody:'Ayuda paso a paso para cada función, desde planificar un viaje hasta llegar a tu destino.',
+    guideLink:'Abrir la guía del usuario de Ruta →', appKicker:'En la app',
+    appBody:'Toca el ? en la esquina superior de cualquier pantalla para obtener ayuda sobre esa función, o usa Contactar con soporte en Ajustes.',
+    privacyKicker:'Privacidad', privacyBody:'Tu viaje y tus documentos permanecen en tu dispositivo. Lee la Política de Privacidad completa.',
     disclaimer:'Para cualquier asunto urgente, vuelos, puertas de embarque, requisitos de entrada, confirma siempre con tu aerolínea o la autoridad oficial.',
     footer:'© 2026 Ruta Travels' },
-
-  it: { langName:'Italiano',
-    title:'Assistenza',
+  it: { langName:'Italiano', title:'Assistenza',
     intro:'Siamo un piccolo team e leggiamo ogni messaggio. Ecco come ricevere aiuto.',
-    contactKicker:'Contattaci',
-    contactBody:"L'email è il modo più rapido per raggiungerci. Cerchiamo di rispondere entro un giorno lavorativo.",
-    guideKicker:'Guida utente',
-    guideBody:"Aiuto passo dopo passo per ogni funzione, dalla pianificazione di un viaggio all'arrivo a destinazione.",
-    guideLink:'Apri la guida utente di Ruta →',
-    appKicker:"Nell'app",
-    appBody:"Tocca il <strong>?</strong> nell'angolo in alto di qualsiasi schermata per ricevere aiuto su quella funzione, oppure usa Contatta l'assistenza nelle Impostazioni.",
-    privacyKicker:'Privacy',
-    privacyBody:"Il tuo viaggio e i tuoi documenti restano sul tuo dispositivo. Leggi l'<a href=\"/privacy.html\">Informativa sulla privacy</a> completa.",
+    contactKicker:'Contattaci', contactBody:"L'email è il modo più rapido per raggiungerci. Cerchiamo di rispondere entro un giorno lavorativo.",
+    guideKicker:'Guida utente', guideBody:"Aiuto passo dopo passo per ogni funzione, dalla pianificazione di un viaggio all'arrivo a destinazione.",
+    guideLink:'Apri la guida utente di Ruta →', appKicker:"Nell'app",
+    appBody:"Tocca il ? nell'angolo in alto di qualsiasi schermata per ricevere aiuto su quella funzione, oppure usa Contatta l'assistenza nelle Impostazioni.",
+    privacyKicker:'Privacy', privacyBody:"Il tuo viaggio e i tuoi documenti restano sul tuo dispositivo. Leggi l'Informativa sulla privacy completa.",
     disclaimer:"Per qualsiasi cosa urgente, voli, gate, requisiti d'ingresso, verifica sempre con la tua compagnia aerea o l'autorità ufficiale.",
     footer:'© 2026 Ruta Travels' },
-
-  fr: { langName:'Français',
-    title:'Assistance',
+  fr: { langName:'Français', title:'Assistance',
     intro:"Nous sommes une petite équipe et nous lisons chaque message. Voici comment obtenir de l'aide.",
-    contactKicker:'Nous contacter',
-    contactBody:"L'e-mail est le moyen le plus rapide de nous joindre. Nous nous efforçons de répondre sous un jour ouvré.",
-    guideKicker:"Guide d'utilisation",
-    guideBody:"Une aide pas à pas pour chaque fonctionnalité, de la planification d'un voyage à l'arrivée à destination.",
-    guideLink:"Ouvrir le guide d'utilisation Ruta →",
-    appKicker:"Dans l'application",
-    appBody:"Touchez le <strong>?</strong> dans le coin supérieur de n'importe quel écran pour obtenir de l'aide sur cette fonctionnalité, ou utilisez Contacter l'assistance dans les Réglages.",
-    privacyKicker:'Confidentialité',
-    privacyBody:'Votre voyage et vos documents restent sur votre appareil. Lisez la <a href="/privacy.html">Politique de confidentialité</a> complète.',
+    contactKicker:'Nous contacter', contactBody:"L'e-mail est le moyen le plus rapide de nous joindre. Nous nous efforçons de répondre sous un jour ouvré.",
+    guideKicker:"Guide d'utilisation", guideBody:"Une aide pas à pas pour chaque fonctionnalité, de la planification d'un voyage à l'arrivée à destination.",
+    guideLink:"Ouvrir le guide d'utilisation Ruta →", appKicker:"Dans l'application",
+    appBody:"Touchez le ? dans le coin supérieur de n'importe quel écran pour obtenir de l'aide sur cette fonctionnalité, ou utilisez Contacter l'assistance dans les Réglages.",
+    privacyKicker:'Confidentialité', privacyBody:'Votre voyage et vos documents restent sur votre appareil. Lisez la Politique de confidentialité complète.',
     disclaimer:"Pour tout ce qui est urgent, vols, portes d'embarquement, formalités d'entrée, vérifiez toujours auprès de votre compagnie aérienne ou de l'autorité officielle.",
     footer:'© 2026 Ruta Travels' },
-
-  de: { langName:'Deutsch',
-    title:'Hilfe',
+  de: { langName:'Deutsch', title:'Hilfe',
     intro:'Wir sind ein kleines Team und lesen jede Nachricht. So erhältst du Hilfe.',
-    contactKicker:'Kontakt',
-    contactBody:'Per E-Mail erreichst du uns am schnellsten. Wir antworten in der Regel innerhalb eines Werktags.',
-    guideKicker:'Benutzerhandbuch',
-    guideBody:'Schritt-für-Schritt-Hilfe für jede Funktion, von der Reiseplanung bis zur Ankunft am Ziel.',
-    guideLink:'Ruta-Benutzerhandbuch öffnen →',
-    appKicker:'In der App',
-    appBody:'Tippe auf das <strong>?</strong> in der oberen Ecke eines beliebigen Bildschirms, um Hilfe zu genau dieser Funktion zu erhalten, oder nutze „Support kontaktieren“ in den Einstellungen.',
-    privacyKicker:'Datenschutz',
-    privacyBody:'Deine Reise und deine Dokumente bleiben auf deinem Gerät. Lies die vollständige <a href="/privacy.html">Datenschutzerklärung</a>.',
+    contactKicker:'Kontakt', contactBody:'Per E-Mail erreichst du uns am schnellsten. Wir antworten in der Regel innerhalb eines Werktags.',
+    guideKicker:'Benutzerhandbuch', guideBody:'Schritt-für-Schritt-Hilfe für jede Funktion, von der Reiseplanung bis zur Ankunft am Ziel.',
+    guideLink:'Ruta-Benutzerhandbuch öffnen →', appKicker:'In der App',
+    appBody:'Tippe auf das ? in der oberen Ecke eines beliebigen Bildschirms, um Hilfe zu genau dieser Funktion zu erhalten, oder nutze „Support kontaktieren" in den Einstellungen.',
+    privacyKicker:'Datenschutz', privacyBody:'Deine Reise und deine Dokumente bleiben auf deinem Gerät. Lies die vollständige Datenschutzerklärung.',
     disclaimer:'Bei allem Zeitkritischen, Flüge, Gates, Einreisebestimmungen, bestätige die Angaben immer bei deiner Fluggesellschaft oder der offiziellen Behörde.',
     footer:'© 2026 Ruta Travels' },
-
-  pt: { langName:'Português',
-    title:'Suporte',
+  pt: { langName:'Português', title:'Suporte',
     intro:'Somos uma equipe pequena e lemos todas as mensagens. Veja como obter ajuda.',
-    contactKicker:'Fale conosco',
-    contactBody:'O e-mail é a forma mais rápida de nos contatar. Procuramos responder em até um dia útil.',
-    guideKicker:'Guia do usuário',
-    guideBody:'Ajuda passo a passo para cada recurso, desde planejar uma viagem até chegar ao seu destino.',
-    guideLink:'Abrir o guia do usuário da Ruta →',
-    appKicker:'No app',
-    appBody:'Toque no <strong>?</strong> no canto superior de qualquer tela para obter ajuda sobre esse recurso, ou use Falar com o suporte nas Configurações.',
-    privacyKicker:'Privacidade',
-    privacyBody:'Sua viagem e seus documentos permanecem no seu dispositivo. Leia a <a href="/privacy.html">Política de Privacidade</a> completa.',
+    contactKicker:'Fale conosco', contactBody:'O e-mail é a forma mais rápida de nos contatar. Procuramos responder em até um dia útil.',
+    guideKicker:'Guia do usuário', guideBody:'Ajuda passo a passo para cada recurso, desde planejar uma viagem até chegar ao seu destino.',
+    guideLink:'Abrir o guia do usuário da Ruta →', appKicker:'No app',
+    appBody:'Toque no ? no canto superior de qualquer tela para obter ajuda sobre esse recurso, ou use Falar com o suporte nas Configurações.',
+    privacyKicker:'Privacidade', privacyBody:'Sua viagem e seus documentos permanecem no seu dispositivo. Leia a Política de Privacidade completa.',
     disclaimer:'Para qualquer coisa urgente, voos, portões, regras de entrada, confirme sempre com a sua companhia aérea ou a autoridade oficial.',
     footer:'© 2026 Ruta Travels' },
-
-  ja: { langName:'日本語',
-    title:'サポート',
+  ja: { langName:'日本語', title:'サポート',
     intro:'私たちは少人数のチームで、すべてのメッセージに目を通しています。お困りのときは以下をご覧ください。',
-    contactKicker:'お問い合わせ',
-    contactBody:'メールが最も早くご連絡いただける方法です。1営業日以内の返信を心がけています。',
-    guideKicker:'ユーザーガイド',
-    guideBody:'旅行の計画から目的地への到着まで、すべての機能をステップごとに説明します。',
-    guideLink:'Ruta ユーザーガイドを開く →',
-    appKicker:'アプリ内で',
-    appBody:'各画面の上部にある <strong>?</strong> をタップすると、その機能のヘルプが表示されます。または設定の「サポートに連絡」をご利用ください。',
-    privacyKicker:'プライバシー',
-    privacyBody:'旅行の情報や書類はお使いのデバイスに保存されます。詳しくは<a href="/privacy.html">プライバシーポリシー</a>をご覧ください。',
+    contactKicker:'お問い合わせ', contactBody:'メールが最も早くご連絡いただける方法です。1営業日以内の返信を心がけています。',
+    guideKicker:'ユーザーガイド', guideBody:'旅行の計画から目的地への到着まで、すべての機能をステップごとに説明します。',
+    guideLink:'Ruta ユーザーガイドを開く →', appKicker:'アプリ内で',
+    appBody:'各画面の上部にある ? をタップすると、その機能のヘルプが表示されます。または設定の「サポートに連絡」をご利用ください。',
+    privacyKicker:'プライバシー', privacyBody:'旅行の情報や書類はお使いのデバイスに保存されます。詳しくはプライバシーポリシーをご覧ください。',
     disclaimer:'時間に関わる重要な事項（フライト、ゲート、入国要件など）については、必ず航空会社または公式機関にご確認ください。',
     footer:'© 2026 Ruta Travels' },
-
-  zh: { langName:'中文',
-    title:'支持',
+  zh: { langName:'中文', title:'支持',
     intro:'我们是一个小团队，会阅读每一条消息。以下是获取帮助的方式。',
-    contactKicker:'联系我们',
-    contactBody:'电子邮件是联系我们最快的方式。我们会尽量在一个工作日内回复。',
-    guideKicker:'用户指南',
-    guideBody:'为每项功能提供分步帮助，从规划行程到抵达目的地。',
-    guideLink:'打开 Ruta 用户指南 →',
-    appKicker:'在应用中',
-    appBody:'点按任意屏幕右上角的 <strong>?</strong>，即可获取该功能的帮助，或在“设置”中使用“联系支持”。',
-    privacyKicker:'隐私',
-    privacyBody:'您的行程和文件都保存在您的设备上。请阅读完整的<a href="/privacy.html">隐私政策</a>。',
+    contactKicker:'联系我们', contactBody:'电子邮件是联系我们最快的方式。我们会尽量在一个工作日内回复。',
+    guideKicker:'用户指南', guideBody:'为每项功能提供分步帮助，从规划行程到抵达目的地。',
+    guideLink:'打开 Ruta 用户指南 →', appKicker:'在应用中',
+    appBody:'点按任意屏幕右上角的 ?，即可获取该功能的帮助，或在"设置"中使用"联系支持"。',
+    privacyKicker:'隐私', privacyBody:'您的行程和文件都保存在您的设备上。请阅读完整的隐私政策。',
     disclaimer:'对于任何有时效性的信息（航班、登机口、入境规定等），请务必向您的航空公司或官方机构核实。',
     footer:'© 2026 Ruta Travels' },
-
-  ar: { langName:'العربية',
-    title:'الدعم',
+  ar: { langName:'العربية', title:'الدعم',
     intro:'نحن فريق صغير ونقرأ كل رسالة. إليك كيفية الحصول على المساعدة.',
-    contactKicker:'تواصل معنا',
-    contactBody:'البريد الإلكتروني هو أسرع وسيلة للوصول إلينا. نسعى للرد خلال يوم عمل واحد.',
-    guideKicker:'دليل المستخدم',
-    guideBody:'مساعدة خطوة بخطوة لكل ميزة، من تخطيط الرحلة حتى الوصول إلى وجهتك.',
-    guideLink:'افتح دليل مستخدم Ruta ←',
-    appKicker:'داخل التطبيق',
-    appBody:'انقر على <strong>؟</strong> في الزاوية العلوية من أي شاشة للحصول على مساعدة حول تلك الميزة، أو استخدم «التواصل مع الدعم» في الإعدادات.',
-    privacyKicker:'الخصوصية',
-    privacyBody:'تبقى رحلتك ومستنداتك على جهازك. اقرأ <a href="/privacy.html">سياسة الخصوصية</a> كاملة.',
+    contactKicker:'تواصل معنا', contactBody:'البريد الإلكتروني هو أسرع وسيلة للوصول إلينا. نسعى للرد خلال يوم عمل واحد.',
+    guideKicker:'دليل المستخدم', guideBody:'مساعدة خطوة بخطوة لكل ميزة، من تخطيط الرحلة حتى الوصول إلى وجهتك.',
+    guideLink:'افتح دليل مستخدم Ruta ←', appKicker:'داخل التطبيق',
+    appBody:'انقر على ؟ في الزاوية العلوية من أي شاشة للحصول على مساعدة حول تلك الميزة، أو استخدم «التواصل مع الدعم» في الإعدادات.',
+    privacyKicker:'الخصوصية', privacyBody:'تبقى رحلتك ومستنداتك على جهازك. اقرأ سياسة الخصوصية كاملة.',
     disclaimer:'لأي أمر عاجل، مثل الرحلات والبوابات ومتطلبات الدخول، تأكد دائمًا من شركة الطيران أو الجهة الرسمية.',
     footer:'© 2026 Ruta Travels' },
 };
 
-const RTL_LANGS = ['ar'];
-const $ = s => document.querySelector(s);
-function pick(lang){ return (SUPPORT[lang] ? lang : 'en'); }
+class Component extends DCLogic {
+  state = { lang: 'en' };
 
-function render(lang){
-  lang = pick(lang);
-  const L = SUPPORT[lang], EN = SUPPORT.en;
-  const g = k => (L[k] != null ? L[k] : EN[k]);
-  document.documentElement.lang = lang;
-  document.documentElement.dir = RTL_LANGS.includes(lang) ? 'rtl' : 'ltr';
-  document.title = g('title') + ' - Ruta Travels';
-  $('#title').textContent      = g('title');
-  $('#intro').textContent      = g('intro');
-  $('#contactKicker').textContent = g('contactKicker');
-  $('#contactBody').textContent   = g('contactBody');
-  $('#guideKicker').textContent   = g('guideKicker');
-  $('#guideBody').textContent     = g('guideBody');
-  $('#guideLink').textContent     = g('guideLink');
-  $('#appKicker').textContent     = g('appKicker');
-  $('#appBody').innerHTML         = g('appBody');
-  $('#privacyKicker').textContent = g('privacyKicker');
-  $('#privacyBody').innerHTML     = g('privacyBody');
-  $('#disclaimer').textContent    = g('disclaimer');
-  $('#footerCopy').textContent    = g('footer');
+  detect() {
+    try {
+      const url = new URLSearchParams(location.search).get('lang');
+      if (url && SUPPORT[url]) return url;
+      const saved = localStorage.getItem('rutaLang');
+      if (saved && SUPPORT[saved]) return saved;
+      const navs = navigator.languages || [navigator.language || 'en'];
+      for (const n of navs) {
+        const two = String(n).slice(0, 2).toLowerCase();
+        if (SUPPORT[two]) return two;
+      }
+    } catch (e) {}
+    return 'en';
+  }
+
+  componentDidMount() {
+    const lang = this.detect();
+    this.setState({ lang });
+    this.paint(lang);
+  }
+
+  paint(lang) {
+    const sel = this.langEl;
+    if (sel) {
+      if (!sel.options.length) {
+        Object.keys(SUPPORT).forEach(code => {
+          const o = document.createElement('option');
+          o.value = code;
+          o.textContent = SUPPORT[code].langName;
+          sel.appendChild(o);
+        });
+      }
+      sel.value = lang;
+    }
+    document.documentElement.lang = lang;
+    document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+    document.title = SUPPORT[lang].title + ' - Ruta Travels';
+  }
+
+  renderVals() {
+    const lang = this.state.lang;
+    const t = Object.assign({}, SUPPORT.en, SUPPORT[lang] || {});
+    return {
+      t,
+      appBody: t.appBody,
+      privacyBody: t.privacyBody,
+      langRef: el => { this.langEl = el; if (el) this.paint(this.state.lang); },
+      onLang: e => {
+        const lang = e.target.value;
+        try { localStorage.setItem('rutaLang', lang); } catch (err) {}
+        this.setState({ lang });
+        this.paint(lang);
+      },
+    };
+  }
 }
-
-function buildLangMenu(current){
-  const sel = $('#lang');
-  sel.innerHTML = Object.keys(SUPPORT).map(code=>{
-    const name = SUPPORT[code].langName || code;
-    return '<option value="'+code+'"'+(code===current?' selected':'')+'>'+name+'</option>';
-  }).join('');
-}
-
-function detectLang(){
-  const url = new URLSearchParams(location.search).get('lang');
-  if(url && SUPPORT[url]) return url;                                   // 1. explicit ?lang from app/guide
-  try{ const s = localStorage.getItem('rutaLang'); if(s && SUPPORT[s]) return s; }catch(e){} // 2. shared saved choice
-  const navs = (navigator.languages || [navigator.language || 'en']);  // 3. phone/browser language
-  for(const n of navs){ const two = String(n).slice(0,2).toLowerCase(); if(SUPPORT[two]) return two; }
-  return 'en';                                                          // 4. fallback
-}
-
-function setLang(lang){
-  lang = pick(lang);
-  buildLangMenu(lang);
-  render(lang);
-  try{ localStorage.setItem('rutaLang', lang); }catch(e){}
-}
-
-document.addEventListener('DOMContentLoaded', ()=>{
-  setLang(detectLang());
-  $('#lang').addEventListener('change', e=> setLang(e.target.value));
-});
 </script>
-  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "d516af67479748a6a1a63af70d2caa8d"}'></script>
 </body>
 </html>
