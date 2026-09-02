@@ -31,7 +31,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="./support.js"></script>
-<style>@media (max-width:700px){.rt-phone-grid{grid-template-columns:1fr!important;max-width:300px!important;margin-left:auto!important;margin-right:auto!important;gap:44px!important}.rt-journal-grid{grid-template-columns:minmax(0,1fr)!important;gap:30px!important}.rt-journal-grid>*{min-width:0!important}.rt-journal-grid h2,.rt-journal-grid h3,.rt-journal-grid p{overflow-wrap:anywhere}}</style>
+<style>@media (max-width:700px){.rt-phone-grid{grid-template-columns:1fr!important;max-width:300px!important;margin-left:auto!important;margin-right:auto!important;gap:44px!important}.rt-journal-grid{grid-template-columns:minmax(0,1fr)!important;gap:30px!important}.rt-journal-grid>*{min-width:0!important}.rt-journal-grid h2,.rt-journal-grid h3,.rt-journal-grid p{overflow-wrap:anywhere}.rt-feature-row{grid-template-columns:1fr!important;gap:28px!important}.rt-feature-img{height:260px!important}}</style>
 </head>
 <body>
 <x-dc>
@@ -97,8 +97,8 @@
 
   <section style="max-width:1180px;margin:0 auto;padding:0 40px 40px;display:flex;flex-direction:column;gap:130px">
 
-    <div data-reveal="1" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:90px;align-items:center;opacity:0;transform:translateY(30px);transition:opacity 1s ease,transform 1s cubic-bezier(.22,1,.36,1)">
-      <div style="position:relative;height:440px">
+    <div data-reveal="1" class="rt-feature-row" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:90px;align-items:center;opacity:0;transform:translateY(30px);transition:opacity 1s ease,transform 1s cubic-bezier(.22,1,.36,1)">
+      <div class="rt-feature-img" style="position:relative;height:440px">
         <div style="position:absolute;inset:0;overflow:hidden;background:#22345A">
           <image-slot id="ruta-feature-1" shape="rect" placeholder="Airport / departures board" src="photos/board.jpg"></image-slot>
         </div>
@@ -110,8 +110,8 @@
       </div>
     </div>
 
-    <div data-reveal="1" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:90px;align-items:center;opacity:0;transform:translateY(30px);transition:opacity 1s ease,transform 1s cubic-bezier(.22,1,.36,1)">
-      <div style="order:2;position:relative;height:440px">
+    <div data-reveal="1" class="rt-feature-row" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:90px;align-items:center;opacity:0;transform:translateY(30px);transition:opacity 1s ease,transform 1s cubic-bezier(.22,1,.36,1)">
+      <div class="rt-feature-img" style="order:2;position:relative;height:440px">
         <div style="position:absolute;inset:0;overflow:hidden;background:#22345A">
           <image-slot id="ruta-feature-2" shape="rect" placeholder="A street, a doorway, a market" src="photos/essaouira-arch.jpg"></image-slot>
         </div>
@@ -123,8 +123,8 @@
       </div>
     </div>
 
-    <div data-reveal="1" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:90px;align-items:center;opacity:0;transform:translateY(30px);transition:opacity 1s ease,transform 1s cubic-bezier(.22,1,.36,1)">
-      <div style="position:relative;height:440px">
+    <div data-reveal="1" class="rt-feature-row" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:90px;align-items:center;opacity:0;transform:translateY(30px);transition:opacity 1s ease,transform 1s cubic-bezier(.22,1,.36,1)">
+      <div class="rt-feature-img" style="position:relative;height:440px">
         <div style="position:absolute;inset:0;overflow:hidden;background:#22345A">
           <image-slot id="ruta-feature-3" shape="rect" placeholder="Quiet interior, morning light" src="photos/cabanas.jpg"></image-slot>
         </div>
