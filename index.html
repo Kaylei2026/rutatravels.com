@@ -31,6 +31,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="./support.js"></script>
+<style>@media (max-width:700px){.rt-phone-grid{grid-template-columns:1fr!important;max-width:300px!important;margin-left:auto!important;margin-right:auto!important;gap:44px!important}.rt-journal-grid{grid-template-columns:1fr!important;gap:30px!important}}</style>
 </head>
 <body>
 <x-dc>
@@ -135,7 +136,7 @@
       </div>
     </div>
 
-    <div data-reveal="1" style="max-width:1180px;margin:130px auto 0;padding:0 40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:clamp(36px,4vw,58px);align-items:center;justify-items:center;opacity:0;transform:translateY(24px);transition:opacity 1s ease,transform 1s cubic-bezier(.22,1,.36,1)">
+    <div data-reveal="1" class="rt-phone-grid" style="max-width:1180px;margin:130px auto 0;padding:0 40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:clamp(36px,4vw,58px);align-items:center;justify-items:center;opacity:0;transform:translateY(24px);transition:opacity 1s ease,transform 1s cubic-bezier(.22,1,.36,1)">
       <div style="display:flex;flex-direction:column;align-items:center;gap:26px;width:100%;max-width:262px">
         <div style="width:100%;max-width:262px;aspect-ratio:262/540;border-radius:38px;padding:9px;background:linear-gradient(150deg,#2C3F63 0%,#18273F 55%,#101B2E 100%);box-shadow:0 40px 90px rgba(0,0,0,.55),0 0 0 1px rgba(237,162,94,.34);transform:perspective(1400px) rotateY(9deg) rotateZ(-6deg)">
           <div style="position:relative;width:100%;height:100%;border-radius:30px;overflow:hidden;background:#0F1419">
@@ -214,7 +215,7 @@
     </div>
       <p style="max-width:520px;margin:30px 0 0;font-size:16px;line-height:1.8;color:currentColor;opacity:.62;text-wrap:pretty;transition:opacity 1s ease">Pieces worth keeping. Written by the people who walked it.</p>
 
-    <div data-reveal="1" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px;margin-top:52px;opacity:0;transform:translateY(28px);transition:opacity 1s ease,transform 1s cubic-bezier(.22,1,.36,1)">
+    <div data-reveal="1" class="rt-journal-grid" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px;margin-top:52px;opacity:0;transform:translateY(28px);transition:opacity 1s ease,transform 1s cubic-bezier(.22,1,.36,1)">
       <a href="https://rutatravels.com/blog/perfect-day-copenhagen-norrebro/" target="_blank" rel="noopener" style="display:block" style-hover="opacity:.72">
         <div style="height:250px;overflow:hidden;background:#22345A"><image-slot id="ruta-journal-1" shape="rect" placeholder="Journal image" src="photos/copenhagen-journal.jpg"></image-slot></div>
         <p style="font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:#9AA6BA;margin:22px 0 0">Destinations</p>
