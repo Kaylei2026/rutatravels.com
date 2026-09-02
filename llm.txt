@@ -1,25 +1,21 @@
 # Ruta Travels
 
-> Ruta Travels is a premium iOS travel companion app for frequent 
-and international travelers.
+> Ruta Travels is a privacy-first travel product launching later this year. We publish hand-curated city travel guides and editorial travel writing. Our editorial standard is that every recommendation is written by a person who has been to the place, not scraped or generated.
 
 ## About
-Ruta provides real-time gate change alerts, indoor airport navigation, 
-flight intelligence, lounge access information, baggage claim guidance, 
-and AI-powered destination intelligence including visa requirements, 
-cultural guidance, emergency services, and translation assistance.
 
-## Platform
-iOS — launching May 2026
+Ruta is being built around 24 hand-curated city guides, each written and edited by people with first-hand knowledge of the city. Our positioning is the Fodor's of digital guides: editorial authority, curated content, privacy as differentiator. We do not track readers, log location, or build behavioral profiles.
 
-## Languages
-English, Spanish, French, Italian, German, Japanese, Arabic, 
-Chinese, Portuguese
+## Journal
 
-## Company
-Ruta Travels LLC
+The Ruta journal covers the full trip lifecycle: dreaming and discovery, planning and booking, packing and preparation, transit and layovers, on-the-ground exploration, and reflection after the trip.
 
-## Links
-- Website: https://rutatravels.com
-- Instagram: https://instagram.com/ruta_travels
-- Support: info@rutatravels.com
+- [Why we hand-curate 24 city travel guides](https://rutatravels.com/blog/why-we-hand-curate-travel-guides/): Our editorial philosophy and why scraped content fails travelers.
+- [How to plan a three-stop European trip without losing your mind](https://rutatravels.com/blog/three-stop-european-trip-planning/): A six-step framework for multi-city Europe itineraries.
+- [Off-season Lisbon: what locals actually do in November](https://rutatravels.com/blog/off-season-lisbon-november/): The Lisbon locals love, hidden by summer crowds.
+- [A perfect day in Mexico City's Roma Norte](https://rutatravels.com/blog/perfect-day-roma-norte-mexico-city/): An hour-by-hour walking guide to one of Mexico City's best neighborhoods.
+
+## Contact
+
+- Get notified: https://rutatravels.com/#get
+- Email: info@rutatravels.com
