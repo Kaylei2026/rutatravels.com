@@ -1,0 +1,154 @@
+/* Ruta — one stylesheet for the three data-driven pages:
+     privacy.html · support · ruta-user-guide.html
+   Drop-in replacement for each page's <style> block. Every class and id your
+   scripts render is preserved, so all nine languages keep working untouched.
+   Brings them onto the new site: flat navy, hairline rules, square edges, no glows. */
+
+:root{
+  --navy:#101C33; --navy-deep:#101C33; --navy-mid:#101C33; --navy-card:#1A2A48;
+  --gold:#EDA25E; --gold-dim:#B8851F; --teal:#4F7C82; --teal-deep:#0F6E56;
+  --white:#F4F0E8; --text:#C6CEDC; --muted:#9AA6BA;
+  --border:rgba(237,162,94,.4); --hair:rgba(244,240,232,.14);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;-webkit-font-smoothing:antialiased}
+html{scroll-behavior:smooth}
+body{background:var(--navy);color:var(--text);position:relative;overflow-x:hidden;min-height:100vh;
+  font-family:'DM Sans',-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans","Noto Sans",sans-serif;
+  font-weight:300;font-size:16px;line-height:1.9}
+html[dir="rtl"] body{font-family:'DM Sans',-apple-system,"Noto Sans Arabic","Geeza Pro",Tahoma,sans-serif}
+/* the blurred gold/teal blobs are gone — the new site is flat ground only */
+body::before,body::after{content:none}
+.page::before,.page::after{content:none}
+a{color:var(--gold);text-decoration:none;transition:color .3s ease}
+a:hover{color:var(--white);text-decoration:none}
+::selection{background:var(--gold);color:#101C33}
+
+/* ---------- Nav (both .topnav and .nav markup) ---------- */
+.topnav,.nav{position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:nowrap;gap:12px;padding:10px clamp(10px,4vw,40px);
+  background:rgba(16,28,51,.9);border-bottom:1px solid var(--hair);backdrop-filter:blur(10px)}
+.topnav-brand,.brand{display:inline-flex;align-items:center;line-height:0;flex-shrink:0}
+.topnav-brand img,.brand img{height:clamp(26px,6vw,54px);width:auto;display:block}
+.topnav-links,.nav-links{display:flex;align-items:center;gap:clamp(7px,2.2vw,38px);flex-wrap:nowrap;min-width:0}
+.topnav-links a,.nav-links a.link{font-family:'DM Sans',sans-serif;font-size:clamp(8px,1.5vw,11px);font-weight:500;
+  letter-spacing:clamp(.04em,.4vw,.22em);text-transform:uppercase;color:var(--white);white-space:nowrap}
+.topnav-links a:hover,.nav-links a.link:hover,.nav-links a.link.active{color:var(--gold)}
+.topnav-cta,.nav-cta{background:transparent;color:var(--white)!important;border:1px solid rgba(244,240,232,.4);border-radius:0;
+  padding:clamp(6px,1.4vw,12px) clamp(7px,2.4vw,22px);font-weight:500!important;letter-spacing:clamp(.04em,.4vw,.22em)!important;
+  flex-shrink:0;transition:background .3s ease,color .3s ease,border-color .3s ease}
+.topnav-cta:hover,.nav-cta:hover{background:var(--gold);border-color:var(--gold);color:#17253F!important;transform:none}
+#langLabel{display:none}
+select#lang{appearance:none;background:transparent;color:var(--white);border:1px solid rgba(244,240,232,.22);border-radius:0;
+  padding:clamp(6px,1.4vw,10px) clamp(20px,3vw,26px) clamp(6px,1.4vw,10px) clamp(7px,2vw,12px);
+  font-family:'DM Sans',sans-serif;font-size:clamp(8px,1.5vw,11px);font-weight:500;
+  letter-spacing:clamp(.04em,.4vw,.14em);text-transform:uppercase;cursor:pointer;flex-shrink:0;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23EDA25E' stroke-width='2'><path d='M6 9l6 6 6-6'/></svg>");
+  background-repeat:no-repeat;background-position:right 8px center}
+select#lang:hover{border-color:var(--gold);color:var(--gold)}
+select#lang option{color:#17253F}
+html[dir="rtl"] select#lang{background-position:left 8px center}
+
+/* ---------- Shared page shell ---------- */
+.wrap,.page{position:relative;z-index:1;padding:0 clamp(20px,5vw,40px) 90px}
+.wrap{max-width:820px;margin:0 auto}
+.page{overflow:visible;flex:1;padding-top:0}
+.inner{position:relative;z-index:1;max-width:820px;margin:0 auto}
+
+h1,.page-title{font-family:'Montserrat',sans-serif;font-weight:300;color:var(--white);
+  font-size:clamp(36px,5.4vw,64px);letter-spacing:-.02em;line-height:1.06;
+  margin:clamp(118px,22vw,190px) 0 0}
+.page-head{text-align:start;margin-bottom:0;padding-top:0}
+/* the dot-and-plane flourish is off-brand for the new site */
+.fp-row{display:none}
+.updated{color:rgba(244,240,232,.45);font-size:11px;letter-spacing:.2em;text-transform:uppercase;margin:24px 0 0}
+.intro,.tagline,.page-intro{color:var(--muted);font-size:16px;line-height:1.9;margin:34px 0 0;max-width:600px;text-wrap:pretty}
+
+/* ---------- Privacy / Terms: hairline sections ---------- */
+.wrap h2{font-family:'Montserrat',sans-serif;font-weight:300;color:var(--white);
+  font-size:clamp(21px,2.4vw,26px);letter-spacing:-.01em;line-height:1.25;text-transform:none;
+  margin:0 0 18px;padding-top:44px;border-top:1px solid var(--hair)}
+.wrap section:first-of-type h2{margin-top:56px}
+.wrap p{margin:0 0 16px;color:var(--muted);font-size:15px;line-height:1.9}
+.wrap ul{margin:0 0 16px;padding-inline-start:22px;border-inline-start:1px solid var(--border);list-style:none}
+.wrap li{margin:0 0 16px;color:var(--muted);font-size:15px;line-height:1.9}
+.wrap li:last-child{margin-bottom:0}
+.wrap li strong,.wrap p strong{color:var(--white);font-weight:500}
+
+/* ---------- User guide: contents + article rows ---------- */
+nav.toc{background:transparent;border:0;border-top:1px solid var(--hair);border-bottom:1px solid var(--hair);
+  border-radius:0;padding:34px 0;margin:64px 0 0}
+nav.toc .grp{margin:26px 0 0}
+nav.toc .grp:first-child{margin-top:0}
+nav.toc .grplabel{font-family:'DM Sans',sans-serif;color:var(--gold);font-size:10px;font-weight:500;
+  letter-spacing:.3em;text-transform:uppercase;margin-bottom:14px}
+nav.toc .links{display:flex;flex-wrap:wrap;gap:10px 26px}
+nav.toc .links a{background:transparent;border:0;border-radius:0;padding:0;
+  font-size:15px;font-weight:300;letter-spacing:0;color:var(--text)}
+nav.toc .links a:hover{color:var(--gold)}
+
+section.grp-h{margin:80px 0 0}
+section.grp-h .gh{font-family:'DM Sans',sans-serif;color:var(--gold);font-size:10px;font-weight:500;
+  letter-spacing:.36em;text-transform:uppercase;padding-top:0;border-top:0}
+
+article{scroll-margin-top:100px;background:transparent;border:0;border-top:1px solid var(--hair);
+  border-radius:0;padding:44px 0;margin:0;box-shadow:none}
+article::after{content:none}
+article h2{font-family:'Montserrat',sans-serif;color:var(--white);font-size:clamp(21px,2.4vw,26px);
+  font-weight:300;letter-spacing:-.01em;line-height:1.25;margin:0 0 18px;padding-top:0;border-top:0}
+article h3{font-family:'DM Sans',sans-serif;color:var(--gold);font-size:10px;font-weight:500;
+  letter-spacing:.3em;text-transform:uppercase;margin:32px 0 14px}
+article p{margin:0 0 16px;color:var(--muted);font-size:15px;line-height:1.9}
+article ul{margin:0 0 16px;padding-inline-start:22px;border-inline-start:1px solid var(--border);list-style:none}
+article li{margin:0 0 16px;color:var(--muted);font-size:15px;line-height:1.9}
+article li:last-child{margin-bottom:0}
+article strong,.note strong{color:var(--white);font-weight:500}
+.tag-premium{display:inline-block;vertical-align:middle;margin-inline-start:12px;font-family:'DM Sans',sans-serif;
+  font-size:9px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);
+  border:1px solid var(--border);border-radius:0;padding:3px 9px;line-height:1.4;position:relative;top:-3px}
+.note{background:transparent;border:0;border-inline-start:1px solid var(--border);border-radius:0;
+  padding:0 0 0 22px;margin:22px 0 16px;color:var(--muted);font-size:15px;line-height:1.9;font-style:italic}
+
+/* ---------- Support: cards become hairline rows ---------- */
+.cards{display:flex;flex-direction:column;gap:0;margin-top:56px}
+.card{position:relative;overflow:visible;background:transparent;border:0;border-top:1px solid var(--hair);
+  border-radius:0;padding:46px 0;box-shadow:none;
+  display:flex;flex-wrap:wrap;gap:22px 40px;align-items:flex-start}
+.card::after{content:none}
+.card > *{position:relative;z-index:1}
+.kicker{flex:0 0 190px;font-family:'DM Sans',sans-serif;font-weight:500;font-size:10px;letter-spacing:.3em;
+  text-transform:uppercase;color:rgba(244,240,232,.45);display:block;margin-bottom:0;padding-top:8px}
+.card p{flex:1 1 300px;min-width:0;font-size:15px;line-height:1.85;color:var(--muted);max-width:460px;margin:0}
+.card p + p{margin-top:12px}
+.card strong{color:var(--white);font-weight:500}
+.card a{color:var(--gold);border-bottom:0}
+.card a:hover{color:var(--white)}
+.email{flex:1 1 300px;font-family:'Montserrat',sans-serif;font-size:clamp(21px,2.6vw,29px);font-weight:300;
+  letter-spacing:-.01em;color:var(--white)!important;border-bottom:none!important;margin-bottom:0}
+.email:hover{color:var(--gold)!important}
+.link-arrow{display:inline-block;margin-top:20px;font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+  font-weight:500;border-bottom:none!important;color:var(--gold)}
+.link-arrow:hover{color:var(--white)}
+
+/* ---------- Closing note + footer ---------- */
+.disclaimer{color:var(--muted);font-size:16px;line-height:1.75;letter-spacing:0;font-style:italic;
+  text-align:start;max-width:600px;margin:56px 0 0;padding-top:0;border-top:0}
+.wrap .disclaimer{margin-top:70px;padding-top:26px;border-top:1px solid var(--hair);font-size:13px;line-height:1.8}
+
+footer,footer.foot{border-top:1px solid var(--hair);color:rgba(244,240,232,.45);
+  font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  margin-top:80px;padding:26px clamp(20px,5vw,40px) 30px;
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px}
+footer .fl,footer.foot .fl{color:rgba(244,240,232,.45);font-size:11px;letter-spacing:.14em}
+footer .fr a,footer.foot .fl a{color:rgba(244,240,232,.45);font-size:11px;letter-spacing:.14em;
+  text-transform:uppercase;margin-inline-start:26px}
+footer .fr{display:flex;gap:26px}
+footer .fr a{margin-inline-start:0}
+footer .fr a:hover,footer.foot .fl a:hover{color:var(--gold)}
+
+@media(max-width:640px){
+  .wrap,.page{padding-left:20px;padding-right:20px;padding-bottom:70px}
+  nav.toc .links{gap:10px 20px}
+  .kicker{flex-basis:100%}
+  footer,footer.foot{flex-direction:column;text-align:center;gap:12px}
+  footer .fr a,footer.foot .fl a{margin:0 12px}
+}
