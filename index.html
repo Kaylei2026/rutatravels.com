@@ -1,6 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
+<noscript><style id="ruta-noscript-reveal">[data-reveal]{opacity:1!important;transform:none!important}</style></noscript>
+<style>
+  .ruta-nav{position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px clamp(16px,4vw,40px);background:rgba(24,39,63,.92);border-bottom:1px solid rgba(244,240,232,.12);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+  .ruta-nav-logo{display:inline-flex;align-items:center;flex-shrink:0}
+  .ruta-nav-logo img{height:clamp(26px,7vw,44px);width:auto;display:block}
+  .ruta-nav-links{display:flex;align-items:center;gap:clamp(14px,4vw,30px);min-width:0}
+  .ruta-nav-links a{font-size:clamp(10px,2.7vw,12px);letter-spacing:.16em;text-transform:uppercase;font-weight:500;color:#F4F0E8;white-space:nowrap;text-decoration:none;transition:color .3s ease}
+  .ruta-nav-links a:hover{color:#EDA25E}
+  .ruta-nav-cta{border:1px solid rgba(244,240,232,.45);padding:clamp(8px,2vw,11px) clamp(14px,3.5vw,22px)}
+  .ruta-nav-cta:hover{background:#EDA25E;color:#17253F!important;border-color:#EDA25E}
+  .ruta-lang{appearance:none;-webkit-appearance:none;background:transparent;color:#F4F0E8;border:1px solid rgba(244,240,232,.22);border-radius:0;padding:8px 24px 8px 10px;font-family:'DM Sans',sans-serif;font-size:clamp(9px,2.4vw,11px);font-weight:500;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23EDA25E' stroke-width='2'><path d='M6 9l6 6 6-6'/></svg>");background-repeat:no-repeat;background-position:right 8px center}
+  .ruta-lang option{color:#17253F}
+</style>
+
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-SKQVLGF483"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-SKQVLGF483');</script>
@@ -45,17 +59,7 @@
     <span style="position:absolute;right:40px;bottom:38px;font-family:'Montserrat',sans-serif;font-weight:300;font-size:9px;letter-spacing:.44em;text-transform:uppercase;color:#EDA25E">Ruta Travels</span>
   </div>
 
-  <nav data-nav="1" style="position:fixed;top:0;left:0;right:0;height:74px;z-index:60;display:flex;align-items:center;justify-content:space-between;padding:0 40px;background:rgba(16,28,51,0);border-bottom:1px solid rgba(244,240,232,0);backdrop-filter:blur(10px);transition:background .4s ease, border-color .4s ease">
-    <a href="#top" style="display:inline-flex;align-items:center">
-      <img data-navlogo="1" src="ruta-logo-nav.png" alt="Ruta Travels" style="height:54px;width:auto;display:block">
-    </a>
-    <div style="display:flex;align-items:center;gap:38px">
-      <a href="#what" data-navlink="1" style="font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:500;color:#F4F0E8">Features</a>
-      <a href="https://rutatravels.com/blog/" data-navlink="1" style="font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:500;color:#F4F0E8">Journal</a>
-      <a href="https://rutatravels.com/support.html" data-navlink="1" style="font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:500;color:#F4F0E8">Support</a>
-      <a href="#get" data-navbtn="1" style="font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:500;border:1px solid rgba(244,240,232,.5);padding:11px 20px;color:#F4F0E8" style-hover="background:#F4F0E8;color:#17253F;border-color:#F4F0E8">Coming to iOS</a>
-    </div>
-  </nav>
+  <nav class="ruta-nav"><a class="ruta-nav-logo" href="https://rutatravels.com/"><img src="/ruta-logo-nav.png" alt="Ruta Travels"></a><div class="ruta-nav-links"><a href="https://rutatravels.com/blog/">Journal</a><a class="ruta-nav-cta" href="https://rutatravels.com/#get">Get Ruta</a></div></nav>
 
   <section id="top" style="position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:130px 40px 110px;background:#101C33;overflow:hidden">
     <div data-aperture="1" style="position:absolute;bottom:0;left:50%;margin-left:-17px;width:34px;height:34%;overflow:hidden;border-radius:50% 50% 0 0 / 42% 42% 0 0;background:#22345A;transition:width 2.1s cubic-bezier(.24,1,.32,1),height 2.1s cubic-bezier(.24,1,.32,1),margin-left 2.1s cubic-bezier(.24,1,.32,1),border-radius 2.1s cubic-bezier(.24,1,.32,1)">

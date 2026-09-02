@@ -1,6 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style>
+  .ruta-nav{position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px clamp(16px,4vw,40px);background:rgba(24,39,63,.92);border-bottom:1px solid rgba(244,240,232,.12);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+  .ruta-nav-logo{display:inline-flex;align-items:center;flex-shrink:0}
+  .ruta-nav-logo img{height:clamp(26px,7vw,44px);width:auto;display:block}
+  .ruta-nav-links{display:flex;align-items:center;gap:clamp(14px,4vw,30px);min-width:0}
+  .ruta-nav-links a{font-size:clamp(10px,2.7vw,12px);letter-spacing:.16em;text-transform:uppercase;font-weight:500;color:#F4F0E8;white-space:nowrap;text-decoration:none;transition:color .3s ease}
+  .ruta-nav-links a:hover{color:#EDA25E}
+  .ruta-nav-cta{border:1px solid rgba(244,240,232,.45);padding:clamp(8px,2vw,11px) clamp(14px,3.5vw,22px)}
+  .ruta-nav-cta:hover{background:#EDA25E;color:#17253F!important;border-color:#EDA25E}
+  .ruta-lang{appearance:none;-webkit-appearance:none;background:transparent;color:#F4F0E8;border:1px solid rgba(244,240,232,.22);border-radius:0;padding:8px 24px 8px 10px;font-family:'DM Sans',sans-serif;font-size:clamp(9px,2.4vw,11px);font-weight:500;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23EDA25E' stroke-width='2'><path d='M6 9l6 6 6-6'/></svg>");background-repeat:no-repeat;background-position:right 8px center}
+  .ruta-lang option{color:#17253F}
+</style>
+
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-SKQVLGF483"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-SKQVLGF483');</script>
@@ -34,17 +47,7 @@
 
 <div style="background:#101C33;font-family:'DM Sans',system-ui,sans-serif;color:#F4F0E8;overflow-x:hidden">
 
-  <nav style="position:fixed;top:0;left:0;right:0;min-height:74px;z-index:60;display:flex;align-items:center;justify-content:space-between;flex-wrap:nowrap;gap:12px;padding:10px clamp(10px,4vw,40px);background:rgba(16,28,51,.9);border-bottom:1px solid rgba(244,240,232,.12);backdrop-filter:blur(10px)">
-    <a href="https://rutatravels.com/" style="display:inline-flex;align-items:center">
-      <img src="ruta-logo-nav.png" alt="Ruta Travels" style="height:clamp(26px,6vw,54px);width:auto;display:block">
-    </a>
-    <div style="display:flex;align-items:center;gap:clamp(7px,2.2vw,38px);flex-wrap:nowrap;min-width:0">
-      <a href="https://rutatravels.com/blog/" style="font-size:clamp(8px,1.5vw,11px);letter-spacing:clamp(.04em,.4vw,.22em);text-transform:uppercase;font-weight:500;color:#F4F0E8;white-space:nowrap" data-i18n="a1">Journal</a>
-      <a href="https://rutatravels.com/support.html" style="font-size:clamp(8px,1.5vw,11px);letter-spacing:clamp(.04em,.4vw,.22em);text-transform:uppercase;font-weight:500;color:#F4F0E8;white-space:nowrap" data-i18n="a2">Support</a>
-      <a href="https://rutatravels.com/privacy.html" style="font-size:clamp(8px,1.5vw,11px);letter-spacing:clamp(.04em,.4vw,.22em);text-transform:uppercase;font-weight:500;color:#EDA25E;white-space:nowrap" data-i18n="a3">Privacy</a>
-      <a href="https://rutatravels.com/" style="font-size:clamp(8px,1.5vw,11px);letter-spacing:clamp(.04em,.4vw,.22em);text-transform:uppercase;font-weight:500;color:#F4F0E8;border:1px solid rgba(244,240,232,.4);padding:clamp(6px,1.4vw,12px) clamp(7px,2.4vw,22px);white-space:nowrap;flex-shrink:0" data-i18n="a4">Get Ruta</a>
-    </div>
-  </nav>
+  <nav class="ruta-nav"><a class="ruta-nav-logo" href="https://rutatravels.com/"><img src="/ruta-logo-nav.png" alt="Ruta Travels"></a><div class="ruta-nav-links"><a href="https://rutatravels.com/blog/">Journal</a><a class="ruta-nav-cta" href="https://rutatravels.com/#get">Get Ruta</a></div></nav>
 
   <header style="padding:clamp(118px,22vw,190px) clamp(20px,5vw,40px) 0">
     <div style="max-width:720px;margin:0 auto">
