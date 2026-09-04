@@ -42,7 +42,9 @@
   .count b{display:block;font-family:'Montserrat',sans-serif;font-weight:600;font-size:26px;line-height:1;color:var(--gold)}
   .count span{display:block;font-size:12px;color:var(--muted);margin-top:6px}
   .sec-h{font-size:11px;letter-spacing:.24em;text-transform:uppercase;font-weight:600;margin:34px 0 12px;color:var(--muted)}
-  .row{display:flex;align-items:baseline;gap:16px;padding:14px 0;border-top:1px solid var(--line)}
+  .row{display:flex;align-items:center;gap:14px;padding:14px 0;border-top:1px solid var(--line)}
+  .row .dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+  .row .name{font-weight:600;color:var(--cream)}
   .row .apt{font-family:'Montserrat',sans-serif;font-weight:600;font-size:20px;width:64px;flex-shrink:0;letter-spacing:.02em}
   .row .txt{flex:1;min-width:0}
   .row .badge{font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;padding:3px 9px;border-radius:50px;white-space:nowrap}
@@ -118,30 +120,24 @@
   }
   var $=function(id){return document.getElementById(id);};
   function ago(iso){ try{ var d=new Date(iso); var m=Math.round((Date.now()-d.getTime())/60000); if(!isFinite(m)||m<0)return ''; if(m<1)return 'just now'; if(m<60)return m+' min ago'; var h=Math.round(m/60); return h+' hr ago'; }catch(e){ return ''; } }
-  function section(title,items){
-    if(!items||!items.length) return '';
-    var h='<div class="sec-h">'+esc(title)+' · '+items.length+'</div>';
-    items.forEach(function(it){
-      var c=COLORS[it.type]||'#9AA6BA', nm=city(it.airport);
-      h+='<div class="row"><div class="apt">'+esc(it.airport)+'</div><div class="txt">'
-        +'<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">'
-        +(nm?'<span style="font-weight:600">'+esc(nm)+'</span>':'')
-        +'<span class="badge" style="background:'+c+'22;color:'+c+'">'+esc(it.type)+'</span></div>'
-        +'<div class="reason">'+esc(humanize(it.reason))+'</div></div></div>';
-    });
-    return h;
-  }
   function render(d){
-    var gs=d.groundStops||[], gd=d.groundDelays||[], dl=d.delays||[];
-    var total=gs.length+gd.length+dl.length;
+    var items=[]
+      .concat((d.groundStops||[]).map(function(x){return {airport:x.airport,reason:x.reason,type:'Ground stop',color:'#CB6B63'};}))
+      .concat((d.groundDelays||[]).map(function(x){return {airport:x.airport,reason:x.reason,type:'Ground delay',color:'#D19E52'};}))
+      .concat((d.delays||[]).map(function(x){return {airport:x.airport,reason:x.reason,type:'Delay',color:'#4F7C82'};}));
     $('updated').textContent = d.updatedAt ? ('Updated '+(ago(d.updatedAt)||'recently')) : 'Live';
-    if(total===0){
+    if(!items.length){
       $('board').innerHTML='<div class="clear"><div class="big">The skies are running clear.</div><div>No ground stops or major delays across US airports right now. Refresh anytime.</div></div>';
       return;
     }
-    $('board').innerHTML = section('Ground stops',gs.map(function(x){x.type='Ground stop';return x;}))
-      + section('Ground delays',gd.map(function(x){x.type='Ground delay';return x;}))
-      + section('Delays',dl.map(function(x){x.type='Delay';return x;}));
+    items.sort(function(a,b){ var an=(city(a.airport)||a.airport).toLowerCase(), bn=(city(b.airport)||b.airport).toLowerCase(); return an<bn?-1:an>bn?1:0; });
+    var h='';
+    items.forEach(function(it){
+      var nm=city(it.airport)||it.airport;
+      var desc=it.reason ? (humanize(it.reason)+' · '+it.type.toLowerCase()) : it.type;
+      h+='<div class="row"><span class="dot" style="background:'+it.color+'"></span><div class="apt">'+esc(it.airport)+'</div><div class="txt"><div class="name">'+esc(nm)+'</div><div class="reason">'+esc(desc)+'</div></div></div>';
+    });
+    $('board').innerHTML=h;
   }
   function load(){
     $('updated').textContent='Loading…';
