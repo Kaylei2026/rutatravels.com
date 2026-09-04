@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Flight intelligence, live | Ruta Travels</title>
-<meta name="description" content="Live US airport ground stops and delays, straight from the FAA. See what's slowing down the skies right now. Ruta watches this for your own flights, automatically.">
+<meta name="description" content="Live delays and disruptions at major airports worldwide, plus curated alerts on strikes, closures and outages. The same signal Ruta watches for your own flights, automatically.">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://rutatravels.com/live/">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Flight intelligence, live">
-<meta property="og:description" content="Live US airport ground stops and delays from the FAA. Ruta watches this for your own flights, automatically.">
+<meta property="og:description" content="Live delays and disruptions at major airports worldwide, plus curated alerts on strikes, closures and outages. Ruta watches this for your own flights, automatically.">
 <meta property="og:url" content="https://rutatravels.com/live/">
 <meta property="og:site_name" content="Ruta Travels">
 <meta property="og:image" content="https://rutatravels.com/photos/25.jpg">
@@ -19,7 +19,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&family=Montserrat:wght@200;300;400;600&display=swap" rel="stylesheet">
 <style>
-  :root{--navy:#101C33;--navy-2:#17253F;--card:#1A2C3D;--gold:#F2A65A;--cream:#F4F0E8;--muted:#9AA6BA;--line:rgba(244,240,232,.13);--red:#CB6B63;--amber:#D19E52;--teal:#4F7C82}
+  :root{--navy:#101C33;--navy-2:#17253F;--card:#1A2C3D;--gold:#F2A65A;--cream:#F4F0E8;--muted:#9AA6BA;--line:rgba(244,240,232,.13);--green:#5C9B7A;--teal:#4F7C82;--amber:#D19E52;--red:#CB6B63;--red-2:#A84C44}
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
   body{font-family:'DM Sans',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--navy);color:var(--cream);font-size:16px;line-height:1.6;-webkit-text-size-adjust:100%}
   .nav{display:flex;align-items:center;justify-content:space-between;padding:18px 40px;border-bottom:1px solid var(--line)}
@@ -33,23 +33,33 @@
   .hero-body{position:relative;z-index:2;max-width:960px;margin:0 auto;padding:76px 40px 44px}
   .wrap{max-width:960px;margin:0 auto;padding:36px 40px 40px}
   h1{font-family:'Montserrat',sans-serif;font-weight:300;font-size:clamp(30px,4vw,48px);letter-spacing:-.02em;line-height:1.08;color:var(--cream)}
-  .lede{font-family:'Montserrat',sans-serif;font-weight:300;color:var(--muted);font-size:17px;margin-top:16px;max-width:60ch}
+  .lede{font-family:'Montserrat',sans-serif;font-weight:300;color:var(--muted);font-size:17px;margin-top:16px;max-width:62ch}
   .meta{display:flex;flex-wrap:wrap;align-items:center;gap:16px;margin-top:26px;font-size:13px;color:var(--muted)}
   .refresh{background:transparent;border:1px solid var(--line);border-radius:50px;color:var(--cream);font-family:'DM Sans',sans-serif;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:8px 16px;cursor:pointer}
   .refresh:hover{border-color:var(--gold);color:var(--gold)}
-  .counts{display:flex;flex-wrap:wrap;gap:12px;margin:34px 0 8px}
-  .count{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 18px;min-width:120px}
-  .count b{display:block;font-family:'Montserrat',sans-serif;font-weight:600;font-size:26px;line-height:1;color:var(--gold)}
-  .count span{display:block;font-size:12px;color:var(--muted);margin-top:6px}
-  .sec-h{font-size:11px;letter-spacing:.24em;text-transform:uppercase;font-weight:600;margin:34px 0 12px;color:var(--muted)}
-  .row{display:flex;align-items:center;gap:14px;padding:14px 0;border-top:1px solid var(--line)}
+  .sec-h{font-size:11px;letter-spacing:.24em;text-transform:uppercase;font-weight:600;margin:38px 0 6px;color:var(--muted)}
+  .sec-h:first-child{margin-top:8px}
+  .sec-sub{font-size:13px;color:rgba(244,240,232,.4);margin-bottom:8px}
+  /* Curated alerts — the differentiator */
+  .alert{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:12px;padding:15px 18px;margin-bottom:12px}
+  .alert .when{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:600}
+  .alert .atitle{font-weight:600;color:var(--cream);margin-top:6px;line-height:1.35}
+  .alert .asum{color:var(--muted);font-size:14px;margin-top:5px;line-height:1.5}
+  .alert .ameta{font-size:12px;color:rgba(244,240,232,.42);margin-top:9px}
+  .alert .ameta a{color:var(--gold);text-decoration:none}
+  .alert .ameta a:hover{text-decoration:underline}
+  .alert .tags{margin-top:8px;display:flex;flex-wrap:wrap;gap:6px}
+  .alert .tag{font-size:10px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:var(--muted);border:1px solid var(--line);border-radius:50px;padding:2px 9px}
+  /* Delay board rows */
+  .region{margin-bottom:6px}
+  .row{display:flex;align-items:center;gap:14px;padding:13px 0;border-top:1px solid var(--line)}
   .row .dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
-  .row .name{font-weight:600;color:var(--cream)}
-  .row .apt{font-family:'Montserrat',sans-serif;font-weight:600;font-size:20px;width:64px;flex-shrink:0;letter-spacing:.02em}
+  .row .apt{font-family:'Montserrat',sans-serif;font-weight:600;font-size:19px;width:58px;flex-shrink:0;letter-spacing:.02em}
   .row .txt{flex:1;min-width:0}
-  .row .badge{font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;padding:3px 9px;border-radius:50px;white-space:nowrap}
-  .row .reason{color:var(--muted);font-size:14px;margin-top:4px;line-height:1.5}
-  .clear{text-align:center;padding:70px 20px;color:var(--muted)}
+  .row .name{font-weight:600;color:var(--cream)}
+  .row .reason{color:var(--muted);font-size:14px;margin-top:3px;line-height:1.5}
+  .row .note{color:rgba(242,166,90,.85);font-size:13px;margin-top:3px}
+  .clear{text-align:center;padding:64px 20px;color:var(--muted)}
   .clear .big{font-family:'Montserrat',sans-serif;font-weight:300;font-size:26px;color:var(--cream);margin-bottom:10px}
   .cta{margin:56px 0 20px;padding:28px;background:var(--navy-2);border:1px solid var(--line);border-radius:16px;text-align:center}
   .cta h2{font-family:'Montserrat',sans-serif;font-weight:300;font-size:clamp(20px,2.4vw,26px);color:var(--cream);line-height:1.3}
@@ -59,7 +69,7 @@
   footer a{color:rgba(244,240,232,.4);text-decoration:none;margin-left:20px}
   footer a:hover{color:var(--gold)}
   .note{font-size:12px;color:rgba(244,240,232,.4);margin-top:8px;font-style:italic}
-  @media(max-width:640px){.nav,.wrap,footer{padding-left:20px;padding-right:20px}.wrap{padding-top:44px}.row .apt{width:52px;font-size:18px}}
+  @media(max-width:640px){.nav,.wrap,footer{padding-left:20px;padding-right:20px}.wrap{padding-top:44px}.row .apt{width:50px;font-size:17px}}
 </style>
 </head>
 <body>
@@ -72,7 +82,7 @@
   <div class="hero-img"><img src="/photos/board.jpg" alt=""></div>
   <div class="hero-body">
     <h1>Flight intelligence, live</h1>
-    <p class="lede">Ground stops and delays across US airports right now, straight from the FAA. This is the same signal Ruta watches for your own flights, so it can warn you before the airline does.</p>
+    <p class="lede">Delays and disruptions at major airports around the world right now, with curated alerts on the strikes, closures and outages that move travel days. This is the same signal Ruta watches for your own flights, so it can warn you before the airline does.</p>
     <div class="meta">
       <span id="updated">Loading…</span>
       <button class="refresh" id="refreshBtn">Refresh</button>
@@ -81,6 +91,7 @@
 </section>
 
 <div class="wrap">
+  <div id="alerts"></div>
   <div id="board"></div>
 
   <div class="cta">
@@ -88,7 +99,7 @@
     <p>You should not have to refresh a delay board to know if your trip is at risk. Ruta follows your flights automatically, catches trouble early, and tells you what it means and what to do.</p>
     <a href="/#get">Get Ruta</a>
   </div>
-  <p class="note">This board shows US airspace, from the FAA National Airspace System, and refreshes through the day. Ruta's disruption tracking for your own flights, weather, late inbound aircraft, strikes and closures, works worldwide.</p>
+  <p class="note">Airport delay readings come from live departure and arrival data worldwide and refresh through the day; US airports also show the FAA program reason when one is active. Alerts are curated from public news. Ruta's disruption tracking for your own flights, weather, late inbound aircraft, strikes and closures, works everywhere.</p>
 </div>
 
 <footer>
@@ -99,49 +110,72 @@
 <script>
 (function(){
   var API='https://ruta-travels-production.up.railway.app/api/live';
-  var COLORS={'Ground stop':'#CB6B63','Ground delay':'#D19E52','Delay':'#4F7C82'};
-  var AIRPORTS={ATL:'Atlanta',LAX:'Los Angeles',ORD:'Chicago O’Hare',DFW:'Dallas–Fort Worth',DEN:'Denver',JFK:'New York (JFK)',SFO:'San Francisco',SEA:'Seattle',LAS:'Las Vegas',MCO:'Orlando',EWR:'Newark',CLT:'Charlotte',PHX:'Phoenix',IAH:'Houston',MIA:'Miami',BOS:'Boston',MSP:'Minneapolis',FLL:'Fort Lauderdale',DTW:'Detroit',PHL:'Philadelphia',LGA:'New York (LaGuardia)',BWI:'Baltimore',SLC:'Salt Lake City',DCA:'Washington (Reagan)',IAD:'Washington (Dulles)',SAN:'San Diego',TPA:'Tampa',BNA:'Nashville',AUS:'Austin',MDW:'Chicago (Midway)',HNL:'Honolulu',DAL:'Dallas (Love)',PDX:'Portland',STL:'St. Louis',RDU:'Raleigh–Durham',HOU:'Houston (Hobby)',SMF:'Sacramento',MSY:'New Orleans',SJC:'San Jose',SNA:'Orange County',MCI:'Kansas City',OAK:'Oakland',RSW:'Fort Myers',SAT:'San Antonio',CLE:'Cleveland',IND:'Indianapolis',PIT:'Pittsburgh',CVG:'Cincinnati',CMH:'Columbus',PBI:'West Palm Beach',JAX:'Jacksonville',BDL:'Hartford',ONT:'Ontario',BUR:'Burbank',ANC:'Anchorage',OGG:'Maui',TEB:'Teterboro',MEM:'Memphis',OKC:'Oklahoma City',ABQ:'Albuquerque',TUS:'Tucson',ELP:'El Paso',BOI:'Boise',GEG:'Spokane',RNO:'Reno',BUF:'Buffalo',ROC:'Rochester',ALB:'Albany',PVD:'Providence',ORF:'Norfolk',RIC:'Richmond',GRR:'Grand Rapids',MKE:'Milwaukee',OMA:'Omaha',TUL:'Tulsa',DSM:'Des Moines'};
+  // Delay level -> colour. 0 calm through 4 severe, kept on-brand.
+  var LEVEL_COLORS=['#5C9B7A','#4F7C82','#D19E52','#CB6B63','#A84C44'];
   function esc(x){return String(x==null?'':x).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
-  function city(code){return AIRPORTS[String(code||'').toUpperCase()]||'';}
-  function humanize(raw){
-    var s=String(raw||'').trim(); if(!s) return '';
-    var L=s.toUpperCase();
-    if(L.indexOf('SWAP')>=0) return 'Weather reroute';
-    if(L.indexOf('THUNDER')>=0) return 'Thunderstorms';
-    if(L.indexOf('WIND')>=0) return 'Wind';
-    if(L.indexOf('CEILING')>=0||L.indexOf('FOG')>=0||L.indexOf('VISIBILITY')>=0) return 'Low cloud or fog';
-    if(L.indexOf('CONSTRUCTION')>=0||L.indexOf('RWY')>=0||L.indexOf('RUNWAY')>=0) return 'Runway work';
-    if(L.indexOf('COMPACTED')>=0||L.indexOf('DEMAND')>=0||L.indexOf('VOLUME')>=0||L.indexOf('VOL')===0) return 'High traffic volume';
-    if(L.indexOf('DEICE')>=0||L.indexOf('SNOW')>=0||L.indexOf('ICE')>=0) return 'Snow or de-icing';
-    if(L.indexOf('EQUIP')>=0) return 'Equipment';
-    if(L.indexOf('WX')===0||L.indexOf('WEATHER')>=0) return 'Weather';
-    var t=s.replace(/^(WX|VOL|RWY|TM Initiatives|TM)\s*:?\s*/i,'').replace(/:/g,' · ');
-    return t.charAt(0).toUpperCase()+t.slice(1);
-  }
   var $=function(id){return document.getElementById(id);};
   function ago(iso){ try{ var d=new Date(iso); var m=Math.round((Date.now()-d.getTime())/60000); if(!isFinite(m)||m<0)return ''; if(m<1)return 'just now'; if(m<60)return m+' min ago'; var h=Math.round(m/60); return h+' hr ago'; }catch(e){ return ''; } }
-  function render(d){
-    var items=[]
-      .concat((d.groundStops||[]).map(function(x){return {airport:x.airport,reason:x.reason,type:'Ground stop',color:'#CB6B63'};}))
-      .concat((d.groundDelays||[]).map(function(x){return {airport:x.airport,reason:x.reason,type:'Ground delay',color:'#D19E52'};}))
-      .concat((d.delays||[]).map(function(x){return {airport:x.airport,reason:x.reason,type:'Delay',color:'#4F7C82'};}));
-    $('updated').textContent = d.updatedAt ? ('Updated '+(ago(d.updatedAt)||'recently')) : 'Live';
-    if(!items.length){
-      $('board').innerHTML='<div class="clear"><div class="big">The skies are running clear.</div><div>No ground stops or major delays across US airports right now. Refresh anytime.</div></div>';
+
+  function renderAlerts(alerts){
+    if(!alerts||!alerts.length){ $('alerts').innerHTML=''; return; }
+    var h='<div class="sec-h">Travel alerts</div><div class="sec-sub">Curated from public news. Strikes, closures, security and system outages that can reshape a travel day.</div>';
+    alerts.forEach(function(a){
+      var tags=[].concat(a.airports||[]).concat(a.countries||[]);
+      var tagHtml=tags.length?('<div class="tags">'+tags.map(function(t){return '<span class="tag">'+esc(t)+'</span>';}).join('')+'</div>'):'';
+      var src='';
+      if(a.url){ src='<a href="'+esc(a.url)+'" target="_blank" rel="noopener nofollow">'+esc(a.source||'Read more')+'</a>'; }
+      else if(a.source){ src=esc(a.source); }
+      var meta=src?('<div class="ameta">Source: '+src+'</div>'):'';
+      h+='<div class="alert"><div class="when">'+esc(a.when||'Ongoing')+'</div>'+
+         (a.title?'<div class="atitle">'+esc(a.title)+'</div>':'')+
+         (a.summary?'<div class="asum">'+esc(a.summary)+'</div>':'')+
+         tagHtml+meta+'</div>';
+    });
+    $('alerts').innerHTML=h;
+  }
+
+  function reasonLine(a){
+    var bits=[];
+    if(a.level>=1 && a.medianDelay) bits.push('typically '+a.medianDelay+' min late');
+    if(a.cancelled) bits.push(a.cancelled+' cancelled');
+    var detail=bits.length?(' · '+bits.join(' · ')):'';
+    return (a.status||'')+detail;
+  }
+
+  function renderBoard(regions){
+    if(!regions||!regions.length){
+      $('board').innerHTML='<div class="clear"><div class="big">The skies are running clear.</div><div>No notable delays at the major hubs we track right now. Refresh anytime.</div></div>';
       return;
     }
-    items.sort(function(a,b){ var an=(city(a.airport)||a.airport).toLowerCase(), bn=(city(b.airport)||b.airport).toLowerCase(); return an<bn?-1:an>bn?1:0; });
     var h='';
-    items.forEach(function(it){
-      var nm=city(it.airport)||it.airport;
-      var desc=it.reason ? (humanize(it.reason)+' · '+it.type.toLowerCase()) : it.type;
-      h+='<div class="row"><span class="dot" style="background:'+it.color+'"></span><div class="apt">'+esc(it.airport)+'</div><div class="txt"><div class="name">'+esc(nm)+'</div><div class="reason">'+esc(desc)+'</div></div></div>';
+    regions.forEach(function(reg){
+      h+='<div class="sec-h">'+esc(reg.region)+'</div><div class="region">';
+      (reg.airports||[]).forEach(function(a){
+        var color=LEVEL_COLORS[a.level]||'#4F7C82';
+        var note=a.note?('<div class="note">'+esc(a.note)+'</div>'):'';
+        h+='<div class="row"><span class="dot" style="background:'+color+'"></span>'+
+           '<div class="apt">'+esc(a.airport)+'</div>'+
+           '<div class="txt"><div class="name">'+esc(a.city||a.airport)+'</div>'+
+           '<div class="reason">'+esc(reasonLine(a))+'</div>'+note+'</div></div>';
+      });
+      h+='</div>';
     });
     $('board').innerHTML=h;
   }
+
+  function render(d){
+    $('updated').textContent = d.updatedAt ? ('Updated '+(ago(d.updatedAt)||'recently')) : 'Live';
+    renderAlerts(d.alerts);
+    renderBoard(d.regions);
+    if((!d.alerts||!d.alerts.length) && (!d.regions||!d.regions.length)){
+      $('board').innerHTML='<div class="clear"><div class="big">The skies are running clear.</div><div>No notable delays or alerts at the hubs we track right now. Refresh anytime.</div></div>';
+    }
+  }
+
   function load(){
     $('updated').textContent='Loading…';
     fetch(API,{cache:'no-store'}).then(function(r){return r.json();}).then(render).catch(function(){
+      $('alerts').innerHTML='';
       $('board').innerHTML='<div class="clear"><div class="big">Can’t reach the feed right now.</div><div>Give it a moment and refresh.</div></div>';
       $('updated').textContent='';
     });
