@@ -23,7 +23,7 @@
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
   body{font-family:'DM Sans',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--navy);color:var(--cream);font-size:16px;line-height:1.6;-webkit-text-size-adjust:100%}
   .nav{display:flex;align-items:center;justify-content:space-between;padding:18px 40px;border-bottom:1px solid var(--line)}
-  .nav a.brand{display:inline-flex;line-height:0}.nav a.brand img{height:40px}
+  .nav a.brand{display:inline-flex;align-items:center;line-height:0}.nav a.brand img{height:clamp(26px,7vw,44px);width:auto;display:block}
   .nav-links{display:flex;gap:26px;align-items:center}
   .nav-links a{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:rgba(244,240,232,.75);text-decoration:none}
   .nav-links a:hover{color:var(--gold)}
@@ -74,7 +74,7 @@
 </head>
 <body>
 <nav class="nav">
-  <a href="/" class="brand"><img src="/logo-nav.svg" alt="Ruta Travels"></a>
+  <a href="/" class="brand"><img src="/ruta-logo-nav.png" alt="Ruta Travels"></a>
   <div class="nav-links"><a href="/blog/">Journal</a><a href="/#discover">Discover</a><a href="/#get">Get Ruta</a></div>
 </nav>
 
