@@ -78,6 +78,9 @@
       var best=PRIORITY[0], bestScore=-1;
       PRIORITY.forEach(function(k){ if(score[k]>bestScore){ bestScore=score[k]; best=k; } });
       var r=RESULTS[best];
+      // Send the anonymous result to our backend (aggregate counts only, no personal info).
+      // Fire-and-forget: a failure never affects the visitor's experience.
+      try { fetch('https://ruta-travels-production.up.railway.app/api/discover', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ a: answers.slice(0,3), result: best }), keepalive:true }).catch(function(){}); } catch(e){}
       var wrap=el('div','text-align:center');
       wrap.appendChild(el('div',FONT+'font-weight:300;font-size:clamp(26px,3.4vw,38px);color:'+GOLD+';margin-bottom:16px', r.name));
       wrap.appendChild(el('div',FONT+'font-weight:300;font-size:16px;line-height:1.7;color:'+CREAM+';margin:0 auto 30px;max-width:42ch', r.body));
