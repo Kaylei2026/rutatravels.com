@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Discover Your Ruta</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  html,body{margin:0;padding:0;height:100%;background:transparent;overflow:hidden}
+  *{box-sizing:border-box}
+  body{font-family:'Montserrat',sans-serif}
+  #rt-quiz{background:#17253F;border:1px solid rgba(244,240,232,.12);border-radius:16px;padding:clamp(24px,4vw,38px);height:100%;display:flex;flex-direction:column;justify-content:center;transition:opacity .26s ease}
+  #rt-quiz button{font-family:'Montserrat',sans-serif}
+</style>
+</head>
+<body>
+  <div id="rt-quiz"></div>
+  <script>
+  (function(){
+    var root = document.getElementById('rt-quiz');
+    if (!root) return;
+    var GOLD='#EDA25E', CREAM='#F4F0E8', MUTE='#9AA6BA', LINE='rgba(244,240,232,.16)';
+    var FONT="font-family:'Montserrat',sans-serif;";
+    var QUESTIONS = [
+      { q:'How often do you travel?', opts:[
+        { t:'A few times a year', s:{unplug:2} },
+        { t:'Once a month', s:{allround:1, optimize:1} },
+        { t:'Multiple times a month', s:{optimize:2} },
+        { t:'I live out of a suitcase', s:{optimize:3} }
+      ]},
+      { q:'What kinds of trips do you take?', opts:[
+        { t:'Leisure / vacation', s:{unplug:2} },
+        { t:'Business', s:{optimize:2} },
+        { t:'Adventure / exploration', s:{explore:3} },
+        { t:'Mix of everything', s:{allround:2} }
+      ]},
+      { q:'How do you like to travel?', opts:[
+        { t:'Relaxed, go with the flow', s:{unplug:3} },
+        { t:'Moderate, some planning', s:{allround:2} },
+        { t:'Packed itinerary, optimize every hour', s:{optimize:3} },
+        { t:'Mix of everything', s:{allround:2} }
+      ]}
+    ];
+    var RESULTS = {
+      unplug:   { name:'The Unplugger', body:'You travel to be somewhere, not to manage it. Ruta quietly holds every detail so you can look up and be present.' },
+      optimize: { name:'The Optimizer', body:'You move fast and often. Ruta keeps every flight, gate, and connection a glance away, and flags trouble early so you stay ahead of it.' },
+      explore:  { name:'The Explorer', body:'You go to discover. Ruta pairs the logistics with real local depth, so your energy goes to the place, not the planning.' },
+      allround: { name:'The All-Rounder', body:'Every trip is a little different, and Ruta flexes with you, holding the whole journey in one calm view whatever the reason you are going.' }
+    };
+    var PRIORITY = ['explore','optimize','unplug','allround'];
+    var idx = 0, answers = [];
+    function el(tag, style, txt){ var e=document.createElement(tag); if(style)e.setAttribute('style',style); if(txt!=null)e.textContent=txt; return e; }
+    function renderQuestion(){
+      var q = QUESTIONS[idx];
+      var prog = el('div','display:flex;gap:8px;justify-content:center;margin-bottom:28px');
+      for(var i=0;i<QUESTIONS.length;i++){ prog.appendChild(el('span','width:8px;height:8px;border-radius:50%;background:'+(i===idx?GOLD:'rgba(244,240,232,.22)'))); }
+      root.appendChild(prog);
+      root.appendChild(el('div',FONT+'font-weight:400;font-size:clamp(19px,2.4vw,23px);line-height:1.3;color:'+CREAM+';margin-bottom:22px', q.q));
+      q.opts.forEach(function(opt, oi){
+        var sel = answers[idx] === oi;
+        var b = el('button',FONT+'display:flex;align-items:center;gap:14px;width:100%;text-align:left;background:'+(sel?'rgba(237,162,94,.12)':'transparent')+';border:1px solid '+(sel?GOLD:LINE)+';border-radius:12px;padding:15px 18px;margin-bottom:11px;color:'+CREAM+';font-size:15px;font-weight:300;cursor:pointer;transition:border-color .2s ease,background .2s ease');
+        var circ = el('span','flex-shrink:0;width:20px;height:20px;border-radius:50%;border:1.5px solid '+(sel?GOLD:MUTE)+';display:flex;align-items:center;justify-content:center');
+        if(sel){ circ.appendChild(el('span','width:10px;height:10px;border-radius:50%;background:'+GOLD)); }
+        b.appendChild(circ);
+        b.appendChild(el('span', null, opt.t));
+        b.onmouseenter=function(){ if(answers[idx]!==oi){ b.style.borderColor='rgba(244,240,232,.4)'; } };
+        b.onmouseleave=function(){ if(answers[idx]!==oi){ b.style.borderColor=LINE; } };
+        b.onclick=function(){ answers[idx]=oi; if(idx < QUESTIONS.length-1){ idx++; fade(renderQuestion); } else { fade(renderResult); } };
+        root.appendChild(b);
+      });
+      if(idx>0){ var back=el('button',FONT+'background:none;border:none;color:'+MUTE+';font-size:13px;cursor:pointer;margin-top:8px;padding:4px 0','← Back'); back.onclick=function(){ idx--; fade(renderQuestion); }; root.appendChild(back); }
+    }
+    function renderResult(){
+      var score={unplug:0,optimize:0,explore:0,allround:0};
+      answers.forEach(function(oi,qi){ var s=QUESTIONS[qi].opts[oi].s; for(var k in s){ score[k]=(score[k]||0)+s[k]; } });
+      var best=PRIORITY[0], bestScore=-1;
+      PRIORITY.forEach(function(k){ if(score[k]>bestScore){ bestScore=score[k]; best=k; } });
+      var r=RESULTS[best];
+      var wrap=el('div','text-align:center');
+      wrap.appendChild(el('div',FONT+'font-weight:300;font-size:clamp(26px,3.4vw,38px);color:'+GOLD+';margin-bottom:16px', r.name));
+      wrap.appendChild(el('div',FONT+'font-weight:300;font-size:16px;line-height:1.7;color:'+CREAM+';margin:0 auto 30px;max-width:42ch', r.body));
+      var cta=el('a',FONT+'display:inline-block;font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:500;background:'+CREAM+';color:#17253F;padding:16px 32px;text-decoration:none','See how Ruta helps');
+      cta.setAttribute('href','https://rutatravels.com/#get');
+      cta.setAttribute('target','_parent');
+      wrap.appendChild(cta);
+      var again=el('button',FONT+'display:block;background:none;border:none;color:'+MUTE+';font-size:13px;cursor:pointer;margin:22px auto 0','Start over');
+      again.onclick=function(){ idx=0; answers=[]; fade(renderQuestion); };
+      wrap.appendChild(again);
+      root.appendChild(wrap);
+    }
+    function fade(cb){ root.style.opacity='0'; setTimeout(function(){ root.innerHTML=''; cb(); root.style.opacity='1'; }, 230); }
+    renderQuestion();
+  })();
+  </script>
+</body>
+</html>
