@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Flight intelligence, live | Ruta Travels</title>
+<meta name="description" content="Live US airport ground stops and delays, straight from the FAA. See what's slowing down the skies right now. Ruta watches this for your own flights, automatically.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://rutatravels.com/live/">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Flight intelligence, live">
+<meta property="og:description" content="Live US airport ground stops and delays from the FAA. Ruta watches this for your own flights, automatically.">
+<meta property="og:url" content="https://rutatravels.com/live/">
+<meta property="og:site_name" content="Ruta Travels">
+<meta property="og:image" content="https://rutatravels.com/photos/25.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&family=Montserrat:wght@200;300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#101C33;--navy-2:#17253F;--card:#1A2C3D;--gold:#F2A65A;--cream:#F4F0E8;--muted:#9AA6BA;--line:rgba(244,240,232,.13);--red:#CB6B63;--amber:#D19E52;--teal:#4F7C82}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'DM Sans',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--navy);color:var(--cream);font-size:16px;line-height:1.6;-webkit-text-size-adjust:100%}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:18px 40px;border-bottom:1px solid var(--line)}
+  .nav a.brand{display:inline-flex;line-height:0}.nav a.brand img{height:40px}
+  .nav-links{display:flex;gap:26px;align-items:center}
+  .nav-links a{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:rgba(244,240,232,.75);text-decoration:none}
+  .nav-links a:hover{color:var(--gold)}
+  .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+  .hero-img{position:absolute;inset:0}.hero-img img{width:100%;height:100%;object-fit:cover;opacity:.26}
+  .hero::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(16,28,51,.55),rgba(16,28,51,.94))}
+  .hero-body{position:relative;z-index:2;max-width:960px;margin:0 auto;padding:76px 40px 44px}
+  .wrap{max-width:960px;margin:0 auto;padding:36px 40px 40px}
+  h1{font-family:'Montserrat',sans-serif;font-weight:300;font-size:clamp(30px,4vw,48px);letter-spacing:-.02em;line-height:1.08;color:var(--cream)}
+  .lede{font-family:'Montserrat',sans-serif;font-weight:300;color:var(--muted);font-size:17px;margin-top:16px;max-width:60ch}
+  .meta{display:flex;flex-wrap:wrap;align-items:center;gap:16px;margin-top:26px;font-size:13px;color:var(--muted)}
+  .refresh{background:transparent;border:1px solid var(--line);border-radius:50px;color:var(--cream);font-family:'DM Sans',sans-serif;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:8px 16px;cursor:pointer}
+  .refresh:hover{border-color:var(--gold);color:var(--gold)}
+  .counts{display:flex;flex-wrap:wrap;gap:12px;margin:34px 0 8px}
+  .count{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 18px;min-width:120px}
+  .count b{display:block;font-family:'Montserrat',sans-serif;font-weight:600;font-size:26px;line-height:1;color:var(--gold)}
+  .count span{display:block;font-size:12px;color:var(--muted);margin-top:6px}
+  .sec-h{font-size:11px;letter-spacing:.24em;text-transform:uppercase;font-weight:600;margin:34px 0 12px;color:var(--muted)}
+  .row{display:flex;align-items:baseline;gap:16px;padding:14px 0;border-top:1px solid var(--line)}
+  .row .apt{font-family:'Montserrat',sans-serif;font-weight:600;font-size:20px;width:64px;flex-shrink:0;letter-spacing:.02em}
+  .row .txt{flex:1;min-width:0}
+  .row .badge{font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;padding:3px 9px;border-radius:50px;white-space:nowrap}
+  .row .reason{color:var(--muted);font-size:14px;margin-top:4px;line-height:1.5}
+  .clear{text-align:center;padding:70px 20px;color:var(--muted)}
+  .clear .big{font-family:'Montserrat',sans-serif;font-weight:300;font-size:26px;color:var(--cream);margin-bottom:10px}
+  .cta{margin:56px 0 20px;padding:28px;background:var(--navy-2);border:1px solid var(--line);border-radius:16px;text-align:center}
+  .cta h2{font-family:'Montserrat',sans-serif;font-weight:300;font-size:clamp(20px,2.4vw,26px);color:var(--cream);line-height:1.3}
+  .cta p{color:var(--muted);font-size:15px;margin:12px auto 22px;max-width:52ch}
+  .cta a{display:inline-block;font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;background:var(--cream);color:#17253F;padding:15px 32px;text-decoration:none;border-radius:2px}
+  footer{border-top:1px solid var(--line);padding:24px 40px;display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;color:rgba(244,240,232,.3);font-size:11px}
+  footer a{color:rgba(244,240,232,.4);text-decoration:none;margin-left:20px}
+  footer a:hover{color:var(--gold)}
+  .note{font-size:12px;color:rgba(244,240,232,.4);margin-top:8px;font-style:italic}
+  @media(max-width:640px){.nav,.wrap,footer{padding-left:20px;padding-right:20px}.wrap{padding-top:44px}.row .apt{width:52px;font-size:18px}}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <a href="/" class="brand"><img src="/logo-nav.svg" alt="Ruta Travels"></a>
+  <div class="nav-links"><a href="/blog/">Journal</a><a href="/#discover">Discover</a><a href="/#get">Get Ruta</a></div>
+</nav>
+
+<section class="hero">
+  <div class="hero-img"><img src="/photos/board.jpg" alt=""></div>
+  <div class="hero-body">
+    <h1>Flight intelligence, live</h1>
+    <p class="lede">Ground stops and delays across US airports right now, straight from the FAA. This is the same signal Ruta watches for your own flights, so it can warn you before the airline does.</p>
+    <div class="meta">
+      <span id="updated">Loading…</span>
+      <button class="refresh" id="refreshBtn">Refresh</button>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="counts" id="counts"></div>
+  <div id="board"></div>
+
+  <div class="cta">
+    <h2>Ruta watches this for the flights that are yours.</h2>
+    <p>You should not have to refresh a delay board to know if your trip is at risk. Ruta follows your flights automatically, catches trouble early, and tells you what it means and what to do.</p>
+    <a href="/#get">Get Ruta</a>
+  </div>
+  <p class="note">Source: FAA National Airspace System status. US airports only. Refreshes throughout the day.</p>
+</div>
+
+<footer>
+  <div>© 2026 Ruta Travels</div>
+  <div><a href="/">Home</a><a href="/blog/">Journal</a><a href="/privacy.html">Privacy</a></div>
+</footer>
+
+<script>
+(function(){
+  var API='https://ruta-travels-production.up.railway.app/api/live';
+  var COLORS={'Ground stop':'#CB6B63','Ground delay':'#D19E52','Arrival / departure delay':'#4F7C82','Closure':'#CB6B63'};
+  var $=function(id){return document.getElementById(id);};
+  function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+  function ago(iso){ try{ var d=new Date(iso); var m=Math.round((Date.now()-d.getTime())/60000); if(!isFinite(m)||m<0)return ''; if(m<1)return 'just now'; if(m<60)return m+' min ago'; var h=Math.round(m/60); return h+' hr ago'; }catch(e){ return ''; } }
+  function section(title,items){
+    if(!items||!items.length) return '';
+    var h='<div class="sec-h">'+esc(title)+' · '+items.length+'</div>';
+    items.forEach(function(it){
+      var c=COLORS[it.type]||'#9AA6BA';
+      h+='<div class="row"><div class="apt">'+esc(it.airport)+'</div><div class="txt"><span class="badge" style="background:'+c+'22;color:'+c+'">'+esc(it.type)+'</span>'+(it.reason?'<div class="reason">'+esc(it.reason)+'</div>':'')+'</div></div>';
+    });
+    return h;
+  }
+  function render(d){
+    var c=d.counts||{};
+    var total=(d.groundStops||[]).length+(d.groundDelays||[]).length+(d.delays||[]).length+(d.closures||[]).length;
+    $('updated').textContent = d.updatedAt ? ('Updated '+(ago(d.updatedAt)||'recently')) : 'Live';
+    // counts strip
+    var cs='';
+    function cc(n,l){ return '<div class="count"><b>'+(n||0)+'</b><span>'+l+'</span></div>'; }
+    if(total>0){
+      cs+=cc((d.groundStops||[]).length,'Ground stops');
+      cs+=cc((d.groundDelays||[]).length,'Ground delays');
+      cs+=cc((d.delays||[]).length,'Delays');
+      if((d.closures||[]).length) cs+=cc((d.closures||[]).length,'Closures');
+    }
+    $('counts').innerHTML=cs;
+    // board
+    if(total===0){
+      $('board').innerHTML='<div class="clear"><div class="big">The skies are running clear.</div><div>No ground stops or major delays across US airports right now. Refresh anytime.</div></div>';
+      return;
+    }
+    var b='';
+    b+=section('Ground stops', d.groundStops);
+    b+=section('Ground delays', d.groundDelays);
+    b+=section('Closures', d.closures);
+    b+=section('Arrival / departure delays', d.delays);
+    $('board').innerHTML=b;
+  }
+  function load(){
+    $('updated').textContent='Loading…';
+    fetch(API,{cache:'no-store'}).then(function(r){return r.json();}).then(render).catch(function(){
+      $('board').innerHTML='<div class="clear"><div class="big">Can’t reach the feed right now.</div><div>Give it a moment and refresh.</div></div>';
+      $('updated').textContent='';
+    });
+  }
+  $('refreshBtn').onclick=load;
+  load();
+  setInterval(load, 120000); // refresh every 2 minutes; served from cache, costs nothing
+})();
+</script>
+</body>
+</html>

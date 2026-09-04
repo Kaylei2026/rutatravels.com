@@ -11,9 +11,14 @@ Ruta has built hand-curated city guides, each written and edited by people with 
 The Ruta journal covers the full trip lifecycle: dreaming and discovery, planning and booking, packing and preparation, transit and layovers, on-the-ground exploration, and reflection after the trip.
 
 - [Why we hand-curate city travel guides](https://rutatravels.com/blog/why-we-hand-curate-travel-guides/): Our editorial philosophy and why scraped content fails travelers.
+- [Why your trip stays on your phone](https://rutatravels.com/blog/why-your-trip-stays-on-your-phone/): Why Ruta keeps your trips and travel documents on your device, builds no profile of you, and has nothing to sell.
 - [How to plan a three-stop European trip without losing your mind](https://rutatravels.com/blog/three-stop-european-trip-planning/): A six-step framework for multi-city Europe itineraries.
 - [Off-season Lisbon: what locals actually do in November](https://rutatravels.com/blog/off-season-lisbon-november/): The Lisbon locals love, hidden by summer crowds.
 - [A perfect day in Mexico City's Roma Norte](https://rutatravels.com/blog/perfect-day-roma-norte-mexico-city/): An hour-by-hour walking guide to one of Mexico City's best neighborhoods.
+
+## Live
+
+- [Flight intelligence, live](https://rutatravels.com/live/): A live board of current US airport ground stops and delays from the FAA. The same signal Ruta watches automatically for your own flights.
 
 ## Contact
 
