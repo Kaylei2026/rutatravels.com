@@ -79,7 +79,6 @@
 </section>
 
 <div class="wrap">
-  <div class="counts" id="counts"></div>
   <div id="board"></div>
 
   <div class="cta">
@@ -98,44 +97,51 @@
 <script>
 (function(){
   var API='https://ruta-travels-production.up.railway.app/api/live';
-  var COLORS={'Ground stop':'#CB6B63','Ground delay':'#D19E52','Arrival / departure delay':'#4F7C82','Closure':'#CB6B63'};
+  var COLORS={'Ground stop':'#CB6B63','Ground delay':'#D19E52','Delay':'#4F7C82'};
+  var AIRPORTS={ATL:'Atlanta',LAX:'Los Angeles',ORD:'Chicago O’Hare',DFW:'Dallas–Fort Worth',DEN:'Denver',JFK:'New York (JFK)',SFO:'San Francisco',SEA:'Seattle',LAS:'Las Vegas',MCO:'Orlando',EWR:'Newark',CLT:'Charlotte',PHX:'Phoenix',IAH:'Houston',MIA:'Miami',BOS:'Boston',MSP:'Minneapolis',FLL:'Fort Lauderdale',DTW:'Detroit',PHL:'Philadelphia',LGA:'New York (LaGuardia)',BWI:'Baltimore',SLC:'Salt Lake City',DCA:'Washington (Reagan)',IAD:'Washington (Dulles)',SAN:'San Diego',TPA:'Tampa',BNA:'Nashville',AUS:'Austin',MDW:'Chicago (Midway)',HNL:'Honolulu',DAL:'Dallas (Love)',PDX:'Portland',STL:'St. Louis',RDU:'Raleigh–Durham',HOU:'Houston (Hobby)',SMF:'Sacramento',MSY:'New Orleans',SJC:'San Jose',SNA:'Orange County',MCI:'Kansas City',OAK:'Oakland',RSW:'Fort Myers',SAT:'San Antonio',CLE:'Cleveland',IND:'Indianapolis',PIT:'Pittsburgh',CVG:'Cincinnati',CMH:'Columbus',PBI:'West Palm Beach',JAX:'Jacksonville',BDL:'Hartford',ONT:'Ontario',BUR:'Burbank',ANC:'Anchorage',OGG:'Maui',TEB:'Teterboro',MEM:'Memphis',OKC:'Oklahoma City',ABQ:'Albuquerque',TUS:'Tucson',ELP:'El Paso',BOI:'Boise',GEG:'Spokane',RNO:'Reno',BUF:'Buffalo',ROC:'Rochester',ALB:'Albany',PVD:'Providence',ORF:'Norfolk',RIC:'Richmond',GRR:'Grand Rapids',MKE:'Milwaukee',OMA:'Omaha',TUL:'Tulsa',DSM:'Des Moines'};
+  function esc(x){return String(x==null?'':x).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+  function city(code){return AIRPORTS[String(code||'').toUpperCase()]||'';}
+  function humanize(raw){
+    var s=String(raw||'').trim(); if(!s) return '';
+    var L=s.toUpperCase();
+    if(L.indexOf('SWAP')>=0) return 'Weather reroute';
+    if(L.indexOf('THUNDER')>=0) return 'Thunderstorms';
+    if(L.indexOf('WIND')>=0) return 'Wind';
+    if(L.indexOf('CEILING')>=0||L.indexOf('FOG')>=0||L.indexOf('VISIBILITY')>=0) return 'Low cloud or fog';
+    if(L.indexOf('CONSTRUCTION')>=0||L.indexOf('RWY')>=0||L.indexOf('RUNWAY')>=0) return 'Runway work';
+    if(L.indexOf('COMPACTED')>=0||L.indexOf('DEMAND')>=0||L.indexOf('VOLUME')>=0||L.indexOf('VOL')===0) return 'High traffic volume';
+    if(L.indexOf('DEICE')>=0||L.indexOf('SNOW')>=0||L.indexOf('ICE')>=0) return 'Snow or de-icing';
+    if(L.indexOf('EQUIP')>=0) return 'Equipment';
+    if(L.indexOf('WX')===0||L.indexOf('WEATHER')>=0) return 'Weather';
+    var t=s.replace(/^(WX|VOL|RWY|TM Initiatives|TM)\s*:?\s*/i,'').replace(/:/g,' · ');
+    return t.charAt(0).toUpperCase()+t.slice(1);
+  }
   var $=function(id){return document.getElementById(id);};
-  function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
   function ago(iso){ try{ var d=new Date(iso); var m=Math.round((Date.now()-d.getTime())/60000); if(!isFinite(m)||m<0)return ''; if(m<1)return 'just now'; if(m<60)return m+' min ago'; var h=Math.round(m/60); return h+' hr ago'; }catch(e){ return ''; } }
   function section(title,items){
     if(!items||!items.length) return '';
     var h='<div class="sec-h">'+esc(title)+' · '+items.length+'</div>';
     items.forEach(function(it){
-      var c=COLORS[it.type]||'#9AA6BA';
-      h+='<div class="row"><div class="apt">'+esc(it.airport)+'</div><div class="txt"><span class="badge" style="background:'+c+'22;color:'+c+'">'+esc(it.type)+'</span>'+(it.reason?'<div class="reason">'+esc(it.reason)+'</div>':'')+'</div></div>';
+      var c=COLORS[it.type]||'#9AA6BA', nm=city(it.airport);
+      h+='<div class="row"><div class="apt">'+esc(it.airport)+'</div><div class="txt">'
+        +'<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">'
+        +(nm?'<span style="font-weight:600">'+esc(nm)+'</span>':'')
+        +'<span class="badge" style="background:'+c+'22;color:'+c+'">'+esc(it.type)+'</span></div>'
+        +'<div class="reason">'+esc(humanize(it.reason))+'</div></div></div>';
     });
     return h;
   }
   function render(d){
-    var c=d.counts||{};
-    var total=(d.groundStops||[]).length+(d.groundDelays||[]).length+(d.delays||[]).length+(d.closures||[]).length;
+    var gs=d.groundStops||[], gd=d.groundDelays||[], dl=d.delays||[];
+    var total=gs.length+gd.length+dl.length;
     $('updated').textContent = d.updatedAt ? ('Updated '+(ago(d.updatedAt)||'recently')) : 'Live';
-    // counts strip
-    var cs='';
-    function cc(n,l){ return '<div class="count"><b>'+(n||0)+'</b><span>'+l+'</span></div>'; }
-    if(total>0){
-      cs+=cc((d.groundStops||[]).length,'Ground stops');
-      cs+=cc((d.groundDelays||[]).length,'Ground delays');
-      cs+=cc((d.delays||[]).length,'Delays');
-      if((d.closures||[]).length) cs+=cc((d.closures||[]).length,'Closures');
-    }
-    $('counts').innerHTML=cs;
-    // board
     if(total===0){
       $('board').innerHTML='<div class="clear"><div class="big">The skies are running clear.</div><div>No ground stops or major delays across US airports right now. Refresh anytime.</div></div>';
       return;
     }
-    var b='';
-    b+=section('Ground stops', d.groundStops);
-    b+=section('Ground delays', d.groundDelays);
-    b+=section('Closures', d.closures);
-    b+=section('Arrival / departure delays', d.delays);
-    $('board').innerHTML=b;
+    $('board').innerHTML = section('Ground stops',gs.map(function(x){x.type='Ground stop';return x;}))
+      + section('Ground delays',gd.map(function(x){x.type='Ground delay';return x;}))
+      + section('Delays',dl.map(function(x){x.type='Delay';return x;}));
   }
   function load(){
     $('updated').textContent='Loading…';
@@ -146,7 +152,7 @@
   }
   $('refreshBtn').onclick=load;
   load();
-  setInterval(load, 120000); // refresh every 2 minutes; served from cache, costs nothing
+  setInterval(load, 120000);
 })();
 </script>
 </body>
