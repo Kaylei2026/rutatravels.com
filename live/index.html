@@ -148,9 +148,12 @@
       if(a.url){ src='<a href="'+esc(a.url)+'" target="_blank" rel="noopener nofollow">'+esc(a.source||'Read more')+'</a>'; }
       else if(a.source){ src=esc(a.source); }
       var meta=src?('<div class="ameta">Source: '+src+'</div>'):'';
+      // Lead with the English summary (the classifier always writes it in English).
+      // The raw source headline is intentionally not shown, it can be in the source's
+      // original language, which reads as a blunder on an English board. Source link stays.
+      var lead=a.summary||a.title;
       h+='<div class="alert"><div class="when">'+esc(a.when||'Ongoing')+'</div>'+
-         (a.title?'<div class="atitle">'+esc(a.title)+'</div>':'')+
-         (a.summary?'<div class="asum">'+esc(a.summary)+'</div>':'')+
+         (lead?'<div class="atitle">'+esc(lead)+'</div>':'')+
          tagHtml+meta+'</div>';
     });
     $('alerts').innerHTML=h;
