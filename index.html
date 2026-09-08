@@ -398,8 +398,15 @@ class Component extends DCLogic {
       document.body.style.overflow = '';
     }, DUR + 140);
 
-    setTimeout(() => { pre.style.display = 'none'; }, DUR + 1400);
+    setTimeout(() => { pre.style.display = 'none'; document.body.style.overflow = ''; }, DUR + 1400);
     setTimeout(() => this.openAperture(false), DUR + 620);
+
+    // Safety: never leave the page scroll-locked if a timer is throttled
+    // (mobile Safari pauses timers when the tab is backgrounded mid-intro).
+    const unlock = () => { document.body.style.overflow = ''; };
+    setTimeout(unlock, DUR + 2500);
+    ['touchstart', 'wheel', 'keydown'].forEach(ev =>
+      window.addEventListener(ev, unlock, { once: true, passive: true }));
   }
 
   initPlaces() {
