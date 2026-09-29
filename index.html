@@ -578,5 +578,15 @@ class Component extends DCLogic {
   }
 }
 </script>
+  <script>
+window.addEventListener('load', function () {
+  if (location.hash === '#discover') {
+    setTimeout(function () {
+      var el = document.getElementById('discover');
+      if (el) el.scrollIntoView();
+    }, 150);
+  }
+});
+</script>
 </body>
 </html>
