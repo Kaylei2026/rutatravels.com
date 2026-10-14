@@ -18,7 +18,7 @@ The Ruta journal covers the full trip lifecycle: dreaming and discovery, plannin
 
 ## Live
 
-- [Flight intelligence, live](https://rutatravels.com/live/): A live board of current US airport ground stops and delays from the FAA. The same signal Ruta watches automatically for your own flights.
+- [Airport delays and disruptions, live](https://rutatravels.com/live/): Which airports are delayed right now, worldwide, with FAA ground stops and the strikes, closures and outages behind the rest. The same signal Ruta watches automatically for your own flights.
 
 ## Contact
 
