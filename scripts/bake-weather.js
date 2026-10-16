@@ -90,6 +90,19 @@ const main = async () => {
   }
 
   const facts = (JSON.parse(fs.readFileSync(FACTS, 'utf8')) || {}).airports || {};
+
+  // Checked before the network, so a bad data file reads as a bad data file rather than hiding
+  // behind "board unavailable". An airport with no coordinates is skipped on purpose; all of them
+  // with no coordinates is a facts file exported or committed wrong, and the first time that
+  // happened every page went out with no weather card while every step reported success.
+  const withCenter = Object.values(facts).filter((f) => f && f.center).length;
+  if (Object.keys(facts).length && !withCenter) {
+    console.error(`[weather] none of the ${Object.keys(facts).length} airports in `
+      + 'airport-facts.json have coordinates, so every one would be skipped. Re-run '
+      + 'scripts/export-airport-facts.cjs in the app repo and commit live/airport-facts.json.');
+    return 0;
+  }
+
   let board;
   try { board = await getJSON(LIVE_API); }
   catch (e) {
@@ -144,8 +157,11 @@ const main = async () => {
   return 0;
 };
 
-main().then((c) => process.exit(c)).catch((e) => {
+// process.exitCode rather than process.exit: exit() does not wait for a piped stdout to drain,
+// and this script's value is the line it prints. A precaution, not a fix for anything observed,
+// and no test covers it: mutating it back leaves the suite green.
+main().then((c) => { process.exitCode = c; }).catch((e) => {
   console.error('[weather] ' + (e && e.stack ? e.stack : e));
   // Still not a red build: weather is decoration on a page whose job is delays.
-  process.exit(0);
+  process.exitCode = 0;
 });
