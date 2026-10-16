@@ -74,33 +74,62 @@
   @media(max-width:640px){.nav,.wrap{padding-left:20px;padding-right:20px}.wrap{padding-top:44px}.row .apt{width:50px;font-size:17px}}
 </style>
 <style>
+/* These pages inherit the board's stylesheet, which only styles links in the few places the
+   board has them. Anything else fell through to the browser default, which on a navy background
+   is bright blue turning purple. Everything below is the page's own layer. */
+
+/* One card per section, so the gaps between them are a single rule rather than whatever margin
+   each block happened to bring. */
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:26px 24px;margin:0 0 18px}
+.card > h2:first-child{margin-top:0}
+.wrap h2{font-family:'Montserrat',sans-serif;font-weight:400;font-size:clamp(18px,2.1vw,22px);
+  color:var(--cream);line-height:1.3;margin:0 0 14px;letter-spacing:-.01em}
+.wrap h3{font-family:'Montserrat',sans-serif;font-size:16px;font-weight:600;margin:0 0 10px;color:var(--cream)}
+
 .apt-head{display:flex;align-items:center;gap:12px;margin:0 0 10px}
 .apt-head .dot{width:12px;height:12px;border-radius:50%;flex-shrink:0}
-.apt-status{font-family:'Montserrat',sans-serif;font-size:20px;font-weight:600}
-.apt-note{margin:0 0 18px;font-size:15px}
-.apt-method{margin:22px 0 0;font-size:13px;opacity:.7;max-width:62ch}
-.apt-none{font-size:15px;opacity:.8}
-.stats{display:flex;gap:34px;margin:18px 0 0;flex-wrap:wrap}
-.stat .k{font-size:10px;letter-spacing:.24em;text-transform:uppercase;opacity:.55}
-.stat .v{font-family:'Montserrat',sans-serif;font-size:26px;font-weight:300;margin-top:3px}
-.apt-lay{margin:0 0 16px;font-size:15px;max-width:62ch}
-.terms{border-collapse:collapse;margin:0;font-size:15px}
-.terms th{text-align:left;font-weight:500;padding:9px 28px 9px 0;border-top:1px solid var(--line)}
-.terms td{padding:9px 0;border-top:1px solid var(--line);opacity:.75;white-space:nowrap}
-.facts-l{margin:6px 0 0;padding-left:20px;font-size:15px}
-.facts-l li{margin:4px 0}
-.svc{margin-top:8px}
-.svc-t{padding:18px 0;border-top:1px solid var(--line)}
-.svc-t h3{font-family:'Montserrat',sans-serif;font-size:17px;font-weight:600;margin:0 0 10px}
-.svc-g{margin:0 0 12px}
-.svc-k{font-size:10px;letter-spacing:.24em;text-transform:uppercase;opacity:.55;margin-bottom:5px}
-.svc-l{margin:0;padding-left:20px;font-size:14.5px}
-.svc-l li{margin:3px 0}
-.svc-l .loc{opacity:.55;font-size:13px}
+.apt-status{font-family:'Montserrat',sans-serif;font-size:21px;font-weight:600;color:var(--cream)}
+.apt-note{margin:0 0 18px;font-size:15px;color:var(--cream)}
+.apt-lay{margin:0 0 16px;font-size:15px;max-width:62ch;color:var(--cream)}
+.apt-method{margin:20px 0 0;font-size:13px;color:var(--muted);max-width:66ch;line-height:1.6}
+.apt-none{font-size:15px;color:var(--muted);margin:0}
+
+.stats{display:flex;gap:40px;margin:20px 0 0;flex-wrap:wrap}
+.stat .k{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
+.stat .v{font-family:'Montserrat',sans-serif;font-size:28px;font-weight:300;margin-top:4px;color:var(--cream)}
+
+.facts-l{margin:8px 0 0;padding-left:20px;font-size:15px;color:var(--cream)}
+.facts-l li{margin:5px 0}
+.facts-l strong{font-weight:600;color:var(--gold)}
+
+.terms{border-collapse:collapse;margin:0;font-size:15px;width:100%;max-width:440px}
+.terms th{text-align:left;font-weight:400;padding:10px 28px 10px 0;border-top:1px solid var(--line);color:var(--cream)}
+.terms td{padding:10px 0;border-top:1px solid var(--line);color:var(--muted);white-space:nowrap;text-align:right}
+.terms-l{list-style:none;margin:0;padding:0;font-size:15px;color:var(--cream);max-width:440px}
+.terms-l li{padding:10px 0;border-top:1px solid var(--line)}
+
+.svc{margin-top:4px}
+.svc-t{padding:18px 0 4px;border-top:1px solid var(--line)}
+.svc-t:first-child{border-top:0;padding-top:0}
+.svc-g{margin:0 0 14px}
+.svc-k{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.svc-l{margin:0;padding-left:18px;font-size:14.5px;color:var(--cream)}
+.svc-l li{margin:4px 0}
+.svc-l .loc{color:var(--muted);font-size:13px}
+
+/* Text links, not buttons. The board's palette, not the browser's. */
+.siblings{display:flex;flex-wrap:wrap;gap:8px 22px;margin:0}
+a.sib{font-size:15px;color:var(--cream);text-decoration:none;border-bottom:1px solid rgba(242,166,90,.35);padding-bottom:1px}
+a.sib:hover{color:var(--gold);border-bottom-color:var(--gold)}
+a.sib:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.sib-code{color:var(--muted);font-size:13px;letter-spacing:.06em}
+
+.backlink{display:inline-block;margin:6px 0 0;font-size:13px;letter-spacing:.14em;text-transform:uppercase;
+  font-weight:600;color:var(--gold);text-decoration:none}
+.backlink:hover{color:var(--cream)}
+.backlink:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-.siblings{display:flex;flex-wrap:wrap;gap:10px 16px;margin-top:6px}
-.siblings a,.siblings span{font-size:14px}
-.backlink{display:inline-block;margin-top:34px;font-size:14px}
 </style>
 </head>
 <body>
@@ -117,19 +146,17 @@
 </section>
 
 <div class="wrap">
-  <div class="sec-h">Right now</div>
-  <div class="apt-head"><span class="dot" style="background:#5C9B7A"></span><div class="apt-status">On time</div></div><p class="apt-method">Delay figures come from scheduled versus actual departure times across the airport, refreshed through the day. Alerts below are classified from public news reporting.</p>
+  <section class="card" aria-label="Right now"><h2>Right now at SFO</h2><div class="apt-head"><span class="dot" style="background:#5C9B7A"></span><div class="apt-status">On time</div></div><p class="apt-method">Delay figures come from scheduled versus actual departure times across the airport, refreshed through the day. Alerts below are classified from public news reporting.</p></section>
 
-  <div class="sec-h" style="margin-top:46px">Alerts affecting SFO</div>
-  <p class="apt-none">No disruption alerts affecting this airport right now.</p>
+  <section class="card" aria-label="Alerts"><h2>Alerts affecting SFO</h2><p class="apt-none">No disruption alerts affecting this airport right now.</p></section>
 
-  <h2>Inside SFO</h2><p class="apt-lay">San Francisco International has 4 terminals and 111 gates.</p><table class="terms"><caption class="sr-only">Terminals and gate counts at SFO</caption><tbody><tr><th scope="row">Terminal 1 (Harvey Milk)</th><td>38 gates</td></tr><tr><th scope="row">Terminal 2</th><td>14 gates</td></tr><tr><th scope="row">Terminal 3</th><td>30 gates</td></tr><tr><th scope="row">International</th><td>29 gates</td></tr></tbody></table><p class="apt-method">Ruta carries the position of every one of these gates, so it measures the walk to yours along the concourse rather than in a straight line, and it works with no signal.</p>
+  <section class="card" aria-label="Inside SFO"><h2>Inside SFO</h2><p class="apt-lay">San Francisco International has 4 terminals.</p><ul class="terms-l" aria-label="Terminals at SFO"><li>Terminal 1 (Harvey Milk)</li><li>Terminal 2</li><li>Terminal 3</li><li>International</li></ul><p class="apt-method">Ruta holds a position for the gates it maps here, which is how it measures the walk to yours along the concourse rather than in a straight line, with no signal needed. Terminal data as of 2026-10-16.</p></section>
 
-  <h2>Getting around SFO</h2><p class="apt-lay">Mapped at SFO, with a position for each one:</p><ul class="facts-l"><li><strong>75</strong> accessible restrooms</li><li><strong>130</strong> lifts</li><li><strong>12</strong> family restrooms</li><li><strong>5</strong> pet relief areas</li><li><strong>1</strong> medical point</li></ul><p class="apt-method">Tell Ruta you use a wheelchair and every walking estimate slows to match, and these get named on the way to your gate rather than listed and left for you to find.</p><p class="apt-lay" style="margin-top:22px">Also mapped here:</p><ul class="facts-l"><li><strong>50</strong> water refill stations</li><li><strong>1</strong> prayer room</li><li><strong>7</strong> play areas</li><li><strong>1</strong> shower</li></ul>
+  <section class="card" aria-label="Getting around"><h2>Getting around SFO</h2><p class="apt-lay">Mapped at SFO, with a position for each one:</p><ul class="facts-l"><li><strong>75</strong> accessible restrooms</li><li><strong>130</strong> lifts</li><li><strong>12</strong> family restrooms</li><li><strong>5</strong> pet relief areas</li><li><strong>1</strong> medical point</li></ul><p class="apt-method">Tell Ruta you use a wheelchair and every walking estimate slows to match, and these get named on the way to your gate rather than listed and left for you to find.</p><p class="apt-lay" style="margin-top:22px">Also mapped here:</p><ul class="facts-l"><li><strong>50</strong> water refill stations</li><li><strong>1</strong> prayer room</li><li><strong>7</strong> play areas</li><li><strong>1</strong> shower</li></ul></section>
 
-  <h2>Eating, shopping and lounges at SFO</h2><p class="apt-lay">19 places across 4 terminals, the same list Ruta carries offline.</p><div class="svc"><div class="svc-t"><h3>Terminal 1</h3><div class="svc-g"><div class="svc-k">Eat</div><ul class="svc-l"><li>Buena Vista Café <span class="loc">Gates B</span></li><li>Perry's <span class="loc">Gates C</span></li></ul></div><div class="svc-g"><div class="svc-k">Shop</div><ul class="svc-l"><li>Brookstone <span class="loc">Main Hall</span></li></ul></div><div class="svc-g"><div class="svc-k">Lounges and more</div><ul class="svc-l"><li>Family Restroom <span class="loc">Gates B &amp; C</span></li><li>Quiet Zone <span class="loc">Gates C</span></li></ul></div></div><div class="svc-t"><h3>Terminal 2</h3><div class="svc-g"><div class="svc-k">Eat</div><ul class="svc-l"><li>Starbucks <span class="loc">Main Hall</span></li><li>Napa Farms <span class="loc">Gates D</span></li></ul></div><div class="svc-g"><div class="svc-k">Shop</div><ul class="svc-l"><li>News &amp; Gifts <span class="loc">All Gates</span></li></ul></div><div class="svc-g"><div class="svc-k">Lounges and more</div><ul class="svc-l"><li>United Club <span class="loc">Gates D/E</span></li><li>Yoga Room <span class="loc">Gates E &amp; F</span></li></ul></div></div><div class="svc-t"><h3>Terminal 3</h3><div class="svc-g"><div class="svc-k">Eat</div><ul class="svc-l"><li>Boudin Bakery <span class="loc">Gates E</span></li><li>Peet's Coffee <span class="loc">Main Hall</span></li></ul></div><div class="svc-g"><div class="svc-k">Shop</div><ul class="svc-l"><li>News &amp; Gifts <span class="loc">All Gates</span></li></ul></div><div class="svc-g"><div class="svc-k">Lounges and more</div><ul class="svc-l"><li>Kids Play Area <span class="loc">Near Gate F22</span></li></ul></div></div><div class="svc-t"><h3>International</h3><div class="svc-g"><div class="svc-k">Eat</div><ul class="svc-l"><li>La Boulange <span class="loc">Gates A</span></li><li>Benihana <span class="loc">Gates A</span></li></ul></div><div class="svc-g"><div class="svc-k">Shop</div><ul class="svc-l"><li>DFS Duty Free <span class="loc">Gates A &amp; G</span></li></ul></div><div class="svc-g"><div class="svc-k">Lounges and more</div><ul class="svc-l"><li>Currency Exchange <span class="loc">Main Hall</span></li><li>Medical Clinic <span class="loc">Upper Level</span></li></ul></div></div></div>
+  <section class="card" aria-label="Eating, shopping and lounges"><h2>Eating, shopping and lounges at SFO</h2><p class="apt-lay">19 places across 4 terminals, the same list Ruta carries offline.</p><div class="svc"><div class="svc-t"><h3>Terminal 1</h3><div class="svc-g"><div class="svc-k">Eat</div><ul class="svc-l"><li>Buena Vista Café <span class="loc">Gates B</span></li><li>Perry's <span class="loc">Gates C</span></li></ul></div><div class="svc-g"><div class="svc-k">Shop</div><ul class="svc-l"><li>Brookstone <span class="loc">Main Hall</span></li></ul></div><div class="svc-g"><div class="svc-k">Lounges and more</div><ul class="svc-l"><li>Family Restroom <span class="loc">Gates B &amp; C</span></li><li>Quiet Zone <span class="loc">Gates C</span></li></ul></div></div><div class="svc-t"><h3>Terminal 2</h3><div class="svc-g"><div class="svc-k">Eat</div><ul class="svc-l"><li>Starbucks <span class="loc">Main Hall</span></li><li>Napa Farms <span class="loc">Gates D</span></li></ul></div><div class="svc-g"><div class="svc-k">Shop</div><ul class="svc-l"><li>News &amp; Gifts <span class="loc">All Gates</span></li></ul></div><div class="svc-g"><div class="svc-k">Lounges and more</div><ul class="svc-l"><li>United Club <span class="loc">Gates D/E</span></li><li>Yoga Room <span class="loc">Gates E &amp; F</span></li></ul></div></div><div class="svc-t"><h3>Terminal 3</h3><div class="svc-g"><div class="svc-k">Eat</div><ul class="svc-l"><li>Boudin Bakery <span class="loc">Gates E</span></li><li>Peet's Coffee <span class="loc">Main Hall</span></li></ul></div><div class="svc-g"><div class="svc-k">Shop</div><ul class="svc-l"><li>News &amp; Gifts <span class="loc">All Gates</span></li></ul></div><div class="svc-g"><div class="svc-k">Lounges and more</div><ul class="svc-l"><li>Kids Play Area <span class="loc">Near Gate F22</span></li></ul></div></div><div class="svc-t"><h3>International</h3><div class="svc-g"><div class="svc-k">Eat</div><ul class="svc-l"><li>La Boulange <span class="loc">Gates A</span></li><li>Benihana <span class="loc">Gates A</span></li></ul></div><div class="svc-g"><div class="svc-k">Shop</div><ul class="svc-l"><li>DFS Duty Free <span class="loc">Gates A &amp; G</span></li></ul></div><div class="svc-g"><div class="svc-k">Lounges and more</div><ul class="svc-l"><li>Currency Exchange <span class="loc">Main Hall</span></li><li>Medical Clinic <span class="loc">Upper Level</span></li></ul></div></div></div></section>
 
-  <h2>Other airports in North America</h2><div class="siblings"><a href="/live/atlanta-atl/">Atlanta (ATL)</a><a href="/live/chicago-ord/">Chicago (ORD)</a><a href="/live/los-angeles-lax/">Los Angeles (LAX)</a><a href="/live/new-york-jfk/">New York (JFK)</a><a href="/live/toronto-yyz/">Toronto (YYZ)</a></div>
+  <section class="card" aria-label="Other airports"><h2>Other airports in North America</h2><div class="siblings"><a class="sib" href="/live/atlanta-atl/">Atlanta <span class="sib-code">ATL</span></a><a class="sib" href="/live/chicago-ord/">Chicago <span class="sib-code">ORD</span></a><a class="sib" href="/live/los-angeles-lax/">Los Angeles <span class="sib-code">LAX</span></a><a class="sib" href="/live/new-york-jfk/">New York <span class="sib-code">JFK</span></a><a class="sib" href="/live/toronto-yyz/">Toronto <span class="sib-code">YYZ</span></a></div></section>
 
   <a class="backlink" href="/live/">All airport delays, live</a>
 
