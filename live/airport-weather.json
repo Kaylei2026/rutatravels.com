@@ -333,6 +333,15 @@
       "windMph": 3,
       "readAt": "2026-10-16T21:09:48.000Z",
       "fetchedAt": "2026-10-16T21:09:48.961Z"
+    },
+    "GRU": {
+      "tempF": 73,
+      "feelsF": 73,
+      "description": "moderate rain",
+      "icon": "10n",
+      "windMph": 5,
+      "readAt": "2026-10-16T22:44:51.000Z",
+      "fetchedAt": "2026-10-16T22:44:51.242Z"
     }
   }
 }
