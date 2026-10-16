@@ -4,6 +4,10 @@
   "airports": {
     "AMS": {
       "name": "Amsterdam Schiphol Airport",
+      "center": {
+        "lat": 52.311,
+        "lng": 4.768
+      },
       "terminalWord": "Pier",
       "terminals": [
         {
@@ -113,6 +117,10 @@
     },
     "ARN": {
       "name": "Stockholm Arlanda Airport",
+      "center": {
+        "lat": 59.652,
+        "lng": 17.919
+      },
       "terminalWord": "Terminal",
       "terminals": [
         {
@@ -221,6 +229,10 @@
     },
     "ATH": {
       "name": "Athens (Eleftherios Venizelos)",
+      "center": {
+        "lat": 37.936,
+        "lng": 23.945
+      },
       "terminalWord": "Gates",
       "terminals": [
         {
@@ -245,6 +257,10 @@
     },
     "ATL": {
       "name": "Hartsfield-Jackson Atlanta International Airport",
+      "center": {
+        "lat": 33.641,
+        "lng": -84.428
+      },
       "terminalWord": "Concourse",
       "terminals": [
         {
@@ -516,6 +532,10 @@
     },
     "AUS": {
       "name": "Austin-Bergstrom International Airport",
+      "center": {
+        "lat": 30.198,
+        "lng": -97.666
+      },
       "terminalWord": "Terminal",
       "terminals": [
         {
@@ -574,6 +594,10 @@
     },
     "BCN": {
       "name": "Barcelona El Prat Airport",
+      "center": {
+        "lat": 41.297,
+        "lng": 2.083
+      },
       "terminalWord": "Terminal",
       "terminals": [
         {
@@ -645,6 +669,10 @@
     },
     "BER": {
       "name": "Berlin Brandenburg International",
+      "center": {
+        "lat": 52.367,
+        "lng": 13.503
+      },
       "terminalWord": "Terminal",
       "terminals": [
         {
@@ -711,6 +739,10 @@
     },
     "BKK": {
       "name": "Suvarnabhumi Airport",
+      "center": {
+        "lat": 13.69,
+        "lng": 100.75
+      },
       "terminalWord": "Concourse",
       "terminals": [
         {
@@ -776,6 +808,10 @@
     },
     "BOM": {
       "name": "Chhatrapati Shivaji Maharaj International Airport",
+      "center": {
+        "lat": 19.09,
+        "lng": 72.866
+      },
       "terminalWord": "Terminal",
       "terminals": [
         {
@@ -841,6 +877,10 @@
     },
     "BOS": {
       "name": "Boston Logan International Airport",
+      "center": {
+        "lat": 42.366,
+        "lng": -71.01
+      },
       "terminalWord": "Terminal",
       "terminals": [
         {
@@ -1030,6 +1070,10 @@
     },
     "BUR": {
       "name": "Hollywood Burbank Airport",
+      "center": {
+        "lat": 34.201,
+        "lng": -118.358
+      },
       "terminalWord": "Terminal",
       "terminals": [
         {
@@ -1177,6 +1221,10 @@
     },
     "BWI": {
       "name": "Baltimore Washington International",
+      "center": {
+        "lat": 39.175,
+        "lng": -76.668
+      },
       "terminalWord": "Concourse",
       "terminals": [
         {
@@ -1375,6 +1423,10 @@
     },
     "CDG": {
       "name": "Paris Charles de Gaulle Airport",
+      "center": {
+        "lat": 49.01,
+        "lng": 2.548
+      },
       "terminalWord": "Terminal",
       "terminals": [
         {
@@ -1535,6 +1587,10 @@
     },
     "CLT": {
       "name": "Charlotte Douglas International",
+      "center": {
+        "lat": 35.214,
+        "lng": -80.943
+      },
       "terminalWord": "Concourse",
       "terminals": [
         {
@@ -1748,6 +1804,10 @@
     },
     "CMN": {
       "name": "Casablanca Mohammed V International",
+      "center": {
+        "lat": 33.368,
+        "lng": -7.59
+      },
       "terminalWord": "Terminal",
       "terminals": [
         {
@@ -1807,6 +1867,10 @@
     },
     "CPH": {
       "name": "Copenhagen Airport",
+      "center": {
+        "lat": 55.618,
+        "lng": 12.656
+      },
       "terminalWord": "Terminal",
       "terminals": [
         {
@@ -1936,6 +2000,10 @@
     },
     "CPT": {
       "name": "Cape Town International Airport",
+      "center": {
+        "lat": -33.971,
+        "lng": 18.602
+      },
       "terminalWord": "Terminal",
       "terminals": [
         {
@@ -2044,6 +2112,10 @@
     },
     "CUN": {
       "name": "Cancún International",
+      "center": {
+        "lat": 21.037,
+        "lng": -86.877
+      },
       "terminalWord": "Terminal",
       "terminals": [
         {
@@ -2068,6 +2140,10 @@
     },
     "DCA": {
       "name": "Ronald Reagan Washington National",
+      "center": {
+        "lat": 38.852,
+        "lng": -77.038
+      },
       "terminalWord": "Terminal",
       "terminals": [
         {
@@ -2181,6 +2257,10 @@
     },
     "DEL": {
       "name": "Indira Gandhi International Airport",
+      "center": {
+        "lat": 28.556,
+        "lng": 77.1
+      },
       "terminalWord": "Terminal",
       "terminals": [
         {
@@ -2251,6 +2331,10 @@
     },
     "DEN": {
       "name": "Denver International Airport",
+      "center": {
+        "lat": 39.856,
+        "lng": -104.674
+      },
       "terminalWord": "Concourse",
       "terminals": [
         {
@@ -2373,6 +2457,10 @@
     },
     "DFW": {
       "name": "Dallas Fort Worth International Airport",
+      "center": {
+        "lat": 32.9,
+        "lng": -97.04
+      },
       "terminalWord": "Terminal",
       "terminals": [
         {
@@ -2609,6 +2697,10 @@
     },
     "DOH": {
       "name": "Hamad International Airport",
+      "center": {
+        "lat": 25.273,
+        "lng": 51.608
+      },
       "terminalWord": "Terminal",
       "terminals": [
         {
@@ -2689,6 +2781,10 @@
     },
     "DTW": {
       "name": "Detroit Metropolitan Wayne County",
+      "center": {
+        "lat": 42.212,
+        "lng": -83.353
+      },
       "terminalWord": "Terminal",
       "terminals": [
         {
@@ -2808,6 +2904,10 @@
     },
     "DUB": {
       "name": "Dublin Airport",
+      "center": {
+        "lat": 53.421,
+        "lng": -6.27
+      },
       "terminalWord": "Terminal",
       "terminals": [
         {
@@ -2920,6 +3020,10 @@
     },
     "DUS": {
       "name": "Dusseldorf International Airport",
+      "center": {
+        "lat": 51.29,
+        "lng": 6.767
+      },
       "terminalWord": "Terminal",
       "terminals": [
         {
@@ -3045,6 +3149,10 @@
     },
     "DXB": {
       "name": "Dubai International Airport",
+      "center": {
+        "lat": 25.253,
+        "lng": 55.366
+      },
       "terminalWord": "Terminal",
       "terminals": [
         {
@@ -3171,6 +3279,10 @@
     },
     "EDI": {
       "name": "Edinburgh Airport",
+      "center": {
+        "lat": 55.95,
+        "lng": -3.372
+      },
       "terminalWord": "Terminal",
       "terminals": [
         {
@@ -3235,6 +3347,10 @@
     },
     "EWR": {
       "name": "Newark Liberty International",
+      "center": {
+        "lat": 40.69,
+        "lng": -74.174
+      },
       "terminalWord": "Terminal",
       "terminals": [
         {
@@ -3379,6 +3495,10 @@
     },
     "EZE": {
       "name": "Ministro Pistarini International Airport",
+      "center": {
+        "lat": -34.822,
+        "lng": -58.536
+      },
       "terminalWord": "Terminal",
       "terminals": [
         {
@@ -3443,6 +3563,10 @@
     },
     "FCO": {
       "name": "Leonardo da Vinci-Fiumicino Airport",
+      "center": {
+        "lat": 41.8,
+        "lng": 12.239
+      },
       "terminalWord": "Terminal",
       "terminals": [
         {
@@ -3638,6 +3762,10 @@
     },
     "FLL": {
       "name": "Fort Lauderdale-Hollywood International Airport",
+      "center": {
+        "lat": 26.073,
+        "lng": -80.153
+      },
       "terminalWord": "Terminal",
       "terminals": [
         {
@@ -3666,6 +3794,10 @@
     },
     "FRA": {
       "name": "Frankfurt Airport",
+      "center": {
+        "lat": 50.038,
+        "lng": 8.562
+      },
       "terminalWord": "Terminal",
       "terminals": [
         {
@@ -3784,6 +3916,10 @@
     },
     "GRU": {
       "name": "São Paulo Guarulhos International Airport",
+      "center": {
+        "lat": -23.436,
+        "lng": -46.473
+      },
       "terminalWord": "Terminal",
       "terminals": [
         {
@@ -3888,6 +4024,10 @@
     },
     "GVA": {
       "name": "Geneva Airport",
+      "center": {
+        "lat": 46.238,
+        "lng": 6.109
+      },
       "terminalWord": "Terminal",
       "terminals": [
         {
@@ -3953,6 +4093,10 @@
     },
     "HKG": {
       "name": "Hong Kong International",
+      "center": {
+        "lat": 22.308,
+        "lng": 113.919
+      },
       "terminalWord": "Terminal",
       "terminals": [
         {
@@ -4037,6 +4181,10 @@
     },
     "HND": {
       "name": "Tokyo Haneda Airport",
+      "center": {
+        "lat": 35.549,
+        "lng": 139.78
+      },
       "terminalWord": "Terminal",
       "terminals": [
         {
@@ -4187,6 +4335,10 @@
     },
     "IAD": {
       "name": "Washington Dulles International Airport",
+      "center": {
+        "lat": 38.947,
+        "lng": -77.447
+      },
       "terminalWord": "Terminal",
       "terminals": [
         {
@@ -4350,6 +4502,10 @@
     },
     "IAH": {
       "name": "Houston George Bush Intercontinental",
+      "center": {
+        "lat": 29.986,
+        "lng": -95.342
+      },
       "terminalWord": "Terminal",
       "terminals": [
         {
@@ -4576,6 +4732,10 @@
     },
     "ICN": {
       "name": "Incheon International Airport",
+      "center": {
+        "lat": 37.46,
+        "lng": 126.441
+      },
       "terminalWord": "Terminal",
       "terminals": [
         {
@@ -4696,6 +4856,10 @@
     },
     "IST": {
       "name": "Istanbul Airport",
+      "center": {
+        "lat": 41.275,
+        "lng": 28.752
+      },
       "terminalWord": "Terminal",
       "terminals": [
         {
@@ -4789,6 +4953,10 @@
     },
     "JFK": {
       "name": "John F. Kennedy International",
+      "center": {
+        "lat": 40.641,
+        "lng": -73.778
+      },
       "terminalWord": "Terminal",
       "terminals": [
         {
@@ -4972,6 +5140,10 @@
     },
     "JNB": {
       "name": "O.R. Tambo International Airport",
+      "center": {
+        "lat": -26.139,
+        "lng": 28.246
+      },
       "terminalWord": "Terminal",
       "terminals": [
         {
@@ -5060,6 +5232,10 @@
     },
     "KUL": {
       "name": "Kuala Lumpur International Airport",
+      "center": {
+        "lat": 2.746,
+        "lng": 101.71
+      },
       "terminalWord": "Terminal",
       "terminals": [
         {
@@ -5133,6 +5309,10 @@
     },
     "LAS": {
       "name": "Harry Reid International",
+      "center": {
+        "lat": 36.084,
+        "lng": -115.154
+      },
       "terminalWord": "Terminal",
       "terminals": [
         {
@@ -5242,6 +5422,10 @@
     },
     "LAX": {
       "name": "Los Angeles International",
+      "center": {
+        "lat": 33.942,
+        "lng": -118.408
+      },
       "terminalWord": "Terminal",
       "terminals": [
         {
@@ -5510,6 +5694,10 @@
     },
     "LGA": {
       "name": "LaGuardia",
+      "center": {
+        "lat": 40.777,
+        "lng": -73.874
+      },
       "terminalWord": "Terminal",
       "terminals": [
         {
@@ -5534,6 +5722,10 @@
     },
     "LGW": {
       "name": "London Gatwick Airport",
+      "center": {
+        "lat": 51.154,
+        "lng": -0.182
+      },
       "terminalWord": "Terminal",
       "terminals": [
         {
@@ -5651,6 +5843,10 @@
     },
     "LHR": {
       "name": "London Heathrow Airport",
+      "center": {
+        "lat": 51.47,
+        "lng": -0.454
+      },
       "terminalWord": "Terminal",
       "terminals": [
         {
@@ -5848,6 +6044,10 @@
     },
     "LIS": {
       "name": "Humberto Delgado (Lisbon)",
+      "center": {
+        "lat": 38.774,
+        "lng": -9.134
+      },
       "terminalWord": "Terminal",
       "terminals": [
         {
@@ -5868,6 +6068,10 @@
     },
     "MAD": {
       "name": "Adolfo Suarez Madrid-Barajas Airport",
+      "center": {
+        "lat": 40.494,
+        "lng": -3.567
+      },
       "terminalWord": "Terminal",
       "terminals": [
         {
@@ -5989,6 +6193,10 @@
     },
     "MCI": {
       "name": "Kansas City International Airport",
+      "center": {
+        "lat": 39.298,
+        "lng": -94.714
+      },
       "terminalWord": "Terminal",
       "terminals": [
         {
@@ -6043,6 +6251,10 @@
     },
     "MCO": {
       "name": "Orlando International",
+      "center": {
+        "lat": 28.431,
+        "lng": -81.308
+      },
       "terminalWord": "Terminal",
       "terminals": [
         {
@@ -6157,6 +6369,10 @@
     },
     "MDW": {
       "name": "Chicago Midway International",
+      "center": {
+        "lat": 41.787,
+        "lng": -87.752
+      },
       "terminalWord": "Concourse",
       "terminals": [
         {
@@ -6273,6 +6489,10 @@
     },
     "MEL": {
       "name": "Melbourne (Tullamarine)",
+      "center": {
+        "lat": -37.669,
+        "lng": 144.841
+      },
       "terminalWord": "Terminal",
       "terminals": [
         {
@@ -6301,6 +6521,10 @@
     },
     "MEX": {
       "name": "Mexico City International Airport",
+      "center": {
+        "lat": 19.436,
+        "lng": -99.072
+      },
       "terminalWord": "Terminal",
       "terminals": [
         {
@@ -6369,6 +6593,10 @@
     },
     "MIA": {
       "name": "Miami International Airport",
+      "center": {
+        "lat": 25.796,
+        "lng": -80.287
+      },
       "terminalWord": "Concourse",
       "terminals": [
         {
@@ -6530,6 +6758,10 @@
     },
     "MSP": {
       "name": "Minneapolis-Saint Paul International",
+      "center": {
+        "lat": 44.885,
+        "lng": -93.222
+      },
       "terminalWord": "Terminal",
       "terminals": [
         {
@@ -6649,6 +6881,10 @@
     },
     "MUC": {
       "name": "Munich Airport",
+      "center": {
+        "lat": 48.354,
+        "lng": 11.786
+      },
       "terminalWord": "Terminal",
       "terminals": [
         {
@@ -6762,6 +6998,10 @@
     },
     "MXP": {
       "name": "Milan Malpensa",
+      "center": {
+        "lat": 45.631,
+        "lng": 8.728
+      },
       "terminalWord": "Terminal",
       "terminals": [
         {
@@ -6782,6 +7022,10 @@
     },
     "NGO": {
       "name": "Nagoya Chubu Centrair International",
+      "center": {
+        "lat": 34.858,
+        "lng": 136.805
+      },
       "terminalWord": "Terminal",
       "terminals": [
         {
@@ -6847,6 +7091,10 @@
     },
     "NRT": {
       "name": "Tokyo Narita International Airport",
+      "center": {
+        "lat": 35.772,
+        "lng": 140.393
+      },
       "terminalWord": "Terminal",
       "terminals": [
         {
@@ -6969,6 +7217,10 @@
     },
     "OAK": {
       "name": "Oakland International",
+      "center": {
+        "lat": 37.721,
+        "lng": -122.221
+      },
       "terminalWord": "Terminal",
       "terminals": [
         {
@@ -7064,6 +7316,10 @@
     },
     "ORD": {
       "name": "Chicago O'Hare International",
+      "center": {
+        "lat": 41.974,
+        "lng": -87.907
+      },
       "terminalWord": "Terminal",
       "terminals": [
         {
@@ -7228,6 +7484,10 @@
     },
     "PDX": {
       "name": "Portland International",
+      "center": {
+        "lat": 45.589,
+        "lng": -122.597
+      },
       "terminalWord": "Concourse",
       "terminals": [
         {
@@ -7381,6 +7641,10 @@
     },
     "PEK": {
       "name": "Beijing Capital International",
+      "center": {
+        "lat": 40.08,
+        "lng": 116.603
+      },
       "terminalWord": "Terminal",
       "terminals": [
         {
@@ -7492,6 +7756,10 @@
     },
     "PHL": {
       "name": "Philadelphia International",
+      "center": {
+        "lat": 39.874,
+        "lng": -75.242
+      },
       "terminalWord": "Terminal",
       "terminals": [
         {
@@ -7737,6 +8005,10 @@
     },
     "PHX": {
       "name": "Phoenix Sky Harbor International Airport",
+      "center": {
+        "lat": 33.437,
+        "lng": -112.008
+      },
       "terminalWord": "Terminal",
       "terminals": [
         {
@@ -7875,6 +8147,10 @@
     },
     "PKX": {
       "name": "Beijing Daxing International",
+      "center": {
+        "lat": 39.51,
+        "lng": 116.411
+      },
       "terminalWord": "Terminal",
       "terminals": [
         {
@@ -7934,6 +8210,10 @@
     },
     "PTY": {
       "name": "Tocumen International (Panama City)",
+      "center": {
+        "lat": 9.071,
+        "lng": -79.383
+      },
       "terminalWord": "Terminal",
       "terminals": [
         {
@@ -7954,6 +8234,10 @@
     },
     "PVG": {
       "name": "Shanghai Pudong International",
+      "center": {
+        "lat": 31.144,
+        "lng": 121.808
+      },
       "terminalWord": "Terminal",
       "terminals": [
         {
@@ -8065,6 +8349,10 @@
     },
     "RAK": {
       "name": "Marrakech Menara International",
+      "center": {
+        "lat": 31.607,
+        "lng": -8.036
+      },
       "terminalWord": "Terminal",
       "terminals": [
         {
@@ -8128,6 +8416,10 @@
     },
     "RDM": {
       "name": "Redmond Roberts Field",
+      "center": {
+        "lat": 44.254,
+        "lng": -121.15
+      },
       "terminalWord": "Terminal",
       "terminals": [
         {
@@ -8173,6 +8465,10 @@
     },
     "RDU": {
       "name": "Raleigh Durham International",
+      "center": {
+        "lat": 35.88,
+        "lng": -78.788
+      },
       "terminalWord": "Terminal",
       "terminals": [
         {
@@ -8279,6 +8575,10 @@
     },
     "SAN": {
       "name": "San Diego International Airport",
+      "center": {
+        "lat": 32.734,
+        "lng": -117.193
+      },
       "terminalWord": "Terminal",
       "terminals": [
         {
@@ -8367,6 +8667,10 @@
     },
     "SBA": {
       "name": "Santa Barbara Airport",
+      "center": {
+        "lat": 34.426,
+        "lng": -119.84
+      },
       "terminalWord": "Terminal",
       "terminals": [
         {
@@ -8415,6 +8719,10 @@
     },
     "SEA": {
       "name": "Seattle-Tacoma International Airport",
+      "center": {
+        "lat": 47.45,
+        "lng": -122.309
+      },
       "terminalWord": "Concourse",
       "terminals": [
         {
@@ -8614,6 +8922,10 @@
     },
     "SFO": {
       "name": "San Francisco International",
+      "center": {
+        "lat": 37.621,
+        "lng": -122.379
+      },
       "terminalWord": "Terminal",
       "terminals": [
         {
@@ -8770,6 +9082,10 @@
     },
     "SHA": {
       "name": "Shanghai Hongqiao International",
+      "center": {
+        "lat": 31.198,
+        "lng": 121.336
+      },
       "terminalWord": "Terminal",
       "terminals": [
         {
@@ -8869,6 +9185,10 @@
     },
     "SIN": {
       "name": "Singapore Changi Airport",
+      "center": {
+        "lat": 1.364,
+        "lng": 103.992
+      },
       "terminalWord": "Terminal",
       "terminals": [
         {
@@ -9037,6 +9357,10 @@
     },
     "SJC": {
       "name": "San Jose International",
+      "center": {
+        "lat": 37.363,
+        "lng": -121.929
+      },
       "terminalWord": "Terminal",
       "terminals": [
         {
@@ -9133,6 +9457,10 @@
     },
     "SLC": {
       "name": "Salt Lake City International",
+      "center": {
+        "lat": 40.79,
+        "lng": -111.979
+      },
       "terminalWord": "Concourse",
       "terminals": [
         {
@@ -9238,6 +9566,10 @@
     },
     "SMF": {
       "name": "Sacramento International",
+      "center": {
+        "lat": 38.695,
+        "lng": -121.591
+      },
       "terminalWord": "Terminal",
       "terminals": [
         {
@@ -9328,6 +9660,10 @@
     },
     "SYD": {
       "name": "Sydney Kingsford Smith Airport",
+      "center": {
+        "lat": -33.94,
+        "lng": 151.175
+      },
       "terminalWord": "Terminal",
       "terminals": [
         {
@@ -9482,6 +9818,10 @@
     },
     "TPA": {
       "name": "Tampa International",
+      "center": {
+        "lat": 27.977,
+        "lng": -82.531
+      },
       "terminalWord": "Airside",
       "terminals": [
         {
@@ -9592,6 +9932,10 @@
     },
     "YHZ": {
       "name": "Halifax Stanfield International",
+      "center": {
+        "lat": 44.881,
+        "lng": -63.509
+      },
       "terminalWord": "Terminal",
       "terminals": [
         {
@@ -9673,6 +10017,10 @@
     },
     "YUL": {
       "name": "Montréal-Trudeau",
+      "center": {
+        "lat": 45.471,
+        "lng": -73.741
+      },
       "terminalWord": "Gates",
       "terminals": [
         {
@@ -9697,6 +10045,10 @@
     },
     "YVR": {
       "name": "Vancouver International Airport",
+      "center": {
+        "lat": 49.197,
+        "lng": -123.181
+      },
       "terminalWord": "Terminal",
       "terminals": [
         {
@@ -9809,6 +10161,10 @@
     },
     "YYZ": {
       "name": "Toronto Pearson International Airport",
+      "center": {
+        "lat": 43.678,
+        "lng": -79.625
+      },
       "terminalWord": "Terminal",
       "terminals": [
         {
@@ -9917,6 +10273,10 @@
     },
     "ZRH": {
       "name": "Zurich Airport",
+      "center": {
+        "lat": 47.465,
+        "lng": 8.549
+      },
       "terminalWord": "Terminal",
       "terminals": [
         {
