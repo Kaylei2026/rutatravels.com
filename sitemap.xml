@@ -252,6 +252,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://rutatravels.com/live/seoul-icn/</loc>
+    <lastmod>2026-10-16</lastmod>
+    <changefreq>hourly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://rutatravels.com/live/shanghai-pvg/</loc>
     <lastmod>2026-10-16</lastmod>
     <changefreq>hourly</changefreq>
