@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tokyo (HND) Airport Delays | Ruta Travels</title>
+<meta name="description" content="Tokyo (HND) is running on time right now.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://rutatravels.com/live/tokyo-hnd/">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Tokyo (HND) airport delays, live">
+<meta property="og:description" content="Tokyo (HND) is running on time right now.">
+<meta property="og:url" content="https://rutatravels.com/live/tokyo-hnd/">
+<meta property="og:site_name" content="Ruta Travels">
+<meta property="og:image" content="https://rutatravels.com/photos/25.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&family=Montserrat:wght@200;300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#101C33;--navy-2:#17253F;--card:#1A2C3D;--gold:#F2A65A;--cream:#F4F0E8;--muted:#9AA6BA;--line:rgba(244,240,232,.13);--green:#5C9B7A;--teal:#4F7C82;--amber:#D19E52;--red:#CB6B63;--red-2:#A84C44}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'DM Sans',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--navy);color:var(--cream);font-size:16px;line-height:1.6;-webkit-text-size-adjust:100%}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:18px 40px;border-bottom:1px solid var(--line)}
+  .nav a.brand{display:inline-flex;align-items:center;line-height:0}.nav a.brand img{height:clamp(26px,7vw,44px);width:auto;display:block}
+  .nav-links{display:flex;gap:26px;align-items:center}
+  .nav-links a{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:rgba(244,240,232,.75);text-decoration:none}
+  .nav-links a:hover{color:var(--gold)}
+  .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+  .hero-img{position:absolute;inset:0}.hero-img img{width:100%;height:100%;object-fit:cover;opacity:.26}
+  .hero::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(16,28,51,.55),rgba(16,28,51,.94))}
+  .hero-body{position:relative;z-index:2;max-width:960px;margin:0 auto;padding:76px 40px 44px}
+  .wrap{max-width:960px;margin:0 auto;padding:36px 40px 40px}
+  h1{font-family:'Montserrat',sans-serif;font-weight:300;font-size:clamp(30px,4vw,48px);letter-spacing:-.02em;line-height:1.08;color:var(--cream)}
+  .lede{font-family:'Montserrat',sans-serif;font-weight:300;color:var(--muted);font-size:17px;margin-top:16px;max-width:62ch}
+  .meta{display:flex;flex-wrap:wrap;align-items:center;gap:16px;margin-top:26px;font-size:13px;color:var(--muted)}
+  .refresh{background:transparent;border:1px solid var(--line);border-radius:50px;color:var(--cream);font-family:'DM Sans',sans-serif;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:8px 16px;cursor:pointer}
+  .refresh:hover{border-color:var(--gold);color:var(--gold)}
+  .sec-h{font-size:11px;letter-spacing:.24em;text-transform:uppercase;font-weight:600;margin:38px 0 6px;color:var(--muted)}
+  .sec-h:first-child{margin-top:8px}
+  .sec-sub{font-size:13px;color:rgba(244,240,232,.4);margin-bottom:8px}
+  /* Curated alerts — the differentiator */
+  .alert{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:12px;padding:15px 18px;margin-bottom:12px}
+  .alert .when{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:600}
+  .alert .atitle{font-weight:600;color:var(--cream);margin-top:6px;line-height:1.35}
+  .alert .asum{color:var(--muted);font-size:14px;margin-top:5px;line-height:1.5}
+  .alert .ameta{font-size:12px;color:rgba(244,240,232,.42);margin-top:9px}
+  .alert .ameta a{color:var(--gold);text-decoration:none}
+  .alert .ameta a:hover{text-decoration:underline}
+  .alert .tags{margin-top:8px;display:flex;flex-wrap:wrap;gap:6px}
+  .alert .tag{font-size:10px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:var(--muted);border:1px solid var(--line);border-radius:50px;padding:2px 9px}
+  /* Delay board rows */
+  .region{margin-bottom:6px}
+  .row-link{text-decoration:none;color:inherit;cursor:pointer;transition:background .15s ease}
+.row-link:hover{background:rgba(11,21,38,.04)}
+.row-link:focus-visible{outline:2px solid #C98B2E;outline-offset:-2px}
+.row{display:flex;align-items:center;gap:14px;padding:13px 0;border-top:1px solid var(--line)}
+  .row .dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+  .row .apt{font-family:'Montserrat',sans-serif;font-weight:600;font-size:19px;width:58px;flex-shrink:0;letter-spacing:.02em}
+  .row .txt{flex:1;min-width:0}
+  .row .name{font-weight:600;color:var(--cream)}
+  .row .reason{color:var(--muted);font-size:14px;margin-top:3px;line-height:1.5}
+  .row .note{color:rgba(242,166,90,.85);font-size:13px;margin-top:3px}
+  .clear{text-align:center;padding:64px 20px;color:var(--muted)}
+  .clear .big{font-family:'Montserrat',sans-serif;font-weight:300;font-size:26px;color:var(--cream);margin-bottom:10px}
+  .cta{margin:56px 0 20px;padding:28px;background:var(--navy-2);border:1px solid var(--line);border-radius:16px;text-align:center}
+  .cta h2{font-family:'Montserrat',sans-serif;font-weight:300;font-size:clamp(20px,2.4vw,26px);color:var(--cream);line-height:1.3}
+  .cta p{color:var(--muted);font-size:15px;margin:12px auto 22px;max-width:52ch}
+  .cta a{display:inline-block;font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;background:var(--cream);color:#17253F;padding:15px 32px;text-decoration:none;border-radius:2px}
+  footer a{text-decoration:none}
+  footer a:hover{color:#EDA25E !important}
+  .note{font-size:12px;color:rgba(244,240,232,.4);margin-top:8px;font-style:italic}
+  @media(max-width:640px){.nav,.wrap{padding-left:20px;padding-right:20px}.wrap{padding-top:44px}.row .apt{width:50px;font-size:17px}}
+</style>
+<style>
+.apt-head{display:flex;align-items:center;gap:12px;margin:0 0 10px}
+.apt-head .dot{width:12px;height:12px;border-radius:50%;flex-shrink:0}
+.apt-status{font-family:'Montserrat',sans-serif;font-size:20px;font-weight:600}
+.apt-note{margin:0 0 18px;font-size:15px}
+.apt-method{margin:22px 0 0;font-size:13px;opacity:.7;max-width:62ch}
+.apt-none{font-size:15px;opacity:.8}
+.stats{display:flex;gap:34px;margin:18px 0 0;flex-wrap:wrap}
+.stat .k{font-size:10px;letter-spacing:.24em;text-transform:uppercase;opacity:.55}
+.stat .v{font-family:'Montserrat',sans-serif;font-size:26px;font-weight:300;margin-top:3px}
+.apt-lay{margin:0 0 16px;font-size:15px;max-width:62ch}
+.terms{border-collapse:collapse;margin:0;font-size:15px}
+.terms th{text-align:left;font-weight:500;padding:9px 28px 9px 0;border-top:1px solid var(--line)}
+.terms td{padding:9px 0;border-top:1px solid var(--line);opacity:.75;white-space:nowrap}
+.facts-l{margin:6px 0 0;padding-left:20px;font-size:15px}
+.facts-l li{margin:4px 0}
+.svc{margin-top:8px}
+.svc-t{padding:18px 0;border-top:1px solid var(--line)}
+.svc-t h3{font-family:'Montserrat',sans-serif;font-size:17px;font-weight:600;margin:0 0 10px}
+.svc-g{margin:0 0 12px}
+.svc-k{font-size:10px;letter-spacing:.24em;text-transform:uppercase;opacity:.55;margin-bottom:5px}
+.svc-l{margin:0;padding-left:20px;font-size:14.5px}
+.svc-l li{margin:3px 0}
+.svc-l .loc{opacity:.55;font-size:13px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.siblings{display:flex;flex-wrap:wrap;gap:10px 16px;margin-top:6px}
+.siblings a,.siblings span{font-size:14px}
+.backlink{display:inline-block;margin-top:34px;font-size:14px}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <a href="/" class="brand"><img src="/ruta-logo-nav.png" alt="Ruta Travels"></a>
+  <div class="nav-links"><a href="/blog/">Journal</a><a href="/#discover">Discover</a><a href="/#get">Get Ruta</a></div>
+</nav>
+<section class="hero">
+  <div class="hero-body">
+    <h1>Tokyo (HND) airport delays</h1>
+    <p class="lede">Tokyo (HND) is running on time right now.</p>
+    <div class="meta"><span>Updated 2026-10-16 17:56 UTC</span></div>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="sec-h">Right now</div>
+  <div class="apt-head"><span class="dot" style="background:#5C9B7A"></span><div class="apt-status">On time</div></div><p class="apt-method">Delay figures come from scheduled versus actual departure times across the airport, refreshed through the day. Alerts below are classified from public news reporting.</p>
+
+  <div class="sec-h" style="margin-top:46px">Alerts affecting HND</div>
+  <p class="apt-none">No disruption alerts affecting this airport right now.</p>
+
+  <h2>Inside HND</h2><p class="apt-lay">Tokyo Haneda Airport has 3 terminals and 140 gates.</p><table class="terms"><caption class="sr-only">Terminals and gate counts at HND</caption><tbody><tr><th scope="row">Terminal 1 (ANA)</th><td>35 gates</td></tr><tr><th scope="row">Terminal 2 (JAL)</th><td>30 gates</td></tr><tr><th scope="row">Terminal 3 (International)</th><td>75 gates</td></tr></tbody></table><p class="apt-method">Ruta carries the position of every one of these gates, so it measures the walk to yours along the concourse rather than in a straight line, and it works with no signal.</p>
+
+  <h2>Getting around HND</h2><p class="apt-lay">Mapped at HND, with a position for each one:</p><ul class="facts-l"><li><strong>9</strong> accessible restrooms</li><li><strong>13</strong> lifts</li><li><strong>5</strong> family restrooms</li></ul><p class="apt-method">Tell Ruta you use a wheelchair and every walking estimate slows to match, and these get named on the way to your gate rather than listed and left for you to find.</p><p class="apt-lay" style="margin-top:22px">Also mapped here:</p><ul class="facts-l"><li><strong>1</strong> prayer room</li><li><strong>1</strong> play area</li></ul>
+
+  <h2>Eating, shopping and lounges at HND</h2><p class="apt-lay">22 places across 3 terminals, the same list Ruta carries offline.</p><div class="svc"><div class="svc-t"><h3>Terminal 1 (Domestic)</h3><div class="svc-g"><div class="svc-k">Eat</div><ul class="svc-l"><li>Ramen Restaurant <span class="loc">Departures</span></li><li>Starbucks <span class="loc">Main Hall</span></li><li>Conveyor Belt Sushi <span class="loc">Departures</span></li></ul></div><div class="svc-g"><div class="svc-k">Shop</div><ul class="svc-l"><li>ANA Mall <span class="loc">Departures</span></li><li>Souvenir Shop <span class="loc">Arrivals</span></li></ul></div><div class="svc-g"><div class="svc-k">Lounges and more</div><ul class="svc-l"><li>ANA Lounge <span class="loc">Airside</span></li><li>Prayer Room <span class="loc">Level 3</span></li></ul></div></div><div class="svc-t"><h3>Terminal 2 (Domestic)</h3><div class="svc-g"><div class="svc-k">Eat</div><ul class="svc-l"><li>Tempura Restaurant <span class="loc">Departures</span></li><li>Starbucks <span class="loc">Main Hall</span></li><li>Yoshinoya <span class="loc">Near Gates</span></li></ul></div><div class="svc-g"><div class="svc-k">Shop</div><ul class="svc-l"><li>JAL PLAZA <span class="loc">Departures</span></li><li>Souvenir Shop <span class="loc">Arrivals</span></li></ul></div><div class="svc-g"><div class="svc-k">Lounges and more</div><ul class="svc-l"><li>JAL Sakura Lounge <span class="loc">Airside</span></li><li>Family Restroom <span class="loc">Near Gates</span></li></ul></div></div><div class="svc-t"><h3>Terminal 3 (International)</h3><div class="svc-g"><div class="svc-k">Eat</div><ul class="svc-l"><li>Tonkatsu Maisen <span class="loc">Departures</span></li><li>Starbucks <span class="loc">Main Hall</span></li><li>Yakiniku Restaurant <span class="loc">Departures</span></li></ul></div><div class="svc-g"><div class="svc-k">Shop</div><ul class="svc-l"><li>Duty Free Japan <span class="loc">Departures</span></li><li>Tokyo Pop <span class="loc">Main Hall</span></li></ul></div><div class="svc-g"><div class="svc-k">Lounges and more</div><ul class="svc-l"><li>ANA Suite Lounge <span class="loc">Airside</span></li><li>TIAT Sky Lounge <span class="loc">Airside</span></li><li>Prayer Room <span class="loc">Level 4</span></li></ul></div></div></div>
+
+  <h2>Other airports in Asia</h2><div class="siblings"><a href="/live/mumbai-bom/">Mumbai (BOM)</a><a href="/live/bangkok-bkk/">Bangkok (BKK)</a><a href="/live/beijing-pek/">Beijing (PEK)</a><a href="/live/delhi-del/">Delhi (DEL)</a><a href="/live/hong-kong-hkg/">Hong Kong (HKG)</a><a href="/live/kuala-lumpur-kul/">Kuala Lumpur (KUL)</a><a href="/live/shanghai-pvg/">Shanghai (PVG)</a><a href="/live/singapore-sin/">Singapore (SIN)</a></div>
+
+  <a class="backlink" href="/live/">All airport delays, live</a>
+
+  <div class="cta">
+    <h2>Ruta watches this for the flights that are yours.</h2>
+    <p>You should not have to refresh a delay board to know if your trip is at risk. Ruta follows your flights automatically, catches trouble early, and tells you what it means and what to do.</p>
+    <a href="/#get">Get Ruta</a>
+  </div>
+</div>
+<footer style="background:#0B1526;color:#F4F0E8;padding:80px clamp(20px,5vw,40px) 40px;margin-top:120px">
+  <div style="max-width:1180px;margin:0 auto;display:flex;justify-content:space-between;align-items:flex-start;gap:60px;flex-wrap:wrap;border-bottom:1px solid rgba(244,240,232,.14);padding-bottom:52px">
+    <img src="/hero-logo.png" alt="Ruta Travels" style="height:104px;width:auto;display:block">
+    <div style="display:flex;gap:70px;flex-wrap:wrap">
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <span style="font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:rgba(244,240,232,.45)">Product</span>
+        <a href="https://rutatravels.com/#get" style="font-size:14px;color:#F4F0E8">Get notified</a>
+        <a href="https://rutatravels.com/live/" style="font-size:14px;color:#F4F0E8">Live flight status</a>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <span style="font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:rgba(244,240,232,.45)">Read</span>
+        <a href="https://rutatravels.com/blog/" style="font-size:14px;color:#F4F0E8">Journal</a>
+        <a href="https://instagram.com/ruta_travels" style="font-size:14px;color:#F4F0E8">Instagram</a>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <span style="font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:rgba(244,240,232,.45)">Company</span>
+        <a href="https://rutatravels.com/support.html" style="font-size:14px;color:#F4F0E8">Support</a>
+        <a href="https://rutatravels.com/privacy.html" style="font-size:14px;color:#F4F0E8">Privacy</a>
+        <a href="https://rutatravels.com/terms.html" style="font-size:14px;color:#F4F0E8">Terms</a>
+      </div>
+    </div>
+  </div>
+  <div style="max-width:1180px;margin:26px auto 0;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(244,240,232,.45)">
+    <span>© 2026 Ruta Travels</span>
+    <span>First Class Intelligence. For Every Traveler.</span>
+  </div>
+</footer>
+</body>
+</html>
