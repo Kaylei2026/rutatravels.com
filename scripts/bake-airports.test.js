@@ -258,3 +258,42 @@ test('the facts table is a table, with a caption screen readers can use', () => 
   assert.match(html, /<th scope="row">/);
   r.cleanup();
 });
+
+
+test('one of a thing reads as one of a thing', () => {
+  // "1 play areas" is the tell that a page was generated rather than written.
+  const r = run(sample());
+  const lax = r.read('live/los-angeles-lax/index.html');
+  assert.ok(!/>1<\/strong> [a-z ]*s</.test(lax), 'a count of 1 kept its plural label');
+  r.cleanup();
+});
+
+test('the accessibility section carries real counts, not a boast', () => {
+  const r = run(sample());
+  const lax = r.read('live/los-angeles-lax/index.html');
+  assert.match(lax, /Getting around LAX/);
+  assert.match(lax, /accessible restrooms?/);
+  assert.match(lax, /lifts?/);
+  // The claim has to be tied to the app's behaviour, not floated on its own.
+  assert.match(lax, /every walking estimate slows to match/);
+  r.cleanup();
+});
+
+test('terminal services name real places and where they are', () => {
+  const r = run(sample());
+  const lax = r.read('live/los-angeles-lax/index.html');
+  assert.match(lax, /Eating, shopping and lounges at LAX/);
+  assert.match(lax, /Hudson News/);
+  assert.match(lax, /class="loc">Main Hall</);
+  r.cleanup();
+});
+
+test('an airport with no services section does not get an empty heading', () => {
+  const d = sample();
+  d.regions[0].airports.push({ airport: 'ZZZ', city: 'Nowhere', level: 0, status: 'On time' });
+  const r = run(d);
+  const z = r.read('live/nowhere-zzz/index.html');
+  assert.ok(!/Eating, shopping and lounges/.test(z));
+  assert.ok(!/Getting around ZZZ/.test(z));
+  r.cleanup();
+});

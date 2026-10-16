@@ -129,6 +129,86 @@ const siblingsBlock = (region, self) => {
   return `<h2>Other airports in ${esc(region.region)}</h2><div class="siblings">${links}</div>`;
 };
 
+/**
+ * What is actually inside the terminals: where to eat, what to buy, which lounges.
+ *
+ * 81 airports, 193 terminals, 1,332 places, each tied to the terminal it sits in and usually to
+ * a spot within it. This is the app's own services data, and it is the reason someone would keep
+ * the page open after the delay question is answered.
+ */
+const servicesBlock = (f, code) => {
+  const ts = (f && f.terminalServices) || [];
+  if (!ts.length) return '';
+  const group = (label, items) => {
+    if (!items.length) return '';
+    return `<div class="svc-g"><div class="svc-k">${esc(label)}</div><ul class="svc-l">`
+      + items.map((x) => `<li>${esc(x.name)}${x.location ? ` <span class="loc">${esc(x.location)}</span>` : ''}</li>`).join('')
+      + '</ul></div>';
+  };
+  const sections = ts.map((t) => {
+    const inner = group('Eat', t.food) + group('Shop', t.shopping) + group('Lounges and more', t.other);
+    return inner ? `<div class="svc-t"><h3>${esc(t.name)}</h3>${inner}</div>` : '';
+  }).join('');
+  if (!sections) return '';
+  const total = ts.reduce((n, t) => n + t.food.length + t.shopping.length + t.other.length, 0);
+  return `<h2>Eating, shopping and lounges at ${esc(code)}</h2>`
+    + `<p class="apt-lay">${esc(total)} places across ${esc(ts.length)} ${ts.length === 1 ? 'terminal' : 'terminals'}, `
+    + `the same list Ruta carries offline.</p><div class="svc">${sections}</div>`;
+};
+
+// Plain English for a category key. Written out rather than de-camel-cased, because
+// "Accessible Restrooms" and "accessible restrooms" are not the same register.
+const ACCESS_LABEL = {
+  accessibleRestrooms: 'accessible restrooms',
+  elevators: 'lifts',
+  familyRestrooms: 'family restrooms',
+  petRelief: 'pet relief areas',
+  sensoryQuiet: 'sensory quiet rooms',
+  medical: 'medical points',
+};
+const AMENITY_LABEL = {
+  waterRefill: 'water refill stations',
+  prayer: 'prayer rooms',
+  play: 'play areas',
+  showers: 'showers',
+  luggageStorage: 'luggage storage',
+  peopleMovers: 'people movers',
+};
+
+// Labels are written plural because that is the common case. One of a thing should still read
+// as one of a thing: "1 play areas" is the tell that a page was generated and not written.
+// A trailing s is enough here; 'luggage storage' has none and is left alone.
+const one = (label) => (label.endsWith('s') ? label.slice(0, -1) : label);
+
+const listOf = (counts, labels) => Object.keys(counts || {})
+  .filter((k) => labels[k])
+  .map((k) => {
+    const n = counts[k];
+    return `<li><strong>${esc(n)}</strong> ${esc(n === 1 ? one(labels[k]) : labels[k])}</li>`;
+  }).join('');
+
+/**
+ * The section nobody else publishes.
+ *
+ * Every mapped entry carries a position, which is how the app names a lift or an accessible
+ * restroom on the way to a gate rather than listing them on a page and leaving you to find them.
+ * Counting them is the honest way to say that on a static page.
+ */
+const accessBlock = (f, code) => {
+  const acc = listOf(f && f.accessibility, ACCESS_LABEL);
+  const amen = listOf(f && f.amenities, AMENITY_LABEL);
+  if (!acc && !amen) return '';
+  let h = `<h2>Getting around ${esc(code)}</h2>`;
+  if (acc) {
+    h += `<p class="apt-lay">Mapped at ${esc(code)}, with a position for each one:</p>`
+      + `<ul class="facts-l">${acc}</ul>`
+      + `<p class="apt-method">Tell Ruta you use a wheelchair and every walking estimate slows to match, `
+      + `and these get named on the way to your gate rather than listed and left for you to find.</p>`;
+  }
+  if (amen) h += `<p class="apt-lay" style="margin-top:22px">Also mapped here:</p><ul class="facts-l">${amen}</ul>`;
+  return h;
+};
+
 const pageHtml = ({ a, region, alerts, chrome, updated, facts }) => {
   const city = a.city || a.airport;
   const title = `${city} (${a.airport}) Airport Delays | Ruta Travels`;
@@ -170,6 +250,16 @@ ${chrome.style}
 .terms{border-collapse:collapse;margin:0;font-size:15px}
 .terms th{text-align:left;font-weight:500;padding:9px 28px 9px 0;border-top:1px solid var(--line)}
 .terms td{padding:9px 0;border-top:1px solid var(--line);opacity:.75;white-space:nowrap}
+.facts-l{margin:6px 0 0;padding-left:20px;font-size:15px}
+.facts-l li{margin:4px 0}
+.svc{margin-top:8px}
+.svc-t{padding:18px 0;border-top:1px solid var(--line)}
+.svc-t h3{font-family:'Montserrat',sans-serif;font-size:17px;font-weight:600;margin:0 0 10px}
+.svc-g{margin:0 0 12px}
+.svc-k{font-size:10px;letter-spacing:.24em;text-transform:uppercase;opacity:.55;margin-bottom:5px}
+.svc-l{margin:0;padding-left:20px;font-size:14.5px}
+.svc-l li{margin:3px 0}
+.svc-l .loc{opacity:.55;font-size:13px}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 .siblings{display:flex;flex-wrap:wrap;gap:10px 16px;margin-top:6px}
 .siblings a,.siblings span{font-size:14px}
@@ -194,6 +284,10 @@ ${chrome.nav}
   ${alertsBlock(alerts)}
 
   ${factsBlock(facts, a.airport)}
+
+  ${accessBlock(facts, a.airport)}
+
+  ${servicesBlock(facts, a.airport)}
 
   ${siblingsBlock(region, a)}
 
