@@ -279,6 +279,51 @@
       "windMph": 10,
       "observedAt": "2026-10-16T19:45:43.000Z",
       "fetchedAt": "2026-10-16T19:45:43.969Z"
+    },
+    "CMN": {
+      "tempF": 68,
+      "feelsF": 68,
+      "description": "clear sky",
+      "icon": "01n",
+      "windMph": 8,
+      "readAt": "2026-10-16T20:07:05.000Z",
+      "fetchedAt": "2026-10-16T20:07:05.437Z"
+    },
+    "AKL": {
+      "tempF": 50,
+      "feelsF": 48,
+      "description": "clear sky",
+      "icon": "01d",
+      "windMph": 7,
+      "readAt": "2026-10-16T20:07:05.000Z",
+      "fetchedAt": "2026-10-16T20:07:05.568Z"
+    },
+    "SYD": {
+      "tempF": 57,
+      "feelsF": 56,
+      "description": "overcast clouds",
+      "icon": "04d",
+      "windMph": 2,
+      "readAt": "2026-10-16T20:07:05.000Z",
+      "fetchedAt": "2026-10-16T20:07:05.713Z"
+    },
+    "LIM": {
+      "tempF": 77,
+      "feelsF": 78,
+      "description": "few clouds",
+      "icon": "02d",
+      "windMph": 15,
+      "readAt": "2026-10-16T20:07:05.000Z",
+      "fetchedAt": "2026-10-16T20:07:05.842Z"
+    },
+    "BOG": {
+      "tempF": 62,
+      "feelsF": 61,
+      "description": "light rain",
+      "icon": "10d",
+      "windMph": 4,
+      "readAt": "2026-10-16T20:07:05.000Z",
+      "fetchedAt": "2026-10-16T20:07:05.981Z"
     }
   }
 }
