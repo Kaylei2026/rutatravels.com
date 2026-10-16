@@ -19,7 +19,7 @@ const FIXTURE = path.join(__dirname, 'fixtures', 'live-sample.json');
 const sample = () => JSON.parse(fs.readFileSync(FIXTURE, 'utf8'));
 
 /** A throwaway copy of the site, so a test never writes into the real tree. */
-const run = (payload, extraArgs = []) => {
+const run = (payload, extraArgs = [], opts = {}) => {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'ruta-apt-'));
   fs.mkdirSync(path.join(dir, 'live'));
   fs.mkdirSync(path.join(dir, 'scripts'));
@@ -29,6 +29,7 @@ const run = (payload, extraArgs = []) => {
   fs.copyFileSync(path.join(ROOT, 'sitemap.xml'), path.join(dir, 'sitemap.xml'));
   const facts = path.join(ROOT, 'live', 'airport-facts.json');
   if (fs.existsSync(facts)) fs.copyFileSync(facts, path.join(dir, 'live', 'airport-facts.json'));
+  if (opts.weather) fs.writeFileSync(path.join(dir, 'live', 'airport-weather.json'), JSON.stringify({ airports: opts.weather }));
   const pay = path.join(dir, 'p.json');
   fs.writeFileSync(pay, JSON.stringify(payload));
   let status = 0;
@@ -355,4 +356,79 @@ test('the services section does not present a sample as an inventory', () => {
   assert.match(html, /Some of what you will find inside/);
   assert.ok(!/\d+ places across/.test(html), 'counted the sample as if it were a directory');
   r.cleanup();
+});
+
+
+const wxAt = (minsAgo, over = {}) => ({
+  tempF: 68, feelsF: 67, description: 'broken clouds', icon: '04d', windMph: 9,
+  observedAt: new Date(Date.now() - minsAgo * 60000).toISOString(),
+  fetchedAt: new Date(Date.now() - minsAgo * 60000).toISOString(),
+  ...over,
+});
+
+test('weather shows with its age on the face of it', () => {
+  // The age is the whole point. If it starts pouring and the page still says clear, the reader
+  // has to see the reading is hours old rather than assume it is current.
+  const r = run(sample(), [], { weather: { LAX: wxAt(20) } });
+  const html = r.read('live/los-angeles-lax/index.html');
+  assert.match(html, /Weather at LAX/);
+  assert.match(html, /68&deg;F/);
+  assert.match(html, /broken clouds/);
+  assert.match(html, /Taken 20 min ago/);
+  r.cleanup();
+});
+
+test('an older reading reports hours, not a large number of minutes', () => {
+  const r = run(sample(), [], { weather: { LAX: wxAt(185) } });
+  assert.match(r.read('live/los-angeles-lax/index.html'), /Taken 3 hr ago/);
+  r.cleanup();
+});
+
+test('an airport with no reading gets no weather card rather than an empty one', () => {
+  const r = run(sample(), [], { weather: { LAX: wxAt(10) } });
+  assert.ok(!/Weather at JFK/.test(r.read('live/new-york-jfk/index.html')));
+  r.cleanup();
+});
+
+test('no weather file at all still builds', () => {
+  const r = run(sample());
+  assert.ok(r.read('live/los-angeles-lax/index.html'), 'page missing');
+  assert.ok(!/Weather at LAX/.test(r.read('live/los-angeles-lax/index.html')));
+  r.cleanup();
+});
+
+test('a reading with no temperature and no description is not rendered', () => {
+  const r = run(sample(), [], { weather: { LAX: { tempF: null, description: null, fetchedAt: new Date().toISOString() } } });
+  assert.ok(!/Weather at LAX/.test(r.read('live/los-angeles-lax/index.html')));
+  r.cleanup();
+});
+
+test('a partial reading renders what it has', () => {
+  const r = run(sample(), [], { weather: { LAX: { tempF: 71, description: null, windMph: null, fetchedAt: new Date().toISOString() } } });
+  const html = r.read('live/los-angeles-lax/index.html');
+  assert.match(html, /71&deg;F/);
+  assert.ok(!/wind/.test(html.slice(html.indexOf('Weather at LAX'), html.indexOf('Weather at LAX') + 400)));
+  r.cleanup();
+});
+
+test('the page says the figure can lag, rather than implying it is live', () => {
+  const r = run(sample(), [], { weather: { LAX: wxAt(20) } });
+  const html = r.read('live/los-angeles-lax/index.html');
+  assert.match(html, /can lag a change in conditions/);
+  r.cleanup();
+});
+
+test('bake-weather does nothing without a key, rather than failing the build', () => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'ruta-wx-'));
+  fs.mkdirSync(path.join(dir, 'live')); fs.mkdirSync(path.join(dir, 'scripts'));
+  fs.copyFileSync(path.join(ROOT, 'live', 'airport-facts.json'), path.join(dir, 'live', 'airport-facts.json'));
+  fs.copyFileSync(path.join(ROOT, 'scripts', 'bake-weather.js'), path.join(dir, 'scripts', 'bake-weather.js'));
+  let status = 0;
+  try {
+    execFileSync(process.execPath, [path.join(dir, 'scripts', 'bake-weather.js')],
+      { stdio: 'pipe', env: { ...process.env, RUTA_API_KEY: '' } });
+  } catch (e) { status = e.status; }
+  assert.strictEqual(status, 0, 'a missing key failed the build');
+  assert.ok(!fs.existsSync(path.join(dir, 'live', 'airport-weather.json')), 'wrote a file with no key');
+  fs.rmSync(dir, { recursive: true, force: true });
 });

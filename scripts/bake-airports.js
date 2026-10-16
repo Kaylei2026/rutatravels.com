@@ -29,6 +29,7 @@ const ROOT = path.join(__dirname, '..');
 const PAGE = path.join(ROOT, 'live', 'index.html');
 const SITEMAP = path.join(ROOT, 'sitemap.xml');
 const FACTS = path.join(ROOT, 'live', 'airport-facts.json');
+const WEATHER = path.join(ROOT, 'live', 'airport-weather.json');
 const BOARD = require(path.join(ROOT, 'live', 'board.js'));
 
 const SITE = 'https://rutatravels.com';
@@ -85,6 +86,38 @@ const summaryLine = (a, alerts) => {
  * terminalWord matters: Atlanta has Concourses, not Terminals, and printing the wrong one reads
  * as not knowing the airport.
  */
+/**
+ * Current weather, with its age on the face of it.
+ *
+ * Refreshed on a three-hour clock rather than the board's thirty minutes, because weather on a
+ * reference page does not need half-hour precision and the server's weather cache has a 30-minute
+ * TTL, so matching the board would miss it every time and cost real money.
+ *
+ * The age line is the point. If it starts pouring and the page still says clear skies, the reader
+ * has to be able to see the reading is three hours old rather than assume it is current. An
+ * unlabelled temperature is worse than none.
+ */
+const weatherBlock = (w, code, nowMs) => {
+  if (!w || (w.tempF == null && !w.description)) return '';
+  const t = new Date(w.observedAt || w.fetchedAt || 0).getTime();
+  const mins = (isFinite(t) && t) ? Math.round((nowMs - t) / 60000) : null;
+  let age = '';
+  if (mins != null && mins >= 0) {
+    if (mins < 90) age = `${mins} min ago`;
+    else age = `${Math.round(mins / 60)} hr ago`;
+  }
+  const bits = [];
+  if (w.tempF != null) bits.push(`<span class="wx-t">${esc(w.tempF)}&deg;F</span>`);
+  if (w.description) bits.push(`<span class="wx-d">${esc(w.description)}</span>`);
+  if (w.windMph != null) bits.push(`<span class="wx-w">wind ${esc(w.windMph)} mph</span>`);
+  return section('Weather', `<h2>Weather at ${esc(code)}</h2>`
+    + `<p class="wx">${bits.join('<span class="wx-sep">&middot;</span>')}</p>`
+    + `<p class="apt-method">`
+    + (age ? `Taken ${esc(age)}. ` : '')
+    + `Refreshed a few times a day, so it can lag a change in conditions. `
+    + `Ruta checks weather on your own flights far more often than this page does.</p>`);
+};
+
 const factsBlock = (f, code, asOf) => {
   if (!f || !f.terminals || !f.terminals.length) return '';
   const word = f.terminalWord || 'Terminal';
@@ -238,7 +271,7 @@ const accessBlock = (f, code) => {
   return section('Getting around', h);
 };
 
-const pageHtml = ({ a, region, alerts, chrome, updated, facts, asOf }) => {
+const pageHtml = ({ a, region, alerts, chrome, updated, facts, asOf, weather, nowMs }) => {
   const city = a.city || a.airport;
   const title = `${city} (${a.airport}) Airport Delays | Ruta Travels`;
   const desc = summaryLine(a, alerts);
@@ -278,6 +311,11 @@ ${chrome.style}
   color:var(--cream);line-height:1.3;margin:0 0 14px;letter-spacing:-.01em}
 .wrap h3{font-family:'Montserrat',sans-serif;font-size:16px;font-weight:600;margin:0 0 10px;color:var(--cream)}
 
+.wx{display:flex;flex-wrap:wrap;align-items:baseline;gap:0;margin:0;color:var(--cream)}
+.wx-t{font-family:'Montserrat',sans-serif;font-size:34px;font-weight:300;letter-spacing:-.02em}
+.wx-d{font-size:16px}
+.wx-w{font-size:16px;color:var(--muted)}
+.wx-sep{color:var(--muted);margin:0 12px}
 .apt-head{display:flex;align-items:center;gap:12px;margin:0 0 10px}
 .apt-head .dot{width:12px;height:12px;border-radius:50%;flex-shrink:0}
 .apt-status{font-family:'Montserrat',sans-serif;font-size:21px;font-weight:600;color:var(--cream)}
@@ -336,6 +374,8 @@ ${chrome.nav}
 
 <div class="wrap">
   ${section('Right now', `<h2>Right now at ${esc(a.airport)}</h2>` + detailBlock(a, alerts))}
+
+  ${weatherBlock(weather, a.airport, nowMs)}
 
   ${section('Alerts', `<h2>Alerts affecting ${esc(a.airport)}</h2>` + alertsBlock(alerts))}
 
@@ -414,6 +454,10 @@ const main = async () => {
   // A missing file is a reason to say so, not to fail a scheduled job.
   let allFacts = {};
   let factsDate = null;
+  let allWeather = {};
+  // Pinned once per run so every page in a batch reports the same age for the same reading,
+  // rather than drifting by however long the loop took.
+  const nowMs = Date.now();
   if (fs.existsSync(FACTS)) {
     try {
       const parsed = JSON.parse(fs.readFileSync(FACTS, 'utf8')) || {};
@@ -424,6 +468,12 @@ const main = async () => {
   } else {
     console.warn('[airports] no airport-facts.json; pages will carry live status only. '
       + 'Regenerate it with scripts/export-airport-facts.cjs in the app repo.');
+  }
+
+  // Optional, like the facts. No weather file just means no weather card.
+  if (fs.existsSync(WEATHER)) {
+    try { allWeather = (JSON.parse(fs.readFileSync(WEATHER, 'utf8')) || {}).airports || {}; }
+    catch (e) { console.warn(`[airports] could not read ${WEATHER} (${e.message}); building without weather`); }
   }
 
   const page = fs.readFileSync(PAGE, 'utf8');
@@ -449,7 +499,8 @@ const main = async () => {
       const slug = BOARD.slugFor(a);
       if (!slug) continue;
       slugs.push(slug);
-      const html = pageHtml({ a, region, alerts: byAirport(a.airport), chrome, updated, facts: allFacts[a.airport], asOf: factsDate });
+      const html = pageHtml({ a, region, alerts: byAirport(a.airport), chrome, updated,
+        facts: allFacts[a.airport], asOf: factsDate, weather: allWeather[a.airport], nowMs });
       const dir = path.join(ROOT, 'live', slug);
       const file = path.join(dir, 'index.html');
       const prev = fs.existsSync(file) ? fs.readFileSync(file, 'utf8') : null;

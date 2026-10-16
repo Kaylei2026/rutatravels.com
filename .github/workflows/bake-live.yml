@@ -45,6 +45,16 @@ jobs:
       - name: Bake the board
         run: node scripts/bake-live.js
 
+      # Weather runs on its own three-hour clock, not the board's thirty minutes. The server's
+      # weather cache has a 30-minute TTL, so matching the board would miss it nearly every time:
+      # about 1,600 OpenWeather calls a day against a 1,000-call free tier. At three hours it is
+      # roughly 270 and free. Needs the key because /api/weather is behind the gate; without the
+      # secret it writes nothing and the pages simply have no weather card.
+      - name: Refresh the weather snapshot
+        env:
+          RUTA_API_KEY: ${{ secrets.RUTA_API_KEY }}
+        run: node scripts/bake-weather.js
+
       # The per-airport pages come off the same payload. Run after the board so a failure here
       # still leaves a freshly baked board rather than neither.
       - name: Bake the airport pages
