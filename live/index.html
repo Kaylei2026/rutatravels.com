@@ -146,8 +146,12 @@
     $('board').innerHTML = out.board;
   }
 
-  function load(){
-    $('updated').textContent='Loading\u2026';
+  // `manual` only on the Refresh button. On first load the page already carries a baked board
+  // and a baked timestamp, and blanking that to "Loading..." until the fetch lands would throw
+  // away the thing the pre-render exists to provide. A tap on Refresh is different: the reader
+  // asked, so the feedback is worth the flicker.
+  function load(manual){
+    if (manual) $('updated').textContent='Loading\u2026';
     fetch(API,{cache:'no-store'}).then(function(r){return r.json();}).then(render).catch(function(){
       // The baked snapshot is already on screen and is better than an error, so a failed
       // refresh only says the figures are not current. It used to wipe the board and print
@@ -156,9 +160,10 @@
       $('updated').textContent='Showing the last snapshot';
     });
   }
-  $('refreshBtn').onclick=load;
+  $('refreshBtn').onclick=function(){ load(true); };
   load();
-  setInterval(load, 120000);
+  // Wrapped: setInterval hands the callback a timer id, which would read as `manual`.
+  setInterval(function(){ load(); }, 120000);
 })();
 </script>
 </body>

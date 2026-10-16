@@ -66,6 +66,15 @@ test('the page loads the shared module rather than redefining the render', () =>
   assert.ok(!html.includes('function renderAlerts('), 'renderAlerts redefined inline');
 });
 
+test('first load does not blank the baked timestamp', () => {
+  const html = fs.readFileSync(PAGE, 'utf8');
+  // The flicker this prevents: the baked stamp replaced by "Loading..." for the length of the
+  // fetch, on a page whose whole purpose is having something real there already.
+  assert.ok(/function load\(manual\)/.test(html), 'load() lost its manual flag');
+  assert.ok(/if \(manual\) \$\('updated'\)\.textContent/.test(html), 'loading text is not gated on manual');
+  assert.ok(html.includes("setInterval(function(){ load(); }"), 'setInterval would pass a timer id as manual');
+});
+
 test('a crawler with no JavaScript sees real airports and real alerts', () => {
   const { html } = bakeInto(sample());
   assert.ok(html.includes('Los Angeles'), 'no airport city in the HTML');
