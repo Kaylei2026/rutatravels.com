@@ -45,16 +45,21 @@ jobs:
       - name: Bake the board
         run: node scripts/bake-live.js
 
+      # The per-airport pages come off the same payload. Run after the board so a failure here
+      # still leaves a freshly baked board rather than neither.
+      - name: Bake the airport pages
+        run: node scripts/bake-airports.js
+
       - name: Commit if it changed
         run: |
-          if git diff --quiet -- live/index.html; then
+          if git diff --quiet -- live/ sitemap.xml; then
             echo "no change to commit"
             exit 0
           fi
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add live/index.html
-          git commit -m "Bake /live board $(date -u '+%Y-%m-%d %H:%M UTC')"
+          git add live/ sitemap.xml
+          git commit -m "Bake /live board and airport pages $(date -u '+%Y-%m-%d %H:%M UTC')"
           # Another run may have landed while this one was working. Rebase rather than force.
           git pull --rebase --autostash origin main
           git push origin HEAD:main
