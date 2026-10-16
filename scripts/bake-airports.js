@@ -87,25 +87,31 @@ const summaryLine = (a, alerts) => {
  * as not knowing the airport.
  */
 /**
- * Current weather, with its age on the face of it.
+ * Current weather, stamped with the time it was read.
  *
  * Refreshed on a three-hour clock rather than the board's thirty minutes, because weather on a
  * reference page does not need half-hour precision and the server's weather cache has a 30-minute
  * TTL, so matching the board would miss it every time and cost real money.
  *
- * The age line is the point. If it starts pouring and the page still says clear skies, the reader
- * has to be able to see the reading is three hours old rather than assume it is current. An
+ * The stamp is the point. If it starts pouring and the page still says clear skies, the reader
+ * has to be able to see when the reading was taken rather than assume it is current. An
  * unlabelled temperature is worse than none.
+ *
+ * It is an absolute time, not "20 min ago". This page is static HTML: a relative age is computed
+ * once at bake time and then frozen, so every freshly baked page said "Taken 0 min ago" and went
+ * on saying it for the next three hours. That is the failure the stamp exists to prevent, printed
+ * in the stamp's own words. The board already prints "Updated <time> UTC" for this reason.
+ *
+ * readAt, not observedAt: the figure comes from OpenWeather's `current.dt`, which is when the API
+ * answered, not when a station took a measurement. All 31 airports in a single bake carry the same
+ * value to the second, which settles what it is. Older snapshots are still read for one cycle.
  */
 const weatherBlock = (w, code, nowMs) => {
   if (!w || (w.tempF == null && !w.description)) return '';
-  const t = new Date(w.observedAt || w.fetchedAt || 0).getTime();
-  const mins = (isFinite(t) && t) ? Math.round((nowMs - t) / 60000) : null;
-  let age = '';
-  if (mins != null && mins >= 0) {
-    if (mins < 90) age = `${mins} min ago`;
-    else age = `${Math.round(mins / 60)} hr ago`;
-  }
+  const t = new Date(w.readAt || w.observedAt || w.fetchedAt || 0).getTime();
+  const stamp = (isFinite(t) && t)
+    ? new Date(t).toISOString().replace('T', ' ').slice(0, 16) + ' UTC'
+    : '';
   const bits = [];
   if (w.tempF != null) bits.push(`<span class="wx-t">${esc(w.tempF)}&deg;F</span>`);
   if (w.description) bits.push(`<span class="wx-d">${esc(w.description)}</span>`);
@@ -113,7 +119,7 @@ const weatherBlock = (w, code, nowMs) => {
   return section('Weather', `<h2>Weather at ${esc(code)}</h2>`
     + `<p class="wx">${bits.join('<span class="wx-sep">&middot;</span>')}</p>`
     + `<p class="apt-method">`
-    + (age ? `Taken ${esc(age)}. ` : '')
+    + (stamp ? `Read ${esc(stamp)}. ` : '')
     + `Refreshed a few times a day, so it can lag a change in conditions. `
     + `Ruta checks weather on your own flights far more often than this page does.</p>`);
 };

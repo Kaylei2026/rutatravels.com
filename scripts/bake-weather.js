@@ -66,9 +66,12 @@ const slim = (wx) => {
     description: typeof w.description === 'string' ? w.description : null,
     icon: typeof w.icon === 'string' ? w.icon : null,
     windMph: n(c.wind_speed),
-    // The reading's own timestamp from OpenWeather where present, not ours. If the upstream
-    // observation is stale, saying when WE fetched it would overstate how fresh it is.
-    observedAt: (typeof c.dt === 'number') ? new Date(c.dt * 1000).toISOString() : null,
+    // readAt, not observedAt. This was written as "the reading's own timestamp, not ours", on the
+    // assumption that One Call's `current.dt` is when a station took the measurement. It is not:
+    // it is the time the API answered. Every airport in a single bake comes back with the same dt
+    // to the second, which is what gave it away. So the honest name is readAt, and nothing here
+    // knows how old the underlying observation is.
+    readAt: (typeof c.dt === 'number') ? new Date(c.dt * 1000).toISOString() : null,
     fetchedAt: new Date().toISOString(),
   };
 };

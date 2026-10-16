@@ -359,28 +359,57 @@ test('the services section does not present a sample as an inventory', () => {
 });
 
 
+const stampOf = (minsAgo) =>
+  new Date(Date.now() - minsAgo * 60000).toISOString().replace('T', ' ').slice(0, 16) + ' UTC';
+
 const wxAt = (minsAgo, over = {}) => ({
   tempF: 68, feelsF: 67, description: 'broken clouds', icon: '04d', windMph: 9,
-  observedAt: new Date(Date.now() - minsAgo * 60000).toISOString(),
+  readAt: new Date(Date.now() - minsAgo * 60000).toISOString(),
   fetchedAt: new Date(Date.now() - minsAgo * 60000).toISOString(),
   ...over,
 });
 
-test('weather shows with its age on the face of it', () => {
-  // The age is the whole point. If it starts pouring and the page still says clear, the reader
-  // has to see the reading is hours old rather than assume it is current.
+test('weather shows when it was read, as a time rather than an age', () => {
   const r = run(sample(), [], { weather: { LAX: wxAt(20) } });
   const html = r.read('live/los-angeles-lax/index.html');
   assert.match(html, /Weather at LAX/);
   assert.match(html, /68&deg;F/);
   assert.match(html, /broken clouds/);
-  assert.match(html, /Taken 20 min ago/);
+  assert.match(html, new RegExp('Read ' + stampOf(20).replace(/[-:]/g, '[-:]')));
   r.cleanup();
 });
 
-test('an older reading reports hours, not a large number of minutes', () => {
+test('the stamp is absolute, because a relative age on static HTML freezes at bake time', () => {
+  // A page baked now and read in two hours must not still claim the reading is minutes old.
+  // "0 min ago" on every freshly baked page is what this replaced.
+  const r = run(sample(), [], { weather: { LAX: wxAt(0) } });
+  const html = r.read('live/los-angeles-lax/index.html');
+  assert.ok(!/min ago/.test(html), 'still printing a relative age');
+  assert.ok(!/hr ago/.test(html), 'still printing a relative age');
+  assert.match(html, /Read \d{4}-\d{2}-\d{2} \d{2}:\d{2} UTC/);
+  r.cleanup();
+});
+
+test('an older reading is stamped with its own time, not the bake time', () => {
   const r = run(sample(), [], { weather: { LAX: wxAt(185) } });
-  assert.match(r.read('live/los-angeles-lax/index.html'), /Taken 3 hr ago/);
+  const html = r.read('live/los-angeles-lax/index.html');
+  assert.match(html, new RegExp('Read ' + stampOf(185).replace(/[-:]/g, '[-:]')));
+  assert.ok(!html.includes('Read ' + stampOf(0)), 'stamped with the bake time instead');
+  r.cleanup();
+});
+
+test('a snapshot written before the rename still renders, rather than losing its stamp', () => {
+  const r = run(sample(), [], { weather: { LAX: wxAt(45, { readAt: undefined, observedAt: new Date(Date.now() - 45 * 60000).toISOString() }) } });
+  assert.match(r.read('live/los-angeles-lax/index.html'), /Read \d{4}-\d{2}-\d{2} \d{2}:\d{2} UTC/);
+  r.cleanup();
+});
+
+test('a reading with no usable time still shows the temperature, without a stamp', () => {
+  const r = run(sample(), [], { weather: { LAX: { tempF: 68, description: 'clear sky', readAt: null, fetchedAt: null } } });
+  const html = r.read('live/los-angeles-lax/index.html');
+  assert.match(html, /68&deg;F/);
+  assert.ok(!/Read \d{4}/.test(html), 'invented a stamp');
+  assert.match(html, /can lag a change in conditions/);
   r.cleanup();
 });
 
