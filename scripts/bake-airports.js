@@ -175,9 +175,14 @@ const servicesBlock = (f, code) => {
   }).join('');
   if (!sections) return '';
   const total = ts.reduce((n, t) => n + t.food.length + t.shopping.length + t.other.length, 0);
+  // Deliberately "some of what is here" rather than a count presented as an inventory.
+  // TERMINAL_SERVICES holds roughly one representative item per category per terminal: 76% of
+  // the terminals that list any lounge list exactly one, and ORD shows four against a real
+  // eleven. The data is a sample, and a page that counts it implies a directory it is not.
   return section('Eating, shopping and lounges', `<h2>Eating, shopping and lounges at ${esc(code)}</h2>`
-    + `<p class="apt-lay">${esc(total)} places across ${esc(ts.length)} ${ts.length === 1 ? 'terminal' : 'terminals'}, `
-    + `the same list Ruta carries offline.</p><div class="svc">${sections}</div>`);
+    + `<p class="apt-lay">Some of what you will find inside, across ${esc(ts.length)} `
+    + `${ts.length === 1 ? 'terminal' : 'terminals'}. Ruta carries this offline, with more in the app.</p>`
+    + `<div class="svc">${sections}</div>`);
 };
 
 // Plain English for a category key. Written out rather than de-camel-cased, because

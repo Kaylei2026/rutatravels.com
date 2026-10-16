@@ -344,3 +344,15 @@ test('terminal names are still published, because those check out', () => {
   assert.match(html, /Terminal data as of \d{4}-\d{2}-\d{2}/);
   r.cleanup();
 });
+
+
+test('the services section does not present a sample as an inventory', () => {
+  // TERMINAL_SERVICES holds about one representative item per category per terminal. 76% of
+  // terminals listing any lounge list exactly one; ORD shows four against a real eleven.
+  // Counting them on the page implies a completeness the data does not have.
+  const r = run(sample());
+  const html = r.read('live/los-angeles-lax/index.html');
+  assert.match(html, /Some of what you will find inside/);
+  assert.ok(!/\d+ places across/.test(html), 'counted the sample as if it were a directory');
+  r.cleanup();
+});
