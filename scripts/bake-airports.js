@@ -49,6 +49,16 @@ const lift = (html, open, close, label) => {
   return html.slice(i, j + close.length);
 };
 
+/**
+ * One section, one card.
+ *
+ * The first draft ran headings straight down the page with whatever margin each block brought
+ * with it, so the spacing between sections was inconsistent and nothing read as a unit. The
+ * board already has a card language (--card, --line, rounded) and these pages now use it, which
+ * also means a restyle of the board carries over.
+ */
+const section = (label, inner) => `<section class="card" aria-label="${label.replace(/<[^>]+>/g, '')}">${inner}</section>`;
+
 const LEVEL_WORD = ['running on time', 'seeing minor delays', 'seeing moderate delays',
   'seeing significant delays', 'severely disrupted'];
 
@@ -75,19 +85,32 @@ const summaryLine = (a, alerts) => {
  * terminalWord matters: Atlanta has Concourses, not Terminals, and printing the wrong one reads
  * as not knowing the airport.
  */
-const factsBlock = (f, code) => {
+const factsBlock = (f, code, asOf) => {
   if (!f || !f.terminals || !f.terminals.length) return '';
   const word = f.terminalWord || 'Terminal';
   const plural = f.terminalCount === 1 ? word : word + 's';
-  const rows = f.terminals.map((t) => `<tr><th scope="row">${esc(t.name)}</th>`
-    + `<td>${t.gates ? esc(t.gates) + (t.gates === 1 ? ' gate' : ' gates') : '&mdash;'}</td></tr>`).join('');
-  return `<h2>Inside ${esc(code)}</h2>`
-    + `<p class="apt-lay">${esc(f.name || code)} has ${esc(f.terminalCount)} ${esc(plural.toLowerCase())}`
-    + ` and ${esc(f.gateCount)} gates.</p>`
-    + `<table class="terms"><caption class="sr-only">${esc(plural)} and gate counts at ${esc(code)}</caption>`
-    + `<tbody>${rows}</tbody></table>`
-    + `<p class="apt-method">Ruta carries the position of every one of these gates, so it measures the walk to yours`
-    + ` along the concourse rather than in a straight line, and it works with no signal.</p>`;
+
+  // No counts of any kind in this table. AIRPORTS gate lists are terminal-inference data, not
+  // an inventory: DFW is five terminals of exactly 40, Denver two concourses of exactly 95, ORD
+  // sums to 152 against an official 199. A per-terminal count of places we list has the same
+  // problem from the other direction, because TERMINAL_SERVICES is a curated handful rather than
+  // a directory, and eight terminals each showing "4 places" reads as invented even though it is
+  // literally true.
+  //
+  // The terminal NAMES are sound and check out against official sources, so they are what this
+  // publishes. The places themselves are named in full in their own section, which is the honest
+  // place for them.
+  // A one-column table is a list. Marking it up as a table makes a screen reader announce
+  // rows and columns that carry no meaning.
+  const rows = f.terminals.map((t) => `<li>${esc(t.name)}</li>`).join('');
+
+  return section('Inside ' + esc(code), `<h2>Inside ${esc(code)}</h2>`
+    + `<p class="apt-lay">${esc(f.name || code)} has ${esc(f.terminalCount)} `
+    + `${esc(plural.toLowerCase())}.</p>`
+    + `<ul class="terms-l" aria-label="${esc(plural)} at ${esc(code)}">${rows}</ul>`
+    + `<p class="apt-method">Ruta holds a position for the gates it maps here, which is how it measures the walk`
+    + ` to yours along the concourse rather than in a straight line, with no signal needed.`
+    + (asOf ? ` Terminal data as of ${esc(asOf)}.` : '') + `</p>`);
 };
 
 const detailBlock = (a, alerts) => {
@@ -123,10 +146,11 @@ const siblingsBlock = (region, self) => {
   if (!others.length) return '';
   const links = others.map((x) => {
     const slug = BOARD.slugFor(x);
-    const label = `${esc(x.city || x.airport)} (${esc(x.airport)})`;
-    return slug ? `<a href="/live/${esc(slug)}/">${label}</a>` : `<span>${label}</span>`;
+    const label = `${esc(x.city || x.airport)} <span class="sib-code">${esc(x.airport)}</span>`;
+    return slug ? `<a class="sib" href="/live/${esc(slug)}/">${label}</a>` : `<span class="sib">${label}</span>`;
   }).join('');
-  return `<h2>Other airports in ${esc(region.region)}</h2><div class="siblings">${links}</div>`;
+  return section('Other airports', `<h2>Other airports in ${esc(region.region)}</h2>`
+    + `<div class="siblings">${links}</div>`);
 };
 
 /**
@@ -151,9 +175,9 @@ const servicesBlock = (f, code) => {
   }).join('');
   if (!sections) return '';
   const total = ts.reduce((n, t) => n + t.food.length + t.shopping.length + t.other.length, 0);
-  return `<h2>Eating, shopping and lounges at ${esc(code)}</h2>`
+  return section('Eating, shopping and lounges', `<h2>Eating, shopping and lounges at ${esc(code)}</h2>`
     + `<p class="apt-lay">${esc(total)} places across ${esc(ts.length)} ${ts.length === 1 ? 'terminal' : 'terminals'}, `
-    + `the same list Ruta carries offline.</p><div class="svc">${sections}</div>`;
+    + `the same list Ruta carries offline.</p><div class="svc">${sections}</div>`);
 };
 
 // Plain English for a category key. Written out rather than de-camel-cased, because
@@ -206,10 +230,10 @@ const accessBlock = (f, code) => {
       + `and these get named on the way to your gate rather than listed and left for you to find.</p>`;
   }
   if (amen) h += `<p class="apt-lay" style="margin-top:22px">Also mapped here:</p><ul class="facts-l">${amen}</ul>`;
-  return h;
+  return section('Getting around', h);
 };
 
-const pageHtml = ({ a, region, alerts, chrome, updated, facts }) => {
+const pageHtml = ({ a, region, alerts, chrome, updated, facts, asOf }) => {
   const city = a.city || a.airport;
   const title = `${city} (${a.airport}) Airport Delays | Ruta Travels`;
   const desc = summaryLine(a, alerts);
@@ -237,33 +261,62 @@ const pageHtml = ({ a, region, alerts, chrome, updated, facts }) => {
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&family=Montserrat:wght@200;300;400;600&display=swap" rel="stylesheet">
 ${chrome.style}
 <style>
+/* These pages inherit the board's stylesheet, which only styles links in the few places the
+   board has them. Anything else fell through to the browser default, which on a navy background
+   is bright blue turning purple. Everything below is the page's own layer. */
+
+/* One card per section, so the gaps between them are a single rule rather than whatever margin
+   each block happened to bring. */
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:26px 24px;margin:0 0 18px}
+.card > h2:first-child{margin-top:0}
+.wrap h2{font-family:'Montserrat',sans-serif;font-weight:400;font-size:clamp(18px,2.1vw,22px);
+  color:var(--cream);line-height:1.3;margin:0 0 14px;letter-spacing:-.01em}
+.wrap h3{font-family:'Montserrat',sans-serif;font-size:16px;font-weight:600;margin:0 0 10px;color:var(--cream)}
+
 .apt-head{display:flex;align-items:center;gap:12px;margin:0 0 10px}
 .apt-head .dot{width:12px;height:12px;border-radius:50%;flex-shrink:0}
-.apt-status{font-family:'Montserrat',sans-serif;font-size:20px;font-weight:600}
-.apt-note{margin:0 0 18px;font-size:15px}
-.apt-method{margin:22px 0 0;font-size:13px;opacity:.7;max-width:62ch}
-.apt-none{font-size:15px;opacity:.8}
-.stats{display:flex;gap:34px;margin:18px 0 0;flex-wrap:wrap}
-.stat .k{font-size:10px;letter-spacing:.24em;text-transform:uppercase;opacity:.55}
-.stat .v{font-family:'Montserrat',sans-serif;font-size:26px;font-weight:300;margin-top:3px}
-.apt-lay{margin:0 0 16px;font-size:15px;max-width:62ch}
-.terms{border-collapse:collapse;margin:0;font-size:15px}
-.terms th{text-align:left;font-weight:500;padding:9px 28px 9px 0;border-top:1px solid var(--line)}
-.terms td{padding:9px 0;border-top:1px solid var(--line);opacity:.75;white-space:nowrap}
-.facts-l{margin:6px 0 0;padding-left:20px;font-size:15px}
-.facts-l li{margin:4px 0}
-.svc{margin-top:8px}
-.svc-t{padding:18px 0;border-top:1px solid var(--line)}
-.svc-t h3{font-family:'Montserrat',sans-serif;font-size:17px;font-weight:600;margin:0 0 10px}
-.svc-g{margin:0 0 12px}
-.svc-k{font-size:10px;letter-spacing:.24em;text-transform:uppercase;opacity:.55;margin-bottom:5px}
-.svc-l{margin:0;padding-left:20px;font-size:14.5px}
-.svc-l li{margin:3px 0}
-.svc-l .loc{opacity:.55;font-size:13px}
+.apt-status{font-family:'Montserrat',sans-serif;font-size:21px;font-weight:600;color:var(--cream)}
+.apt-note{margin:0 0 18px;font-size:15px;color:var(--cream)}
+.apt-lay{margin:0 0 16px;font-size:15px;max-width:62ch;color:var(--cream)}
+.apt-method{margin:20px 0 0;font-size:13px;color:var(--muted);max-width:66ch;line-height:1.6}
+.apt-none{font-size:15px;color:var(--muted);margin:0}
+
+.stats{display:flex;gap:40px;margin:20px 0 0;flex-wrap:wrap}
+.stat .k{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
+.stat .v{font-family:'Montserrat',sans-serif;font-size:28px;font-weight:300;margin-top:4px;color:var(--cream)}
+
+.facts-l{margin:8px 0 0;padding-left:20px;font-size:15px;color:var(--cream)}
+.facts-l li{margin:5px 0}
+.facts-l strong{font-weight:600;color:var(--gold)}
+
+.terms{border-collapse:collapse;margin:0;font-size:15px;width:100%;max-width:440px}
+.terms th{text-align:left;font-weight:400;padding:10px 28px 10px 0;border-top:1px solid var(--line);color:var(--cream)}
+.terms td{padding:10px 0;border-top:1px solid var(--line);color:var(--muted);white-space:nowrap;text-align:right}
+.terms-l{list-style:none;margin:0;padding:0;font-size:15px;color:var(--cream);max-width:440px}
+.terms-l li{padding:10px 0;border-top:1px solid var(--line)}
+
+.svc{margin-top:4px}
+.svc-t{padding:18px 0 4px;border-top:1px solid var(--line)}
+.svc-t:first-child{border-top:0;padding-top:0}
+.svc-g{margin:0 0 14px}
+.svc-k{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.svc-l{margin:0;padding-left:18px;font-size:14.5px;color:var(--cream)}
+.svc-l li{margin:4px 0}
+.svc-l .loc{color:var(--muted);font-size:13px}
+
+/* Text links, not buttons. The board's palette, not the browser's. */
+.siblings{display:flex;flex-wrap:wrap;gap:8px 22px;margin:0}
+a.sib{font-size:15px;color:var(--cream);text-decoration:none;border-bottom:1px solid rgba(242,166,90,.35);padding-bottom:1px}
+a.sib:hover{color:var(--gold);border-bottom-color:var(--gold)}
+a.sib:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.sib-code{color:var(--muted);font-size:13px;letter-spacing:.06em}
+
+.backlink{display:inline-block;margin:6px 0 0;font-size:13px;letter-spacing:.14em;text-transform:uppercase;
+  font-weight:600;color:var(--gold);text-decoration:none}
+.backlink:hover{color:var(--cream)}
+.backlink:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-.siblings{display:flex;flex-wrap:wrap;gap:10px 16px;margin-top:6px}
-.siblings a,.siblings span{font-size:14px}
-.backlink{display:inline-block;margin-top:34px;font-size:14px}
 </style>
 </head>
 <body>
@@ -277,13 +330,11 @@ ${chrome.nav}
 </section>
 
 <div class="wrap">
-  <div class="sec-h">Right now</div>
-  ${detailBlock(a, alerts)}
+  ${section('Right now', `<h2>Right now at ${esc(a.airport)}</h2>` + detailBlock(a, alerts))}
 
-  <div class="sec-h" style="margin-top:46px">Alerts affecting ${esc(a.airport)}</div>
-  ${alertsBlock(alerts)}
+  ${section('Alerts', `<h2>Alerts affecting ${esc(a.airport)}</h2>` + alertsBlock(alerts))}
 
-  ${factsBlock(facts, a.airport)}
+  ${factsBlock(facts, a.airport, asOf)}
 
   ${accessBlock(facts, a.airport)}
 
@@ -357,8 +408,13 @@ const main = async () => {
   // Optional on purpose: the pages still build without it, they are just the thinner version.
   // A missing file is a reason to say so, not to fail a scheduled job.
   let allFacts = {};
+  let factsDate = null;
   if (fs.existsSync(FACTS)) {
-    try { allFacts = (JSON.parse(fs.readFileSync(FACTS, 'utf8')) || {}).airports || {}; }
+    try {
+      const parsed = JSON.parse(fs.readFileSync(FACTS, 'utf8')) || {};
+      allFacts = parsed.airports || {};
+      factsDate = parsed.generatedAt || null;
+    }
     catch (e) { console.warn(`[airports] could not read ${FACTS} (${e.message}); building without reference facts`); }
   } else {
     console.warn('[airports] no airport-facts.json; pages will carry live status only. '
@@ -388,7 +444,7 @@ const main = async () => {
       const slug = BOARD.slugFor(a);
       if (!slug) continue;
       slugs.push(slug);
-      const html = pageHtml({ a, region, alerts: byAirport(a.airport), chrome, updated, facts: allFacts[a.airport] });
+      const html = pageHtml({ a, region, alerts: byAirport(a.airport), chrome, updated, facts: allFacts[a.airport], asOf: factsDate });
       const dir = path.join(ROOT, 'live', slug);
       const file = path.join(dir, 'index.html');
       const prev = fs.existsSync(file) ? fs.readFileSync(file, 'utf8') : null;

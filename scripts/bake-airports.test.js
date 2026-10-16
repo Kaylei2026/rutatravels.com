@@ -210,7 +210,9 @@ test('a calm airport still has something worth reading', () => {
   const words = body.replace(/<[^>]+>/g, ' ').split(/\s+/).filter(Boolean).length;
   assert.ok(words > 100, `calm-airport page is ${words} words, still thin`);
   assert.match(html, /John F\. Kennedy International/);
-  assert.match(html, /122 gates/);
+  // Terminal names, not counts. The counts in AIRPORTS are inference data and do not survive
+  // contact with an official source.
+  assert.match(html, /has 5 terminals/);
   r.cleanup();
 });
 
@@ -250,12 +252,14 @@ test('builds without the facts file at all, rather than failing the job', () => 
   r.cleanup();
 });
 
-test('the facts table is a table, with a caption screen readers can use', () => {
+test('the terminal list is a list, and announces what it is', () => {
+  // It was a one-column table, which makes a screen reader announce rows and columns that carry
+  // no meaning.
   const r = run(sample());
   const html = r.read('live/los-angeles-lax/index.html');
-  assert.match(html, /<table class="terms">/);
-  assert.match(html, /<caption class="sr-only">/);
-  assert.match(html, /<th scope="row">/);
+  assert.match(html, /<ul class="terms-l" aria-label="Terminals at LAX">/);
+  assert.match(html, /<li>Tom Bradley Intl<\/li>/);
+  assert.ok(!/<table class="terms/.test(html), 'still a table');
   r.cleanup();
 });
 
@@ -295,5 +299,48 @@ test('an airport with no services section does not get an empty heading', () => 
   const z = r.read('live/nowhere-zzz/index.html');
   assert.ok(!/Eating, shopping and lounges/.test(z));
   assert.ok(!/Getting around ZZZ/.test(z));
+  r.cleanup();
+});
+
+
+test('every section is a card, so the gaps between them are one rule', () => {
+  const r = run(sample());
+  const html = r.read('live/los-angeles-lax/index.html');
+  const cards = (html.match(/<section class="card"/g) || []).length;
+  assert.ok(cards >= 5, `only ${cards} sections are cards`);
+  r.cleanup();
+});
+
+test('no link falls through to the browser default', () => {
+  // On a navy background an unstyled link is bright blue turning purple. The board's stylesheet
+  // only covers the few places the board itself has links, so anything new needs its own class.
+  const r = run(sample());
+  const html = r.read('live/los-angeles-lax/index.html');
+  const body = html.slice(html.indexOf('<div class="wrap">'), html.indexOf('class="cta"'));
+  const bare = body.match(/<a (?!class=)[^>]*href=/g) || [];
+  assert.deepStrictEqual(bare, [], 'found a link with no class');
+  r.cleanup();
+});
+
+test('no gate counts are published anywhere', () => {
+  // AIRPORTS gate lists are terminal-inference data, not an inventory. DFW is five terminals of
+  // exactly 40, Denver two concourses of exactly 95, ORD sums to 152 against an official 199.
+  // Printing them as counts puts visibly invented numbers on a reference page.
+  const r = run(sample());
+  for (const slug of r.list()) {
+    const html = r.read(`live/${slug}/index.html`);
+    const body = html.slice(html.indexOf('<div class="wrap">'), html.indexOf('class="cta"'));
+    assert.ok(!/\d+ gates/.test(body), `${slug} publishes a gate count`);
+    assert.ok(!/gates across/.test(body), `${slug} publishes a gate total`);
+  }
+  r.cleanup();
+});
+
+test('terminal names are still published, because those check out', () => {
+  const r = run(sample());
+  const html = r.read('live/los-angeles-lax/index.html');
+  assert.match(html, /Tom Bradley Intl/);
+  assert.match(html, /has 8 terminals/);
+  assert.match(html, /Terminal data as of \d{4}-\d{2}-\d{2}/);
   r.cleanup();
 });
