@@ -96,6 +96,12 @@
   </url>
   <!--ruta:airports:start-->
   <url>
+    <loc>https://rutatravels.com/live/abu-dhabi-auh/</loc>
+    <lastmod>2026-10-16</lastmod>
+    <changefreq>hourly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://rutatravels.com/live/amsterdam-ams/</loc>
     <lastmod>2026-10-16</lastmod>
     <changefreq>hourly</changefreq>

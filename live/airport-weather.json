@@ -324,6 +324,15 @@
       "windMph": 4,
       "readAt": "2026-10-16T20:07:05.000Z",
       "fetchedAt": "2026-10-16T20:07:05.981Z"
+    },
+    "AUH": {
+      "tempF": 88,
+      "feelsF": 100,
+      "description": "clear sky",
+      "icon": "01n",
+      "windMph": 3,
+      "readAt": "2026-10-16T21:09:48.000Z",
+      "fetchedAt": "2026-10-16T21:09:48.961Z"
     }
   }
 }
