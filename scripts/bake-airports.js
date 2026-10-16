@@ -28,6 +28,7 @@ const path = require('path');
 const ROOT = path.join(__dirname, '..');
 const PAGE = path.join(ROOT, 'live', 'index.html');
 const SITEMAP = path.join(ROOT, 'sitemap.xml');
+const FACTS = path.join(ROOT, 'live', 'airport-facts.json');
 const BOARD = require(path.join(ROOT, 'live', 'board.js'));
 
 const SITE = 'https://rutatravels.com';
@@ -60,6 +61,33 @@ const summaryLine = (a, alerts) => {
   if (a.cancelled) s += ` ${a.cancelled} flight${a.cancelled === 1 ? '' : 's'} cancelled.`;
   if (alerts.length) s += ` ${alerts.length} active alert${alerts.length === 1 ? '' : 's'}.`;
   return s;
+};
+
+/**
+ * The part of the page that is worth reading on a day when nothing is wrong.
+ *
+ * Live status alone made these pages thin: "JFK is running on time" and little else, which is
+ * the shape a crawler files as filler rather than as a reference. These facts come from the
+ * app's own AIRPORTS table, exported by scripts/export-airport-facts.cjs in the app repo. They
+ * are not published anywhere else, they do not churn, and they are the reason a page is worth
+ * keeping open once the delay question is answered.
+ *
+ * terminalWord matters: Atlanta has Concourses, not Terminals, and printing the wrong one reads
+ * as not knowing the airport.
+ */
+const factsBlock = (f, code) => {
+  if (!f || !f.terminals || !f.terminals.length) return '';
+  const word = f.terminalWord || 'Terminal';
+  const plural = f.terminalCount === 1 ? word : word + 's';
+  const rows = f.terminals.map((t) => `<tr><th scope="row">${esc(t.name)}</th>`
+    + `<td>${t.gates ? esc(t.gates) + (t.gates === 1 ? ' gate' : ' gates') : '&mdash;'}</td></tr>`).join('');
+  return `<h2>Inside ${esc(code)}</h2>`
+    + `<p class="apt-lay">${esc(f.name || code)} has ${esc(f.terminalCount)} ${esc(plural.toLowerCase())}`
+    + ` and ${esc(f.gateCount)} gates.</p>`
+    + `<table class="terms"><caption class="sr-only">${esc(plural)} and gate counts at ${esc(code)}</caption>`
+    + `<tbody>${rows}</tbody></table>`
+    + `<p class="apt-method">Ruta carries the position of every one of these gates, so it measures the walk to yours`
+    + ` along the concourse rather than in a straight line, and it works with no signal.</p>`;
 };
 
 const detailBlock = (a, alerts) => {
@@ -101,7 +129,7 @@ const siblingsBlock = (region, self) => {
   return `<h2>Other airports in ${esc(region.region)}</h2><div class="siblings">${links}</div>`;
 };
 
-const pageHtml = ({ a, region, alerts, chrome, updated }) => {
+const pageHtml = ({ a, region, alerts, chrome, updated, facts }) => {
   const city = a.city || a.airport;
   const title = `${city} (${a.airport}) Airport Delays | Ruta Travels`;
   const desc = summaryLine(a, alerts);
@@ -138,6 +166,11 @@ ${chrome.style}
 .stats{display:flex;gap:34px;margin:18px 0 0;flex-wrap:wrap}
 .stat .k{font-size:10px;letter-spacing:.24em;text-transform:uppercase;opacity:.55}
 .stat .v{font-family:'Montserrat',sans-serif;font-size:26px;font-weight:300;margin-top:3px}
+.apt-lay{margin:0 0 16px;font-size:15px;max-width:62ch}
+.terms{border-collapse:collapse;margin:0;font-size:15px}
+.terms th{text-align:left;font-weight:500;padding:9px 28px 9px 0;border-top:1px solid var(--line)}
+.terms td{padding:9px 0;border-top:1px solid var(--line);opacity:.75;white-space:nowrap}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 .siblings{display:flex;flex-wrap:wrap;gap:10px 16px;margin-top:6px}
 .siblings a,.siblings span{font-size:14px}
 .backlink{display:inline-block;margin-top:34px;font-size:14px}
@@ -159,6 +192,8 @@ ${chrome.nav}
 
   <div class="sec-h" style="margin-top:46px">Alerts affecting ${esc(a.airport)}</div>
   ${alertsBlock(alerts)}
+
+  ${factsBlock(facts, a.airport)}
 
   ${siblingsBlock(region, a)}
 
@@ -225,6 +260,17 @@ const main = async () => {
     return 2;
   }
 
+  // Optional on purpose: the pages still build without it, they are just the thinner version.
+  // A missing file is a reason to say so, not to fail a scheduled job.
+  let allFacts = {};
+  if (fs.existsSync(FACTS)) {
+    try { allFacts = (JSON.parse(fs.readFileSync(FACTS, 'utf8')) || {}).airports || {}; }
+    catch (e) { console.warn(`[airports] could not read ${FACTS} (${e.message}); building without reference facts`); }
+  } else {
+    console.warn('[airports] no airport-facts.json; pages will carry live status only. '
+      + 'Regenerate it with scripts/export-airport-facts.cjs in the app repo.');
+  }
+
   const page = fs.readFileSync(PAGE, 'utf8');
   const chrome = {
     style: lift(page, '<style>', '</style>', 'the stylesheet'),
@@ -248,7 +294,7 @@ const main = async () => {
       const slug = BOARD.slugFor(a);
       if (!slug) continue;
       slugs.push(slug);
-      const html = pageHtml({ a, region, alerts: byAirport(a.airport), chrome, updated });
+      const html = pageHtml({ a, region, alerts: byAirport(a.airport), chrome, updated, facts: allFacts[a.airport] });
       const dir = path.join(ROOT, 'live', slug);
       const file = path.join(dir, 'index.html');
       const prev = fs.existsSync(file) ? fs.readFileSync(file, 'utf8') : null;

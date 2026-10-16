@@ -27,6 +27,8 @@ const run = (payload, extraArgs = []) => {
   fs.copyFileSync(path.join(ROOT, 'live', 'board.js'), path.join(dir, 'live', 'board.js'));
   fs.copyFileSync(path.join(ROOT, 'scripts', 'bake-airports.js'), path.join(dir, 'scripts', 'bake-airports.js'));
   fs.copyFileSync(path.join(ROOT, 'sitemap.xml'), path.join(dir, 'sitemap.xml'));
+  const facts = path.join(ROOT, 'live', 'airport-facts.json');
+  if (fs.existsSync(facts)) fs.copyFileSync(facts, path.join(dir, 'live', 'airport-facts.json'));
   const pay = path.join(dir, 'p.json');
   fs.writeFileSync(pay, JSON.stringify(payload));
   let status = 0;
@@ -192,5 +194,67 @@ test('the sitemap does not accumulate duplicates across runs', () => {
   const xml = r.read('sitemap.xml');
   const hits = (xml.match(/\/live\/paris-cdg\//g) || []).length;
   assert.strictEqual(hits, 1, `paris-cdg appears ${hits} times`);
+  r.cleanup();
+});
+
+
+
+test('a calm airport still has something worth reading', () => {
+  // The reason these pages exist at all is the long tail of "JFK delays" searches, and the
+  // reason they could fail is that most airports are on time most of the time. Live status
+  // alone was 56 words. A page that thin, multiplied across the board, is what a crawler files
+  // as filler rather than as a reference.
+  const r = run(sample());
+  const html = r.read('live/new-york-jfk/index.html');
+  const body = html.slice(html.indexOf('<div class="wrap">'), html.indexOf('class="cta"'));
+  const words = body.replace(/<[^>]+>/g, ' ').split(/\s+/).filter(Boolean).length;
+  assert.ok(words > 100, `calm-airport page is ${words} words, still thin`);
+  assert.match(html, /John F\. Kennedy International/);
+  assert.match(html, /122 gates/);
+  r.cleanup();
+});
+
+test('uses the word the airport uses, not a generic one', () => {
+  const d = sample();
+  d.regions[0].airports.push({ airport: 'ATL', city: 'Atlanta', level: 1, status: 'Minor delays' });
+  const r = run(d);
+  const atl = r.read('live/atlanta-atl/index.html');
+  // Atlanta has Concourses. Calling them Terminals reads as not knowing the airport.
+  assert.match(atl, /7 concourses/);
+  assert.ok(!/7 terminals/.test(atl), 'called Atlanta concourses terminals');
+  const jfk = r.read('live/new-york-jfk/index.html');
+  assert.match(jfk, /5 terminals/);
+  r.cleanup();
+});
+
+test('an airport with no facts entry still builds', () => {
+  const d = sample();
+  d.regions[0].airports.push({ airport: 'ZZZ', city: 'Nowhere', level: 0, status: 'On time' });
+  const r = run(d);
+  const html = r.read('live/nowhere-zzz/index.html');
+  assert.ok(html, 'page was not written');
+  assert.ok(!/Inside ZZZ/.test(html), 'invented a facts section with no data');
+  r.cleanup();
+});
+
+test('builds without the facts file at all, rather than failing the job', () => {
+  const r = run(sample());
+  fs.rmSync(path.join(r.dir, 'live', 'airport-facts.json'), { force: true });
+  fs.rmSync(path.join(r.dir, 'live', 'new-york-jfk'), { recursive: true, force: true });
+  let status = 0;
+  try {
+    execFileSync(process.execPath, [path.join(r.dir, 'scripts', 'bake-airports.js'), '--from', path.join(r.dir, 'p.json')], { stdio: 'pipe' });
+  } catch (e) { status = e.status; }
+  assert.strictEqual(status, 0, 'a missing facts file failed the build');
+  assert.ok(r.read('live/new-york-jfk/index.html'), 'no page written without facts');
+  r.cleanup();
+});
+
+test('the facts table is a table, with a caption screen readers can use', () => {
+  const r = run(sample());
+  const html = r.read('live/los-angeles-lax/index.html');
+  assert.match(html, /<table class="terms">/);
+  assert.match(html, /<caption class="sr-only">/);
+  assert.match(html, /<th scope="row">/);
   r.cleanup();
 });
