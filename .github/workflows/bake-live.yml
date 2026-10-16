@@ -29,11 +29,17 @@ permissions:
 
 jobs:
   bake:
-    runs-on: ubuntu-latest
+    # Pinned, not ubuntu-latest. That label moves to Ubuntu 26 on October 19, 2026, and this job
+    # runs unattended every 30 minutes and commits to a public site. A runner image changing under
+    # it is the kind of break nobody is watching for at 03:37. Move this deliberately, with a run
+    # you are looking at.
+    runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4
+      # v5 on both: v4 targets Node 20, which is deprecated, and the runner already forces them
+      # onto Node 24. v5 is built for Node 24 rather than coerced into it.
+      - uses: actions/checkout@v5
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
           node-version: '22'
 
