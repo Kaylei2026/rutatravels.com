@@ -18,6 +18,7 @@ const fs = require('fs');
 const os = require('os');
 const path = require('path');
 const { spawnSync } = require('child_process');
+const http = require('http');
 
 const ROOT = path.join(__dirname, '..');
 const FACTS = path.join(ROOT, 'live', 'airport-facts.json');
@@ -99,6 +100,32 @@ test('the bake says so out loud when the facts file has no coordinates at all', 
 test('it does not cry wolf when the coordinates are there', () => {
   const r = runBake({ LAX: { name: 'Los Angeles', center: { lat: 33.942, lng: -118.408 } } });
   assert.doesNotMatch(r.out, /no coordinates/i, r.out);
+});
+
+test('explains why a reading did not arrive, by airport and by upstream reason', () => {
+  // /api/weather answers 200 with OpenWeather's error body rather than an error status, so a
+  // failure looks exactly like a success with no `current` in it. Abu Dhabi failed two runs in a
+  // row and the step printed nothing either time, which is how one broken airport hides among 36.
+  const { upstreamReason, slim } = require(path.join(ROOT, 'scripts', 'bake-weather.js'));
+
+  assert.match(upstreamReason({ cod: 429, message: 'Your account is temporary blocked' }), /429/);
+  assert.match(upstreamReason({ cod: 429, message: 'Your account is temporary blocked' }), /temporary blocked/);
+  assert.match(upstreamReason({ cod: '401', message: 'Invalid API key' }), /401/);
+  assert.match(upstreamReason({}), /no current conditions/);
+  assert.match(upstreamReason(null), /empty response/);
+  assert.match(upstreamReason({ message: 'something broke' }), /something broke/);
+  // The final fallback. Unreachable from the bake itself, since slim() only returns null when
+  // there is no `current` at all, but upstreamReason is exported and should not answer nothing.
+  assert.match(upstreamReason({ current: {} }), /unusable reading/);
+
+  // cod 200 with a real reading is not a failure and never reaches this function in practice,
+  // but it must not be reported as an upstream error if it does.
+  assert.doesNotMatch(upstreamReason({ cod: 200, current: { temp: 70 } }), /upstream/);
+
+  // And the thing that decides a reading is unusable in the first place.
+  assert.strictEqual(slim({ cod: 429, message: 'blocked' }), null);
+  assert.strictEqual(slim({}), null);
+  assert.ok(slim({ current: { temp: 70.4, weather: [{ description: 'clear sky' }] } }));
 });
 
 test('an unreachable board still exits green, because weather is not the point of the page', () => {

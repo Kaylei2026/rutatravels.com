@@ -76,6 +76,23 @@ const slim = (wx) => {
   };
 };
 
+/**
+ * Why a response carried no reading.
+ *
+ * /api/weather forwards OpenWeather's JSON with a 200 whatever it says, so an error arrives as a
+ * body rather than a status: {cod: 401, message: "Invalid API key"} and the like. `cod` is a
+ * number on success paths in some OpenWeather APIs and a string on errors, so both are read.
+ */
+const upstreamReason = (wx) => {
+  if (!wx || typeof wx !== 'object') return 'empty response';
+  const cod = wx.cod == null ? null : String(wx.cod);
+  const msg = typeof wx.message === 'string' ? wx.message : (wx.error && wx.error.message) || '';
+  if (cod && cod !== '200') return `upstream ${cod}${msg ? ': ' + msg : ''}`;
+  if (msg) return msg;
+  if (!wx.current) return 'no current conditions in response';
+  return 'unusable reading';
+};
+
 const ageH = (iso, now) => {
   const t = new Date(iso || 0).getTime();
   if (!isFinite(t) || !t) return Infinity;
@@ -130,6 +147,7 @@ const main = async () => {
 
   const next = { ...prevAirports };
   let refreshed = 0, kept = 0, failed = 0, skipped = 0;
+  const reasons = [];
 
   for (const code of codes) {
     const f = facts[code];
@@ -142,8 +160,18 @@ const main = async () => {
         { 'x-api-key': KEY });
       const s = slim(wx);
       // A bad response must not overwrite a good older reading. Stale and labelled beats absent.
-      if (s) { next[code] = s; refreshed++; } else if (have) { kept++; } else { failed++; }
+      if (s) { next[code] = s; refreshed++; }
+      else {
+        // /api/weather answers 200 with OpenWeather's error body rather than an error status, so
+        // a failure arrives looking exactly like a success with no `current` in it. Without this
+        // line an airport that never gets a reading is indistinguishable from one that was never
+        // asked about: Abu Dhabi failed two runs in a row and the step printed nothing either
+        // time. Say which airport and what upstream actually said.
+        reasons.push(`${code}: ${upstreamReason(wx)}`);
+        if (have) kept++; else failed++;
+      }
     } catch (e) {
+      reasons.push(`${code}: ${e.message}`);
       if (have) kept++; else failed++;
     }
   }
@@ -153,18 +181,26 @@ const main = async () => {
   const after = JSON.stringify(payload, null, 2) + '\n';
   if (before === after) {
     console.log(`[weather] no change (${kept} still fresh)`);
+    for (const r of reasons) console.log(`[weather]   ${r}`);
     return 0;
   }
   fs.writeFileSync(OUT, after);
   console.log(`[weather] ${refreshed} refreshed, ${kept} still fresh, ${failed} failed, ${skipped} without coordinates`);
+  for (const r of reasons) console.log(`[weather]   ${r}`);
   return 0;
 };
 
-// process.exitCode rather than process.exit: exit() does not wait for a piped stdout to drain,
-// and this script's value is the line it prints. A precaution, not a fix for anything observed,
-// and no test covers it: mutating it back leaves the suite green.
-main().then((c) => { process.exitCode = c; }).catch((e) => {
-  console.error('[weather] ' + (e && e.stack ? e.stack : e));
-  // Still not a red build: weather is decoration on a page whose job is delays.
-  process.exitCode = 0;
-});
+// Exported so the pure parts can be unit tested. The guard matters: without it, requiring this
+// file from a test would run the whole bake, including the network calls.
+module.exports = { slim, ageH, upstreamReason };
+
+if (require.main === module) {
+  // process.exitCode rather than process.exit: exit() does not wait for a piped stdout to drain,
+  // and this script's value is the line it prints. A precaution, not a fix for anything observed,
+  // and no test covers it: mutating it back leaves the suite green.
+  main().then((c) => { process.exitCode = c; }).catch((e) => {
+    console.error('[weather] ' + (e && e.stack ? e.stack : e));
+    // Still not a red build: weather is decoration on a page whose job is delays.
+    process.exitCode = 0;
+  });
+}
