@@ -56,6 +56,23 @@
     return v;
   }
 
+  /**
+   * The URL slug for an airport's own page: 'los-angeles-lax'.
+   *
+   * Defined here rather than in the generator because both sides need it and they must agree:
+   * the board links to it, and scripts/bake-airports.js names the directory from it. A mismatch
+   * is a 404 that nothing would catch until someone clicked.
+   *
+   * City first because that is the word people search with, code last because it disambiguates
+   * the cities that share a name.
+   */
+  function slugFor(a) {
+    var city = String((a && a.city) || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    var code = String((a && a.airport) || '').toLowerCase().trim();
+    var base = (city + ' ' + code).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+    return base || code || null;
+  }
+
   function reasonLine(a) {
     var bits = [];
     if (a.level >= 1 && a.medianDelay) bits.push('typically ' + a.medianDelay + ' min late');
@@ -103,10 +120,16 @@
       (reg.airports || []).forEach(function (a) {
         var color = LEVEL_COLORS[a.level] || '#4F7C82';
         var note = a.note ? ('<div class="note">' + esc(a.note) + '</div>') : '';
-        h += '<div class="row"><span class="dot" style="background:' + color + '"></span>'
+        // The row links to the airport's own page. Without a link from somewhere those pages are
+        // orphans: generated, in the sitemap, and reachable by nothing a crawler follows.
+        var slug = slugFor(a);
+        var inner = '<span class="dot" style="background:' + color + '"></span>'
           + '<div class="apt">' + esc(a.airport) + '</div>'
           + '<div class="txt"><div class="name">' + esc(a.city || a.airport) + '</div>'
-          + '<div class="reason">' + esc(reasonLine(a)) + '</div>' + note + '</div></div>';
+          + '<div class="reason">' + esc(reasonLine(a)) + '</div>' + note + '</div>';
+        h += slug
+          ? ('<a class="row row-link" href="/live/' + esc(slug) + '/">' + inner + '</a>')
+          : ('<div class="row">' + inner + '</div>');
       });
       h += '</div>';
     });
@@ -128,7 +151,7 @@
 
   return {
     LEVEL_COLORS: LEVEL_COLORS,
-    esc: esc, ago: ago, reasonLine: reasonLine, safeUrl: safeUrl,
+    esc: esc, ago: ago, reasonLine: reasonLine, safeUrl: safeUrl, slugFor: slugFor,
     alertsHtml: alertsHtml, boardHtml: boardHtml, renderAll: renderAll,
   };
 }));
