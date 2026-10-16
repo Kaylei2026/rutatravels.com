@@ -1,0 +1,60 @@
+# Write the current /live board into live/index.html on a schedule.
+#
+# The page fetches the API client-side, so without a JS engine it served the word "Loading..."
+# and an empty board. Answer engines, social preview cards and crawlers that never run JS saw
+# nothing, and Google indexed the loading state because it defers rendering. This commits a
+# rendered snapshot so the first byte always carries real content. The page still fetches on
+# load, so a visitor sees live figures either way.
+#
+# Nothing here is the source of truth for the markup: scripts/bake-live.js calls the same
+# functions in live/board.js that the page calls, so the two cannot drift.
+
+name: Bake /live
+
+on:
+  schedule:
+    # Every 30 minutes. GitHub runs scheduled jobs late under load, sometimes by a lot, which is
+    # fine: the baked copy exists to stop the page being empty, not to be to-the-minute. Real
+    # visitors get live figures from the client fetch regardless.
+    - cron: '7,37 * * * *'
+  workflow_dispatch:
+
+# A late run must never overlap a later one and commit a staler board on top of a fresher one.
+concurrency:
+  group: bake-live
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  bake:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Run the tests
+        # Cheap, has no dependencies, and this is the only place they run. A broken renderer
+        # should fail here rather than commit mangled markup to a public page.
+        run: node --test "scripts/*.test.js"
+
+      - name: Bake the board
+        run: node scripts/bake-live.js
+
+      - name: Commit if it changed
+        run: |
+          if git diff --quiet -- live/index.html; then
+            echo "no change to commit"
+            exit 0
+          fi
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add live/index.html
+          git commit -m "Bake /live board $(date -u '+%Y-%m-%d %H:%M UTC')"
+          # Another run may have landed while this one was working. Rebase rather than force.
+          git pull --rebase --autostash origin main
+          git push origin HEAD:main

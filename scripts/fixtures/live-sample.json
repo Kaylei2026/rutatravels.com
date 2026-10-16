@@ -1,0 +1,41 @@
+{
+  "updatedAt": "2026-10-16T14:32:00.000Z",
+  "regions": [
+    {
+      "region": "North America",
+      "airports": [
+        { "airport": "LAX", "city": "Los Angeles", "level": 3, "status": "Significant delays", "medianDelay": 50, "cancelled": 14, "note": "Ground stop in effect for arrivals" },
+        { "airport": "ORD", "city": "Chicago", "level": 2, "status": "Moderate delays", "medianDelay": 28, "cancelled": 6 },
+        { "airport": "DEN", "city": "Denver", "level": 1, "status": "Minor delays", "medianDelay": 12 },
+        { "airport": "JFK", "city": "New York", "level": 0, "status": "On time" }
+      ]
+    },
+    {
+      "region": "Europe",
+      "airports": [
+        { "airport": "CDG", "city": "Paris", "level": 4, "status": "Severe delays", "medianDelay": 95, "cancelled": 61, "note": "National air traffic control strike" },
+        { "airport": "FCO", "city": "Rome", "level": 2, "status": "Moderate delays", "medianDelay": 31 },
+        { "airport": "LHR", "city": "London", "level": 1, "status": "Minor delays", "medianDelay": 15, "cancelled": 3 }
+      ]
+    }
+  ],
+  "alerts": [
+    {
+      "when": "Active now",
+      "summary": "A national air traffic control strike in France is reducing capacity at Paris airports through Friday evening.",
+      "title": "Grève des contrôleurs aériens",
+      "airports": ["CDG", "ORY"],
+      "countries": ["FR"],
+      "source": "Reuters",
+      "url": "https://example.invalid/atc-strike"
+    },
+    {
+      "when": "Next 24 hours",
+      "summary": "Ground handling staff at Rome Fiumicino have called a four-hour walkout on Saturday morning.",
+      "airports": ["FCO"],
+      "countries": ["IT"],
+      "source": "ANSA",
+      "url": "https://example.invalid/fco-walkout"
+    }
+  ]
+}
