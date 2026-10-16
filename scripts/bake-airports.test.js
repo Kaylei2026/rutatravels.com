@@ -287,7 +287,7 @@ test('the accessibility section carries real counts, not a boast', () => {
 test('terminal services name real places and where they are', () => {
   const r = run(sample());
   const lax = r.read('live/los-angeles-lax/index.html');
-  assert.match(lax, /Eating, shopping and lounges at LAX/);
+  assert.match(lax, /Eating and shopping at LAX/);
   assert.match(lax, /Hudson News/);
   assert.match(lax, /class="loc">Main Hall</);
   r.cleanup();
@@ -391,9 +391,12 @@ test('the stamp is absolute, because a relative age on static HTML freezes at ba
 });
 
 test('an older reading is stamped with its own time, not the bake time', () => {
-  const r = run(sample(), [], { weather: { LAX: wxAt(185) } });
+  // A fixed instant, not Date.now() minus an offset. Computing the expected stamp a second time
+  // at assert time makes this fail whenever the run straddles a minute boundary, which it did.
+  const FIXED = '2026-03-04T05:06:00.000Z';
+  const r = run(sample(), [], { weather: { LAX: { ...wxAt(0), readAt: FIXED, fetchedAt: FIXED } } });
   const html = r.read('live/los-angeles-lax/index.html');
-  assert.match(html, new RegExp('Read ' + stampOf(185).replace(/[-:]/g, '[-:]')));
+  assert.match(html, /Read 2026-03-04 05:06 UTC/);
   assert.ok(!html.includes('Read ' + stampOf(0)), 'stamped with the bake time instead');
   r.cleanup();
 });
@@ -437,6 +440,28 @@ test('a partial reading renders what it has', () => {
   const html = r.read('live/los-angeles-lax/index.html');
   assert.match(html, /71&deg;F/);
   assert.ok(!/wind/.test(html.slice(html.indexOf('Weather at LAX'), html.indexOf('Weather at LAX') + 400)));
+  r.cleanup();
+});
+
+test('does not promise lounges in a heading it cannot deliver on', () => {
+  // That column is 451 entries across 99 airports and only 195 are lounges. Prayer Room (55),
+  // Family Restroom (48), Quiet Room (42) and Nursing Room (28) lead it, so at LAX Terminal 2 the
+  // entry filed under "Lounges" was a family restroom. The app's own lounge data was audited the
+  // same day and found to list rooms that are not there at all.
+  const r = run(sample());
+  const html = r.read('live/los-angeles-lax/index.html');
+  assert.ok(!/Eating, shopping and lounges/.test(html), 'heading still promises lounges');
+  assert.ok(!/Lounges and more/.test(html), 'column is still labelled Lounges');
+  assert.match(html, /Eating and shopping at LAX/);
+  r.cleanup();
+});
+
+test('still shows the things that are inside, under an honest label', () => {
+  const r = run(sample());
+  const html = r.read('live/los-angeles-lax/index.html');
+  assert.match(html, /Also inside/);
+  // A lounge that IS in the data still appears; it is the claim that changed, not the content.
+  assert.match(html, /Alaska Lounge/);
   r.cleanup();
 });
 

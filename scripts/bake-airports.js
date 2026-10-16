@@ -209,7 +209,12 @@ const servicesBlock = (f, code) => {
       + '</ul></div>';
   };
   const sections = ts.map((t) => {
-    const inner = group('Eat', t.food) + group('Shop', t.shopping) + group('Lounges and more', t.other);
+    // "Also inside", not "Lounges and more". Measured across all 99 airports, that column is 451
+    // entries and only 195 of them are lounges. The four most common things in it are Prayer Room
+    // (55), Family Restroom (48), Quiet Room (42) and Nursing Room (28), so at LAX Terminal 2 the
+    // entry under "Lounges" was a family restroom. The lounges still appear; they are no longer
+    // what the column claims to be.
+    const inner = group('Eat', t.food) + group('Shop', t.shopping) + group('Also inside', t.other);
     return inner ? `<div class="svc-t"><h3>${esc(t.name)}</h3>${inner}</div>` : '';
   }).join('');
   if (!sections) return '';
@@ -218,7 +223,12 @@ const servicesBlock = (f, code) => {
   // TERMINAL_SERVICES holds roughly one representative item per category per terminal: 76% of
   // the terminals that list any lounge list exactly one, and ORD shows four against a real
   // eleven. The data is a sample, and a page that counts it implies a directory it is not.
-  return section('Eating, shopping and lounges', `<h2>Eating, shopping and lounges at ${esc(code)}</h2>`
+  // The heading no longer promises lounges. The app's own lounge data was audited the same day
+  // and found to list rooms that do not exist (a Centurion Lounge at ORD) and rooms in the wrong
+  // terminal, and this page's lounge content is thinner still: roughly one per terminal. A page
+  // that puts "lounges" in an H2 and then shows a prayer room has made a promise it cannot keep.
+  // Worth putting back, and worth ranking for, once there is real lounge data behind it.
+  return section('Eating and shopping', `<h2>Eating and shopping at ${esc(code)}</h2>`
     + `<p class="apt-lay">Some of what you will find inside, across ${esc(ts.length)} `
     + `${ts.length === 1 ? 'terminal' : 'terminals'}. Ruta carries this offline, with more in the app.</p>`
     + `<div class="svc">${sections}</div>`);
