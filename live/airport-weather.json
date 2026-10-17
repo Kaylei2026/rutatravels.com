@@ -164,13 +164,13 @@
       "fetchedAt": "2026-10-17T16:59:34.450Z"
     },
     "JNB": {
-      "tempF": 72,
-      "feelsF": 71,
-      "description": "clear sky",
-      "icon": "01d",
-      "windMph": 7,
-      "readAt": "2026-10-17T06:03:49.000Z",
-      "fetchedAt": "2026-10-17T06:03:50.089Z"
+      "tempF": 76,
+      "feelsF": 74,
+      "description": "scattered clouds",
+      "icon": "03n",
+      "windMph": 5,
+      "readAt": "2026-10-17T19:12:00.000Z",
+      "fetchedAt": "2026-10-17T19:12:00.068Z"
     },
     "BKK": {
       "tempF": 79,
@@ -290,13 +290,13 @@
       "fetchedAt": "2026-10-17T16:59:34.532Z"
     },
     "AKL": {
-      "tempF": 57,
-      "feelsF": 56,
+      "tempF": 53,
+      "feelsF": 52,
       "description": "clear sky",
       "icon": "01d",
-      "windMph": 17,
-      "readAt": "2026-10-17T06:03:51.000Z",
-      "fetchedAt": "2026-10-17T06:03:51.720Z"
+      "windMph": 6,
+      "readAt": "2026-10-17T19:12:00.000Z",
+      "fetchedAt": "2026-10-17T19:12:00.154Z"
     },
     "SYD": {
       "tempF": 62,
