@@ -102,6 +102,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://rutatravels.com/live/amsterdam-ams/</loc>
+    <lastmod>2026-10-17</lastmod>
+    <changefreq>hourly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://rutatravels.com/live/atlanta-atl/</loc>
     <lastmod>2026-10-17</lastmod>
     <changefreq>hourly</changefreq>
@@ -127,12 +133,6 @@
   </url>
   <url>
     <loc>https://rutatravels.com/live/bogota-bog/</loc>
-    <lastmod>2026-10-17</lastmod>
-    <changefreq>hourly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://rutatravels.com/live/buenos-aires-eze/</loc>
     <lastmod>2026-10-17</lastmod>
     <changefreq>hourly</changefreq>
     <priority>0.7</priority>
@@ -168,6 +168,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://rutatravels.com/live/frankfurt-fra/</loc>
+    <lastmod>2026-10-17</lastmod>
+    <changefreq>hourly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://rutatravels.com/live/hong-kong-hkg/</loc>
     <lastmod>2026-10-17</lastmod>
     <changefreq>hourly</changefreq>
@@ -175,6 +181,12 @@
   </url>
   <url>
     <loc>https://rutatravels.com/live/istanbul-ist/</loc>
+    <lastmod>2026-10-17</lastmod>
+    <changefreq>hourly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://rutatravels.com/live/johannesburg-jnb/</loc>
     <lastmod>2026-10-17</lastmod>
     <changefreq>hourly</changefreq>
     <priority>0.7</priority>
@@ -192,7 +204,19 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://rutatravels.com/live/london-lhr/</loc>
+    <lastmod>2026-10-17</lastmod>
+    <changefreq>hourly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://rutatravels.com/live/los-angeles-lax/</loc>
+    <lastmod>2026-10-17</lastmod>
+    <changefreq>hourly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://rutatravels.com/live/madrid-mad/</loc>
     <lastmod>2026-10-17</lastmod>
     <changefreq>hourly</changefreq>
     <priority>0.7</priority>
@@ -211,6 +235,12 @@
   </url>
   <url>
     <loc>https://rutatravels.com/live/new-york-jfk/</loc>
+    <lastmod>2026-10-17</lastmod>
+    <changefreq>hourly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://rutatravels.com/live/paris-cdg/</loc>
     <lastmod>2026-10-17</lastmod>
     <changefreq>hourly</changefreq>
     <priority>0.7</priority>
@@ -259,6 +289,12 @@
   </url>
   <url>
     <loc>https://rutatravels.com/live/toronto-yyz/</loc>
+    <lastmod>2026-10-17</lastmod>
+    <changefreq>hourly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://rutatravels.com/live/zurich-zrh/</loc>
     <lastmod>2026-10-17</lastmod>
     <changefreq>hourly</changefreq>
     <priority>0.7</priority>
