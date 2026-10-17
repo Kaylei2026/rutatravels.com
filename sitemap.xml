@@ -264,6 +264,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://rutatravels.com/live/sao-paulo-gru/</loc>
+    <lastmod>2026-10-17</lastmod>
+    <changefreq>hourly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://rutatravels.com/live/seoul-icn/</loc>
     <lastmod>2026-10-17</lastmod>
     <changefreq>hourly</changefreq>
@@ -277,12 +283,6 @@
   </url>
   <url>
     <loc>https://rutatravels.com/live/singapore-sin/</loc>
-    <lastmod>2026-10-17</lastmod>
-    <changefreq>hourly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://rutatravels.com/live/sydney-syd/</loc>
     <lastmod>2026-10-17</lastmod>
     <changefreq>hourly</changefreq>
     <priority>0.7</priority>
