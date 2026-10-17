@@ -96,6 +96,12 @@
   </url>
   <!--ruta:airports:start-->
   <url>
+    <loc>https://rutatravels.com/live/abu-dhabi-auh/</loc>
+    <lastmod>2026-10-17</lastmod>
+    <changefreq>hourly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://rutatravels.com/live/amsterdam-ams/</loc>
     <lastmod>2026-10-17</lastmod>
     <changefreq>hourly</changefreq>
@@ -133,6 +139,12 @@
   </url>
   <url>
     <loc>https://rutatravels.com/live/buenos-aires-eze/</loc>
+    <lastmod>2026-10-17</lastmod>
+    <changefreq>hourly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://rutatravels.com/live/casablanca-cmn/</loc>
     <lastmod>2026-10-17</lastmod>
     <changefreq>hourly</changefreq>
     <priority>0.7</priority>
@@ -186,12 +198,6 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://rutatravels.com/live/johannesburg-jnb/</loc>
-    <lastmod>2026-10-17</lastmod>
-    <changefreq>hourly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://rutatravels.com/live/kuala-lumpur-kul/</loc>
     <lastmod>2026-10-17</lastmod>
     <changefreq>hourly</changefreq>
@@ -217,6 +223,12 @@
   </url>
   <url>
     <loc>https://rutatravels.com/live/madrid-mad/</loc>
+    <lastmod>2026-10-17</lastmod>
+    <changefreq>hourly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://rutatravels.com/live/melbourne-mel/</loc>
     <lastmod>2026-10-17</lastmod>
     <changefreq>hourly</changefreq>
     <priority>0.7</priority>
@@ -252,6 +264,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://rutatravels.com/live/seoul-icn/</loc>
+    <lastmod>2026-10-17</lastmod>
+    <changefreq>hourly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://rutatravels.com/live/shanghai-pvg/</loc>
     <lastmod>2026-10-17</lastmod>
     <changefreq>hourly</changefreq>
@@ -259,6 +277,12 @@
   </url>
   <url>
     <loc>https://rutatravels.com/live/singapore-sin/</loc>
+    <lastmod>2026-10-17</lastmod>
+    <changefreq>hourly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://rutatravels.com/live/sydney-syd/</loc>
     <lastmod>2026-10-17</lastmod>
     <changefreq>hourly</changefreq>
     <priority>0.7</priority>
