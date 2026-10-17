@@ -138,12 +138,6 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://rutatravels.com/live/buenos-aires-eze/</loc>
-    <lastmod>2026-10-17</lastmod>
-    <changefreq>hourly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://rutatravels.com/live/casablanca-cmn/</loc>
     <lastmod>2026-10-17</lastmod>
     <changefreq>hourly</changefreq>
@@ -180,12 +174,6 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://rutatravels.com/live/frankfurt-fra/</loc>
-    <lastmod>2026-10-17</lastmod>
-    <changefreq>hourly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://rutatravels.com/live/hong-kong-hkg/</loc>
     <lastmod>2026-10-17</lastmod>
     <changefreq>hourly</changefreq>
@@ -205,12 +193,6 @@
   </url>
   <url>
     <loc>https://rutatravels.com/live/lima-lim/</loc>
-    <lastmod>2026-10-17</lastmod>
-    <changefreq>hourly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://rutatravels.com/live/london-lhr/</loc>
     <lastmod>2026-10-17</lastmod>
     <changefreq>hourly</changefreq>
     <priority>0.7</priority>
@@ -246,12 +228,6 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://rutatravels.com/live/paris-cdg/</loc>
-    <lastmod>2026-10-17</lastmod>
-    <changefreq>hourly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://rutatravels.com/live/rome-fco/</loc>
     <lastmod>2026-10-17</lastmod>
     <changefreq>hourly</changefreq>
@@ -259,6 +235,12 @@
   </url>
   <url>
     <loc>https://rutatravels.com/live/san-francisco-sfo/</loc>
+    <lastmod>2026-10-17</lastmod>
+    <changefreq>hourly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://rutatravels.com/live/sao-paulo-gru/</loc>
     <lastmod>2026-10-17</lastmod>
     <changefreq>hourly</changefreq>
     <priority>0.7</priority>
@@ -295,12 +277,6 @@
   </url>
   <url>
     <loc>https://rutatravels.com/live/toronto-yyz/</loc>
-    <lastmod>2026-10-17</lastmod>
-    <changefreq>hourly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://rutatravels.com/live/zurich-zrh/</loc>
     <lastmod>2026-10-17</lastmod>
     <changefreq>hourly</changefreq>
     <priority>0.7</priority>

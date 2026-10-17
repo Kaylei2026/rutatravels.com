@@ -290,13 +290,13 @@
       "fetchedAt": "2026-10-17T21:40:12.584Z"
     },
     "AKL": {
-      "tempF": 53,
-      "feelsF": 52,
+      "tempF": 67,
+      "feelsF": 66,
       "description": "clear sky",
       "icon": "01d",
-      "windMph": 6,
-      "readAt": "2026-10-17T19:12:00.000Z",
-      "fetchedAt": "2026-10-17T19:12:00.154Z"
+      "windMph": 14,
+      "readAt": "2026-10-17T23:56:15.000Z",
+      "fetchedAt": "2026-10-17T23:56:15.826Z"
     },
     "SYD": {
       "tempF": 62,
@@ -335,13 +335,13 @@
       "fetchedAt": "2026-10-17T21:40:12.306Z"
     },
     "GRU": {
-      "tempF": 66,
-      "feelsF": 66,
-      "description": "overcast clouds",
-      "icon": "04d",
+      "tempF": 64,
+      "feelsF": 65,
+      "description": "scattered clouds",
+      "icon": "03n",
       "windMph": 5,
-      "readAt": "2026-10-17T13:53:21.000Z",
-      "fetchedAt": "2026-10-17T13:53:21.216Z"
+      "readAt": "2026-10-17T23:56:15.000Z",
+      "fetchedAt": "2026-10-17T23:56:15.986Z"
     }
   }
 }
