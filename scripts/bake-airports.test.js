@@ -504,3 +504,194 @@ test('the freshness stamp sits with the status, not in the hero', () => {
   assert.ok(stamp.test(card.slice(0, end)), 'the stamp is not in the Right now card');
   r.cleanup();
 });
+
+/**
+ * The lounge section, and the column it replaced.
+ *
+ * The page was already showing lounges before this section existed, through "Also inside", which
+ * samples roughly one item per category per terminal. Heathrow showed 5 of its 36 and Hong Kong
+ * 1 of 18, so a reader counted what was in front of them and got a number nobody had claimed.
+ * Across the 38 pages the column surfaced 97 against 547. These tests guard both halves of the
+ * fix: the section is right, and the column no longer competes with it.
+ */
+const LOUNGE_FILE = path.join(ROOT, 'live', 'airport-lounges.json');
+const loungeData = () => JSON.parse(fs.readFileSync(LOUNGE_FILE, 'utf8')).airports;
+const factsData = () => JSON.parse(fs.readFileSync(path.join(ROOT, 'live', 'airport-facts.json'), 'utf8')).airports;
+
+/** Like run(), with the lounge file present unless told otherwise. */
+const runL = (payload, opts = {}) => {
+  const withLounges = opts.withLounges !== false;
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'ruta-lng-'));
+  fs.mkdirSync(path.join(dir, 'live'));
+  fs.mkdirSync(path.join(dir, 'scripts'));
+  for (const f of ['index.html', 'board.js']) {
+    fs.copyFileSync(path.join(ROOT, 'live', f), path.join(dir, 'live', f));
+  }
+  fs.copyFileSync(path.join(ROOT, 'scripts', 'bake-airports.js'), path.join(dir, 'scripts', 'bake-airports.js'));
+  fs.copyFileSync(path.join(ROOT, 'sitemap.xml'), path.join(dir, 'sitemap.xml'));
+  const facts = path.join(ROOT, 'live', 'airport-facts.json');
+  if (fs.existsSync(facts)) fs.copyFileSync(facts, path.join(dir, 'live', 'airport-facts.json'));
+  if (withLounges) {
+    const dest = path.join(dir, 'live', 'airport-lounges.json');
+    if (opts.lounges) fs.writeFileSync(dest, JSON.stringify(opts.lounges));
+    else fs.copyFileSync(LOUNGE_FILE, dest);
+  }
+  const pay = path.join(dir, 'p.json');
+  fs.writeFileSync(pay, JSON.stringify(payload));
+  let status = 0;
+  try {
+    execFileSync(process.execPath, [path.join(dir, 'scripts', 'bake-airports.js'), '--from', pay], { stdio: 'pipe' });
+  } catch (e) { status = e.status; }
+  const read = (slug) => {
+    try { return fs.readFileSync(path.join(dir, 'live', slug, 'index.html'), 'utf8'); }
+    catch (e) { return null; }
+  };
+  return { status, read, cleanup: () => fs.rmSync(dir, { recursive: true, force: true }) };
+};
+
+const card = (html, label) => {
+  const i = String(html || '').indexOf(`aria-label="${label}"`);
+  return i === -1 ? null : html.slice(i, html.indexOf('</section>', i));
+};
+
+const payloadOf = (airports) => ({
+  updatedAt: new Date().toISOString(),
+  regions: [{ region: 'Test', airports }],
+  alerts: [],
+});
+
+const APT = (airport, city) => ({ airport, city, level: 0, status: 'On time', note: '' });
+
+test('an audited airport gets its real lounge count, not a sample of it', () => {
+  const r = runL(payloadOf([APT('ORD', 'Chicago')]));
+  try {
+    const lng = card(r.read('chicago-ord'), 'Lounges');
+    assert.ok(lng, 'no lounge section');
+    const expected = loungeData().ORD.lounges.length;
+    const rows = (lng.match(/<li>/g) || []).length;
+    assert.strictEqual(rows, expected, `rendered ${rows} lounges, data has ${expected}`);
+    // The headline number is the thing a reader counts, so it has to match the rows under it.
+    const m = lng.match(/>(\d+) lounges/);
+    assert.ok(m, 'no count in the headline');
+    assert.strictEqual(Number(m[1]), expected, 'headline count disagrees with the rows');
+  } finally { r.cleanup(); }
+});
+
+test('every lounge brings its access list with it', () => {
+  // Under-reporting what opens a door is the failure this section exists to fix, so access is
+  // printed in full rather than trimmed to fit.
+  const r = runL(payloadOf([APT('ORD', 'Chicago')]));
+  try {
+    const lng = card(r.read('chicago-ord'), 'Lounges');
+    for (const l of loungeData().ORD.lounges) {
+      assert.ok(lng.includes(l.name), `${l.name} missing`);
+      for (const a of (l.access || [])) {
+        assert.ok(lng.includes(a.replace(/&/g, '&amp;')), `${l.name} lost access string ${a}`);
+      }
+    }
+  } finally { r.cleanup(); }
+});
+
+test('a lounge with no access list still appears', () => {
+  // Five rooms in the data carry no access, because nothing reliable said who gets in. An
+  // omitted line is honest; dropping the room would be a second undercount.
+  const r = runL(payloadOf([APT('ORD', 'Chicago')]));
+  try {
+    const lng = card(r.read('chicago-ord'), 'Lounges');
+    const none = loungeData().ORD.lounges.filter((l) => !l.access || !l.access.length);
+    assert.ok(none.length, 'ORD no longer has an access-less lounge; point this test elsewhere');
+    for (const l of none) assert.ok(lng.includes(l.name), `${l.name} dropped for having no access`);
+  } finally { r.cleanup(); }
+});
+
+test('terminal headings use the word the airport itself uses', () => {
+  const r = runL(payloadOf([APT('ATL', 'Atlanta'), APT('CPT', 'Cape Town'), APT('ORD', 'Chicago')]));
+  try {
+    // Atlanta has concourses, not terminals, and the facts file is where that word comes from.
+    const atl = card(r.read('atlanta-atl'), 'Lounges');
+    assert.ok(/<h3>Concourse A<\/h3>/.test(atl), 'Atlanta should say Concourse A');
+    assert.ok(!/<h3>Terminal A<\/h3>/.test(atl), 'Atlanta should not say Terminal');
+    // "T1" must not print as "Terminal T1".
+    const ord = card(r.read('chicago-ord'), 'Lounges');
+    assert.ok(/<h3>Terminal 1<\/h3>/.test(ord), 'ORD should say Terminal 1');
+    assert.ok(!/Terminal T1/.test(ord), 'the T was printed twice');
+    // Cape Town stores DOMESTIC in capitals; a heading should not shout at one airport only.
+    const cpt = card(r.read('cape-town-cpt'), 'Lounges');
+    assert.ok(!/DOMESTIC/.test(cpt), 'raw capitals reached a heading');
+    assert.ok(/Domestic/.test(cpt), 'Cape Town lost its domestic grouping');
+  } finally { r.cleanup(); }
+});
+
+test('an airport with no lounge data gets no lounge section', () => {
+  // The whole reason the section is safe to publish. A short list presented as an inventory is
+  // worse than the sample column, which never claimed to be one.
+  const r = runL(payloadOf([APT('ORD', 'Chicago'), APT('DEN', 'Denver')]),
+    { lounges: { airports: { ORD: loungeData().ORD } } });
+  try {
+    assert.ok(card(r.read('chicago-ord'), 'Lounges'), 'ORD should have a section');
+    assert.strictEqual(card(r.read('denver-den'), 'Lounges'), null, 'DEN has no lounge data and got a section');
+  } finally { r.cleanup(); }
+});
+
+test('no lounge file at all builds the pages without the claim', () => {
+  const r = runL(payloadOf([APT('ORD', 'Chicago')]), { withLounges: false });
+  try {
+    assert.strictEqual(r.status, 0, 'a missing lounge file should not fail the bake');
+    const html = r.read('chicago-ord');
+    assert.ok(html, 'no page written');
+    assert.strictEqual(card(html, 'Lounges'), null, 'a section appeared with nothing behind it');
+  } finally { r.cleanup(); }
+});
+
+test('no lounge is listed in both the section and the sample column', () => {
+  // Measured rather than assumed: this walks every audited airport in the facts file, because
+  // the leaks past a plain lounge|club were one room each at Heathrow, CDG and Hong Kong.
+  const LOUNGE_NAME = /\b(lounge|club|clubhouse|galleries|salon)\b|centurion|la premi[eè]re|the pier/i;
+  const facts = factsData();
+  const lounges = loungeData();
+  const leaks = [];
+  for (const [code, f] of Object.entries(facts)) {
+    if (!lounges[code]) continue;
+    for (const t of (f.terminalServices || [])) {
+      for (const x of (t.other || [])) {
+        const n = String((x && x.name) || '').trim();
+        if (!n || LOUNGE_NAME.test(n)) continue;
+        if ((lounges[code].lounges || []).some((l) => l.name.toLowerCase() === n.toLowerCase())) {
+          leaks.push(`${code}: ${n}`);
+        }
+      }
+    }
+  }
+  assert.deepStrictEqual(leaks, [], 'a lounge survives in the sample column');
+});
+
+test('the sample column keeps the things it is actually good at', () => {
+  // The other half of the filter. Prayer rooms, quiet rooms and family restrooms are the most
+  // common entries in that column and the reason to keep it at all; a filter that took them
+  // would have fixed the count by emptying the page.
+  const r = runL(payloadOf([APT('ORD', 'Chicago'), APT('LHR', 'London')]));
+  try {
+    assert.ok(/Quiet Room/.test(card(r.read('chicago-ord'), 'Eating and shopping')), 'ORD lost its quiet room');
+    const lhr = card(r.read('london-lhr'), 'Eating and shopping');
+    assert.ok(/Prayer Room/.test(lhr), 'LHR lost its prayer room');
+    // The two rooms that got past a plain lounge|club.
+    assert.ok(!/Virgin Clubhouse/.test(lhr), 'Virgin Clubhouse still in the sample column');
+    assert.ok(!/BA Galleries First/.test(lhr), 'BA Galleries First still in the sample column');
+  } finally { r.cleanup(); }
+});
+
+test('the exported lounge file carries only what a reader can see', () => {
+  const data = loungeData();
+  assert.ok(Object.keys(data).length > 30, 'suspiciously few airports in the lounge file');
+  for (const [code, a] of Object.entries(data)) {
+    assert.ok(/^[A-Z]{3}$/.test(code), `${code} is not an airport code`);
+    assert.ok(Array.isArray(a.lounges) && a.lounges.length, `${code} has an empty lounge list`);
+    for (const l of a.lounges) {
+      assert.ok(l.name && typeof l.name === 'string', `${code} has a lounge with no name`);
+      if (l.access !== undefined) assert.ok(Array.isArray(l.access), `${code}/${l.name} access is not a list`);
+      // The audit's own reasoning (why a room was excluded, which source settled a conflict)
+      // belongs in the repo, not in a file served to browsers.
+      for (const k of Object.keys(l)) assert.ok(k[0] !== '_', `${code}/${l.name} leaked ${k} to the site`);
+    }
+  }
+});

@@ -30,6 +30,7 @@ const PAGE = path.join(ROOT, 'live', 'index.html');
 const SITEMAP = path.join(ROOT, 'sitemap.xml');
 const FACTS = path.join(ROOT, 'live', 'airport-facts.json');
 const WEATHER = path.join(ROOT, 'live', 'airport-weather.json');
+const LOUNGES = path.join(ROOT, 'live', 'airport-lounges.json');
 const BOARD = require(path.join(ROOT, 'live', 'board.js'));
 
 const SITE = 'https://rutatravels.com';
@@ -204,9 +205,23 @@ const siblingsBlock = (region, self) => {
  * a spot within it. This is the app's own services data, and it is the reason someone would keep
  * the page open after the delay question is answered.
  */
-const servicesBlock = (f, code) => {
+const servicesBlock = (f, code, hasLoungeSection) => {
   const ts = (f && f.terminalServices) || [];
   if (!ts.length) return '';
+  // With a real lounge section above, the sampled lounges in "Also inside" are the same rooms
+  // listed again at a fraction of the true count, which is what made the page look like it was
+  // claiming six lounges at Atlanta against twelve. Dropped only when there is a section to drop
+  // them in favour of, so an airport without lounge data keeps whatever it had.
+  // Every name in the facts file's "Also inside" column was checked against this pattern. Seven
+  // lounges got past a plain lounge|club: Heathrow's Virgin Clubhouse (\bclub\b does not match
+  // clubhouse) and BA Galleries First, Air France's Salon Business and La Premiere at CDG, and
+  // Cathay Pacific The Pier at Hong Kong. Hence the named rooms rather than a cleverer rule: the
+  // leak set is small, finite and measured, and a test pins it. Nothing that should stay matches
+  // any of these, including Prayer Room, Family Restroom, Quiet Room, Spa and Turkish Bath Spa.
+  const LOUNGE_NAME = /\b(lounge|club|clubhouse|galleries|salon)\b|centurion|la premi[e\u00e8]re|the pier/i;
+  const dropLounges = (items) => (hasLoungeSection
+    ? items.filter((x) => !LOUNGE_NAME.test(String(x && x.name || '')))
+    : items);
   const group = (label, items) => {
     if (!items.length) return '';
     return `<div class="svc-g"><div class="svc-k">${esc(label)}</div><ul class="svc-l">`
@@ -219,11 +234,10 @@ const servicesBlock = (f, code) => {
     // (55), Family Restroom (48), Quiet Room (42) and Nursing Room (28), so at LAX Terminal 2 the
     // entry under "Lounges" was a family restroom. The lounges still appear; they are no longer
     // what the column claims to be.
-    const inner = group('Eat', t.food) + group('Shop', t.shopping) + group('Also inside', t.other);
+    const inner = group('Eat', t.food) + group('Shop', t.shopping) + group('Also inside', dropLounges(t.other));
     return inner ? `<div class="svc-t"><h3>${esc(t.name)}</h3>${inner}</div>` : '';
   }).join('');
   if (!sections) return '';
-  const total = ts.reduce((n, t) => n + t.food.length + t.shopping.length + t.other.length, 0);
   // Deliberately "some of what is here" rather than a count presented as an inventory.
   // TERMINAL_SERVICES holds roughly one representative item per category per terminal: 76% of
   // the terminals that list any lounge list exactly one, and ORD shows four against a real
@@ -292,7 +306,86 @@ const accessBlock = (f, code) => {
   return section('Getting around', h);
 };
 
-const pageHtml = ({ a, region, alerts, chrome, updated, facts, asOf, weather, nowMs }) => {
+/**
+ * A terminal designator written the way the airport writes it.
+ *
+ * The lounge data stores whatever the airport calls the place: "A" at Atlanta, "2" at Heathrow,
+ * "T1" at Sydney, "International" at Istanbul, "DOMESTIC" at Cape Town. Printing those raw gives
+ * headings like "DOMESTIC" and "T1", and prefixing blindly gives "Terminal T1". The airport's own
+ * word comes from the facts file, which is why Atlanta reads Concourse and nowhere else does.
+ */
+const terminalLabel = (value, word) => {
+  const v = String(value == null ? '' : value).trim();
+  if (!v) return null;
+  const w = word || 'Terminal';
+  const bare = v.match(/^T\s*(\d+[A-Za-z]?)$/i);
+  if (bare) return `${w} ${bare[1].toUpperCase()}`;
+  if (/^(\d+[A-Za-z]?|[A-Za-z])$/.test(v)) return `${w} ${v.toUpperCase()}`;
+  // A word rather than a designator. Title-cased because the data holds both "International"
+  // and "DOMESTIC", and a heading should not shout at one airport and not the next.
+  const titled = v.toLowerCase().replace(/\b[a-z]/g, (c) => c.toUpperCase());
+  return /terminal|concourse|pier|hall/i.test(titled) ? titled : `${titled} ${w.toLowerCase()}`;
+};
+
+/**
+ * The lounges, grouped by terminal, with who gets in.
+ *
+ * This section exists because the page was already showing lounges and getting the number wrong.
+ * They arrived through the "Also inside" column, which samples roughly one item per category per
+ * terminal, so Heathrow showed 5 of its 36 and Hong Kong showed 1 of 18, and a reader counted
+ * what was in front of them. Across the 38 pages the column surfaced 97 against 547.
+ *
+ * Only airports in airport-lounges.json get a section, and that file carries only the airports
+ * whose lounges were checked against operators' own directories. An airport that is missing shows
+ * nothing here, which is the point: a short list presented as an inventory is worse than no list,
+ * because the sample column at least never claimed to be one.
+ *
+ * Access strings are printed in full rather than truncated. Under-reporting what opens a door is
+ * the failure this section is fixing.
+ */
+const loungesBlock = (lounges, code, facts) => {
+  const list = (lounges && lounges.lounges) || [];
+  if (!list.length) return '';
+  const word = (facts && facts.terminalWord) || 'Terminal';
+
+  // Grouped in the order the data lists them, which is the order the audit wrote them in and
+  // usually follows the airport's own signage. Sorting alphabetically would put Concourse T
+  // between A and B at Atlanta.
+  const groups = [];
+  const byKey = new Map();
+  for (const l of list) {
+    const key = terminalLabel(l.terminal, word) || '';
+    if (!byKey.has(key)) { byKey.set(key, []); groups.push(key); }
+    byKey.get(key).push(l);
+  }
+
+  const row = (l) => {
+    const bits = [`<span class="lng-n">${esc(l.name)}</span>`];
+    if (l.location) bits.push(`<span class="loc">${esc(l.location)}</span>`);
+    if (l.hours) bits.push(`<span class="lng-h">${esc(l.hours)}</span>`);
+    // Five lounges in the data carry no access list, because nothing reliable said who gets in.
+    // They still belong on the page; an omitted line is honest and an invented one is not.
+    if (l.access && l.access.length) {
+      bits.push(`<span class="lng-a">${l.access.map(esc).join(' &middot; ')}</span>`);
+    }
+    return `<li>${bits.join('')}</li>`;
+  };
+
+  const inner = groups.map((g) => {
+    const rows = byKey.get(g).map(row).join('');
+    return `<div class="lng-t">${g ? `<h3>${esc(g)}</h3>` : ''}<ul class="lng-l">${rows}</ul></div>`;
+  }).join('');
+
+  const n = list.length;
+  const terms = groups.filter(Boolean).length;
+  const where = terms > 1 ? ` across ${esc(terms)} ${esc(terms === 1 ? word.toLowerCase() : word.toLowerCase() + 's')}` : '';
+  return section('Lounges', `<h2>Lounges at ${esc(code)}</h2>`
+    + `<p class="apt-lay">${esc(n)} ${n === 1 ? 'lounge' : 'lounges'}${where}, with what opens each door. `
+    + `Ruta carries this offline and tells you which ones your own cards and status already cover.</p>`
+    + `<div class="lng">${inner}</div>`);
+};
+
+const pageHtml = ({ a, region, alerts, chrome, updated, facts, asOf, weather, nowMs, lounges }) => {
   const city = a.city || a.airport;
   const title = `${city} (${a.airport}) Airport Delays | Ruta Travels`;
   const desc = summaryLine(a, alerts);
@@ -367,6 +460,16 @@ ${chrome.style}
 .svc-l{margin:0;padding-left:18px;font-size:14.5px;color:var(--cream)}
 .svc-l li{margin:4px 0}
 .svc-l .loc{color:var(--muted);font-size:13px}
+.lng-t{padding:18px 0 4px;border-top:1px solid var(--line)}
+.lng-t:first-child{padding-top:4px;border-top:0}
+.lng-t h3{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin:0 0 10px;font-weight:600}
+.lng-l{margin:0;padding:0;list-style:none}
+.lng-l li{padding:10px 0;border-top:1px solid var(--line)}
+.lng-l li:first-child{border-top:0}
+.lng-n{display:block;font-size:15.5px;color:var(--cream);font-weight:600}
+.lng-l .loc{display:block;color:var(--muted);font-size:13px;margin-top:2px}
+.lng-h{display:block;color:var(--muted);font-size:13px;margin-top:2px;font-variant-numeric:tabular-nums}
+.lng-a{display:block;font-size:13px;color:var(--gold);margin-top:5px}
 
 /* Text links, not buttons. The board's palette, not the browser's. */
 .siblings{display:flex;flex-wrap:wrap;gap:8px 22px;margin:0}
@@ -402,9 +505,11 @@ ${chrome.nav}
 
   ${factsBlock(facts, a.airport, asOf)}
 
+  ${loungesBlock(lounges, a.airport, facts)}
+
   ${accessBlock(facts, a.airport)}
 
-  ${servicesBlock(facts, a.airport)}
+  ${servicesBlock(facts, a.airport, !!(lounges && (lounges.lounges || []).length))}
 
   ${siblingsBlock(region, a)}
 
@@ -492,6 +597,19 @@ const main = async () => {
       + 'Regenerate it with scripts/export-airport-facts.cjs in the app repo.');
   }
 
+  // Optional, like the facts, with one difference that matters: a missing lounge file means no
+  // page gets a lounge section, and that is the correct outcome rather than a degraded one. The
+  // section is only ever as trustworthy as this file, so building without it is building without
+  // the claim.
+  let allLounges = {};
+  if (fs.existsSync(LOUNGES)) {
+    try { allLounges = (JSON.parse(fs.readFileSync(LOUNGES, 'utf8')) || {}).airports || {}; }
+    catch (e) { console.warn(`[airports] could not read ${LOUNGES} (${e.message}); building without lounges`); }
+  } else {
+    console.warn('[airports] no airport-lounges.json; pages will carry no lounge section. '
+      + 'Regenerate it with scripts/export-airport-lounges.cjs in the app repo.');
+  }
+
   // Optional, like the facts. No weather file just means no weather card.
   if (fs.existsSync(WEATHER)) {
     try { allWeather = (JSON.parse(fs.readFileSync(WEATHER, 'utf8')) || {}).airports || {}; }
@@ -522,7 +640,8 @@ const main = async () => {
       if (!slug) continue;
       slugs.push(slug);
       const html = pageHtml({ a, region, alerts: byAirport(a.airport), chrome, updated,
-        facts: allFacts[a.airport], asOf: factsDate, weather: allWeather[a.airport], nowMs });
+        facts: allFacts[a.airport], asOf: factsDate, weather: allWeather[a.airport], nowMs,
+        lounges: allLounges[a.airport] });
       const dir = path.join(ROOT, 'live', slug);
       const file = path.join(dir, 'index.html');
       const prev = fs.existsSync(file) ? fs.readFileSync(file, 'utf8') : null;
