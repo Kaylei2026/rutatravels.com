@@ -412,6 +412,7 @@ ${chrome.nav}
   </div>
 </div>
 ${chrome.footer}
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "d516af67479748a6a1a63af70d2caa8d"}'></script>
 </body>
 </html>
 `;
