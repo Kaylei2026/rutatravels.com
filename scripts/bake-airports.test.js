@@ -695,3 +695,53 @@ test('the exported lounge file carries only what a reader can see', () => {
     }
   }
 });
+
+test('every terminal heading reads like the airport wrote it', () => {
+  // One airport per shape in the data, chosen by measuring all 82: concourse letters, a "T1"
+  // style key, a slash pair, a letter plus a word, an all-capitals word, a name with internal
+  // capitals, a direction, a satellite, an airside, a letter-suffixed number, and an airport
+  // with a lounge whose terminal is not recorded at all.
+  const SHAPES = [
+    ['ATL', 'Atlanta'], ['ORD', 'Chicago'], ['CLT', 'Charlotte'], ['PHL', 'Philadelphia'],
+    ['CPT', 'Cape Town'], ['DTW', 'Detroit'], ['LGW', 'London'], ['BKK', 'Bangkok'],
+    ['TPA', 'Tampa'], ['MAD', 'Madrid'], ['ZRH', 'Zurich'],
+  ];
+  const r = runL(payloadOf(SHAPES.map(([c, city]) => APT(c, city))));
+  try {
+    const heads = [];
+    for (const [code] of SHAPES) {
+      const slug = BOARD.slugFor({ airport: code, city: SHAPES.find((x) => x[0] === code)[1] });
+      const lng = card(r.read(slug), 'Lounges');
+      assert.ok(lng, `${code} has no lounge section`);
+      for (const m of lng.matchAll(/<h3>([^<]*)<\/h3>/g)) heads.push([code, m[1]]);
+      // An unlabelled group above a labelled one reads as though it belonged to the heading
+      // below it, so the unlabelled one goes last.
+      const groups = [...lng.matchAll(/<div class="lng-t">(<h3>)?/g)].map((m) => !!m[1]);
+      if (groups.length > 1 && groups.includes(false)) {
+        assert.ok(groups.indexOf(false) > groups.lastIndexOf(true),
+          `${code} puts an unlabelled group above a labelled one`);
+      }
+    }
+    assert.ok(heads.length > 20, 'too few headings to be testing anything');
+    for (const [code, h] of heads) {
+      // "Domestic terminal" beside "Terminal 2" is the bug this catches.
+      assert.ok(!/\b(terminal|concourse|airside|pier)\b/.test(h),
+        `${code}: "${h}" has a lowercase terminal word`);
+      assert.ok(!/\bT\d/.test(h), `${code}: "${h}" printed the T twice`);
+      assert.notStrictEqual(h, h.toUpperCase(), `${code}: "${h}" is shouting`);
+      assert.ok(/^[A-Z]/.test(h), `${code}: "${h}" does not start with a capital`);
+    }
+    const all = heads.map(([, h]) => h);
+    // Each branch, by its own example.
+    assert.ok(all.includes('Concourse A'), 'Atlanta lost its concourse word');
+    assert.ok(all.includes('Terminal 1'), 'a T1 key did not become Terminal 1');
+    assert.ok(all.includes('Concourse C/D'), 'a slash pair came out the wrong way round');
+    assert.ok(all.includes('Terminal A West'), 'a letter plus a word came out the wrong way round');
+    assert.ok(all.includes('Domestic Terminal'), 'an all-capitals word was not reshaped');
+    assert.ok(all.includes('McNamara Terminal'), 'internal capitals were flattened to Mcnamara');
+    assert.ok(all.includes('North Terminal'), 'a direction came out the wrong way round');
+    assert.ok(all.includes('Satellite Concourse'), 'a satellite came out the wrong way round');
+    assert.ok(all.includes('Airside F'), 'Tampa lost its airside word');
+    assert.ok(all.includes('Terminal 4S'), 'a letter-suffixed number lost its letter');
+  } finally { r.cleanup(); }
+});

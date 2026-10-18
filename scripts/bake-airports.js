@@ -309,22 +309,54 @@ const accessBlock = (f, code) => {
 /**
  * A terminal designator written the way the airport writes it.
  *
- * The lounge data stores whatever the airport calls the place: "A" at Atlanta, "2" at Heathrow,
- * "T1" at Sydney, "International" at Istanbul, "DOMESTIC" at Cape Town. Printing those raw gives
- * headings like "DOMESTIC" and "T1", and prefixing blindly gives "Terminal T1". The airport's own
- * word comes from the facts file, which is why Atlanta reads Concourse and nowhere else does.
+ * The lounge data stores whatever the airport calls the place, and the shapes are not alike: "A"
+ * at Atlanta, "2" at Heathrow, "T1" at Sydney, "C/D" at Charlotte, "A West" at Philadelphia,
+ * "DOMESTIC" at Cape Town, "McNamara Terminal" at Detroit, "First Class Terminal" at Frankfurt.
+ * The airport's own word for the thing comes from the facts file, which is why Atlanta reads
+ * Concourse, Tampa reads Airside and nowhere else does.
+ *
+ * Measured against every value in the file, there are three cases and they need different
+ * handling:
+ *
+ *   names itself      "McNamara Terminal", "First Class Terminal", "Domestic Concourse A"
+ *   a designator      "A", "2", "T1", "C/D", "A West"           -> word first
+ *   a word            "Domestic", "Main", "North", "Satellite"  -> word last
+ *
+ * A single rule got all three wrong somewhere: it printed "Terminal T1", "Domestic terminal" with
+ * a lowercase t beside "Terminal 2", "C/D concourse" instead of "Concourse C/D", and flattened
+ * Detroit's McNamara to "Mcnamara". Hence the three branches.
  */
+const titleish = (v) => (
+  // Only reshape a value that is all one case. Anything with mixed case was written deliberately
+  // and lowercasing it to re-capitalise is how McNamara became Mcnamara.
+  (v === v.toUpperCase() || v === v.toLowerCase())
+    ? v.toLowerCase().replace(/\b[a-z]/g, (c) => c.toUpperCase())
+    : v
+);
+
 const terminalLabel = (value, word) => {
   const v = String(value == null ? '' : value).trim();
   if (!v) return null;
   const w = word || 'Terminal';
+
+  // Already says what it is. Leave the words alone.
+  if (/\b(terminal|concourse|airside|pier|hall)\b/i.test(v)) return titleish(v);
+
+  // "T1" must not become "Terminal T1".
   const bare = v.match(/^T\s*(\d+[A-Za-z]?)$/i);
   if (bare) return `${w} ${bare[1].toUpperCase()}`;
-  if (/^(\d+[A-Za-z]?|[A-Za-z])$/.test(v)) return `${w} ${v.toUpperCase()}`;
-  // A word rather than a designator. Title-cased because the data holds both "International"
-  // and "DOMESTIC", and a heading should not shout at one airport and not the next.
-  const titled = v.toLowerCase().replace(/\b[a-z]/g, (c) => c.toUpperCase());
-  return /terminal|concourse|pier|hall/i.test(titled) ? titled : `${titled} ${w.toLowerCase()}`;
+
+  // A designator carries a number, or is built from single letters, or starts with one: "2",
+  // "A", "C/D", "A West". The data's own capitalisation is already right for these.
+  const tokens = v.split(/[\s/]+/).filter(Boolean);
+  if (/\d/.test(v) || tokens.every((t) => t.length === 1) || tokens[0].length === 1) {
+    return `${w} ${v}`;
+  }
+
+  // A word rather than a designator, and it goes in front: "Domestic Terminal", not "Terminal
+  // Domestic". Capitalised because the data holds both "International" and "DOMESTIC", and a
+  // heading should not shout at one airport and whisper at the next.
+  return `${titleish(v)} ${titleish(w)}`;
 };
 
 /**
@@ -358,6 +390,10 @@ const loungesBlock = (lounges, code, facts) => {
     if (!byKey.has(key)) { byKey.set(key, []); groups.push(key); }
     byKey.get(key).push(l);
   }
+  // Six airports have a lounge with no terminal recorded, so its group has no heading. Those
+  // rows go last rather than wherever the data happened to put them: an unlabelled group above
+  // a labelled one reads as though it belonged to the heading below it.
+  groups.sort((a, b) => (a ? 0 : 1) - (b ? 0 : 1));
 
   const row = (l) => {
     const bits = [`<span class="lng-n">${esc(l.name)}</span>`];
