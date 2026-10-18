@@ -96,12 +96,6 @@
   </url>
   <!--ruta:airports:start-->
   <url>
-    <loc>https://rutatravels.com/live/abu-dhabi-auh/</loc>
-    <lastmod>2026-10-18</lastmod>
-    <changefreq>hourly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://rutatravels.com/live/amsterdam-ams/</loc>
     <lastmod>2026-10-18</lastmod>
     <changefreq>hourly</changefreq>
@@ -109,6 +103,12 @@
   </url>
   <url>
     <loc>https://rutatravels.com/live/atlanta-atl/</loc>
+    <lastmod>2026-10-18</lastmod>
+    <changefreq>hourly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://rutatravels.com/live/auckland-akl/</loc>
     <lastmod>2026-10-18</lastmod>
     <changefreq>hourly</changefreq>
     <priority>0.7</priority>
@@ -228,6 +228,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://rutatravels.com/live/melbourne-mel/</loc>
+    <lastmod>2026-10-18</lastmod>
+    <changefreq>hourly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://rutatravels.com/live/mumbai-bom/</loc>
     <lastmod>2026-10-18</lastmod>
     <changefreq>hourly</changefreq>
@@ -271,12 +277,6 @@
   </url>
   <url>
     <loc>https://rutatravels.com/live/singapore-sin/</loc>
-    <lastmod>2026-10-18</lastmod>
-    <changefreq>hourly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://rutatravels.com/live/tokyo-hnd/</loc>
     <lastmod>2026-10-18</lastmod>
     <changefreq>hourly</changefreq>
     <priority>0.7</priority>
