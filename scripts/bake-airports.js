@@ -342,8 +342,12 @@ const terminalLabel = (value, word) => {
   // Already says what it is. Leave the words alone.
   if (/\b(terminal|concourse|airside|pier|hall)\b/i.test(v)) return titleish(v);
 
-  // "T1" must not become "Terminal T1".
-  const bare = v.match(/^T\s*(\d+[A-Za-z]?)$/i);
+  // "T1" must not become "Terminal T1". A single letter after the T counts too, because the
+  // AIRPORTS table writes LaGuardia's terminals as TA, TB and TC and a lounge entry could
+  // reasonably carry that form. Deliberately not any letters: "Transit" would otherwise come
+  // out as "Terminal Ransit". A bare "T" does not match either, so Atlanta's Concourse T still
+  // goes down the designator branch below.
+  const bare = v.match(/^T\s*(\d+[A-Za-z]?|[A-Za-z])$/i);
   if (bare) return `${w} ${bare[1].toUpperCase()}`;
 
   // A designator carries a number, or is built from single letters, or starts with one: "2",
