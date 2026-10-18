@@ -102,6 +102,11 @@ const summaryLine = (a, alerts) => {
  * on saying it for the next three hours. That is the failure the stamp exists to prevent, printed
  * in the stamp's own words. The board already prints "Updated <time> UTC" for this reason.
  *
+ * It sits under the status it describes rather than in the hero. In the hero it was the first
+ * concrete thing under the headline and it dated nothing in particular, so it read as "this page
+ * was last edited", which makes a page baked half an hour ago look neglected. Under the status
+ * line it says what it means: the delay reading is from this time.
+ *
  * readAt, not observedAt: the figure comes from OpenWeather's `current.dt`, which is when the API
  * answered, not when a station took a measurement. All 31 airports in a single bake carry the same
  * value to the second, which settles what it is. Older snapshots are still read for one cycle.
@@ -384,12 +389,12 @@ ${chrome.nav}
   <div class="hero-body">
     <h1>${esc(city)} (${esc(a.airport)}) airport delays</h1>
     <p class="lede">${esc(desc)}</p>
-    <div class="meta"><span>${esc(updated)}</span></div>
   </div>
 </section>
 
 <div class="wrap">
-  ${section('Right now', `<h2>Right now at ${esc(a.airport)}</h2>` + detailBlock(a, alerts))}
+  ${section('Right now', `<h2>Right now at ${esc(a.airport)}</h2>` + detailBlock(a, alerts)
+    + `<div class="meta"><span>${esc(updated)}</span></div>`)}
 
   ${weatherBlock(weather, a.airport, nowMs)}
 

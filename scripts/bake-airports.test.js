@@ -486,3 +486,21 @@ test('bake-weather does nothing without a key, rather than failing the build', (
   assert.ok(!fs.existsSync(path.join(dir, 'live', 'airport-weather.json')), 'wrote a file with no key');
   fs.rmSync(dir, { recursive: true, force: true });
 });
+
+test('the freshness stamp sits with the status, not in the hero', () => {
+  // In the hero it was the first concrete thing under the headline and dated nothing in
+  // particular, so it read as the date the page was last edited rather than the time of the
+  // delay reading. Under the status it is unambiguous. Asserted rather than left to taste,
+  // because the obvious place to put a timestamp while editing the template is the hero.
+  const r = run(sample());
+  const html = r.read(path.join('live', 'atlanta-atl', 'index.html'))
+    || r.read(path.join('live', r.list()[0], 'index.html'));
+  const hero = html.slice(html.indexOf('<section class="hero">'), html.indexOf('<div class="wrap">'));
+  const stamp = /Updated \d{4}-\d{2}-\d{2} \d{2}:\d{2} UTC/;
+  assert.ok(stamp.test(html), 'the page lost its freshness stamp entirely');
+  assert.ok(!stamp.test(hero), 'the stamp is back in the hero');
+  const card = html.slice(html.indexOf('aria-label="Right now"'));
+  const end = card.indexOf('</section>');
+  assert.ok(stamp.test(card.slice(0, end)), 'the stamp is not in the Right now card');
+  r.cleanup();
+});
