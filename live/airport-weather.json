@@ -11,40 +11,40 @@
       "fetchedAt": "2026-10-18T04:17:31.891Z"
     },
     "ORD": {
-      "tempF": 46,
-      "feelsF": 42,
-      "description": "clear sky",
-      "icon": "01n",
-      "windMph": 9,
-      "readAt": "2026-10-18T04:17:31.000Z",
-      "fetchedAt": "2026-10-18T04:17:31.982Z"
-    },
-    "LAX": {
-      "tempF": 76,
-      "feelsF": 75,
-      "description": "clear sky",
-      "icon": "01n",
-      "windMph": 8,
-      "readAt": "2026-10-18T04:17:32.000Z",
-      "fetchedAt": "2026-10-18T04:17:32.064Z"
-    },
-    "JFK": {
-      "tempF": 45,
+      "tempF": 44,
       "feelsF": 40,
       "description": "clear sky",
       "icon": "01n",
-      "windMph": 10,
-      "readAt": "2026-10-18T04:17:32.000Z",
-      "fetchedAt": "2026-10-18T04:17:32.176Z"
+      "windMph": 7,
+      "readAt": "2026-10-18T09:01:01.000Z",
+      "fetchedAt": "2026-10-18T09:01:01.274Z"
     },
-    "SFO": {
-      "tempF": 64,
-      "feelsF": 64,
+    "LAX": {
+      "tempF": 72,
+      "feelsF": 71,
       "description": "clear sky",
       "icon": "01n",
-      "windMph": 15,
-      "readAt": "2026-10-18T04:17:32.000Z",
-      "fetchedAt": "2026-10-18T04:17:32.287Z"
+      "windMph": 3,
+      "readAt": "2026-10-18T09:01:01.000Z",
+      "fetchedAt": "2026-10-18T09:01:01.579Z"
+    },
+    "JFK": {
+      "tempF": 43,
+      "feelsF": 35,
+      "description": "clear sky",
+      "icon": "01n",
+      "windMph": 16,
+      "readAt": "2026-10-18T09:01:01.000Z",
+      "fetchedAt": "2026-10-18T09:01:01.436Z"
+    },
+    "SFO": {
+      "tempF": 58,
+      "feelsF": 58,
+      "description": "clear sky",
+      "icon": "01n",
+      "windMph": 8,
+      "readAt": "2026-10-18T09:01:01.000Z",
+      "fetchedAt": "2026-10-18T09:01:01.720Z"
     },
     "YYZ": {
       "tempF": 42,
@@ -56,220 +56,220 @@
       "fetchedAt": "2026-10-18T04:17:32.350Z"
     },
     "IST": {
-      "tempF": 49,
-      "feelsF": 45,
+      "tempF": 58,
+      "feelsF": 56,
       "description": "broken clouds",
-      "icon": "04n",
-      "windMph": 9,
-      "readAt": "2026-10-18T04:17:32.000Z",
-      "fetchedAt": "2026-10-18T04:17:32.596Z"
+      "icon": "04d",
+      "windMph": 11,
+      "readAt": "2026-10-18T09:01:02.000Z",
+      "fetchedAt": "2026-10-18T09:01:02.390Z"
     },
     "LHR": {
-      "tempF": 49,
-      "feelsF": 45,
-      "description": "scattered clouds",
-      "icon": "03n",
-      "windMph": 9,
-      "readAt": "2026-10-17T21:40:11.000Z",
-      "fetchedAt": "2026-10-17T21:40:11.711Z"
+      "tempF": 50,
+      "feelsF": 49,
+      "description": "clear sky",
+      "icon": "01d",
+      "windMph": 13,
+      "readAt": "2026-10-18T09:01:02.000Z",
+      "fetchedAt": "2026-10-18T09:01:02.558Z"
     },
     "FCO": {
-      "tempF": 61,
-      "feelsF": 61,
-      "description": "scattered clouds",
-      "icon": "03n",
-      "windMph": 3,
-      "readAt": "2026-10-18T04:17:32.000Z",
-      "fetchedAt": "2026-10-18T04:17:32.796Z"
+      "tempF": 68,
+      "feelsF": 68,
+      "description": "broken clouds",
+      "icon": "04d",
+      "windMph": 9,
+      "readAt": "2026-10-18T09:01:02.000Z",
+      "fetchedAt": "2026-10-18T09:01:02.831Z"
     },
     "AMS": {
-      "tempF": 48,
-      "feelsF": 45,
-      "description": "broken clouds",
-      "icon": "04n",
-      "windMph": 8,
-      "readAt": "2026-10-18T04:17:32.000Z",
-      "fetchedAt": "2026-10-18T04:17:32.425Z"
+      "tempF": 50,
+      "feelsF": 49,
+      "description": "overcast clouds",
+      "icon": "04d",
+      "windMph": 13,
+      "readAt": "2026-10-18T09:01:01.000Z",
+      "fetchedAt": "2026-10-18T09:01:01.990Z"
     },
     "DUB": {
       "tempF": 41,
-      "feelsF": 41,
-      "description": "few clouds",
-      "icon": "02n",
-      "windMph": 2,
-      "readAt": "2026-10-17T21:40:10.000Z",
-      "fetchedAt": "2026-10-17T21:40:10.937Z"
+      "feelsF": 38,
+      "description": "scattered clouds",
+      "icon": "03d",
+      "windMph": 5,
+      "readAt": "2026-10-18T09:01:02.000Z",
+      "fetchedAt": "2026-10-18T09:01:02.105Z"
     },
     "FRA": {
-      "tempF": 44,
-      "feelsF": 40,
-      "description": "broken clouds",
-      "icon": "04n",
+      "tempF": 48,
+      "feelsF": 44,
+      "description": "overcast clouds",
+      "icon": "04d",
       "windMph": 7,
-      "readAt": "2026-10-18T04:17:32.000Z",
-      "fetchedAt": "2026-10-18T04:17:32.510Z"
+      "readAt": "2026-10-18T09:01:02.000Z",
+      "fetchedAt": "2026-10-18T09:01:02.246Z"
     },
     "MAD": {
-      "tempF": 54,
-      "feelsF": 53,
+      "tempF": 52,
+      "feelsF": 50,
       "description": "overcast clouds",
-      "icon": "04n",
-      "windMph": 23,
-      "readAt": "2026-10-18T04:17:32.000Z",
-      "fetchedAt": "2026-10-18T04:17:32.655Z"
+      "icon": "04d",
+      "windMph": 20,
+      "readAt": "2026-10-18T09:01:02.000Z",
+      "fetchedAt": "2026-10-18T09:01:02.689Z"
     },
     "CDG": {
-      "tempF": 43,
-      "feelsF": 39,
+      "tempF": 48,
+      "feelsF": 44,
       "description": "clear sky",
-      "icon": "01n",
-      "windMph": 6,
-      "readAt": "2026-10-18T04:17:32.000Z",
-      "fetchedAt": "2026-10-18T04:17:32.737Z"
+      "icon": "01d",
+      "windMph": 9,
+      "readAt": "2026-10-18T09:01:01.000Z",
+      "fetchedAt": "2026-10-18T09:01:01.861Z"
     },
     "ZRH": {
       "tempF": 50,
       "feelsF": 49,
       "description": "overcast clouds",
-      "icon": "04n",
-      "windMph": 7,
-      "readAt": "2026-10-17T21:40:11.000Z",
-      "fetchedAt": "2026-10-17T21:40:12.015Z"
+      "icon": "04d",
+      "windMph": 3,
+      "readAt": "2026-10-18T09:01:02.000Z",
+      "fetchedAt": "2026-10-18T09:01:02.946Z"
     },
     "DOH": {
-      "tempF": 88,
-      "feelsF": 91,
+      "tempF": 100,
+      "feelsF": 100,
       "description": "clear sky",
       "icon": "01d",
-      "windMph": 5,
-      "readAt": "2026-10-18T04:17:32.000Z",
-      "fetchedAt": "2026-10-18T04:17:32.939Z"
+      "windMph": 10,
+      "readAt": "2026-10-18T09:01:03.000Z",
+      "fetchedAt": "2026-10-18T09:01:03.345Z"
     },
     "DXB": {
-      "tempF": 86,
-      "feelsF": 99,
+      "tempF": 97,
+      "feelsF": 109,
       "description": "clear sky",
       "icon": "01d",
-      "windMph": 6,
-      "readAt": "2026-10-18T04:17:32.000Z",
-      "fetchedAt": "2026-10-18T04:17:33.001Z"
+      "windMph": 12,
+      "readAt": "2026-10-18T09:01:03.000Z",
+      "fetchedAt": "2026-10-18T09:01:03.064Z"
     },
     "CPT": {
-      "tempF": 60,
-      "feelsF": 59,
-      "description": "overcast clouds",
+      "tempF": 61,
+      "feelsF": 60,
+      "description": "broken clouds",
       "icon": "04d",
-      "windMph": 18,
-      "readAt": "2026-10-17T16:59:34.000Z",
-      "fetchedAt": "2026-10-17T16:59:34.450Z"
+      "windMph": 17,
+      "readAt": "2026-10-18T09:01:03.000Z",
+      "fetchedAt": "2026-10-18T09:01:03.475Z"
     },
     "JNB": {
-      "tempF": 76,
-      "feelsF": 74,
+      "tempF": 81,
+      "feelsF": 80,
       "description": "scattered clouds",
-      "icon": "03n",
-      "windMph": 5,
-      "readAt": "2026-10-17T19:12:00.000Z",
-      "fetchedAt": "2026-10-17T19:12:00.068Z"
+      "icon": "03d",
+      "windMph": 10,
+      "readAt": "2026-10-18T09:01:03.000Z",
+      "fetchedAt": "2026-10-18T09:01:03.738Z"
     },
     "BKK": {
-      "tempF": 86,
-      "feelsF": 97,
-      "description": "moderate rain",
+      "tempF": 90,
+      "feelsF": 100,
+      "description": "light rain",
       "icon": "10d",
-      "windMph": 12,
-      "readAt": "2026-10-18T04:17:33.000Z",
-      "fetchedAt": "2026-10-18T04:17:33.181Z"
+      "windMph": 9,
+      "readAt": "2026-10-18T09:01:04.000Z",
+      "fetchedAt": "2026-10-18T09:01:04.096Z"
     },
     "PEK": {
       "tempF": 64,
-      "feelsF": 62,
+      "feelsF": 61,
       "description": "clear sky",
       "icon": "01d",
-      "windMph": 18,
-      "readAt": "2026-10-18T04:17:33.000Z",
-      "fetchedAt": "2026-10-18T04:17:33.275Z"
+      "windMph": 16,
+      "readAt": "2026-10-18T09:01:04.000Z",
+      "fetchedAt": "2026-10-18T09:01:04.214Z"
     },
     "DEL": {
-      "tempF": 79,
-      "feelsF": 79,
+      "tempF": 86,
+      "feelsF": 85,
       "description": "clear sky",
       "icon": "01d",
-      "windMph": 3,
-      "readAt": "2026-10-18T04:17:33.000Z",
-      "fetchedAt": "2026-10-18T04:17:33.342Z"
+      "windMph": 8,
+      "readAt": "2026-10-18T09:01:04.000Z",
+      "fetchedAt": "2026-10-18T09:01:04.339Z"
     },
     "HKG": {
-      "tempF": 90,
-      "feelsF": 94,
-      "description": "scattered clouds",
-      "icon": "03d",
-      "windMph": 13,
-      "readAt": "2026-10-18T04:17:33.000Z",
-      "fetchedAt": "2026-10-18T04:17:33.405Z"
+      "tempF": 88,
+      "feelsF": 93,
+      "description": "broken clouds",
+      "icon": "04d",
+      "windMph": 8,
+      "readAt": "2026-10-18T09:01:04.000Z",
+      "fetchedAt": "2026-10-18T09:01:04.469Z"
     },
     "KUL": {
-      "tempF": 90,
+      "tempF": 89,
       "feelsF": 102,
-      "description": "moderate rain",
-      "icon": "10d",
-      "windMph": 2,
-      "readAt": "2026-10-18T04:17:33.000Z",
-      "fetchedAt": "2026-10-18T04:17:33.467Z"
-    },
-    "BOM": {
-      "tempF": 90,
-      "feelsF": 102,
-      "description": "scattered clouds",
-      "icon": "03d",
-      "windMph": 6,
-      "readAt": "2026-10-18T04:17:33.000Z",
-      "fetchedAt": "2026-10-18T04:17:33.553Z"
-    },
-    "ICN": {
-      "tempF": 70,
-      "feelsF": 71,
-      "description": "heavy intensity rain",
-      "icon": "10d",
-      "windMph": 36,
-      "readAt": "2026-10-18T04:17:33.000Z",
-      "fetchedAt": "2026-10-18T04:17:33.058Z"
-    },
-    "PVG": {
-      "tempF": 88,
-      "feelsF": 94,
-      "description": "overcast clouds",
-      "icon": "04d",
-      "windMph": 13,
-      "readAt": "2026-10-18T04:17:33.000Z",
-      "fetchedAt": "2026-10-18T04:17:33.118Z"
-    },
-    "SIN": {
-      "tempF": 88,
-      "feelsF": 101,
       "description": "light rain",
       "icon": "10d",
-      "windMph": 7,
-      "readAt": "2026-10-18T04:17:33.000Z",
-      "fetchedAt": "2026-10-18T04:17:33.609Z"
+      "windMph": 5,
+      "readAt": "2026-10-18T09:01:03.000Z",
+      "fetchedAt": "2026-10-18T09:01:03.983Z"
+    },
+    "BOM": {
+      "tempF": 91,
+      "feelsF": 104,
+      "description": "broken clouds",
+      "icon": "04d",
+      "windMph": 13,
+      "readAt": "2026-10-18T09:01:04.000Z",
+      "fetchedAt": "2026-10-18T09:01:04.578Z"
+    },
+    "ICN": {
+      "tempF": 64,
+      "feelsF": 65,
+      "description": "overcast clouds",
+      "icon": "04n",
+      "windMph": 17,
+      "readAt": "2026-10-18T09:01:03.000Z",
+      "fetchedAt": "2026-10-18T09:01:03.870Z"
+    },
+    "PVG": {
+      "tempF": 82,
+      "feelsF": 87,
+      "description": "overcast clouds",
+      "icon": "04d",
+      "windMph": 16,
+      "readAt": "2026-10-18T09:01:04.000Z",
+      "fetchedAt": "2026-10-18T09:01:04.690Z"
+    },
+    "SIN": {
+      "tempF": 89,
+      "feelsF": 102,
+      "description": "broken clouds",
+      "icon": "04d",
+      "windMph": 12,
+      "readAt": "2026-10-18T09:01:04.000Z",
+      "fetchedAt": "2026-10-18T09:01:04.801Z"
     },
     "HND": {
-      "tempF": 74,
-      "feelsF": 74,
-      "description": "scattered clouds",
-      "icon": "03d",
-      "windMph": 11,
-      "readAt": "2026-10-18T04:17:33.000Z",
-      "fetchedAt": "2026-10-18T04:17:33.675Z"
+      "tempF": 72,
+      "feelsF": 71,
+      "description": "few clouds",
+      "icon": "02n",
+      "windMph": 13,
+      "readAt": "2026-10-18T09:01:04.000Z",
+      "fetchedAt": "2026-10-18T09:01:04.919Z"
     },
     "MEL": {
-      "tempF": 78,
-      "feelsF": 77,
+      "tempF": 69,
+      "feelsF": 68,
       "description": "clear sky",
-      "icon": "01d",
-      "windMph": 13,
-      "readAt": "2026-10-18T04:17:33.000Z",
-      "fetchedAt": "2026-10-18T04:17:33.797Z"
+      "icon": "01n",
+      "windMph": 9,
+      "readAt": "2026-10-18T09:01:05.000Z",
+      "fetchedAt": "2026-10-18T09:01:05.174Z"
     },
     "EZE": {
       "tempF": 50,
@@ -281,40 +281,40 @@
       "fetchedAt": "2026-10-18T04:17:33.937Z"
     },
     "CMN": {
-      "tempF": 70,
-      "feelsF": 70,
-      "description": "broken clouds",
-      "icon": "04n",
-      "windMph": 3,
-      "readAt": "2026-10-17T21:40:12.000Z",
-      "fetchedAt": "2026-10-17T21:40:12.584Z"
+      "tempF": 72,
+      "feelsF": 72,
+      "description": "overcast clouds",
+      "icon": "04d",
+      "windMph": 5,
+      "readAt": "2026-10-18T09:01:03.000Z",
+      "fetchedAt": "2026-10-18T09:01:03.588Z"
     },
     "AKL": {
-      "tempF": 61,
-      "feelsF": 61,
+      "tempF": 55,
+      "feelsF": 55,
       "description": "clear sky",
-      "icon": "01d",
-      "windMph": 15,
-      "readAt": "2026-10-18T04:17:33.000Z",
-      "fetchedAt": "2026-10-18T04:17:33.738Z"
+      "icon": "01n",
+      "windMph": 12,
+      "readAt": "2026-10-18T09:01:04.000Z",
+      "fetchedAt": "2026-10-18T09:01:05.056Z"
     },
     "SYD": {
-      "tempF": 72,
-      "feelsF": 71,
-      "description": "scattered clouds",
-      "icon": "03d",
-      "windMph": 14,
-      "readAt": "2026-10-18T04:17:33.000Z",
-      "fetchedAt": "2026-10-18T04:17:33.876Z"
+      "tempF": 66,
+      "feelsF": 65,
+      "description": "clear sky",
+      "icon": "01n",
+      "windMph": 13,
+      "readAt": "2026-10-18T09:01:05.000Z",
+      "fetchedAt": "2026-10-18T09:01:05.286Z"
     },
     "LIM": {
       "tempF": 73,
       "feelsF": 74,
-      "description": "few clouds",
-      "icon": "02n",
-      "windMph": 3,
-      "readAt": "2026-10-18T04:17:34.000Z",
-      "fetchedAt": "2026-10-18T04:17:34.056Z"
+      "description": "scattered clouds",
+      "icon": "03n",
+      "windMph": 7,
+      "readAt": "2026-10-18T09:01:05.000Z",
+      "fetchedAt": "2026-10-18T09:01:05.394Z"
     },
     "BOG": {
       "tempF": 56,
@@ -326,22 +326,22 @@
       "fetchedAt": "2026-10-18T04:17:33.997Z"
     },
     "AUH": {
-      "tempF": 84,
-      "feelsF": 92,
+      "tempF": 100,
+      "feelsF": 100,
       "description": "clear sky",
       "icon": "01d",
-      "windMph": 6,
-      "readAt": "2026-10-18T04:17:32.000Z",
-      "fetchedAt": "2026-10-18T04:17:32.881Z"
+      "windMph": 7,
+      "readAt": "2026-10-18T09:01:03.000Z",
+      "fetchedAt": "2026-10-18T09:01:03.203Z"
     },
     "GRU": {
-      "tempF": 64,
-      "feelsF": 65,
-      "description": "scattered clouds",
-      "icon": "03n",
-      "windMph": 5,
-      "readAt": "2026-10-17T23:56:15.000Z",
-      "fetchedAt": "2026-10-17T23:56:15.986Z"
+      "tempF": 62,
+      "feelsF": 62,
+      "description": "overcast clouds",
+      "icon": "04d",
+      "windMph": 2,
+      "readAt": "2026-10-18T09:01:05.000Z",
+      "fetchedAt": "2026-10-18T09:01:05.508Z"
     }
   }
 }
