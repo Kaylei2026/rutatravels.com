@@ -13,6 +13,7 @@ const assert = require('node:assert');
 const fs = require('fs');
 const os = require('os');
 const path = require('path');
+const crypto = require('crypto');
 const { execFileSync } = require('child_process');
 
 const ROOT = path.join(__dirname, '..');
@@ -59,7 +60,7 @@ test('the page ships with the markers the baker needs', () => {
 
 test('the page loads the shared module rather than redefining the render', () => {
   const html = fs.readFileSync(PAGE, 'utf8');
-  assert.ok(html.includes('<script src="board.js"></script>'), 'board.js not loaded');
+  assert.ok(/<script src="board\.js(\?v=[0-9a-f]+)?"><\/script>/.test(html), 'board.js not loaded');
   assert.ok(html.includes('RutaBoard.renderAll'), 'page does not call the shared render');
   // The whole point: one definition. If a row template reappears inline, they will drift.
   assert.ok(!html.includes('function renderBoard('), 'renderBoard redefined inline');
@@ -174,4 +175,108 @@ test('the shared module gives the page and the build the same markup', () => {
   const { html } = bakeInto(d);
   assert.strictEqual(between(html, 'board'), out.board, 'baked board differs from renderAll');
   assert.strictEqual(between(html, 'alerts'), out.alerts, 'baked alerts differ from renderAll');
+});
+
+/** Hash of a board.js, in the form the baker puts in the query string. */
+const hashOf = (file) =>
+  crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex').slice(0, 10);
+
+/** A throwaway copy of the site with a board.js the caller can alter first. */
+const tree = (mutateBoard) => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'ruta-stamp-'));
+  fs.mkdirSync(path.join(dir, 'live')); fs.mkdirSync(path.join(dir, 'scripts'));
+  fs.copyFileSync(PAGE, path.join(dir, 'live', 'index.html'));
+  const board = path.join(dir, 'live', 'board.js');
+  fs.copyFileSync(path.join(ROOT, 'live', 'board.js'), board);
+  if (mutateBoard) fs.writeFileSync(board, mutateBoard(fs.readFileSync(board, 'utf8')));
+  fs.copyFileSync(SCRIPT, path.join(dir, 'scripts', 'bake-live.js'));
+  const pay = path.join(dir, 'p.json');
+  fs.writeFileSync(pay, JSON.stringify(sample()));
+  const run = (args = []) => {
+    let status = 0;
+    try {
+      execFileSync(process.execPath, [path.join(dir, 'scripts', 'bake-live.js'), '--from', pay, ...args], { stdio: 'pipe' });
+    } catch (e) { status = e.status; }
+    return { status, html: fs.readFileSync(path.join(dir, 'live', 'index.html'), 'utf8') };
+  };
+  return { dir, board, run, done: () => fs.rmSync(dir, { recursive: true, force: true }) };
+};
+
+const stampIn = (html) => {
+  const m = html.match(/src="board\.js\?v=([0-9a-f]+)"/);
+  return m ? m[1] : null;
+};
+
+test('the page asks for the board.js that is actually in the repo', () => {
+  // The bug this guards: the page re-renders the board from board.js on load, so a browser
+  // serving an older board.js out of its cache replaces correct server-rendered markup with
+  // stale markup. That is how the per-airport links disappeared for anyone who had visited
+  // before they were added. A hash in the URL makes a changed file a URL no cache has.
+  const html = fs.readFileSync(PAGE, 'utf8');
+  assert.strictEqual(stampIn(html), hashOf(path.join(ROOT, 'live', 'board.js')),
+    'live/index.html points at a different board.js than the one committed; re-run the bake');
+});
+
+test('a changed board.js gets a different URL', () => {
+  const t = tree((src) => src + '\n// a change\n');
+  try {
+    const { html } = t.run();
+    const got = stampIn(html);
+    assert.ok(got, 'no stamp in the page');
+    assert.strictEqual(got, hashOf(t.board), 'stamp does not match the file it is meant to describe');
+    assert.notStrictEqual(got, hashOf(path.join(ROOT, 'live', 'board.js')),
+      'a modified board.js produced the same URL as the unmodified one');
+  } finally { t.done(); }
+});
+
+test('a tag with no version on it gets one', () => {
+  const t = tree();
+  try {
+    const page = path.join(t.dir, 'live', 'index.html');
+    fs.writeFileSync(page, fs.readFileSync(page, 'utf8').replace(/src="board\.js\?v=[0-9a-f]+"/, 'src="board.js"'));
+    const { html } = t.run();
+    assert.strictEqual(stampIn(html), hashOf(t.board), 'an unstamped tag was left unstamped');
+  } finally { t.done(); }
+});
+
+test('--check notices a stale board.js URL on its own', () => {
+  // Isolating the stamp: bake first so the board markup is already current, then change only
+  // board.js. Any drift --check reports after that is the URL and nothing else.
+  const t = tree();
+  try {
+    t.run();
+    fs.writeFileSync(t.board, fs.readFileSync(t.board, 'utf8') + '\n// later edit\n');
+    const before = fs.readFileSync(path.join(t.dir, 'live', 'index.html'), 'utf8');
+    const { status, html } = t.run(['--check']);
+    assert.strictEqual(status, 1, 'expected exit 1 for a stale board.js URL');
+    assert.strictEqual(html, before, '--check wrote to the file');
+  } finally { t.done(); }
+});
+
+test('a page that does not load board.js fails loudly', () => {
+  // Returning the HTML unstamped would be the quiet version of the original bug.
+  const t = tree();
+  try {
+    const page = path.join(t.dir, 'live', 'index.html');
+    fs.writeFileSync(page, fs.readFileSync(page, 'utf8').replace(/<script src="board\.js[^"]*"><\/script>/, ''));
+    const { status } = t.run();
+    assert.strictEqual(status, 2, 'expected exit 2 when the script tag is gone');
+  } finally { t.done(); }
+});
+
+test('the board.js URL is restamped even when the feed is down', () => {
+  // Whether the renderer changed has nothing to do with whether Railway is answering, and a
+  // stale renderer is the more damaging of the two things to leave in place.
+  const t = tree((src) => src + '\n// changed while the feed was down\n');
+  try {
+    let status = 0;
+    try {
+      execFileSync(process.execPath, [path.join(t.dir, 'scripts', 'bake-live.js')],
+        { stdio: 'pipe', env: { ...process.env, RUTA_LIVE_API: 'https://127.0.0.1:1/api/live' } });
+    } catch (e) { status = e.status; }
+    const html = fs.readFileSync(path.join(t.dir, 'live', 'index.html'), 'utf8');
+    assert.strictEqual(status, 0, 'a dead feed should not fail the bake');
+    assert.strictEqual(stampIn(html), hashOf(t.board), 'feed-down run left the old board.js URL');
+    assert.ok(html.includes('<!--ruta:board:start-->'), 'board markers lost');
+  } finally { t.done(); }
 });

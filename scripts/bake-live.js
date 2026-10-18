@@ -11,6 +11,11 @@
  * and writes it between the markers in the HTML. The page still fetches on load, so the baked
  * copy is only there to guarantee the first byte is not empty.
  *
+ * It also stamps the board.js URL with a hash of that file, because the page throws the baked
+ * markup away and re-renders from board.js on load. A cached copy of an older board.js therefore
+ * overwrites a correct page with an outdated one, which is how the airport links went missing for
+ * anyone who had visited before they were added.
+ *
  *   node scripts/bake-live.js                 fetch the live API and bake
  *   node scripts/bake-live.js --from f.json   bake from a saved payload (testing)
  *   node scripts/bake-live.js --check         exit 1 if the file would change, write nothing
@@ -21,6 +26,7 @@
  */
 'use strict';
 
+const crypto = require('crypto');
 const fs = require('fs');
 const path = require('path');
 
@@ -59,6 +65,27 @@ const fill = (html, name, content) => {
 };
 
 /**
+ * Point the page's script tag at the current board.js.
+ *
+ * live/index.html loads the renderer as a plain <script src="board.js">, and the page replaces
+ * the baked board with whatever that file renders. So a browser holding a stale board.js does
+ * not merely miss a new feature, it actively undoes the server's correct markup. Putting a hash
+ * of the file in the query string makes a changed file a different URL, which no cache can serve
+ * from its old entry.
+ *
+ * Throws when the tag is absent, rather than returning the HTML unstamped: losing the stamp
+ * silently would restore exactly the bug this exists to prevent.
+ */
+const stampAssets = (html) => {
+  const file = path.join(ROOT, 'live', 'board.js');
+  const hash = crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex').slice(0, 10);
+  const tag = /src="board\.js(?:\?v=[0-9a-f]+)?"/g;
+  const found = html.match(tag);
+  if (!found) throw new Error('live/index.html does not load board.js; nothing to stamp');
+  return html.replace(tag, `src="board.js?v=${hash}"`);
+};
+
+/**
  * An absolute time rather than "5 min ago".
  *
  * The relative form is correct for about a minute and then lies for however long the snapshot
@@ -88,7 +115,8 @@ const fetchLive = async () => {
 };
 
 const main = async () => {
-  let data;
+  let data = null;
+  let feedDown = false;
   const from = argOf('--from');
 
   if (from) {
@@ -97,31 +125,44 @@ const main = async () => {
     try {
       data = await fetchLive();
     } catch (e) {
-      // Deliberately not a failure. The committed page keeps whatever it last had, which is a
-      // real board, and the Action should not go red because Railway blinked.
-      console.log(`[bake] feed unavailable (${e.message}); leaving live/index.html as it is`);
-      return 0;
+      // Deliberately not a failure. The committed page keeps whatever board it last had, which
+      // is a real one, and the Action should not go red because Railway blinked.
+      console.log(`[bake] feed unavailable (${e.message}); keeping the board that is already there`);
+      feedDown = true;
     }
   }
 
-  if (!data || typeof data !== 'object') {
+  if (!feedDown && (!data || typeof data !== 'object')) {
     console.error('[bake] payload is not an object; refusing to write');
     return 2;
   }
 
-  const out = BOARD.renderAll(data);
   const before = fs.readFileSync(PAGE, 'utf8');
   let after = before;
-  after = fill(after, 'alerts', out.alerts);
-  after = fill(after, 'board', out.board);
-  after = fill(after, 'updated', BOARD.esc(stamp(data.updatedAt)));
+  let regions = 0;
+  let airports = 0;
+  let alerts = 0;
 
-  const regions = (data.regions || []).length;
-  const airports = (data.regions || []).reduce((n, r) => n + ((r.airports || []).length), 0);
-  const alerts = (data.alerts || []).length;
+  if (!feedDown) {
+    const out = BOARD.renderAll(data);
+    after = fill(after, 'alerts', out.alerts);
+    after = fill(after, 'board', out.board);
+    after = fill(after, 'updated', BOARD.esc(stamp(data.updatedAt)));
+    regions = (data.regions || []).length;
+    airports = (data.regions || []).reduce((n, r) => n + ((r.airports || []).length), 0);
+    alerts = (data.alerts || []).length;
+  }
+
+  // Unconditional, including when the feed is down: whether board.js changed has nothing to do
+  // with whether there is fresh data, and a stale renderer is the more damaging of the two.
+  after = stampAssets(after);
 
   if (after === before) {
-    console.log(`[bake] no change (${airports} airports across ${regions} regions, ${alerts} alerts)`);
+    if (feedDown) {
+      console.log('[bake] nothing to change');
+    } else {
+      console.log(`[bake] no change (${airports} airports across ${regions} regions, ${alerts} alerts)`);
+    }
     return 0;
   }
 
@@ -131,7 +172,11 @@ const main = async () => {
   }
 
   fs.writeFileSync(PAGE, after);
-  console.log(`[bake] wrote ${airports} airports across ${regions} regions, ${alerts} alerts`);
+  if (feedDown) {
+    console.log('[bake] restamped board.js; board left as it was');
+  } else {
+    console.log(`[bake] wrote ${airports} airports across ${regions} regions, ${alerts} alerts`);
+  }
   return 0;
 };
 
