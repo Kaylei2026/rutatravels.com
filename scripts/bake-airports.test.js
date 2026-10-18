@@ -593,14 +593,29 @@ test('every lounge brings its access list with it', () => {
 });
 
 test('a lounge with no access list still appears', () => {
-  // Five rooms in the data carry no access, because nothing reliable said who gets in. An
-  // omitted line is honest; dropping the room would be a second undercount.
-  const r = runL(payloadOf([APT('ORD', 'Chicago')]));
+  // Driven by a made-up lounge rather than a real one. The first version of this test found an
+  // access-less room in the real data and asserted it rendered, with a note saying to point the
+  // test elsewhere if ORD ever lost its example. Every such room has since been filled in, so
+  // there is nowhere to point it: the data no longer contains the case. The behaviour still
+  // matters, because the next room nobody can source will hit it, and an omitted access line is
+  // honest while dropping the room would be an undercount. So the case is constructed.
+  const real = loungeData();
+  assert.ok(
+    !Object.values(real).some((a) => a.lounges.some((l) => !l.access || !l.access.length)),
+    'the real data has an access-less lounge again; fill it in rather than relying on this test',
+  );
+  const lounges = { airports: { ORD: { lounges: [
+    { name: 'Nameless Lounge', terminal: '1', location: 'Somewhere' },
+    { name: 'Second Lounge', terminal: '1', access: ['Priority Pass'] },
+  ] } } };
+  const r = runL(payloadOf([APT('ORD', 'Chicago')]), { lounges });
   try {
     const lng = card(r.read('chicago-ord'), 'Lounges');
-    const none = loungeData().ORD.lounges.filter((l) => !l.access || !l.access.length);
-    assert.ok(none.length, 'ORD no longer has an access-less lounge; point this test elsewhere');
-    for (const l of none) assert.ok(lng.includes(l.name), `${l.name} dropped for having no access`);
+    assert.ok(lng.includes('Nameless Lounge'), 'a lounge was dropped for having no access');
+    assert.ok(lng.includes('Priority Pass'), 'the lounge that does have access lost it');
+    assert.strictEqual((lng.match(/<li>/g) || []).length, 2, 'wrong number of rows');
+    assert.strictEqual((lng.match(/class="lng-a"/g) || []).length, 1,
+      'an empty access line was printed for the lounge that has none');
   } finally { r.cleanup(); }
 });
 
