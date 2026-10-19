@@ -867,3 +867,82 @@ test('--check notices when the index has fallen behind', () => {
     assert.ok(!linkedSlugs(r.read('live/index.html')).includes('oslo-osl'), '--check wrote the file');
   } finally { r.cleanup(); }
 });
+
+
+/**
+ * The paused switch on the airport pages.
+ *
+ * Delay polling is off while the AeroDataBox budget says so. A page that keeps leading with
+ * "is running on time right now" from a reading nobody is refreshing goes from true to false
+ * without changing a character, and these pages are not rebuilt while the feed carries nothing.
+ * So paused changes what the page claims to be, from the title down, and the build list stops
+ * depending on the feed carrying airports at all.
+ */
+const paused = (over = {}) => ({ updatedAt: null, paused: true, regions: [], alerts: [], ...over });
+
+test('a paused build still rebuilds the pages that exist', () => {
+  // The bug this exists to prevent: the feed carries no airports, the loop runs zero times, and
+  // 38 pages keep yesterday's status forever.
+  const r = run(paused());
+  try {
+    withExistingPages(r, ['chicago-ord', 'london-lhr']);
+    execFileSync(process.execPath,
+      [path.join(r.dir, 'scripts', 'bake-airports.js'), '--from', path.join(r.dir, 'p.json')],
+      { stdio: 'pipe' });
+    const html = r.read('live/chicago-ord/index.html');
+    assert.ok(html && !/<title>old<\/title>/.test(html), 'the existing page was left alone');
+    assert.match(html, /Chicago \(ORD\)/);
+  } finally { r.cleanup(); }
+});
+
+test('paused leads with the airport, not with a delay figure', () => {
+  const r = run(paused());
+  try {
+    withExistingPages(r, ['chicago-ord']);
+    execFileSync(process.execPath,
+      [path.join(r.dir, 'scripts', 'bake-airports.js'), '--from', path.join(r.dir, 'p.json')],
+      { stdio: 'pipe' });
+    const html = r.read('live/chicago-ord/index.html');
+    assert.match(html, /<title>Chicago \(ORD\) Airport Guide/);
+    assert.match(html, /<h1>Chicago \(ORD\) airport guide<\/h1>/);
+    assert.ok(!/is running on time right now/.test(html), 'still claiming a live status');
+    assert.ok(!/Right now at ORD/.test(html), 'the live status block is still at the top');
+  } finally { r.cleanup(); }
+});
+
+test('paused still says what the delay section is for', () => {
+  const r = run(paused());
+  try {
+    withExistingPages(r, ['chicago-ord']);
+    execFileSync(process.execPath,
+      [path.join(r.dir, 'scripts', 'bake-airports.js'), '--from', path.join(r.dir, 'p.json')],
+      { stdio: 'pipe' });
+    const html = r.read('live/chicago-ord/index.html');
+    assert.match(html, /Live delay readings are paused/);
+    // No poll time in the feed means no reading happened, so nothing may be dated.
+    assert.ok(!/Last reading/.test(html), 'dated a reading that never happened');
+  } finally { r.cleanup(); }
+});
+
+test('a reading that did happen is dated', () => {
+  const r = run(paused({ updatedAt: '2026-10-18T21:43:00Z' }));
+  try {
+    withExistingPages(r, ['chicago-ord']);
+    execFileSync(process.execPath,
+      [path.join(r.dir, 'scripts', 'bake-airports.js'), '--from', path.join(r.dir, 'p.json')],
+      { stdio: 'pipe' });
+    assert.match(r.read('live/chicago-ord/index.html'), /Last reading 2026-10-18 21:43 UTC/);
+  } finally { r.cleanup(); }
+});
+
+test('unpaused is unchanged, so turning polling back on needs no second rewrite', () => {
+  const d = sample();
+  const r = run(d);
+  try {
+    const slug = BOARD.slugFor(d.regions[0].airports[0]);
+    const html = r.read(`live/${slug}/index.html`);
+    assert.match(html, /<title>[^<]*Airport Delays \| Ruta Travels<\/title>/);
+    assert.match(html, /Right now at/);
+    assert.ok(!/Live delay readings are paused/.test(html), 'paused copy leaked into a live build');
+  } finally { r.cleanup(); }
+});

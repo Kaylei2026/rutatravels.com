@@ -65,6 +65,28 @@ const LEVEL_WORD = ['running on time', 'seeing minor delays', 'seeing moderate d
   'seeing significant delays', 'severely disrupted'];
 
 /** One sentence a person could read aloud, for the meta description and the page lede. */
+/**
+ * What the page is about when live status is paused.
+ *
+ * Built from the things that do not expire: terminals, lounges, what is open. The status line is
+ * a claim with a shelf life, and on a page nobody rebuilds for days it goes from true to false
+ * without changing a character.
+ */
+const guideLine = (a, facts, lounges, alerts) => {
+  const city = a.city || a.airport;
+  const bits = [];
+  const terminals = ((facts && facts.terminals) || []).length || (facts && facts.terminalCount) || 0;
+  const word = ((facts && facts.terminalWord) || 'terminal').toLowerCase();
+  if (terminals) bits.push(`${terminals} ${word}${terminals === 1 ? '' : 's'}`);
+  const rooms = ((lounges && lounges.lounges) || []).length;
+  if (rooms) bits.push(`${rooms} lounge${rooms === 1 ? '' : 's'}`);
+  let s = bits.length
+    ? `${city} (${a.airport}) has ${bits.join(' and ')}, with what is open, where it is and who gets in.`
+    : `What is inside ${city} (${a.airport}): terminals, lounges and services.`;
+  if (alerts && alerts.length) s += ` ${alerts.length} active alert${alerts.length === 1 ? '' : 's'}.`;
+  return s;
+};
+
 const summaryLine = (a, alerts) => {
   const city = a.city || a.airport;
   const state = LEVEL_WORD[a.level] || 'being monitored';
@@ -158,6 +180,22 @@ const factsBlock = (f, code, asOf) => {
     + (asOf ? ` Terminal data as of ${esc(asOf)}.` : '') + `</p>`);
 };
 
+/**
+ * Status, when we are not reading it.
+ *
+ * Carries the date of the last reading rather than the reading itself. A level from days ago
+ * rendered as "on time right now" is the same mistake as an all-clear drawn from no readings,
+ * which is what the board used to do.
+ */
+const pausedBlock = (lastReading) => `<p class="apt-note">Live delay readings are paused right now, `
+  + `so this page is not reporting current delays.</p>`
+  // Only when there genuinely was one. With polling off the feed carries no poll time and the
+  // bake falls back to the current moment, which would print "last reading" against a reading
+  // that never happened.
+  + (lastReading
+    ? `<div class="meta"><span>Last reading ${esc(String(lastReading).replace(/^Updated /, ''))}</span></div>`
+    : '');
+
 const detailBlock = (a, alerts) => {
   const color = BOARD.LEVEL_COLORS[a.level] || '#4F7C82';
   const bits = [];
@@ -187,6 +225,7 @@ const alertsBlock = (alerts) => {
 };
 
 const siblingsBlock = (region, self) => {
+  if (!region) return '';
   const others = (region.airports || []).filter((x) => x.airport !== self.airport);
   if (!others.length) return '';
   const links = others.map((x) => {
@@ -425,10 +464,15 @@ const loungesBlock = (lounges, code, facts) => {
     + `<div class="lng">${inner}</div>`);
 };
 
-const pageHtml = ({ a, region, alerts, chrome, updated, facts, asOf, weather, nowMs, lounges }) => {
+const pageHtml = ({ a, region, alerts, chrome, updated, lastReading, facts, asOf, weather, nowMs, lounges, paused }) => {
   const city = a.city || a.airport;
-  const title = `${city} (${a.airport}) Airport Delays | Ruta Travels`;
-  const desc = summaryLine(a, alerts);
+  // Paused is the temporary state, and it decides what the page claims to be. Leading with a
+  // delay figure nobody is refreshing would be a page writing a cheque it cannot cash, so while
+  // readings are off this is a guide to the airport and says so from the title down.
+  const title = paused
+    ? `${city} (${a.airport}) Airport Guide: Terminals and Lounges | Ruta Travels`
+    : `${city} (${a.airport}) Airport Delays | Ruta Travels`;
+  const desc = paused ? guideLine(a, facts, lounges, alerts) : summaryLine(a, alerts);
   const slug = BOARD.slugFor(a);
   const url = `${SITE}/live/${slug}/`;
   return `<!DOCTYPE html>
@@ -443,7 +487,7 @@ const pageHtml = ({ a, region, alerts, chrome, updated, facts, asOf, weather, no
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta property="og:type" content="website">
-<meta property="og:title" content="${esc(city)} (${esc(a.airport)}) airport delays, live">
+<meta property="og:title" content="${esc(city)} (${esc(a.airport)}) ${paused ? 'airport guide' : 'airport delays, live'}">
 <meta property="og:description" content="${esc(desc)}">
 <meta property="og:url" content="${esc(url)}">
 <meta property="og:site_name" content="Ruta Travels">
@@ -530,16 +574,16 @@ a.sib:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 ${chrome.nav}
 <section class="hero">
   <div class="hero-body">
-    <h1>${esc(city)} (${esc(a.airport)}) airport delays</h1>
+    <h1>${esc(city)} (${esc(a.airport)}) ${paused ? 'airport guide' : 'airport delays'}</h1>
     <p class="lede">${esc(desc)}</p>
   </div>
 </section>
 
 <div class="wrap">
-  ${section('Right now', `<h2>Right now at ${esc(a.airport)}</h2>` + detailBlock(a, alerts)
+  ${paused ? '' : section('Right now', `<h2>Right now at ${esc(a.airport)}</h2>` + detailBlock(a, alerts)
     + `<div class="meta"><span>${esc(updated)}</span></div>`)}
 
-  ${weatherBlock(weather, a.airport, nowMs)}
+  ${paused ? '' : weatherBlock(weather, a.airport, nowMs)}
 
   ${section('Alerts', `<h2>Alerts affecting ${esc(a.airport)}</h2>` + alertsBlock(alerts))}
 
@@ -551,9 +595,13 @@ ${chrome.nav}
 
   ${servicesBlock(facts, a.airport, !!(lounges && (lounges.lounges || []).length))}
 
+  ${paused ? weatherBlock(weather, a.airport, nowMs) : ''}
+
+  ${paused ? section('Right now', `<h2>Delays at ${esc(a.airport)}</h2>` + pausedBlock(lastReading)) : ''}
+
   ${siblingsBlock(region, a)}
 
-  <a class="backlink" href="/live/">All airport delays, live</a>
+  <a class="backlink" href="/live/">${paused ? 'All airports we track' : 'All airport delays, live'}</a>
 
   <div class="cta">
     <h2>Ruta watches this for the flights that are yours.</h2>
@@ -747,14 +795,42 @@ const main = async () => {
   let wouldChange = false;
   const slugs = [];
 
+  /**
+   * Every airport to build, which is not the same as every airport in the feed.
+   *
+   * With delay polling paused the feed carries no airports at all, so a list built from it alone
+   * rebuilds nothing, and 38 pages keep saying "is running on time right now" about a reading
+   * from whenever polling last ran. The pages that exist have to be rebuildable without a board
+   * row, so each one is paired with its region when the feed has it and with null when it does
+   * not.
+   */
+  const paused = !!data.paused;
+  const fromFeed = new Map();
   for (const region of data.regions) {
     for (const a of (region.airports || [])) {
       const slug = BOARD.slugFor(a);
-      if (!slug) continue;
+      if (slug) fromFeed.set(slug, { a, region });
+    }
+  }
+  const work = [...fromFeed.entries()].map(([slug, v]) => ({ slug, ...v }));
+  if (paused || !work.length) {
+    // Rebuild what is on disk too, synthesising the airport from its own slug and facts. The code
+    // is the last segment and the city is the rest, which is how slugFor built it.
+    for (const slug of existingPageSlugs()) {
+      if (fromFeed.has(slug)) continue;
+      const { city, code } = labelForSlug(slug);
+      if (!code) continue;
+      const name = (allFacts[code] && allFacts[code].name) || '';
+      work.push({ slug, a: { airport: code, city: city || name || code }, region: null });
+    }
+  }
+
+  for (const { slug, a, region } of work) {
+    {
       slugs.push(slug);
       const html = pageHtml({ a, region, alerts: byAirport(a.airport), chrome, updated,
         facts: allFacts[a.airport], asOf: factsDate, weather: allWeather[a.airport], nowMs,
-        lounges: allLounges[a.airport] });
+        lounges: allLounges[a.airport], paused, lastReading: data.updatedAt ? updated : null });
       const dir = path.join(ROOT, 'live', slug);
       const file = path.join(dir, 'index.html');
       const prev = fs.existsSync(file) ? fs.readFileSync(file, 'utf8') : null;
