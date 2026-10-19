@@ -263,22 +263,22 @@
       "fetchedAt": "2026-10-18T21:45:46.620Z"
     },
     "MEL": {
-      "tempF": 56,
-      "feelsF": 54,
+      "tempF": 75,
+      "feelsF": 75,
       "description": "clear sky",
-      "icon": "01n",
-      "windMph": 15,
-      "readAt": "2026-10-18T19:22:38.000Z",
-      "fetchedAt": "2026-10-18T19:22:38.154Z"
+      "icon": "01d",
+      "windMph": 14,
+      "readAt": "2026-10-19T00:06:31.000Z",
+      "fetchedAt": "2026-10-19T00:06:31.797Z"
     },
     "EZE": {
-      "tempF": 58,
-      "feelsF": 56,
-      "description": "few clouds",
-      "icon": "02d",
-      "windMph": 5,
-      "readAt": "2026-10-18T16:47:09.000Z",
-      "fetchedAt": "2026-10-18T16:47:09.355Z"
+      "tempF": 55,
+      "feelsF": 54,
+      "description": "broken clouds",
+      "icon": "04n",
+      "windMph": 6,
+      "readAt": "2026-10-19T00:06:31.000Z",
+      "fetchedAt": "2026-10-19T00:06:31.897Z"
     },
     "CMN": {
       "tempF": 64,
@@ -290,13 +290,13 @@
       "fetchedAt": "2026-10-18T21:45:46.004Z"
     },
     "AKL": {
-      "tempF": 57,
-      "feelsF": 56,
-      "description": "few clouds",
-      "icon": "02d",
-      "windMph": 12,
-      "readAt": "2026-10-18T19:22:37.000Z",
-      "fetchedAt": "2026-10-18T19:22:37.987Z"
+      "tempF": 64,
+      "feelsF": 63,
+      "description": "clear sky",
+      "icon": "01d",
+      "windMph": 15,
+      "readAt": "2026-10-19T00:06:31.000Z",
+      "fetchedAt": "2026-10-19T00:06:31.690Z"
     },
     "SYD": {
       "tempF": 61,
