@@ -578,6 +578,67 @@ const fetchLive = async () => {
   } finally { clearTimeout(timer); }
 };
 
+/**
+ * Every airport page that exists on disk, which is not the same as the pages built this run.
+ *
+ * The bake only receives airports that HAVE a delay, so on a quiet day it builds nothing. Passing
+ * that empty list to the sitemap emptied the sitemap, and passing it to the page index would do
+ * the same. Thirty-eight pages were sitting on disk reachable by no link and listed in no sitemap,
+ * discoverable only during the minority of hours when their airport happened to be delayed. The
+ * question a sitemap answers is "what pages exist", and that is a directory listing.
+ */
+const existingPageSlugs = () => {
+  const dir = path.join(ROOT, 'live');
+  let entries = [];
+  try { entries = fs.readdirSync(dir, { withFileTypes: true }); } catch (e) { return []; }
+  return entries
+    .filter((e) => e.isDirectory())
+    .map((e) => e.name)
+    .filter((name) => fs.existsSync(path.join(dir, name, 'index.html')))
+    .sort();
+};
+
+/** "chicago-ord" -> { city: 'Chicago', code: 'ORD' }. The slug is the only thing always present. */
+const labelForSlug = (slug) => {
+  const parts = String(slug || '').split('-');
+  const code = (parts[parts.length - 1] || '').toUpperCase();
+  const city = parts.slice(0, -1).map((w) => (w ? w[0].toUpperCase() + w.slice(1) : w)).join(' ');
+  return { city: city || code, code: /^[A-Z]{3}$/.test(code) ? code : '' };
+};
+
+/**
+ * The visible index of airport pages, written into live/index.html between its own markers.
+ *
+ * Baked rather than rendered by board.js on purpose. board.js only ever receives airports with a
+ * delay, so anything it drew would vanish the moment the board went quiet, which is exactly when
+ * these links are the only way in. A static block is also what a crawler sees without running
+ * scripts.
+ */
+const writeAirportIndex = (slugs, check) => {
+  const a = '<!--ruta:airports:start-->';
+  const b = '<!--ruta:airports:end-->';
+  const file = path.join(ROOT, 'live', 'index.html');
+  const before = fs.readFileSync(file, 'utf8');
+  if (!before.includes(a)) {
+    throw new Error('live/index.html has no <!--ruta:airports:start--> block to fill');
+  }
+  const links = slugs.map((slug) => {
+    const { city, code } = labelForSlug(slug);
+    return `<a class="aix" href="/live/${slug}/">${esc(city)}${code ? ` <span>${esc(code)}</span>` : ''}</a>`;
+  }).join('');
+  const body = slugs.length
+    ? `<div class="sec-h">Airports we track</div>`
+      + `<div class="sec-sub">A page for each, with terminals, lounges and what is open.</div>`
+      + `<div class="aix-list">${links}</div>`
+    : '';
+  const i = before.indexOf(a);
+  const j = before.indexOf(b);
+  const next = before.slice(0, i + a.length) + body + before.slice(j);
+  if (next === before) return false;
+  if (!check) fs.writeFileSync(file, next);
+  return true;
+};
+
 /** Fill the marked block in sitemap.xml, leaving the hand-written entries alone. */
 const writeSitemap = (slugs, check) => {
   const a = '<!--ruta:airports:start-->';
@@ -608,7 +669,19 @@ const main = async () => {
   } else {
     try { data = await fetchLive(); }
     catch (e) {
+      // The pages themselves need the feed and stay as they are. The sitemap and the on-page
+      // index do not: they describe which pages exist on disk, which an outage does not change.
+      // Skipping them here is how a bad afternoon used to leave the pages unreachable.
       console.log(`[airports] feed unavailable (${e.message}); leaving the pages as they are`);
+      const only = existingPageSlugs();
+      const sm = writeSitemap(only, has('--check'));
+      const ix = writeAirportIndex(only, has('--check'));
+      if (has('--check') && (sm || ix)) {
+        console.error('[airports] sitemap or page index is out of date');
+        return 1;
+      }
+      console.log(`[airports] ${only.length} page${only.length === 1 ? '' : 's'} on disk`
+        + (sm ? ', sitemap updated' : '') + (ix ? ', index updated' : ''));
       return 0;
     }
   }
@@ -697,17 +770,22 @@ const main = async () => {
     }
   }
 
-  const sitemapChanged = writeSitemap(slugs.sort(), has('--check'));
+  // Built-this-run plus everything already on disk. A quiet board builds nothing, and that must
+  // not be read as "there are no airport pages".
+  const allSlugs = Array.from(new Set([...slugs, ...existingPageSlugs()])).sort();
+  const sitemapChanged = writeSitemap(allSlugs, has('--check'));
   if (sitemapChanged) wouldChange = true;
+  const indexChanged = writeAirportIndex(allSlugs, has('--check'));
+  if (indexChanged) wouldChange = true;
 
   if (has('--check')) {
     if (wouldChange) { console.error('[airports] pages are out of date'); return 1; }
-    console.log(`[airports] up to date (${slugs.length} pages)`);
+    console.log(`[airports] up to date (${allSlugs.length} pages)`);
     return 0;
   }
 
-  console.log(`[airports] ${written} page${written === 1 ? '' : 's'} written, ${slugs.length} total`
-    + (sitemapChanged ? ', sitemap updated' : ''));
+  console.log(`[airports] ${written} page${written === 1 ? '' : 's'} written, ${allSlugs.length} total`
+    + (sitemapChanged ? ', sitemap updated' : '') + (indexChanged ? ', index updated' : ''));
   return 0;
 };
 

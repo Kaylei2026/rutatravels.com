@@ -760,3 +760,110 @@ test('every terminal heading reads like the airport wrote it', () => {
     assert.ok(all.includes('Terminal 4S'), 'a letter-suffixed number lost its letter');
   } finally { r.cleanup(); }
 });
+
+
+/**
+ * The airport pages were reachable by nothing.
+ *
+ * The bake only receives airports that HAVE a delay, and the slug list it built from that fed both
+ * the sitemap and, before this, nothing else. On a quiet board that list is empty, so the sitemap's
+ * airports block was emptied and the /live page had no rows to link from. Thirty-eight pages sat on
+ * disk, in no sitemap and behind no link, discoverable only in the minority of hours when their own
+ * airport happened to be delayed. Both of those now answer "which pages exist", which is a
+ * directory listing rather than a feed reading.
+ */
+
+/** Pretend a previous bake left pages behind, which is the normal state of that directory. */
+const withExistingPages = (r, slugs) => {
+  for (const s of slugs) {
+    fs.mkdirSync(path.join(r.dir, 'live', s), { recursive: true });
+    fs.writeFileSync(path.join(r.dir, 'live', s, 'index.html'), '<!doctype html><title>old</title>');
+  }
+};
+
+const indexBlock = (html) => {
+  const a = html.indexOf('<!--ruta:airports:start-->');
+  const b = html.indexOf('<!--ruta:airports:end-->');
+  assert.ok(a > -1 && b > a, 'no airports block in the page');
+  return html.slice(a, b);
+};
+
+const linkedSlugs = (html) => [...indexBlock(html)
+  .matchAll(/class="aix" href="\/live\/([a-z0-9-]+)\//g)].map((m) => m[1]).sort();
+
+const sitemapSlugs = (xml) => [...String(xml)
+  .matchAll(/<loc>https:\/\/rutatravels\.com\/live\/([a-z0-9-]+)\/<\/loc>/g)].map((m) => m[1]).sort();
+
+test('a quiet board still lists every page that exists', () => {
+  // The bug, exactly. No delays anywhere, so nothing is built, and before this both the sitemap
+  // and the page went blank on the subject.
+  const r = run({ updatedAt: new Date().toISOString(), regions: [], alerts: [] });
+  try {
+    withExistingPages(r, ['chicago-ord', 'london-lhr', 'tokyo-hnd']);
+    // Re-run against the same tree, now that pages are sitting in it.
+    const again = execFileSync(process.execPath,
+      [path.join(r.dir, 'scripts', 'bake-airports.js'), '--from', path.join(r.dir, 'p.json')],
+      { stdio: 'pipe', encoding: 'utf8' });
+    assert.match(again, /3 pages on disk|3 total/);
+    const html = r.read('live/index.html');
+    assert.deepStrictEqual(linkedSlugs(html), ['chicago-ord', 'london-lhr', 'tokyo-hnd']);
+    assert.deepStrictEqual(sitemapSlugs(r.read('sitemap.xml')), ['chicago-ord', 'london-lhr', 'tokyo-hnd']);
+  } finally { r.cleanup(); }
+});
+
+test('a busy board lists the pages it built and the ones already there', () => {
+  const d = sample();
+  const r = run(d);
+  try {
+    const built = d.regions.flatMap((reg) => reg.airports.map((a) => BOARD.slugFor(a)));
+    withExistingPages(r, ['zurich-zrh']);
+    execFileSync(process.execPath,
+      [path.join(r.dir, 'scripts', 'bake-airports.js'), '--from', path.join(r.dir, 'p.json')],
+      { stdio: 'pipe' });
+    const linked = linkedSlugs(r.read('live/index.html'));
+    for (const s of [...built, 'zurich-zrh']) assert.ok(linked.includes(s), `${s} not linked`);
+  } finally { r.cleanup(); }
+});
+
+test('the links are in the HTML, not drawn by board.js', () => {
+  // board.js only ever receives airports with a delay, so anything it drew would disappear at
+  // exactly the moment these links are the only way in. A crawler does not run scripts either.
+  const r = run(sample());
+  try {
+    const html = r.read('live/index.html');
+    assert.ok(/<a class="aix" href="\/live\//.test(html), 'no baked links');
+    assert.ok(!/aix/.test(fs.readFileSync(path.join(ROOT, 'live', 'board.js'), 'utf8')),
+      'board.js now renders the index, which puts it back behind the feed');
+  } finally { r.cleanup(); }
+});
+
+test('it names the airport, not just the slug', () => {
+  const r = run({ updatedAt: new Date().toISOString(), regions: [], alerts: [] });
+  try {
+    withExistingPages(r, ['abu-dhabi-auh', 'new-york-jfk']);
+    execFileSync(process.execPath,
+      [path.join(r.dir, 'scripts', 'bake-airports.js'), '--from', path.join(r.dir, 'p.json')],
+      { stdio: 'pipe' });
+    const block = indexBlock(r.read('live/index.html'));
+    // Multi-word cities are the case a naive split gets wrong.
+    assert.match(block, /Abu Dhabi <span>AUH<\/span>/);
+    assert.match(block, /New York <span>JFK<\/span>/);
+  } finally { r.cleanup(); }
+});
+
+test('--check notices when the index has fallen behind', () => {
+  const r = run(sample());
+  try {
+    withExistingPages(r, ['oslo-osl']);
+    const code = (() => {
+      try {
+        execFileSync(process.execPath,
+          [path.join(r.dir, 'scripts', 'bake-airports.js'), '--from', path.join(r.dir, 'p.json'), '--check'],
+          { stdio: 'pipe' });
+        return 0;
+      } catch (e) { return e.status; }
+    })();
+    assert.strictEqual(code, 1, '--check passed while a page was missing from the index');
+    assert.ok(!linkedSlugs(r.read('live/index.html')).includes('oslo-osl'), '--check wrote the file');
+  } finally { r.cleanup(); }
+});
