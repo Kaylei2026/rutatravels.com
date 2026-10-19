@@ -113,7 +113,7 @@ test('baking twice changes nothing the second time', () => {
 
 test('an empty feed bakes the calm message, not an empty page', () => {
   const { html } = bakeInto({ updatedAt: new Date().toISOString(), regions: [], alerts: [] });
-  assert.ok(between(html, 'board').includes('skies are running clear'), 'no calm message');
+  assert.ok(between(html, 'board').includes('Clear at the hubs we track'), 'no calm message');
 });
 
 test('the baked timestamp is absolute, because a relative one rots in a cache', () => {
@@ -279,4 +279,67 @@ test('the board.js URL is restamped even when the feed is down', () => {
     assert.strictEqual(stampIn(html), hashOf(t.board), 'feed-down run left the old board.js URL');
     assert.ok(html.includes('<!--ruta:board:start-->'), 'board markers lost');
   } finally { t.done(); }
+});
+
+
+/**
+ * The empty board, which said one thing about three different situations.
+ *
+ * `regions` only carries airports that HAVE a delay, so an empty board means either that every
+ * hub polled is quiet or that nothing reported at all. Both used to render as "The skies are
+ * running clear": an all clear over 44 airports drawn, in the second case, from zero readings.
+ * The headline also described the sky rather than a board that watches 44 major airports.
+ */
+const BOARD2 = require(path.join(ROOT, 'live', 'board.js'));
+const plainText = (h) => String(h).replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+
+test('nothing reporting is not an all clear, and says so', () => {
+  const t = plainText(BOARD2.clearHtml({ watched: 44, reporting: 0 }, false));
+  assert.ok(/not an all clear/.test(t), t);
+  assert.ok(!/are clear/.test(t), 'claimed clear with no readings: ' + t);
+  assert.ok(t.includes('44'), 'does not say how many were silent');
+});
+
+test('every hub clear names the number the claim covers', () => {
+  const t = plainText(BOARD2.clearHtml({ watched: 44, reporting: 44 }, false));
+  assert.ok(t.includes('All 44 hubs we track are clear'), t);
+  // The scope line is the point of the rewrite: this board is not the sky.
+  assert.ok(/rather than every airport/.test(t), t);
+});
+
+test('a partial poll reports what reported and what did not', () => {
+  const t = plainText(BOARD2.clearHtml({ watched: 44, reporting: 41 }, false));
+  assert.ok(t.includes('41 hubs reporting'), t);
+  assert.ok(t.includes('other 3 hubs'), 'did not account for the silent ones: ' + t);
+});
+
+test('arithmetic and grammar hold at the edges', () => {
+  // Both of these were real bugs in the first draft: an undefined call in the partial branch
+  // that threw, and "All 1 hub we track are clear" with "1 major airports" under it.
+  assert.doesNotThrow(() => BOARD2.clearHtml({ watched: 44, reporting: 43 }, false));
+  const one = plainText(BOARD2.clearHtml({ watched: 1, reporting: 1 }, false));
+  assert.ok(one.includes('The hub we track is clear'), one);
+  assert.ok(one.includes('1 major airport '), 'pluralised a single airport: ' + one);
+  const off = plainText(BOARD2.clearHtml({ watched: 44, reporting: 43 }, false));
+  assert.ok(off.includes('other 1 hub '), off);
+});
+
+test('a page served before the server carries the counts stays vague rather than inventing one', () => {
+  // live/board.js ships to browsers ahead of the API deploy. No numbers means no numbers.
+  const t = plainText(BOARD2.clearHtml({}, false));
+  assert.ok(t.includes('Clear at the hubs we track'), t);
+  assert.ok(!/\d/.test(t), 'invented a count from an older payload: ' + t);
+});
+
+test('the no-alerts wording still differs from the delays-only wording', () => {
+  const delays = plainText(BOARD2.clearHtml({ watched: 44, reporting: 44 }, false));
+  const both = plainText(BOARD2.clearHtml({ watched: 44, reporting: 44 }, true));
+  assert.ok(delays.includes('No notable delays'), delays);
+  assert.ok(both.includes('No delays or alerts'), both);
+});
+
+test('renderAll routes the empty board through the same branch the page uses', () => {
+  // The build and the page must not disagree about the empty case, which is why renderAll exists.
+  const r = BOARD2.renderAll({ watched: 44, reporting: 0, regions: [], alerts: [] });
+  assert.ok(plainText(r.board).includes('not an all clear'), plainText(r.board));
 });

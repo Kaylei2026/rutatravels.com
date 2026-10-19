@@ -106,14 +106,52 @@
     return h;
   }
 
-  var CLEAR_BOARD = '<div class="clear"><div class="big">The skies are running clear.</div>'
-    + '<div>No notable delays at the major hubs we track right now. Refresh anytime.</div></div>';
+  function plural(n, one, many) { return n + ' ' + (n === 1 ? one : many); }
 
-  var CLEAR_ALL = '<div class="clear"><div class="big">The skies are running clear.</div>'
-    + '<div>No notable delays or alerts at the hubs we track right now. Refresh anytime.</div></div>';
+  /**
+   * The empty board, which used to say one thing about three different situations.
+   *
+   * `regions` carries only airports that HAVE a delay, so an empty board means either that every
+   * hub we polled is quiet or that nothing reported at all. Both rendered as "The skies are
+   * running clear", which is an all-clear over 44 airports drawn from, in the second case, zero
+   * readings. The headline also read as a statement about the sky rather than about a board that
+   * watches 44 major airports and not the other several thousand.
+   *
+   * `watched` and `reporting` come from the API. They are absent on a page served before the
+   * server carrying them deploys, so that case keeps a vaguer line rather than inventing a count.
+   */
+  function clearHtml(d, alsoNoAlerts) {
+    var watched = Number(d && d.watched) || 0;
+    var reporting = Number(d && d.reporting) || 0;
+    var tail = ' Refresh anytime.';
+    if (watched && !reporting) {
+      // Not an all clear. Saying so is the whole point of carrying the second number.
+      return '<div class="clear"><div class="big">No readings right now.</div>'
+        + '<div>None of the ' + plural(watched, 'hub', 'hubs') + ' we track reported on the last poll,'
+        + ' so this is not an all clear.' + tail + '</div></div>';
+    }
+    var what = alsoNoAlerts ? 'No delays or alerts' : 'No notable delays';
+    if (!watched) {
+      return '<div class="clear"><div class="big">Clear at the hubs we track.</div>'
+        + '<div>' + what + ' right now.' + tail + '</div></div>';
+    }
+    if (reporting < watched) {
+      return '<div class="clear"><div class="big">Clear at the '
+        + plural(reporting, 'hub', 'hubs') + ' reporting right now.</div>'
+        + '<div>' + what + '. The other ' + plural(watched - reporting, 'hub', 'hubs')
+        + ' we track had no reading on the last poll.' + tail + '</div></div>';
+    }
+    var head = watched === 1
+      ? 'The hub we track is clear.'
+      : ('All ' + watched + ' hubs we track are clear.');
+    return '<div class="clear"><div class="big">' + head + '</div>'
+      + '<div>' + what + ' right now. This board watches '
+      + plural(watched, 'major airport', 'major airports')
+      + ' rather than every airport.' + tail + '</div></div>';
+  }
 
-  function boardHtml(regions) {
-    if (!regions || !regions.length) return CLEAR_BOARD;
+  function boardHtml(regions, d) {
+    if (!regions || !regions.length) return clearHtml(d, false);
     var h = '';
     regions.forEach(function (reg) {
       h += '<div class="sec-h">' + esc(reg.region) + '</div><div class="region">';
@@ -143,15 +181,15 @@
   function renderAll(d) {
     d = d || {};
     var alerts = alertsHtml(d.alerts);
-    var board = boardHtml(d.regions);
+    var board = boardHtml(d.regions, d);
     var nothing = (!d.alerts || !d.alerts.length) && (!d.regions || !d.regions.length);
-    if (nothing) board = CLEAR_ALL;
+    if (nothing) board = clearHtml(d, true);
     return { alerts: alerts, board: board };
   }
 
   return {
     LEVEL_COLORS: LEVEL_COLORS,
     esc: esc, ago: ago, reasonLine: reasonLine, safeUrl: safeUrl, slugFor: slugFor,
-    alertsHtml: alertsHtml, boardHtml: boardHtml, renderAll: renderAll,
+    alertsHtml: alertsHtml, boardHtml: boardHtml, clearHtml: clearHtml, renderAll: renderAll,
   };
 }));
