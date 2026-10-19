@@ -343,3 +343,29 @@ test('renderAll routes the empty board through the same branch the page uses', (
   const r = BOARD2.renderAll({ watched: 44, reporting: 0, regions: [], alerts: [] });
   assert.ok(plainText(r.board).includes('not an all clear'), plainText(r.board));
 });
+
+
+test('a paused board says so, instead of reporting 44 silent airports', () => {
+  // Live delay polling is the most expensive thing this site does and it is off while the budget
+  // says so. Telling the page only that reporting is 0 would turn our own meter decision into a
+  // claim about 44 airports.
+  const t = plainText(BOARD2.clearHtml({ paused: true, watched: 44, reporting: 0 }, false));
+  assert.match(t, /paused/i);
+  assert.ok(!/not an all clear/.test(t), t);
+  assert.ok(!/44/.test(t), 'a paused board counted airports: ' + t);
+  // It has to point at what the page still has, or it reads as an outage notice.
+  assert.match(t, /own page|terminals|lounges/i);
+});
+
+test('paused wins over every other empty state', () => {
+  for (const d of [{ paused: true }, { paused: true, watched: 44, reporting: 44 },
+                   { paused: true, watched: 0, reporting: 0 }]) {
+    assert.match(plainText(BOARD2.clearHtml(d, false)), /paused/i, JSON.stringify(d));
+  }
+});
+
+test('an unpaused board is unaffected', () => {
+  const t = plainText(BOARD2.clearHtml({ paused: false, watched: 44, reporting: 44 }, false));
+  assert.ok(!/paused/i.test(t), t);
+  assert.match(t, /All 44 hubs we track are clear/);
+});

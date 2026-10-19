@@ -124,6 +124,15 @@
     var watched = Number(d && d.watched) || 0;
     var reporting = Number(d && d.reporting) || 0;
     var tail = ' Refresh anytime.';
+    // Paused on purpose, which is not the same as every airport going silent and must not be
+    // dressed up as one. Live delay polling is the most expensive thing this site does and it is
+    // off while the budget says so; the airport pages below carry what each airport offers, which
+    // is the part that does not depend on a meter.
+    if (d && d.paused) {
+      return '<div class="clear"><div class="big">Live delay status is paused.</div>'
+        + '<div>We are not reading departure delays right now. The alerts above are current, and '
+        + 'every airport below has its own page with terminals, lounges and what is open.</div></div>';
+    }
     if (watched && !reporting) {
       // Not an all clear. Saying so is the whole point of carrying the second number.
       return '<div class="clear"><div class="big">No readings right now.</div>'
