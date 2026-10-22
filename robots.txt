@@ -16,4 +16,9 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
+# Meta's AI training crawler. Link previews on Facebook, Instagram and WhatsApp
+# come from a different crawler, facebookexternalhit, which stays allowed above.
+User-agent: meta-externalagent
+Disallow: /
+
 Sitemap: https://rutatravels.com/sitemap.xml
