@@ -492,9 +492,7 @@ const pageHtml = ({ a, region, alerts, chrome, updated, lastReading, facts, asOf
 <meta property="og:url" content="${esc(url)}">
 <meta property="og:site_name" content="Ruta Travels">
 <meta property="og:image" content="${SITE}/photos/25.jpg">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&family=Montserrat:wght@200;300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/fonts/fonts.css">
 ${chrome.style}
 <style>
 /* These pages inherit the board's stylesheet, which only styles links in the few places the
